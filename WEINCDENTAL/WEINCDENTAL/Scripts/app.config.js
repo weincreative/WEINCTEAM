@@ -1,17 +1,17 @@
-/*         ______________________________________
-  ________|                                      |_______
+/*         _________________________________\
+  ________|                                      |___________
   \       |           WEINCREATIVE WebApp          |      /
-   \      |      Copyright © 2014 MyOrange       |     /
-   /      |______________________________________|     \
-  /__________)                                (_________\
+   \      |      Copyright © 2019 W3NOOM       |     /
+   /      |_____________________________ |     \
+  /__________)                                (___________\
 
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * =======================================================================
- * SmartAdmin is FULLY owned and LICENSED by MYORANGE INC.
+ * WEINCREATIVE is FULLY owned and LICENSED by MYORANGE INC.
  * This script may NOT be RESOLD or REDISTRUBUTED under any
  * circumstances, and is only to be used with this purchased
- * copy of SmartAdmin Template.
+ * copy of WEINCREATIVE Template.
  * =======================================================================
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
