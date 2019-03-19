@@ -22,8 +22,8 @@
  * =======================================================================
  * original filename: app.config.js
  * filesize: 12kb
- * author: Ömer (@bootstraphunt)
- * email: weincreative@gmail.com
+ * author: Sunny (@bootstraphunt)
+ * email: info@myorange.ca
  * =======================================================================
  * 
  * GLOBAL ROOT (DO NOT CHANGE)
