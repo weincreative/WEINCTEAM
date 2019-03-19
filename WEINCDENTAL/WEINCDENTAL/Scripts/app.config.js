@@ -1,17 +1,17 @@
-/*         _________________________________ \
+/*         _________________________________\
   ________|                                      |___________
   \       |           WEINCREATIVE WebApp          |      /
-   \      |      Copyright © 2014 MyOrange       |     /
+   \      |      Copyright © 2019 W3NOOM       |     /
    /      |_____________________________ |     \
-  /__________)                                (___________ \
+  /__________)                                (___________\
 
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * =======================================================================
- * SmartAdmin is FULLY owned and LICENSED by MYORANGE INC.
+ * WEINCREATIVE is FULLY owned and LICENSED by MYORANGE INC.
  * This script may NOT be RESOLD or REDISTRUBUTED under any
  * circumstances, and is only to be used with this purchased
- * copy of WeinCreative Template.
+ * copy of WEINCREATIVE Template.
  * =======================================================================
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
@@ -22,8 +22,8 @@
  * =======================================================================
  * original filename: app.config.js
  * filesize: 12kb
- * author: Sunny (@bootstraphunt)
- * email: info@myorange.ca
+ * author: Ömer (@bootstraphunt)
+ * email: weincreative@gmail.com
  * =======================================================================
  * 
  * GLOBAL ROOT (DO NOT CHANGE)
@@ -39,8 +39,10 @@
 /*
  * GLOBAL: Sound Config (define sound path, enable or disable all sounds)
  */
-$.sound_path = "../content/sound/";
-$.sound_on = true; 
+//$.sound_path = "/content/sound/";
+$.sound_path = "~/Content/sound/";
+
+	$.sound_on = true; 
 /*
  * SAVE INSTANCE REFERENCE (DO NOT CHANGE)
  * Save a reference to the global object (window in the browser)
