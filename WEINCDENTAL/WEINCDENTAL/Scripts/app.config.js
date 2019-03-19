@@ -1,9 +1,9 @@
-/*         ______________________________________
-  ________|                                      |_______
+/*         _________________________________\
+  ________|                                      |___________
   \       |           WEINCREATIVE WebApp          |      /
    \      |      Copyright © 2014 MyOrange       |     /
-   /      |______________________________________|     \
-  /__________)                                (_________\
+   /      |_____________________________ |     \
+  /__________)                                (___________\
 
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
@@ -39,10 +39,8 @@
 /*
  * GLOBAL: Sound Config (define sound path, enable or disable all sounds)
  */
-//$.sound_path = "/content/sound/";
-$.sound_path = "~/Content/sound/";
-
-	$.sound_on = true; 
+$.sound_path = "../content/sound/";
+$.sound_on = true; 
 /*
  * SAVE INSTANCE REFERENCE (DO NOT CHANGE)
  * Save a reference to the global object (window in the browser)
