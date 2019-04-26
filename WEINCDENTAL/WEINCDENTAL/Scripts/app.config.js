@@ -1,4 +1,4 @@
-/*         _________________________________\
+/*_____________________________________\
   ________|                                      |___________
   \       |           WEINCREATIVE WebApp          |      /
    \      |      Copyright © 2014 MyOrange       |     /
@@ -216,7 +216,7 @@ $.sound_on = true;
  	if (voice_command) {
 	 		
 		var commands = {
-            'ana sayfa': function () { $('nav a[href="/Home/Index"]').trigger("click"); },	
+            'anasayfa': function () { $('#nav a[href="/Home/Index"]').trigger("click"); },	
 			'show dashboard' : function() { $('nav a[href="/home/inbox"]').trigger("click"); },
 			'show inbox' : function() { $('nav a[href="/home/inbox"]').trigger("click"); },
 			'show graphs' : function() { $('nav a[href="/home/flot"]').trigger("click"); },
@@ -269,7 +269,7 @@ $.sound_on = true;
 				} else {
 					$('#hide-menu > span > a').trigger("click"); 
 				}
-			},
+            },
 			'sessiz' : function() {
 				$.sound_on = false;
 				$.smallBox({
@@ -279,7 +279,7 @@ $.sound_on = true;
 					timeout: 4000,
 					icon : "fa fa-volume-off"
 				});
-			},
+          },
 			'sesi aç' : function() {
 				$.sound_on = true;
 				$.speechApp.playConfirmation();

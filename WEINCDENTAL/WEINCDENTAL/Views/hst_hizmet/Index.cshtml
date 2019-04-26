@@ -1,0 +1,221 @@
+﻿@model IEnumerable<WEINCDENTAL.Models.hst_hizmet>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- row -->
+    <div class="row">
+        <!-- col -->
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark">
+                <!-- PAGE HEADER -->
+                <i class="fa-fw fa fa-user"></i>
+                Hizmetler
+                <span>
+                    >
+                    Subtitle
+                </span>
+            </h1>
+        </div>
+        <!-- end col -->
+        <!-- right side of the page with the sparkline graphs -->
+        <!-- col -->
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+            <!-- sparks -->
+            <ul id="sparks">
+                <li class="sparks-info">
+                    <h5> Kazanç <span class="txt-color-blue">$47,171</span></h5>
+                    <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+                        1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
+                    </div>
+                </li>
+                <li class="sparks-info">
+                    <h5> Hasta <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
+                    <div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
+                        110,150,300,130,400,240,220,310,220,300, 270, 210
+                    </div>
+                </li>
+                <li class="sparks-info">
+                    <h5> İşlem <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
+                    <div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
+                        110,150,300,130,400,240,220,310,220,300, 270, 210
+                    </div>
+                </li>
+            </ul>
+            <!-- end sparks -->
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end row -->
+    <!--
+        The ID "widget-grid" will start to initialize all widgets below
+        You do not need to use widgets if you dont want to. Simply remove
+        the <section></section> and you can use wells or panels instead
+        -->
+    <!-- widget grid -->
+    <section id="widget-grid" class="">
+        <!-- row -->
+        <div class="row">
+            <!-- NEW WIDGET START -->
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-colorbutton="false">
+                    <!-- widget options:
+                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                        data-widget-colorbutton="false"
+                        data-widget-editbutton="false"
+                        data-widget-togglebutton="false"
+                        data-widget-deletebutton="false"
+                        data-widget-fullscreenbutton="false"
+                        data-widget-custombutton="false"
+                        data-widget-collapsed="true"
+                        data-widget-sortable="false"
+
+                    -->
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+                        <h2>Hizmetler </h2>
+                        <div class="widget-toolbar" role="menu">
+                            @Html.ActionLink("Create New", "Create", "hst_hizmet", routeValues: null, htmlAttributes: new { @class = "btn btn-primary", @role = "button" })
+                        </div>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget edit box -->
+                        <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+                        </div>
+                        <!-- end widget edit box -->
+                        <!-- widget content -->
+                        <div class="widget-body no-padding">
+                            <!-- this is what the user will see -->
+                            <div id="dt_basic_wrapper" class="dataTables_wrapper form-inline no-footer">
+                                <!-- start widget head search-->
+                                <div class="dt-toolbar no-padding">
+                                </div>
+                                <!-- end widget head search -->
+                                <table id="dt_basic" class="table table-striped table-bordered table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
+                                    <thead>
+                                        <tr role="row">
+                                            <!-- HEAD BAŞLANGICI -->
+                                            <th data-hide="phone" class="sorting_asc" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;">@Html.DisplayNameFor(model => model.First().t_id)</th>
+                                            <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;">@Html.DisplayNameFor(model => model.First().t_adi)</th>
+                                            <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Name: activate to sort column ascending" style="width: 50px;"> @Html.DisplayNameFor(model => model.First().t_fiyat)</th>
+                                            <th data-hide="tablet" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;">@Html.DisplayNameFor(model => model.First().hst_cene_uygunmu.t_adi)</th>
+                                            <th data-hide="tablet" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> @Html.DisplayNameFor(model => model.First().hst_hizmet_parca.t_adi)</th>
+                                            <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 100px;"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> @Html.DisplayNameFor(model => model.First().t_createuser)</th>
+                                            <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Zip: activate to sort column ascending" style="width: 100px;"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> @Html.DisplayNameFor(model => model.First().t_createdate)</th>
+                                            <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Zip: activate to sort column ascending" style="width: 100px;"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> @Html.DisplayNameFor(model => model.First().t_aktif)</th>
+                                            <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 50px;"></th>
+                                            <!-- HEAD BİTİŞİ -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- BODY BAŞLANGICI -->
+
+
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.t_id)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.t_adi)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.t_fiyat)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.hst_cene_uygunmu.t_adi)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.hst_hizmet_parca.t_adi)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.t_createuser)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.t_createdate)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.t_aktif)
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Düzenle", "Edit", new { id = item.t_id }) |
+                                                    @Html.ActionLink("Sil", "Delete", new { id = item.t_id })
+                                                </td>
+                                            </tr>
+                                        }
+
+
+
+                                        <!-- BODY BİTİŞİ -->
+                                    </tbody>
+                                </table>
+                                <!-- start widget footer -->
+                                <div class="dt-toolbar-footer no-padding">
+                                </div>
+                                <!-- end widget footer -->
+                            </div>
+                        </div>
+                        <!-- end widget content -->
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+            </article>
+            <!-- WIDGET END -->
+        </div>
+        <!-- end row -->
+        <!-- row -->
+        <div class="row">
+            <!-- a blank row to get started -->
+            <div class="col-sm-12">
+                <!-- your contents here -->
+            </div>
+        </div>
+        <!-- end row -->
+    </section>
+    <!-- end widget grid -->
+</div>
+<!-- END MAIN CONTENT -->
+
+@section pagespecific {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var responsiveHelper_dt_basic = undefined;
+            var responsiveHelper_datatable_fixed_column = undefined;
+            var responsiveHelper_datatable_col_reorder = undefined;
+            var responsiveHelper_datatable_tabletools = undefined;
+            var breakpointDefinition = {
+                tablet: 1024,
+                phone: 480
+            };
+
+            $('#dt_basic').dataTable({
+                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
+                    "t" +
+                    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+                "autoWidth": true,
+                "preDrawCallback": function () {
+                    // Initialize the responsive datatables helper once.
+                    if (!responsiveHelper_dt_basic) {
+                        responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic'), breakpointDefinition);
+                    }
+                },
+                "rowCallback": function (nRow) {
+                    responsiveHelper_dt_basic.createExpandIcon(nRow);
+                },
+                "drawCallback": function (oSettings) {
+                    responsiveHelper_dt_basic.respond();
+                }
+            });
+        })
+    </script>
+}

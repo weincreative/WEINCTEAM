@@ -1,0 +1,82 @@
+﻿@model WEINCDENTAL.Models.hst_hizmet
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>hst_hizmet</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.t_adi)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.t_adi)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.t_fiyat)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.t_fiyat)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.t_createuser)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.t_createuser)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.t_createdate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.t_createdate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.t_aktif)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.t_aktif)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.hst_cene_uygunmu.t_adi)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.hst_cene_uygunmu.t_adi)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.hst_hizmet_parca.t_adi)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.hst_hizmet_parca.t_adi)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.t_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

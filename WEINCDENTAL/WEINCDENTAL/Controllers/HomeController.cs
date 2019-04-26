@@ -12,5 +12,9 @@ namespace WEINCDENTAL.Controllers
         {
             return View();
         }
+        public ActionResult Ayarlar()
+        {
+            return View();
+        }
     }
 }
