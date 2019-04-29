@@ -149,72 +149,75 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\adm_kullanicigrup.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\adm_kullanicilar.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\adm_modulyetki.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\adm_pacs.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_basvuru.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_bölüm.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_cene_uygunmu.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_cinsiyet.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_hastakarti.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_his_hareket.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_hizmet.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_hizmet_parca.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_il.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_ilçe.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_medenidurum.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_randevu.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_vezne.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModelAyarlar.cs" />
-    <Compile Include="Models\WEINCDENTALMODEL.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WEINCDENTALMODEL.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WEINCDENTALMODEL.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WEINCDENTALMODEL.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WEINCDENTALMODEL.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -429,15 +432,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\WEINCDENTALMODEL.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WEINCDENTALMODEL.edmx</DependentUpon>
-      <LastGenOutput>WEINCDENTALMODEL.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\WEINCDENTALMODEL.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WEINCDENTALMODEL.edmx</DependentUpon>
-      <LastGenOutput>WEINCDENTALMODEL.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\app.config.js" />
     <Content Include="Scripts\app.min.js" />
@@ -937,12 +940,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <EntityDeploy Include="Models\WEINCDENTALMODEL.edmx">
+    <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WEINCDENTALMODEL.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\WEINCDENTALMODEL.edmx.diagram">
-      <DependentUpon>WEINCDENTALMODEL.edmx</DependentUpon>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\Home\BLANK_PAGE_FIXED.cshtml" />
