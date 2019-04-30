@@ -12,7 +12,7 @@
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_createdate" Type="datetime" Nullable="false" />
+          <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="adm_kullanicilar">
@@ -26,7 +26,7 @@
           <Property Name="t_grup" Type="int" Nullable="false" />
           <Property Name="t_yetki" Type="int" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_createdate" Type="datetime" Nullable="false" />
+          <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="adm_modulyetki">
@@ -36,7 +36,7 @@
           <Property Name="t_id" Type="int" Nullable="false" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_createdate" Type="datetime" Nullable="false" />
+          <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="adm_pacs">
@@ -45,10 +45,10 @@
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_pacspath" Type="nvarchar" MaxLength="500" Nullable="false" />
-          <Property Name="t_tc" Type="decimal" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="t_tc" Type="numeric" Precision="11" Scale="0" Nullable="false" />
           <Property Name="t_ip" Type="int" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_createdate" Type="datetime" Nullable="false" />
+          <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="hst_basvuru">
@@ -57,15 +57,15 @@
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_basvuru" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_tc" Type="decimal" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="t_basvurutarihi" Type="datetime" Nullable="false" />
+          <Property Name="t_tc" Type="numeric" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="t_basvurutarihi" Type="date" Nullable="false" />
           <Property Name="t_bolumkodu" Type="int" Nullable="false" />
           <Property Name="t_cagriekraniistem" Type="int" Nullable="false" />
           <Property Name="t_pacsid" Type="int" Nullable="false" />
           <Property Name="t_basvurudr" Type="int" Nullable="false" />
           <Property Name="t_randevuid" Type="int" Nullable="false" />
           <Property Name="t_taburcu" Type="bit" Nullable="false" />
-          <Property Name="t_createdate" Type="datetime" Nullable="false" />
+          <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
@@ -76,7 +76,7 @@
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_createdate" Type="datetime" Nullable="false" />
+          <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="hst_cene_uygunmu">
@@ -86,7 +86,7 @@
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_createdate" Type="datetime" Nullable="false" />
+          <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="hst_cinsiyet">
@@ -101,20 +101,20 @@
             <PropertyRef Name="t_tc" />
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="t_tc" Type="decimal" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="t_tc" Type="numeric" Precision="11" Scale="0" Nullable="false" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_cinsiyet" Type="int" Nullable="false" />
           <Property Name="t_medenidurum" Type="int" Nullable="false" />
-          <Property Name="t_dogumtarihi" Type="datetime" Nullable="false" />
+          <Property Name="t_dogumtarihi" Type="date" Nullable="false" />
           <Property Name="t_dogumyeri" Type="int" Nullable="false" />
-          <Property Name="t_tel1" Type="decimal" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="t_tel2" Type="decimal" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="t_tel1" Type="numeric" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="t_tel2" Type="numeric" Precision="11" Scale="0" Nullable="false" />
           <Property Name="t_il" Type="int" Nullable="false" />
           <Property Name="t_ilce" Type="int" Nullable="false" />
           <Property Name="t_adres" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_createdate" Type="datetime" Nullable="false" />
+          <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="hst_his_hareket">
@@ -123,16 +123,16 @@
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_basvuruid" Type="int" Nullable="false" />
-          <Property Name="t_tc" Type="decimal" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="t_tc" Type="numeric" Precision="11" Scale="0" Nullable="false" />
           <Property Name="t_hizmetkodu" Type="int" Nullable="false" />
-          <Property Name="t_islemtarihi" Type="datetime" Nullable="false" />
+          <Property Name="t_islemtarihi" Type="date" Nullable="false" />
           <Property Name="t_diskodu" Type="int" Nullable="false" />
           <Property Name="t_parca" Type="int" Nullable="false" />
           <Property Name="t_cene" Type="int" Nullable="false" />
           <Property Name="t_borc" Type="int" Nullable="false" />
           <Property Name="t_makbuz" Type="int" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_createdate" Type="datetime" Nullable="false" />
+          <Property Name="t_createdate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="hst_hizmet">
           <Key>
@@ -144,7 +144,7 @@
           <Property Name="t_çeneuygunmu" Type="int" Nullable="false" />
           <Property Name="t_fiyat" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_createdate" Type="datetime" Nullable="false" />
+          <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="hst_hizmet_parca">
@@ -154,7 +154,7 @@
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_createdate" Type="datetime" Nullable="false" />
+          <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="hst_il">
@@ -187,12 +187,12 @@
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_basvuru" Type="int" Nullable="false" />
-          <Property Name="t_tc" Type="decimal" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="t_tarih" Type="datetime" Nullable="false" />
+          <Property Name="t_tc" Type="numeric" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="t_tarih" Type="date" Nullable="false" />
           <Property Name="t_basgicsaat" Type="datetime" Nullable="false" />
           <Property Name="t_bitissaat" Type="datetime" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_createdate" Type="datetime" Nullable="false" />
+          <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
           <Property Name="t_basvurudr" Type="int" Nullable="false" />
         </EntityType>
@@ -202,21 +202,11 @@
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_basvuru" Type="int" Nullable="false" />
-          <Property Name="t_tc" Type="decimal" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="t_tc" Type="numeric" Precision="11" Scale="0" Nullable="false" />
           <Property Name="t_borc" Type="int" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_createdate" Type="datetime" Nullable="false" />
+          <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_adm_kullanicilar_adm_kullanicigrup1">
           <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
@@ -464,7 +454,6 @@
           <EntitySet Name="hst_medenidurum" EntityType="Self.hst_medenidurum" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_adm_kullanicilar_adm_kullanicigrup1" Association="Self.FK_adm_kullanicilar_adm_kullanicigrup1">
             <End Role="adm_kullanicigrup" EntitySet="adm_kullanicigrup" />
             <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
@@ -554,7 +543,7 @@
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="adm_kullanicilar" Relationship="Self.FK_adm_kullanicilar_adm_kullanicigrup1" FromRole="adm_kullanicigrup" ToRole="adm_kullanicilar" />
         </EntityType>
@@ -569,7 +558,7 @@
           <Property Name="t_grup" Type="Int32" Nullable="false" />
           <Property Name="t_yetki" Type="Int32" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="adm_kullanicigrup" Relationship="Self.FK_adm_kullanicilar_adm_kullanicigrup1" FromRole="adm_kullanicilar" ToRole="adm_kullanicigrup" />
           <NavigationProperty Name="adm_modulyetki" Relationship="Self.FK_adm_kullanicilar_adm_modulyetki1" FromRole="adm_kullanicilar" ToRole="adm_modulyetki" />
@@ -582,7 +571,7 @@
           <Property Name="t_id" Type="Int32" Nullable="false" />
           <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="adm_kullanicilar" Relationship="Self.FK_adm_kullanicilar_adm_modulyetki1" FromRole="adm_modulyetki" ToRole="adm_kullanicilar" />
         </EntityType>
@@ -595,7 +584,7 @@
           <Property Name="t_tc" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
           <Property Name="t_ip" Type="Int32" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Int32" Nullable="false" />
           <NavigationProperty Name="hst_hastakarti" Relationship="Self.FK_adm_pacs_hst_hastakarti" FromRole="adm_pacs" ToRole="hst_hastakarti" />
           <NavigationProperty Name="hst_basvuru" Relationship="Self.FK_hst_basvuru_adm_pacs" FromRole="adm_pacs" ToRole="hst_basvuru" />
@@ -607,14 +596,14 @@
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="t_basvuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_tc" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="t_basvurutarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_basvurutarihi" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_bolumkodu" Type="Int32" Nullable="false" />
           <Property Name="t_cagriekraniistem" Type="Int32" Nullable="false" />
           <Property Name="t_pacsid" Type="Int32" Nullable="false" />
           <Property Name="t_basvurudr" Type="Int32" Nullable="false" />
           <Property Name="t_randevuid" Type="Int32" Nullable="false" />
           <Property Name="t_taburcu" Type="Boolean" Nullable="false" />
-          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="adm_kullanicilar" Relationship="Self.FK_hst_basvuru_adm_kullanicilar" FromRole="hst_basvuru" ToRole="adm_kullanicilar" />
@@ -630,7 +619,7 @@
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="hst_basvuru" Relationship="Self.FK_hst_basvuru_hst_bölüm" FromRole="hst_bölüm" ToRole="hst_basvuru" />
         </EntityType>
@@ -641,7 +630,7 @@
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="hst_hizmet" Relationship="Self.FK_hst_hizmet_hst_cene_uygunmu" FromRole="hst_cene_uygunmu" ToRole="hst_hizmet" />
         </EntityType>
@@ -663,7 +652,7 @@
           <Property Name="t_soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_cinsiyet" Type="Int32" Nullable="false" />
           <Property Name="t_medenidurum" Type="Int32" Nullable="false" />
-          <Property Name="t_dogumtarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_dogumtarihi" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_dogumyeri" Type="Int32" Nullable="false" />
           <Property Name="t_tel1" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
           <Property Name="t_tel2" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
@@ -671,7 +660,7 @@
           <Property Name="t_ilce" Type="Int32" Nullable="false" />
           <Property Name="t_adres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="adm_pacs" Relationship="Self.FK_adm_pacs_hst_hastakarti" FromRole="hst_hastakarti" ToRole="adm_pacs" />
           <NavigationProperty Name="hst_cinsiyet" Relationship="Self.FK_hst_hastakarti_hst_cinsiyet" FromRole="hst_hastakarti" ToRole="hst_cinsiyet" />
@@ -689,14 +678,14 @@
           <Property Name="t_basvuruid" Type="Int32" Nullable="false" />
           <Property Name="t_tc" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
           <Property Name="t_hizmetkodu" Type="Int32" Nullable="false" />
-          <Property Name="t_islemtarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_islemtarihi" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_diskodu" Type="Int32" Nullable="false" />
           <Property Name="t_parca" Type="Int32" Nullable="false" />
           <Property Name="t_cene" Type="Int32" Nullable="false" />
           <Property Name="t_borc" Type="Int32" Nullable="false" />
           <Property Name="t_makbuz" Type="Int32" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="hst_basvuru" Relationship="Self.FK_hst_his_hareket_hst_basvuru" FromRole="hst_his_hareket" ToRole="hst_basvuru" />
           <NavigationProperty Name="hst_hastakarti" Relationship="Self.FK_hst_his_hareket_hst_hastakarti" FromRole="hst_his_hareket" ToRole="hst_hastakarti" />
           <NavigationProperty Name="hst_hizmet" Relationship="Self.FK_hst_his_hareket_hst_hizmet" FromRole="hst_his_hareket" ToRole="hst_hizmet" />
@@ -712,7 +701,7 @@
           <Property Name="t_çeneuygunmu" Type="Int32" Nullable="false" />
           <Property Name="t_fiyat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="hst_cene_uygunmu" Relationship="Self.FK_hst_hizmet_hst_cene_uygunmu" FromRole="hst_hizmet" ToRole="hst_cene_uygunmu" />
           <NavigationProperty Name="hst_his_hareket" Relationship="Self.FK_hst_his_hareket_hst_hizmet" FromRole="hst_hizmet" ToRole="hst_his_hareket" />
@@ -725,7 +714,7 @@
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="hst_hizmet" Relationship="Self.FK_hst_hizmet_hst_hizmet_parca" FromRole="hst_hizmet_parca" ToRole="hst_hizmet" />
         </EntityType>
@@ -766,11 +755,11 @@
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="t_basvuru" Type="Int32" Nullable="false" />
           <Property Name="t_tc" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="t_tarih" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_tarih" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_basgicsaat" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="t_bitissaat" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <Property Name="t_basvurudr" Type="Int32" Nullable="false" />
           <NavigationProperty Name="hst_basvuru" Relationship="Self.FK_hst_basvuru_hst_randevu" FromRole="hst_randevu" ToRole="hst_basvuru" />
@@ -784,19 +773,9 @@
           <Property Name="t_tc" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
           <Property Name="t_borc" Type="Int32" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="hst_his_hareket" Relationship="Self.FK_hst_his_hareket_hst_vezne" FromRole="hst_vezne" ToRole="hst_his_hareket" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_adm_kullanicilar_adm_kullanicigrup1">
           <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
@@ -1044,7 +1023,6 @@
           <EntitySet Name="hst_medenidurum" EntityType="Self.hst_medenidurum" />
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <AssociationSet Name="FK_adm_kullanicilar_adm_kullanicigrup1" Association="Self.FK_adm_kullanicilar_adm_kullanicigrup1">
             <End Role="adm_kullanicigrup" EntitySet="adm_kullanicigrup" />
             <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
@@ -1345,17 +1323,6 @@
                 <ScalarProperty Name="t_createuser" ColumnName="t_createuser" />
                 <ScalarProperty Name="t_createdate" ColumnName="t_createdate" />
                 <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="WEINCDENTALModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
