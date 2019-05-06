@@ -1,6 +1,6 @@
 ﻿    <!-- Left panel : Navigation area -->
 <!-- Note: This width of the aside area can be adjusted through LESS variables -->
-<aside id="left-panel" >
+<aside id="left-panel">
 
     <!-- User info -->
     @{ Html.RenderPartial("_CurrentUser"); }
@@ -13,35 +13,38 @@
     -->
     <nav>
         <!-- NOTE: Notice the gaps after each icon usage <i></i>..
-    Please note that these links work a bit different than
-    traditional href="" links. See documentation for details.
-    -->
+        Please note that these links work a bit different than
+        traditional href="" links. See documentation for details.
+        -->
         <ul>
             <li class="@Html.RouteIf("#", "active")">
                 <a href="@Url.Action("Index", "Home")"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ana Sayfa</span></a>
             </li>
             @*<li class="@Html.RouteIf("adm_kullanicilar", "active")">
-            <a href="@Url.Action("Index", "adm_kullanicilar")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Kullanıcılar</span></a>
-        </li>
-        <li class="@Html.RouteIf("adm_kullanicigrup", "active")">
-            <a href="@Url.Action("Index", "adm_kullanicigrup")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Kullanıcı Grup</span></a>
-        </li>
-            <li class="@Html.RouteIf("adm_modulyetki", "active")">
-                <a href="@Url.Action("Index", "adm_modulyetki")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Modül Yetki</span></a>
-            </li>
-            <li class="@Html.RouteIf("hst_hizmet", "active")">
-                <a href="@Url.Action("Index", "hst_hizmet")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Hizmetler</span></a>
-            </li>*@
+                    <a href="@Url.Action("Index", "adm_kullanicilar")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Kullanıcılar</span></a>
+                </li>
+                <li class="@Html.RouteIf("adm_kullanicigrup", "active")">
+                    <a href="@Url.Action("Index", "adm_kullanicigrup")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Kullanıcı Grup</span></a>
+                </li>
+                    <li class="@Html.RouteIf("adm_modulyetki", "active")">
+                        <a href="@Url.Action("Index", "adm_modulyetki")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Modül Yetki</span></a>
+                    </li>
+                    <li class="@Html.RouteIf("hst_hizmet", "active")">
+                        <a href="@Url.Action("Index", "hst_hizmet")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Hizmetler</span></a>
+                    </li>*@
             <li class="@Html.RouteIf("Ayarlar", "active")">
                 <a href="@Url.Action("Ayarlar", "Home")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Ayarlar</span></a>
             </li>
+            <li class="@Html.RouteIf("fvsdfvds", "active")">
+                <a href="@Url.Action("Ayarlar", "Home")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Başvuru</span></a>
+            </li>
             @*<li class="@Html.RouteIf("calendar", "active")">
-            <a href="@Url.Action("calendar", "home")"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span class="menu-item-parent">Calendar</span></a>
-        </li>*@
+                    <a href="@Url.Action("calendar", "home")"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span class="menu-item-parent">Calendar</span></a>
+                </li>*@
 
         </ul>
     </nav>
-    <span class="minifyme" data-action="minifyMenu"> 
+    <span class="minifyme" data-action="minifyMenu">
         <i class="fa fa-arrow-circle-left hit"></i>
     </span>
 

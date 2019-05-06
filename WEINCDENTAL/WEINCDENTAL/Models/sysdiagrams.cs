@@ -12,16 +12,12 @@ namespace WEINCDENTAL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class adm_pacs
+    public partial class sysdiagrams
     {
-        public int t_id { get; set; }
-        public string t_pacspath { get; set; }
-        public decimal t_tc { get; set; }
-        public int t_ip { get; set; }
-        public string t_createuser { get; set; }
-        public System.DateTime t_createdate { get; set; }
-        public int t_aktif { get; set; }
-    
-        public virtual hst_hastakarti hst_hastakarti { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

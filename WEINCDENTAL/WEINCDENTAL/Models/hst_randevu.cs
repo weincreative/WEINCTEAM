@@ -14,12 +14,6 @@ namespace WEINCDENTAL.Models
     
     public partial class hst_randevu
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public hst_randevu()
-        {
-            this.hst_basvuru = new HashSet<hst_basvuru>();
-        }
-    
         public int t_id { get; set; }
         public int t_basvuru { get; set; }
         public decimal t_tc { get; set; }
@@ -29,9 +23,6 @@ namespace WEINCDENTAL.Models
         public string t_createuser { get; set; }
         public System.DateTime t_createdate { get; set; }
         public bool t_aktif { get; set; }
-        public int t_basvurudr { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<hst_basvuru> hst_basvuru { get; set; }
+        public bool t_basvurudr { get; set; }
     }
 }
