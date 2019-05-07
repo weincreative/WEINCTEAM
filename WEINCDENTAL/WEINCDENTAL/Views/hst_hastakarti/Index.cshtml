@@ -1,0 +1,118 @@
+﻿@model IEnumerable<WEINCDENTAL.Models.hst_hastakarti>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.t_tc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.t_adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.t_soyadi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.t_dogumtarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.t_dogumyeri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.t_tel1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.t_tel2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.t_adres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.t_createuser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.t_createdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.t_aktif)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hst_cinsiyet.t_adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hst_il.t_adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hst_ilce.t_adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hst_medenidurum.t_adi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.t_tc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.t_adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.t_soyadi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.t_dogumtarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.t_dogumyeri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.t_tel1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.t_tel2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.t_adres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.t_createuser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.t_createdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.t_aktif)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hst_cinsiyet.t_adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hst_il.t_adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hst_ilce.t_adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hst_medenidurum.t_adi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.t_tc }) |
+            @Html.ActionLink("Details", "Details", new { id=item.t_tc }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.t_tc })
+        </td>
+    </tr>
+}
+
+</table>

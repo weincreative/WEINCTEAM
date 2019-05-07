@@ -144,6 +144,7 @@
     <Compile Include="Controllers\adm_kullanicilarController.cs" />
     <Compile Include="Controllers\AyarlarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\hst_hastakartiController.cs" />
     <Compile Include="Controllers\hst_hizmetController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -979,6 +980,11 @@
     <Content Include="Views\hst_hizmet\Edit.cshtml" />
     <Content Include="Views\hst_hizmet\Index.cshtml" />
     <Content Include="Views\Ayarlar\AyarlarHizmet.cshtml" />
+    <Content Include="Views\hst_hastakarti\Create.cshtml" />
+    <Content Include="Views\hst_hastakarti\Delete.cshtml" />
+    <Content Include="Views\hst_hastakarti\Details.cshtml" />
+    <Content Include="Views\hst_hastakarti\Edit.cshtml" />
+    <Content Include="Views\hst_hastakarti\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

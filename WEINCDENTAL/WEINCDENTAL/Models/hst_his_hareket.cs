@@ -16,7 +16,7 @@ namespace WEINCDENTAL.Models
     {
         public int t_id { get; set; }
         public int t_basvuruid { get; set; }
-        public decimal t_tc { get; set; }
+        public int t_tc { get; set; }
         public int t_hizmetkodu { get; set; }
         public System.DateTime t_islemtarihi { get; set; }
         public int t_diskodu { get; set; }
@@ -29,7 +29,6 @@ namespace WEINCDENTAL.Models
         public bool t_aktif { get; set; }
     
         public virtual hst_basvuru hst_basvuru { get; set; }
-        public virtual hst_hastakarti hst_hastakarti { get; set; }
         public virtual hst_hizmet hst_hizmet { get; set; }
         public virtual hst_vezne hst_vezne { get; set; }
     }
