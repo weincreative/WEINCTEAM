@@ -31,8 +31,7 @@ namespace WEINCDENTAL.Models
         public int t_dogumyeri { get; set; }
         public decimal t_tel1 { get; set; }
         public decimal t_tel2 { get; set; }
-        public int t_il { get; set; }
-        public int t_ilce { get; set; }
+        public int t_ilceId { get; set; }
         public string t_adres { get; set; }
         public string t_createuser { get; set; }
         public System.DateTime t_createdate { get; set; }
@@ -41,10 +40,8 @@ namespace WEINCDENTAL.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<adm_pacs> adm_pacs { get; set; }
         public virtual hst_cinsiyet hst_cinsiyet { get; set; }
-        public virtual hst_il hst_il { get; set; }
-        public virtual hst_il hst_il1 { get; set; }
+        public virtual hst_ilce hst_ilce { get; set; }
         public virtual hst_medenidurum hst_medenidurum { get; set; }
-        public virtual hst_ilçe hst_ilçe { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hst_his_hareket> hst_his_hareket { get; set; }
     }

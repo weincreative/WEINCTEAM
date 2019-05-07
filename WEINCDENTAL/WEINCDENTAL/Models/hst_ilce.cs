@@ -12,29 +12,21 @@ namespace WEINCDENTAL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class hst_basvuru
+    public partial class hst_ilce
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public hst_basvuru()
+        public hst_ilce()
         {
-            this.hst_his_hareket = new HashSet<hst_his_hareket>();
+            this.hst_hastakarti = new HashSet<hst_hastakarti>();
         }
     
         public int t_id { get; set; }
-        public string t_basvuru { get; set; }
-        public decimal t_tc { get; set; }
-        public System.DateTime t_basvurutarihi { get; set; }
-        public int t_bolumkodu { get; set; }
-        public int t_cagriekraniistem { get; set; }
-        public Nullable<int> t_basvurudr { get; set; }
-        public bool t_taburcu { get; set; }
-        public System.DateTime t_createdate { get; set; }
-        public string t_createuser { get; set; }
+        public int t_ilId { get; set; }
+        public string t_adi { get; set; }
         public bool t_aktif { get; set; }
     
-        public virtual adm_kullanicilar adm_kullanicilar { get; set; }
-        public virtual hst_bölüm hst_bölüm { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<hst_his_hareket> hst_his_hareket { get; set; }
+        public virtual ICollection<hst_hastakarti> hst_hastakarti { get; set; }
+        public virtual hst_il hst_il { get; set; }
     }
 }

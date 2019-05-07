@@ -12,21 +12,21 @@ namespace WEINCDENTAL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class hst_ilçe
+    public partial class hst_ulke
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public hst_ilçe()
+        public hst_ulke()
         {
-            this.hst_hastakarti = new HashSet<hst_hastakarti>();
             this.hst_il = new HashSet<hst_il>();
         }
     
-        public int t_id { get; set; }
-        public string t_adi { get; set; }
-        public bool t_aktif { get; set; }
+        public int CountryID { get; set; }
+        public string BinaryCode { get; set; }
+        public string TripleCode { get; set; }
+        public string CountryName { get; set; }
+        public string PhoneCode { get; set; }
+        public bool Pasif { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<hst_hastakarti> hst_hastakarti { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hst_il> hst_il { get; set; }
     }

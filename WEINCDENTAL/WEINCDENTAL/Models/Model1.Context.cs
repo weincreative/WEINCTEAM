@@ -38,9 +38,10 @@ namespace WEINCDENTAL.Models
         public virtual DbSet<hst_hizmet> hst_hizmet { get; set; }
         public virtual DbSet<hst_hizmet_parca> hst_hizmet_parca { get; set; }
         public virtual DbSet<hst_il> hst_il { get; set; }
-        public virtual DbSet<hst_ilçe> hst_ilçe { get; set; }
+        public virtual DbSet<hst_ilce> hst_ilce { get; set; }
         public virtual DbSet<hst_medenidurum> hst_medenidurum { get; set; }
         public virtual DbSet<hst_randevu> hst_randevu { get; set; }
+        public virtual DbSet<hst_ulke> hst_ulke { get; set; }
         public virtual DbSet<hst_vezne> hst_vezne { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }

@@ -17,19 +17,16 @@ namespace WEINCDENTAL.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public hst_il()
         {
-            this.hst_hastakarti = new HashSet<hst_hastakarti>();
-            this.hst_hastakarti1 = new HashSet<hst_hastakarti>();
+            this.hst_ilce = new HashSet<hst_ilce>();
         }
     
         public int t_id { get; set; }
+        public int t_ulkeId { get; set; }
         public string t_adi { get; set; }
-        public int t_ilçe { get; set; }
         public bool t_aktif { get; set; }
     
+        public virtual hst_ulke hst_ulke { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<hst_hastakarti> hst_hastakarti { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<hst_hastakarti> hst_hastakarti1 { get; set; }
-        public virtual hst_ilçe hst_ilçe { get; set; }
+        public virtual ICollection<hst_ilce> hst_ilce { get; set; }
     }
 }
