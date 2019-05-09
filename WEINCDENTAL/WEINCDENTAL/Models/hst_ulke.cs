@@ -17,6 +17,7 @@ namespace WEINCDENTAL.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public hst_ulke()
         {
+            this.hst_hastakarti = new HashSet<hst_hastakarti>();
             this.hst_il = new HashSet<hst_il>();
         }
     
@@ -25,8 +26,10 @@ namespace WEINCDENTAL.Models
         public string TripleCode { get; set; }
         public string CountryName { get; set; }
         public string PhoneCode { get; set; }
-        public bool Pasif { get; set; }
+        public bool Aktif { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<hst_hastakarti> hst_hastakarti { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hst_il> hst_il { get; set; }
     }

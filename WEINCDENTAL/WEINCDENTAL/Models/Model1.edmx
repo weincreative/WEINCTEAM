@@ -45,7 +45,7 @@
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_pacspath" Type="nvarchar" MaxLength="500" Nullable="false" />
-          <Property Name="t_tc" Type="int" Nullable="false" />
+          <Property Name="t_tc" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="t_ip" Type="int" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
@@ -57,13 +57,13 @@
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_basvuru" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_tc" Type="numeric" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="t_tc" Type="nvarchar" MaxLength="12" />
           <Property Name="t_basvurutarihi" Type="date" Nullable="false" />
           <Property Name="t_bolumkodu" Type="int" Nullable="false" />
           <Property Name="t_cagriekraniistem" Type="int" Nullable="false" />
           <Property Name="t_basvurudr" Type="int" />
           <Property Name="t_taburcu" Type="bit" Nullable="false" />
-          <Property Name="t_createdate" Type="date" Nullable="false" />
+          <Property Name="t_createdate" Type="datetime" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
@@ -99,18 +99,19 @@
             <PropertyRef Name="t_tc" />
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="t_tc" Type="int" Nullable="false" />
+          <Property Name="t_tc" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_cinsiyet" Type="int" Nullable="false" />
           <Property Name="t_medenidurum" Type="int" Nullable="false" />
           <Property Name="t_dogumtarihi" Type="date" Nullable="false" />
           <Property Name="t_dogumyeri" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_tel1" Type="int" Nullable="false" />
-          <Property Name="t_tel2" Type="int" />
-          <Property Name="t_ilId" Type="int" Nullable="false" />
-          <Property Name="t_ilceId" Type="int" Nullable="false" />
-          <Property Name="t_adres" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="t_tel1" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="t_tel2" Type="nvarchar" MaxLength="11" />
+          <Property Name="t_ulkeId" Type="int" Nullable="false" />
+          <Property Name="t_ilId" Type="int" />
+          <Property Name="t_ilceId" Type="int" />
+          <Property Name="t_adres" Type="nvarchar" MaxLength="100" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
@@ -121,14 +122,12 @@
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_basvuruid" Type="int" Nullable="false" />
-          <Property Name="t_tc" Type="int" Nullable="false" />
           <Property Name="t_hizmetkodu" Type="int" Nullable="false" />
-          <Property Name="t_islemtarihi" Type="date" Nullable="false" />
+          <Property Name="t_islemtarihi" Type="datetime" Nullable="false" />
           <Property Name="t_diskodu" Type="int" Nullable="false" />
           <Property Name="t_parca" Type="int" Nullable="false" />
           <Property Name="t_cene" Type="int" Nullable="false" />
-          <Property Name="t_borc" Type="int" Nullable="false" />
-          <Property Name="t_makbuz" Type="int" Nullable="false" />
+          <Property Name="t_odemevarmi" Type="bit" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
@@ -140,8 +139,8 @@
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_parcauygunmu" Type="int" Nullable="false" />
-          <Property Name="t_çeneuygunmu" Type="int" Nullable="false" />
-          <Property Name="t_fiyat" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_ceneuygunmu" Type="int" Nullable="false" />
+          <Property Name="t_fiyat" Type="money" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
@@ -181,20 +180,27 @@
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="hst_odemetip">
+          <Key>
+            <PropertyRef Name="t_Id" />
+          </Key>
+          <Property Name="t_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="t_adi" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
         <EntityType Name="hst_randevu">
           <Key>
             <PropertyRef Name="t_id" />
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="t_basvuru" Type="int" Nullable="false" />
-          <Property Name="t_tc" Type="numeric" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="t_basvuru" Type="int" />
+          <Property Name="t_tc" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="t_tarih" Type="date" Nullable="false" />
           <Property Name="t_basgicsaat" Type="datetime" Nullable="false" />
           <Property Name="t_bitissaat" Type="datetime" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
-          <Property Name="t_aktif" Type="bit" Nullable="false" />
           <Property Name="t_basvurudr" Type="bit" Nullable="false" />
+          <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="hst_ulke">
           <Key>
@@ -205,29 +211,92 @@
           <Property Name="TripleCode" Type="nvarchar" MaxLength="3" Nullable="false" />
           <Property Name="CountryName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="PhoneCode" Type="nvarchar" MaxLength="6" Nullable="false" />
-          <Property Name="Pasif" Type="bit" Nullable="false" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="hst_vezne">
           <Key>
             <PropertyRef Name="t_id" />
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="t_basvuru" Type="int" Nullable="false" />
-          <Property Name="t_tc" Type="numeric" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="t_borc" Type="int" Nullable="false" />
+          <Property Name="t_hareketid" Type="int" />
+          <Property Name="t_odenen" Type="money" Nullable="false" />
+          <Property Name="t_kalan" Type="money" Nullable="false" />
+          <Property Name="t_odemetipi" Type="int" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_odemetarih" Type="datetime" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizHareket' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_HizHareket">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="t_tc" />
+            <PropertyRef Name="t_adi" />
+            <PropertyRef Name="t_soyadi" />
+            <PropertyRef Name="BasvuruNo" />
+            <PropertyRef Name="t_basvurutarihi" />
+            <PropertyRef Name="Doktoradi" />
+            <PropertyRef Name="t_taburcu" />
+            <PropertyRef Name="Hareketid" />
+            <PropertyRef Name="t_hizmetkodu" />
+            <PropertyRef Name="Hizmetadi" />
+            <PropertyRef Name="t_fiyat" />
+            <PropertyRef Name="t_islemtarihi" />
+            <PropertyRef Name="Odemeyapildimi" />
           </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
+          <Property Name="t_tc" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BasvuruNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_basvurutarihi" Type="date" Nullable="false" />
+          <Property Name="Doktoradi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_basvurudr" Type="int" />
+          <Property Name="t_taburcu" Type="bit" Nullable="false" />
+          <Property Name="Hareketid" Type="int" Nullable="false" />
+          <Property Name="t_hizmetkodu" Type="int" Nullable="false" />
+          <Property Name="Hizmetadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_fiyat" Type="money" Nullable="false" />
+          <Property Name="t_islemtarihi" Type="datetime" Nullable="false" />
+          <Property Name="Odemeyapildimi" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Vezne">
+          <Key>
+            <PropertyRef Name="t_tc" />
+            <PropertyRef Name="t_adi" />
+            <PropertyRef Name="t_soyadi" />
+            <PropertyRef Name="t_basvuru" />
+            <PropertyRef Name="t_basvurutarihi" />
+            <PropertyRef Name="Doktoradi" />
+            <PropertyRef Name="Hareketid" />
+            <PropertyRef Name="t_hizmetkodu" />
+            <PropertyRef Name="Hizmetadi" />
+            <PropertyRef Name="t_fiyat" />
+            <PropertyRef Name="Hizmettarih" />
+            <PropertyRef Name="t_odemevarmi" />
+            <PropertyRef Name="t_odenen" />
+            <PropertyRef Name="t_kalan" />
+            <PropertyRef Name="Odemetip" />
+            <PropertyRef Name="Odemetarih" />
+          </Key>
+          <Property Name="t_tc" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_basvuru" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_basvurutarihi" Type="date" Nullable="false" />
+          <Property Name="Doktoradi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hareketid" Type="int" Nullable="false" />
+          <Property Name="t_hizmetkodu" Type="int" Nullable="false" />
+          <Property Name="Hizmetadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_fiyat" Type="money" Nullable="false" />
+          <Property Name="Hizmettarih" Type="datetime" Nullable="false" />
+          <Property Name="t_odemevarmi" Type="bit" Nullable="false" />
+          <Property Name="t_odenen" Type="money" Nullable="false" />
+          <Property Name="t_kalan" Type="money" Nullable="false" />
+          <Property Name="Odemetip" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Odemetarih" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK_adm_kullanicilar_adm_kullanicigrup1">
           <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
@@ -253,15 +322,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_hst_basvuru_adm_kullanicilar">
-          <End Role="adm_kullanicilar" Type="Self.adm_kullanicilar" Multiplicity="0..1" />
-          <End Role="hst_basvuru" Type="Self.hst_basvuru" Multiplicity="*" />
+        <Association Name="FK_adm_pacs_hst_hastakarti">
+          <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="1" />
+          <End Role="adm_pacs" Type="Self.adm_pacs" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="adm_kullanicilar">
-              <PropertyRef Name="t_id" />
+            <Principal Role="hst_hastakarti">
+              <PropertyRef Name="t_tc" />
             </Principal>
-            <Dependent Role="hst_basvuru">
-              <PropertyRef Name="t_basvurudr" />
+            <Dependent Role="adm_pacs">
+              <PropertyRef Name="t_tc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -274,6 +343,18 @@
             </Principal>
             <Dependent Role="hst_basvuru">
               <PropertyRef Name="t_bolumkodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hst_basvuru_hst_hastakarti">
+          <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="0..1" />
+          <End Role="hst_basvuru" Type="Self.hst_basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_hastakarti">
+              <PropertyRef Name="t_tc" />
+            </Principal>
+            <Dependent Role="hst_basvuru">
+              <PropertyRef Name="t_tc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -290,7 +371,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_hst_hastakarti_hst_il">
-          <End Role="hst_il" Type="Self.hst_il" Multiplicity="1" />
+          <End Role="hst_il" Type="Self.hst_il" Multiplicity="0..1" />
           <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="hst_il">
@@ -302,7 +383,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_hst_hastakarti_hst_ilce">
-          <End Role="hst_ilce" Type="Self.hst_ilce" Multiplicity="1" />
+          <End Role="hst_ilce" Type="Self.hst_ilce" Multiplicity="0..1" />
           <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="hst_ilce">
@@ -322,6 +403,18 @@
             </Principal>
             <Dependent Role="hst_hastakarti">
               <PropertyRef Name="t_medenidurum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hst_hastakarti_hst_ulke">
+          <End Role="hst_ulke" Type="Self.hst_ulke" Multiplicity="1" />
+          <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_ulke">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="hst_hastakarti">
+              <PropertyRef Name="t_ulkeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -349,18 +442,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_hst_his_hareket_hst_vezne">
-          <End Role="hst_vezne" Type="Self.hst_vezne" Multiplicity="1" />
-          <End Role="hst_his_hareket" Type="Self.hst_his_hareket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="hst_vezne">
-              <PropertyRef Name="t_id" />
-            </Principal>
-            <Dependent Role="hst_his_hareket">
-              <PropertyRef Name="t_makbuz" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_hst_hizmet_hst_cene_uygunmu">
           <End Role="hst_cene_uygunmu" Type="Self.hst_cene_uygunmu" Multiplicity="1" />
           <End Role="hst_hizmet" Type="Self.hst_hizmet" Multiplicity="*" />
@@ -369,7 +450,7 @@
               <PropertyRef Name="t_id" />
             </Principal>
             <Dependent Role="hst_hizmet">
-              <PropertyRef Name="t_çeneuygunmu" />
+              <PropertyRef Name="t_ceneuygunmu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -409,6 +490,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_hst_randevu_hst_hastakarti">
+          <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="1" />
+          <End Role="hst_randevu" Type="Self.hst_randevu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_hastakarti">
+              <PropertyRef Name="t_tc" />
+            </Principal>
+            <Dependent Role="hst_randevu">
+              <PropertyRef Name="t_tc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hst_vezne_hst_his_hareket">
+          <End Role="hst_his_hareket" Type="Self.hst_his_hareket" Multiplicity="0..1" />
+          <End Role="hst_vezne" Type="Self.hst_vezne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_his_hareket">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="hst_vezne">
+              <PropertyRef Name="t_hareketid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hst_vezne_hst_OdemeTip">
+          <End Role="hst_odemetip" Type="Self.hst_odemetip" Multiplicity="1" />
+          <End Role="hst_vezne" Type="Self.hst_vezne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_odemetip">
+              <PropertyRef Name="t_Id" />
+            </Principal>
+            <Dependent Role="hst_vezne">
+              <PropertyRef Name="t_odemetipi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="WEINCDENTALModelStoreContainer">
           <EntitySet Name="adm_kullanicigrup" EntityType="Self.adm_kullanicigrup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="adm_kullanicilar" EntityType="Self.adm_kullanicilar" Schema="dbo" store:Type="Tables" />
@@ -425,10 +542,48 @@
           <EntitySet Name="hst_il" EntityType="Self.hst_il" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_ilce" EntityType="Self.hst_ilce" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_medenidurum" EntityType="Self.hst_medenidurum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hst_odemetip" EntityType="Self.hst_odemetip" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_HizHareket" EntityType="Self.View_HizHareket" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_HizHareket].[t_tc] AS [t_tc], 
+    [View_HizHareket].[t_adi] AS [t_adi], 
+    [View_HizHareket].[t_soyadi] AS [t_soyadi], 
+    [View_HizHareket].[BasvuruNo] AS [BasvuruNo], 
+    [View_HizHareket].[t_basvurutarihi] AS [t_basvurutarihi], 
+    [View_HizHareket].[Doktoradi] AS [Doktoradi], 
+    [View_HizHareket].[t_basvurudr] AS [t_basvurudr], 
+    [View_HizHareket].[t_taburcu] AS [t_taburcu], 
+    [View_HizHareket].[Hareketid] AS [Hareketid], 
+    [View_HizHareket].[t_hizmetkodu] AS [t_hizmetkodu], 
+    [View_HizHareket].[Hizmetadi] AS [Hizmetadi], 
+    [View_HizHareket].[t_fiyat] AS [t_fiyat], 
+    [View_HizHareket].[t_islemtarihi] AS [t_islemtarihi], 
+    [View_HizHareket].[Odemeyapildimi] AS [Odemeyapildimi]
+    FROM [dbo].[View_HizHareket] AS [View_HizHareket]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Vezne" EntityType="Self.View_Vezne" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Vezne].[t_tc] AS [t_tc], 
+    [View_Vezne].[t_adi] AS [t_adi], 
+    [View_Vezne].[t_soyadi] AS [t_soyadi], 
+    [View_Vezne].[t_basvuru] AS [t_basvuru], 
+    [View_Vezne].[t_basvurutarihi] AS [t_basvurutarihi], 
+    [View_Vezne].[Doktoradi] AS [Doktoradi], 
+    [View_Vezne].[Hareketid] AS [Hareketid], 
+    [View_Vezne].[t_hizmetkodu] AS [t_hizmetkodu], 
+    [View_Vezne].[Hizmetadi] AS [Hizmetadi], 
+    [View_Vezne].[t_fiyat] AS [t_fiyat], 
+    [View_Vezne].[Hizmettarih] AS [Hizmettarih], 
+    [View_Vezne].[t_odemevarmi] AS [t_odemevarmi], 
+    [View_Vezne].[t_odenen] AS [t_odenen], 
+    [View_Vezne].[t_kalan] AS [t_kalan], 
+    [View_Vezne].[Odemetip] AS [Odemetip], 
+    [View_Vezne].[Odemetarih] AS [Odemetarih]
+    FROM [dbo].[View_Vezne] AS [View_Vezne]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_adm_kullanicilar_adm_kullanicigrup1" Association="Self.FK_adm_kullanicilar_adm_kullanicigrup1">
             <End Role="adm_kullanicigrup" EntitySet="adm_kullanicigrup" />
             <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
@@ -437,12 +592,16 @@
             <End Role="adm_modulyetki" EntitySet="adm_modulyetki" />
             <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
           </AssociationSet>
-          <AssociationSet Name="FK_hst_basvuru_adm_kullanicilar" Association="Self.FK_hst_basvuru_adm_kullanicilar">
-            <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
-            <End Role="hst_basvuru" EntitySet="hst_basvuru" />
+          <AssociationSet Name="FK_adm_pacs_hst_hastakarti" Association="Self.FK_adm_pacs_hst_hastakarti">
+            <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
+            <End Role="adm_pacs" EntitySet="adm_pacs" />
           </AssociationSet>
           <AssociationSet Name="FK_hst_basvuru_hst_bölüm" Association="Self.FK_hst_basvuru_hst_bölüm">
             <End Role="hst_bölüm" EntitySet="hst_bölüm" />
+            <End Role="hst_basvuru" EntitySet="hst_basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hst_basvuru_hst_hastakarti" Association="Self.FK_hst_basvuru_hst_hastakarti">
+            <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
             <End Role="hst_basvuru" EntitySet="hst_basvuru" />
           </AssociationSet>
           <AssociationSet Name="FK_hst_hastakarti_hst_cinsiyet" Association="Self.FK_hst_hastakarti_hst_cinsiyet">
@@ -461,16 +620,16 @@
             <End Role="hst_medenidurum" EntitySet="hst_medenidurum" />
             <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
           </AssociationSet>
+          <AssociationSet Name="FK_hst_hastakarti_hst_ulke" Association="Self.FK_hst_hastakarti_hst_ulke">
+            <End Role="hst_ulke" EntitySet="hst_ulke" />
+            <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
+          </AssociationSet>
           <AssociationSet Name="FK_hst_his_hareket_hst_basvuru" Association="Self.FK_hst_his_hareket_hst_basvuru">
             <End Role="hst_basvuru" EntitySet="hst_basvuru" />
             <End Role="hst_his_hareket" EntitySet="hst_his_hareket" />
           </AssociationSet>
           <AssociationSet Name="FK_hst_his_hareket_hst_hizmet" Association="Self.FK_hst_his_hareket_hst_hizmet">
             <End Role="hst_hizmet" EntitySet="hst_hizmet" />
-            <End Role="hst_his_hareket" EntitySet="hst_his_hareket" />
-          </AssociationSet>
-          <AssociationSet Name="FK_hst_his_hareket_hst_vezne" Association="Self.FK_hst_his_hareket_hst_vezne">
-            <End Role="hst_vezne" EntitySet="hst_vezne" />
             <End Role="hst_his_hareket" EntitySet="hst_his_hareket" />
           </AssociationSet>
           <AssociationSet Name="FK_hst_hizmet_hst_cene_uygunmu" Association="Self.FK_hst_hizmet_hst_cene_uygunmu">
@@ -488,6 +647,18 @@
           <AssociationSet Name="FK_hst_ilce_hst_il" Association="Self.FK_hst_ilce_hst_il">
             <End Role="hst_il" EntitySet="hst_il" />
             <End Role="hst_ilce" EntitySet="hst_ilce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hst_randevu_hst_hastakarti" Association="Self.FK_hst_randevu_hst_hastakarti">
+            <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
+            <End Role="hst_randevu" EntitySet="hst_randevu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hst_vezne_hst_his_hareket" Association="Self.FK_hst_vezne_hst_his_hareket">
+            <End Role="hst_his_hareket" EntitySet="hst_his_hareket" />
+            <End Role="hst_vezne" EntitySet="hst_vezne" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hst_vezne_hst_OdemeTip" Association="Self.FK_hst_vezne_hst_OdemeTip">
+            <End Role="hst_odemetip" EntitySet="hst_odemetip" />
+            <End Role="hst_vezne" EntitySet="hst_vezne" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -521,7 +692,6 @@
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="adm_kullanicigrup" Relationship="Self.FK_adm_kullanicilar_adm_kullanicigrup1" FromRole="adm_kullanicilar" ToRole="adm_kullanicigrup" />
           <NavigationProperty Name="adm_modulyetki" Relationship="Self.FK_adm_kullanicilar_adm_modulyetki1" FromRole="adm_kullanicilar" ToRole="adm_modulyetki" />
-          <NavigationProperty Name="hst_basvuru" Relationship="Self.FK_hst_basvuru_adm_kullanicilar" FromRole="adm_kullanicilar" ToRole="hst_basvuru" />
         </EntityType>
         <EntityType Name="adm_modulyetki">
           <Key>
@@ -540,11 +710,12 @@
           </Key>
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="t_pacspath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_tc" Type="Int32" Nullable="false" />
+          <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_ip" Type="Int32" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="hst_hastakarti" Relationship="Self.FK_adm_pacs_hst_hastakarti" FromRole="adm_pacs" ToRole="hst_hastakarti" />
         </EntityType>
         <EntityType Name="hst_basvuru">
           <Key>
@@ -552,17 +723,17 @@
           </Key>
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="t_basvuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_tc" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
           <Property Name="t_basvurutarihi" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_bolumkodu" Type="Int32" Nullable="false" />
           <Property Name="t_cagriekraniistem" Type="Int32" Nullable="false" />
           <Property Name="t_basvurudr" Type="Int32" />
           <Property Name="t_taburcu" Type="Boolean" Nullable="false" />
-          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="adm_kullanicilar" Relationship="Self.FK_hst_basvuru_adm_kullanicilar" FromRole="hst_basvuru" ToRole="adm_kullanicilar" />
           <NavigationProperty Name="hst_bölüm" Relationship="Self.FK_hst_basvuru_hst_bölüm" FromRole="hst_basvuru" ToRole="hst_bölüm" />
+          <NavigationProperty Name="hst_hastakarti" Relationship="Self.FK_hst_basvuru_hst_hastakarti" FromRole="hst_basvuru" ToRole="hst_hastakarti" />
           <NavigationProperty Name="hst_his_hareket" Relationship="Self.FK_hst_his_hareket_hst_basvuru" FromRole="hst_basvuru" ToRole="hst_his_hareket" />
         </EntityType>
         <EntityType Name="hst_bölüm">
@@ -600,25 +771,30 @@
             <PropertyRef Name="t_tc" />
           </Key>
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="t_tc" Type="Int32" Nullable="false" />
+          <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_cinsiyet" Type="Int32" Nullable="false" />
           <Property Name="t_medenidurum" Type="Int32" Nullable="false" />
           <Property Name="t_dogumtarihi" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_dogumyeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_tel1" Type="Int32" Nullable="false" />
-          <Property Name="t_tel2" Type="Int32" />
-          <Property Name="t_ilId" Type="Int32" Nullable="false" />
-          <Property Name="t_ilceId" Type="Int32" Nullable="false" />
-          <Property Name="t_adres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_tel1" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_tel2" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="t_ulkeId" Type="Int32" Nullable="false" />
+          <Property Name="t_ilId" Type="Int32" />
+          <Property Name="t_ilceId" Type="Int32" />
+          <Property Name="t_adres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="adm_pacs" Relationship="Self.FK_adm_pacs_hst_hastakarti" FromRole="hst_hastakarti" ToRole="adm_pacs" />
+          <NavigationProperty Name="hst_basvuru" Relationship="Self.FK_hst_basvuru_hst_hastakarti" FromRole="hst_hastakarti" ToRole="hst_basvuru" />
           <NavigationProperty Name="hst_cinsiyet" Relationship="Self.FK_hst_hastakarti_hst_cinsiyet" FromRole="hst_hastakarti" ToRole="hst_cinsiyet" />
           <NavigationProperty Name="hst_il" Relationship="Self.FK_hst_hastakarti_hst_il" FromRole="hst_hastakarti" ToRole="hst_il" />
           <NavigationProperty Name="hst_ilce" Relationship="Self.FK_hst_hastakarti_hst_ilce" FromRole="hst_hastakarti" ToRole="hst_ilce" />
           <NavigationProperty Name="hst_medenidurum" Relationship="Self.FK_hst_hastakarti_hst_medenidurum" FromRole="hst_hastakarti" ToRole="hst_medenidurum" />
+          <NavigationProperty Name="hst_ulke" Relationship="Self.FK_hst_hastakarti_hst_ulke" FromRole="hst_hastakarti" ToRole="hst_ulke" />
+          <NavigationProperty Name="hst_randevu" Relationship="Self.FK_hst_randevu_hst_hastakarti" FromRole="hst_hastakarti" ToRole="hst_randevu" />
         </EntityType>
         <EntityType Name="hst_his_hareket">
           <Key>
@@ -626,20 +802,18 @@
           </Key>
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="t_basvuruid" Type="Int32" Nullable="false" />
-          <Property Name="t_tc" Type="Int32" Nullable="false" />
           <Property Name="t_hizmetkodu" Type="Int32" Nullable="false" />
-          <Property Name="t_islemtarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="t_islemtarihi" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="t_diskodu" Type="Int32" Nullable="false" />
           <Property Name="t_parca" Type="Int32" Nullable="false" />
           <Property Name="t_cene" Type="Int32" Nullable="false" />
-          <Property Name="t_borc" Type="Int32" Nullable="false" />
-          <Property Name="t_makbuz" Type="Int32" Nullable="false" />
+          <Property Name="t_odemevarmi" Type="Boolean" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="hst_basvuru" Relationship="Self.FK_hst_his_hareket_hst_basvuru" FromRole="hst_his_hareket" ToRole="hst_basvuru" />
           <NavigationProperty Name="hst_hizmet" Relationship="Self.FK_hst_his_hareket_hst_hizmet" FromRole="hst_his_hareket" ToRole="hst_hizmet" />
-          <NavigationProperty Name="hst_vezne" Relationship="Self.FK_hst_his_hareket_hst_vezne" FromRole="hst_his_hareket" ToRole="hst_vezne" />
+          <NavigationProperty Name="hst_vezne" Relationship="Self.FK_hst_vezne_hst_his_hareket" FromRole="hst_his_hareket" ToRole="hst_vezne" />
         </EntityType>
         <EntityType Name="hst_hizmet">
           <Key>
@@ -648,8 +822,8 @@
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_parcauygunmu" Type="Int32" Nullable="false" />
-          <Property Name="t_çeneuygunmu" Type="Int32" Nullable="false" />
-          <Property Name="t_fiyat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_ceneuygunmu" Type="Int32" Nullable="false" />
+          <Property Name="t_fiyat" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
@@ -699,20 +873,29 @@
           <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="hst_hastakarti" Relationship="Self.FK_hst_hastakarti_hst_medenidurum" FromRole="hst_medenidurum" ToRole="hst_hastakarti" />
         </EntityType>
+        <EntityType Name="hst_odemetip">
+          <Key>
+            <PropertyRef Name="t_Id" />
+          </Key>
+          <Property Name="t_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="t_adi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="hst_vezne" Relationship="Self.FK_hst_vezne_hst_OdemeTip" FromRole="hst_odemetip" ToRole="hst_vezne" />
+        </EntityType>
         <EntityType Name="hst_randevu">
           <Key>
             <PropertyRef Name="t_id" />
           </Key>
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="t_basvuru" Type="Int32" Nullable="false" />
-          <Property Name="t_tc" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="t_basvuru" Type="Int32" />
+          <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_tarih" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_basgicsaat" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="t_bitissaat" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <Property Name="t_basvurudr" Type="Boolean" Nullable="false" />
+          <Property Name="t_aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="hst_hastakarti" Relationship="Self.FK_hst_randevu_hst_hastakarti" FromRole="hst_randevu" ToRole="hst_hastakarti" />
         </EntityType>
         <EntityType Name="hst_ulke">
           <Key>
@@ -723,7 +906,8 @@
           <Property Name="TripleCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PhoneCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Pasif" Type="Boolean" Nullable="false" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="hst_hastakarti" Relationship="Self.FK_hst_hastakarti_hst_ulke" FromRole="hst_ulke" ToRole="hst_hastakarti" />
           <NavigationProperty Name="hst_il" Relationship="Self.FK_hst_il_hst_ulke" FromRole="hst_ulke" ToRole="hst_il" />
         </EntityType>
         <EntityType Name="hst_vezne">
@@ -731,23 +915,83 @@
             <PropertyRef Name="t_id" />
           </Key>
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="t_basvuru" Type="Int32" Nullable="false" />
-          <Property Name="t_tc" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="t_borc" Type="Int32" Nullable="false" />
+          <Property Name="t_hareketid" Type="Int32" />
+          <Property Name="t_odenen" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="t_kalan" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="t_odemetipi" Type="Int32" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_odemetarih" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="hst_his_hareket" Relationship="Self.FK_hst_his_hareket_hst_vezne" FromRole="hst_vezne" ToRole="hst_his_hareket" />
+          <NavigationProperty Name="hst_his_hareket" Relationship="Self.FK_hst_vezne_hst_his_hareket" FromRole="hst_vezne" ToRole="hst_his_hareket" />
+          <NavigationProperty Name="hst_odemetip" Relationship="Self.FK_hst_vezne_hst_OdemeTip" FromRole="hst_vezne" ToRole="hst_odemetip" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="View_HizHareket">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="t_tc" />
+            <PropertyRef Name="t_adi" />
+            <PropertyRef Name="t_soyadi" />
+            <PropertyRef Name="BasvuruNo" />
+            <PropertyRef Name="t_basvurutarihi" />
+            <PropertyRef Name="Doktoradi" />
+            <PropertyRef Name="t_taburcu" />
+            <PropertyRef Name="Hareketid" />
+            <PropertyRef Name="t_hizmetkodu" />
+            <PropertyRef Name="Hizmetadi" />
+            <PropertyRef Name="t_fiyat" />
+            <PropertyRef Name="t_islemtarihi" />
+            <PropertyRef Name="Odemeyapildimi" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BasvuruNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_basvurutarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Doktoradi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_basvurudr" Type="Int32" />
+          <Property Name="t_taburcu" Type="Boolean" Nullable="false" />
+          <Property Name="Hareketid" Type="Int32" Nullable="false" />
+          <Property Name="t_hizmetkodu" Type="Int32" Nullable="false" />
+          <Property Name="Hizmetadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_fiyat" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="t_islemtarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Odemeyapildimi" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Vezne">
+          <Key>
+            <PropertyRef Name="t_tc" />
+            <PropertyRef Name="t_adi" />
+            <PropertyRef Name="t_soyadi" />
+            <PropertyRef Name="t_basvuru" />
+            <PropertyRef Name="t_basvurutarihi" />
+            <PropertyRef Name="Doktoradi" />
+            <PropertyRef Name="Hareketid" />
+            <PropertyRef Name="t_hizmetkodu" />
+            <PropertyRef Name="Hizmetadi" />
+            <PropertyRef Name="t_fiyat" />
+            <PropertyRef Name="Hizmettarih" />
+            <PropertyRef Name="t_odemevarmi" />
+            <PropertyRef Name="t_odenen" />
+            <PropertyRef Name="t_kalan" />
+            <PropertyRef Name="Odemetip" />
+            <PropertyRef Name="Odemetarih" />
+          </Key>
+          <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_basvuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_basvurutarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Doktoradi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hareketid" Type="Int32" Nullable="false" />
+          <Property Name="t_hizmetkodu" Type="Int32" Nullable="false" />
+          <Property Name="Hizmetadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_fiyat" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Hizmettarih" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_odemevarmi" Type="Boolean" Nullable="false" />
+          <Property Name="t_odenen" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="t_kalan" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Odemetip" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Odemetarih" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="FK_adm_kullanicilar_adm_kullanicigrup1">
           <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
@@ -773,15 +1017,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_hst_basvuru_adm_kullanicilar">
-          <End Role="adm_kullanicilar" Type="Self.adm_kullanicilar" Multiplicity="0..1" />
-          <End Role="hst_basvuru" Type="Self.hst_basvuru" Multiplicity="*" />
+        <Association Name="FK_adm_pacs_hst_hastakarti">
+          <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="1" />
+          <End Role="adm_pacs" Type="Self.adm_pacs" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="adm_kullanicilar">
-              <PropertyRef Name="t_id" />
+            <Principal Role="hst_hastakarti">
+              <PropertyRef Name="t_tc" />
             </Principal>
-            <Dependent Role="hst_basvuru">
-              <PropertyRef Name="t_basvurudr" />
+            <Dependent Role="adm_pacs">
+              <PropertyRef Name="t_tc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -794,6 +1038,18 @@
             </Principal>
             <Dependent Role="hst_basvuru">
               <PropertyRef Name="t_bolumkodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hst_basvuru_hst_hastakarti">
+          <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="0..1" />
+          <End Role="hst_basvuru" Type="Self.hst_basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_hastakarti">
+              <PropertyRef Name="t_tc" />
+            </Principal>
+            <Dependent Role="hst_basvuru">
+              <PropertyRef Name="t_tc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -817,7 +1073,7 @@
               <PropertyRef Name="t_id" />
             </Principal>
             <Dependent Role="hst_hizmet">
-              <PropertyRef Name="t_çeneuygunmu" />
+              <PropertyRef Name="t_ceneuygunmu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -834,7 +1090,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_hst_hastakarti_hst_il">
-          <End Role="hst_il" Type="Self.hst_il" Multiplicity="1" />
+          <End Role="hst_il" Type="Self.hst_il" Multiplicity="0..1" />
           <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="hst_il">
@@ -846,7 +1102,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_hst_hastakarti_hst_ilce">
-          <End Role="hst_ilce" Type="Self.hst_ilce" Multiplicity="1" />
+          <End Role="hst_ilce" Type="Self.hst_ilce" Multiplicity="0..1" />
           <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="hst_ilce">
@@ -869,6 +1125,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_hst_hastakarti_hst_ulke">
+          <End Role="hst_ulke" Type="Self.hst_ulke" Multiplicity="1" />
+          <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_ulke">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="hst_hastakarti">
+              <PropertyRef Name="t_ulkeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hst_randevu_hst_hastakarti">
+          <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="1" />
+          <End Role="hst_randevu" Type="Self.hst_randevu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_hastakarti">
+              <PropertyRef Name="t_tc" />
+            </Principal>
+            <Dependent Role="hst_randevu">
+              <PropertyRef Name="t_tc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_hst_his_hareket_hst_hizmet">
           <End Role="hst_hizmet" Type="Self.hst_hizmet" Multiplicity="1" />
           <End Role="hst_his_hareket" Type="Self.hst_his_hareket" Multiplicity="*" />
@@ -881,15 +1161,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_hst_his_hareket_hst_vezne">
-          <End Role="hst_vezne" Type="Self.hst_vezne" Multiplicity="1" />
-          <End Role="hst_his_hareket" Type="Self.hst_his_hareket" Multiplicity="*" />
+        <Association Name="FK_hst_vezne_hst_his_hareket">
+          <End Role="hst_his_hareket" Type="Self.hst_his_hareket" Multiplicity="0..1" />
+          <End Role="hst_vezne" Type="Self.hst_vezne" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="hst_vezne">
+            <Principal Role="hst_his_hareket">
               <PropertyRef Name="t_id" />
             </Principal>
-            <Dependent Role="hst_his_hareket">
-              <PropertyRef Name="t_makbuz" />
+            <Dependent Role="hst_vezne">
+              <PropertyRef Name="t_hareketid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -929,6 +1209,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_hst_vezne_hst_OdemeTip">
+          <End Role="hst_odemetip" Type="Self.hst_odemetip" Multiplicity="1" />
+          <End Role="hst_vezne" Type="Self.hst_vezne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_odemetip">
+              <PropertyRef Name="t_Id" />
+            </Principal>
+            <Dependent Role="hst_vezne">
+              <PropertyRef Name="t_odemetipi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="WEINCDENTALEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="adm_kullanicigrup" EntityType="Self.adm_kullanicigrup" />
           <EntitySet Name="adm_kullanicilar" EntityType="Self.adm_kullanicilar" />
@@ -945,10 +1237,12 @@
           <EntitySet Name="hst_il" EntityType="Self.hst_il" />
           <EntitySet Name="hst_ilce" EntityType="Self.hst_ilce" />
           <EntitySet Name="hst_medenidurum" EntityType="Self.hst_medenidurum" />
+          <EntitySet Name="hst_odemetip" EntityType="Self.hst_odemetip" />
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="View_HizHareket" EntityType="Self.View_HizHareket" />
+          <EntitySet Name="View_Vezne" EntityType="Self.View_Vezne" />
           <AssociationSet Name="FK_adm_kullanicilar_adm_kullanicigrup1" Association="Self.FK_adm_kullanicilar_adm_kullanicigrup1">
             <End Role="adm_kullanicigrup" EntitySet="adm_kullanicigrup" />
             <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
@@ -957,12 +1251,16 @@
             <End Role="adm_modulyetki" EntitySet="adm_modulyetki" />
             <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
           </AssociationSet>
-          <AssociationSet Name="FK_hst_basvuru_adm_kullanicilar" Association="Self.FK_hst_basvuru_adm_kullanicilar">
-            <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
-            <End Role="hst_basvuru" EntitySet="hst_basvuru" />
+          <AssociationSet Name="FK_adm_pacs_hst_hastakarti" Association="Self.FK_adm_pacs_hst_hastakarti">
+            <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
+            <End Role="adm_pacs" EntitySet="adm_pacs" />
           </AssociationSet>
           <AssociationSet Name="FK_hst_basvuru_hst_bölüm" Association="Self.FK_hst_basvuru_hst_bölüm">
             <End Role="hst_bölüm" EntitySet="hst_bölüm" />
+            <End Role="hst_basvuru" EntitySet="hst_basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hst_basvuru_hst_hastakarti" Association="Self.FK_hst_basvuru_hst_hastakarti">
+            <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
             <End Role="hst_basvuru" EntitySet="hst_basvuru" />
           </AssociationSet>
           <AssociationSet Name="FK_hst_his_hareket_hst_basvuru" Association="Self.FK_hst_his_hareket_hst_basvuru">
@@ -989,13 +1287,21 @@
             <End Role="hst_medenidurum" EntitySet="hst_medenidurum" />
             <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
           </AssociationSet>
+          <AssociationSet Name="FK_hst_hastakarti_hst_ulke" Association="Self.FK_hst_hastakarti_hst_ulke">
+            <End Role="hst_ulke" EntitySet="hst_ulke" />
+            <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hst_randevu_hst_hastakarti" Association="Self.FK_hst_randevu_hst_hastakarti">
+            <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
+            <End Role="hst_randevu" EntitySet="hst_randevu" />
+          </AssociationSet>
           <AssociationSet Name="FK_hst_his_hareket_hst_hizmet" Association="Self.FK_hst_his_hareket_hst_hizmet">
             <End Role="hst_hizmet" EntitySet="hst_hizmet" />
             <End Role="hst_his_hareket" EntitySet="hst_his_hareket" />
           </AssociationSet>
-          <AssociationSet Name="FK_hst_his_hareket_hst_vezne" Association="Self.FK_hst_his_hareket_hst_vezne">
-            <End Role="hst_vezne" EntitySet="hst_vezne" />
+          <AssociationSet Name="FK_hst_vezne_hst_his_hareket" Association="Self.FK_hst_vezne_hst_his_hareket">
             <End Role="hst_his_hareket" EntitySet="hst_his_hareket" />
+            <End Role="hst_vezne" EntitySet="hst_vezne" />
           </AssociationSet>
           <AssociationSet Name="FK_hst_hizmet_hst_hizmet_parca" Association="Self.FK_hst_hizmet_hst_hizmet_parca">
             <End Role="hst_hizmet_parca" EntitySet="hst_hizmet_parca" />
@@ -1008,6 +1314,10 @@
           <AssociationSet Name="FK_hst_ilce_hst_il" Association="Self.FK_hst_ilce_hst_il">
             <End Role="hst_il" EntitySet="hst_il" />
             <End Role="hst_ilce" EntitySet="hst_ilce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hst_vezne_hst_OdemeTip" Association="Self.FK_hst_vezne_hst_OdemeTip">
+            <End Role="hst_odemetip" EntitySet="hst_odemetip" />
+            <End Role="hst_vezne" EntitySet="hst_vezne" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1126,6 +1436,7 @@
                 <ScalarProperty Name="t_dogumyeri" ColumnName="t_dogumyeri" />
                 <ScalarProperty Name="t_tel1" ColumnName="t_tel1" />
                 <ScalarProperty Name="t_tel2" ColumnName="t_tel2" />
+                <ScalarProperty Name="t_ulkeId" ColumnName="t_ulkeId" />
                 <ScalarProperty Name="t_ilId" ColumnName="t_ilId" />
                 <ScalarProperty Name="t_ilceId" ColumnName="t_ilceId" />
                 <ScalarProperty Name="t_adres" ColumnName="t_adres" />
@@ -1140,14 +1451,12 @@
               <MappingFragment StoreEntitySet="hst_his_hareket">
                 <ScalarProperty Name="t_id" ColumnName="t_id" />
                 <ScalarProperty Name="t_basvuruid" ColumnName="t_basvuruid" />
-                <ScalarProperty Name="t_tc" ColumnName="t_tc" />
                 <ScalarProperty Name="t_hizmetkodu" ColumnName="t_hizmetkodu" />
                 <ScalarProperty Name="t_islemtarihi" ColumnName="t_islemtarihi" />
                 <ScalarProperty Name="t_diskodu" ColumnName="t_diskodu" />
                 <ScalarProperty Name="t_parca" ColumnName="t_parca" />
                 <ScalarProperty Name="t_cene" ColumnName="t_cene" />
-                <ScalarProperty Name="t_borc" ColumnName="t_borc" />
-                <ScalarProperty Name="t_makbuz" ColumnName="t_makbuz" />
+                <ScalarProperty Name="t_odemevarmi" ColumnName="t_odemevarmi" />
                 <ScalarProperty Name="t_createuser" ColumnName="t_createuser" />
                 <ScalarProperty Name="t_createdate" ColumnName="t_createdate" />
                 <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
@@ -1160,7 +1469,7 @@
                 <ScalarProperty Name="t_id" ColumnName="t_id" />
                 <ScalarProperty Name="t_adi" ColumnName="t_adi" />
                 <ScalarProperty Name="t_parcauygunmu" ColumnName="t_parcauygunmu" />
-                <ScalarProperty Name="t_çeneuygunmu" ColumnName="t_çeneuygunmu" />
+                <ScalarProperty Name="t_ceneuygunmu" ColumnName="t_ceneuygunmu" />
                 <ScalarProperty Name="t_fiyat" ColumnName="t_fiyat" />
                 <ScalarProperty Name="t_createuser" ColumnName="t_createuser" />
                 <ScalarProperty Name="t_createdate" ColumnName="t_createdate" />
@@ -1207,6 +1516,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="hst_odemetip">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.hst_odemetip">
+              <MappingFragment StoreEntitySet="hst_odemetip">
+                <ScalarProperty Name="t_Id" ColumnName="t_Id" />
+                <ScalarProperty Name="t_adi" ColumnName="t_adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="hst_randevu">
             <EntityTypeMapping TypeName="WEINCDENTALModel.hst_randevu">
               <MappingFragment StoreEntitySet="hst_randevu">
@@ -1218,8 +1535,8 @@
                 <ScalarProperty Name="t_bitissaat" ColumnName="t_bitissaat" />
                 <ScalarProperty Name="t_createuser" ColumnName="t_createuser" />
                 <ScalarProperty Name="t_createdate" ColumnName="t_createdate" />
-                <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
                 <ScalarProperty Name="t_basvurudr" ColumnName="t_basvurudr" />
+                <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1231,7 +1548,7 @@
                 <ScalarProperty Name="TripleCode" ColumnName="TripleCode" />
                 <ScalarProperty Name="CountryName" ColumnName="CountryName" />
                 <ScalarProperty Name="PhoneCode" ColumnName="PhoneCode" />
-                <ScalarProperty Name="Pasif" ColumnName="Pasif" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1239,23 +1556,56 @@
             <EntityTypeMapping TypeName="WEINCDENTALModel.hst_vezne">
               <MappingFragment StoreEntitySet="hst_vezne">
                 <ScalarProperty Name="t_id" ColumnName="t_id" />
-                <ScalarProperty Name="t_basvuru" ColumnName="t_basvuru" />
-                <ScalarProperty Name="t_tc" ColumnName="t_tc" />
-                <ScalarProperty Name="t_borc" ColumnName="t_borc" />
+                <ScalarProperty Name="t_hareketid" ColumnName="t_hareketid" />
+                <ScalarProperty Name="t_odenen" ColumnName="t_odenen" />
+                <ScalarProperty Name="t_kalan" ColumnName="t_kalan" />
+                <ScalarProperty Name="t_odemetipi" ColumnName="t_odemetipi" />
                 <ScalarProperty Name="t_createuser" ColumnName="t_createuser" />
+                <ScalarProperty Name="t_odemetarih" ColumnName="t_odemetarih" />
                 <ScalarProperty Name="t_createdate" ColumnName="t_createdate" />
                 <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="WEINCDENTALModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+          <EntitySetMapping Name="View_HizHareket">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.View_HizHareket">
+              <MappingFragment StoreEntitySet="View_HizHareket">
+                <ScalarProperty Name="t_tc" ColumnName="t_tc" />
+                <ScalarProperty Name="t_adi" ColumnName="t_adi" />
+                <ScalarProperty Name="t_soyadi" ColumnName="t_soyadi" />
+                <ScalarProperty Name="BasvuruNo" ColumnName="BasvuruNo" />
+                <ScalarProperty Name="t_basvurutarihi" ColumnName="t_basvurutarihi" />
+                <ScalarProperty Name="Doktoradi" ColumnName="Doktoradi" />
+                <ScalarProperty Name="t_basvurudr" ColumnName="t_basvurudr" />
+                <ScalarProperty Name="t_taburcu" ColumnName="t_taburcu" />
+                <ScalarProperty Name="Hareketid" ColumnName="Hareketid" />
+                <ScalarProperty Name="t_hizmetkodu" ColumnName="t_hizmetkodu" />
+                <ScalarProperty Name="Hizmetadi" ColumnName="Hizmetadi" />
+                <ScalarProperty Name="t_fiyat" ColumnName="t_fiyat" />
+                <ScalarProperty Name="t_islemtarihi" ColumnName="t_islemtarihi" />
+                <ScalarProperty Name="Odemeyapildimi" ColumnName="Odemeyapildimi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Vezne">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.View_Vezne">
+              <MappingFragment StoreEntitySet="View_Vezne">
+                <ScalarProperty Name="t_tc" ColumnName="t_tc" />
+                <ScalarProperty Name="t_adi" ColumnName="t_adi" />
+                <ScalarProperty Name="t_soyadi" ColumnName="t_soyadi" />
+                <ScalarProperty Name="t_basvuru" ColumnName="t_basvuru" />
+                <ScalarProperty Name="t_basvurutarihi" ColumnName="t_basvurutarihi" />
+                <ScalarProperty Name="Doktoradi" ColumnName="Doktoradi" />
+                <ScalarProperty Name="Hareketid" ColumnName="Hareketid" />
+                <ScalarProperty Name="t_hizmetkodu" ColumnName="t_hizmetkodu" />
+                <ScalarProperty Name="Hizmetadi" ColumnName="Hizmetadi" />
+                <ScalarProperty Name="t_fiyat" ColumnName="t_fiyat" />
+                <ScalarProperty Name="Hizmettarih" ColumnName="Hizmettarih" />
+                <ScalarProperty Name="t_odemevarmi" ColumnName="t_odemevarmi" />
+                <ScalarProperty Name="t_odenen" ColumnName="t_odenen" />
+                <ScalarProperty Name="t_kalan" ColumnName="t_kalan" />
+                <ScalarProperty Name="Odemetip" ColumnName="Odemetip" />
+                <ScalarProperty Name="Odemetarih" ColumnName="Odemetarih" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

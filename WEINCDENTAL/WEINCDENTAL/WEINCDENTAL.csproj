@@ -194,6 +194,9 @@
     <Compile Include="Models\hst_medenidurum.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\hst_odemetip.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\hst_randevu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -218,10 +221,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
+    <Compile Include="Models\ViewModelAyarlar.cs" />
+    <Compile Include="Models\View_HizHareket.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ViewModelAyarlar.cs" />
+    <Compile Include="Models\View_Vezne.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -980,11 +986,11 @@
     <Content Include="Views\hst_hizmet\Edit.cshtml" />
     <Content Include="Views\hst_hizmet\Index.cshtml" />
     <Content Include="Views\Ayarlar\AyarlarHizmet.cshtml" />
-    <Content Include="Views\hst_hastakarti\Create.cshtml" />
     <Content Include="Views\hst_hastakarti\Delete.cshtml" />
     <Content Include="Views\hst_hastakarti\Details.cshtml" />
     <Content Include="Views\hst_hastakarti\Edit.cshtml" />
     <Content Include="Views\hst_hastakarti\Index.cshtml" />
+    <Content Include="Views\hst_hastakarti\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

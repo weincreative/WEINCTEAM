@@ -23,8 +23,8 @@ namespace WEINCDENTAL.Models
         public int t_id { get; set; }
         public string t_adi { get; set; }
         public int t_parcauygunmu { get; set; }
-        public int t_çeneuygunmu { get; set; }
-        public string t_fiyat { get; set; }
+        public int t_ceneuygunmu { get; set; }
+        public decimal t_fiyat { get; set; }
         public string t_createuser { get; set; }
         public System.DateTime t_createdate { get; set; }
         public bool t_aktif { get; set; }

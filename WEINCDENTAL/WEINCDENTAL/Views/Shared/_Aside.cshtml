@@ -35,8 +35,8 @@
             <li class="@Html.RouteIf("Ayarlar", "active")">
                 <a href="@Url.Action("Ayarlar", "Home")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Ayarlar</span></a>
             </li>
-            <li class="@Html.RouteIf("HastaKart", "active")">
-                <a href="@Url.Action("Index", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Hasta Kartı</span></a>
+            <li class="@Html.RouteIf("hst_hastakarti", "active")">
+                <a href="@Url.Action("Create", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Hasta Kartı</span></a>
             </li>
             @*<li class="@Html.RouteIf("calendar", "active")">
                     <a href="@Url.Action("calendar", "home")"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span class="menu-item-parent">Calendar</span></a>

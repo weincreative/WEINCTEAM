@@ -14,26 +14,42 @@ namespace WEINCDENTAL.Models
     
     public partial class hst_hastakarti
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public hst_hastakarti()
+        {
+            this.adm_pacs = new HashSet<adm_pacs>();
+            this.hst_basvuru = new HashSet<hst_basvuru>();
+            this.hst_randevu = new HashSet<hst_randevu>();
+        }
+    
         public int t_id { get; set; }
-        public int t_tc { get; set; }
+        public string t_tc { get; set; }
         public string t_adi { get; set; }
         public string t_soyadi { get; set; }
         public int t_cinsiyet { get; set; }
         public int t_medenidurum { get; set; }
         public System.DateTime t_dogumtarihi { get; set; }
         public string t_dogumyeri { get; set; }
-        public int t_tel1 { get; set; }
-        public Nullable<int> t_tel2 { get; set; }
-        public int t_ilId { get; set; }
-        public int t_ilceId { get; set; }
+        public string t_tel1 { get; set; }
+        public string t_tel2 { get; set; }
+        public int t_ulkeId { get; set; }
+        public Nullable<int> t_ilId { get; set; }
+        public Nullable<int> t_ilceId { get; set; }
         public string t_adres { get; set; }
         public string t_createuser { get; set; }
         public System.DateTime t_createdate { get; set; }
         public bool t_aktif { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<adm_pacs> adm_pacs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<hst_basvuru> hst_basvuru { get; set; }
         public virtual hst_cinsiyet hst_cinsiyet { get; set; }
         public virtual hst_il hst_il { get; set; }
         public virtual hst_ilce hst_ilce { get; set; }
         public virtual hst_medenidurum hst_medenidurum { get; set; }
+        public virtual hst_ulke hst_ulke { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<hst_randevu> hst_randevu { get; set; }
     }
 }

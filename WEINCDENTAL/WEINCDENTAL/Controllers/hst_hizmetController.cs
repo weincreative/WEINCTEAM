@@ -39,7 +39,7 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_hizmet/Create
         public ActionResult Create()
         {
-            ViewBag.t_çeneuygunmu = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi");
+            ViewBag.t_ceneuygunmu = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi");
             ViewBag.t_parcauygunmu = new SelectList(db.hst_hizmet_parca, "t_id", "t_adi");
             return View();
         }
@@ -49,7 +49,7 @@ namespace WEINCDENTAL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "t_id,t_adi,t_parcauygunmu,t_çeneuygunmu,t_fiyat,t_createuser,t_createdate,t_aktif")] hst_hizmet hst_hizmet)
+        public ActionResult Create([Bind(Include = "t_id,t_adi,t_parcauygunmu,t_ceneuygunmu,t_fiyat,t_createuser,t_createdate,t_aktif")] hst_hizmet hst_hizmet)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace WEINCDENTAL.Controllers
                 return RedirectToAction("Ayarlar", "Home");
             }
 
-            ViewBag.t_çeneuygunmu = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi", hst_hizmet.t_çeneuygunmu);
+            ViewBag.t_ceneuygunmu = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi", hst_hizmet.t_ceneuygunmu);
             ViewBag.t_parcauygunmu = new SelectList(db.hst_hizmet_parca, "t_id", "t_adi", hst_hizmet.t_parcauygunmu);
             return View(hst_hizmet);
         }
@@ -75,7 +75,7 @@ namespace WEINCDENTAL.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.t_çeneuygunmu = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi", hst_hizmet.t_çeneuygunmu);
+            ViewBag.t_ceneuygunmu = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi", hst_hizmet.t_ceneuygunmu);
             ViewBag.t_parcauygunmu = new SelectList(db.hst_hizmet_parca, "t_id", "t_adi", hst_hizmet.t_parcauygunmu);
             return View(hst_hizmet);
         }
@@ -85,7 +85,7 @@ namespace WEINCDENTAL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "t_id,t_adi,t_parcauygunmu,t_çeneuygunmu,t_fiyat,t_createuser,t_createdate,t_aktif")] hst_hizmet hst_hizmet)
+        public ActionResult Edit([Bind(Include = "t_id,t_adi,t_parcauygunmu,t_ceneuygunmu,t_fiyat,t_createuser,t_createdate,t_aktif")] hst_hizmet hst_hizmet)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace WEINCDENTAL.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Ayarlar", "Home");
             }
-            ViewBag.t_çeneuygunmu = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi", hst_hizmet.t_çeneuygunmu);
+            ViewBag.t_ceneuygunmu = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi", hst_hizmet.t_ceneuygunmu);
             ViewBag.t_parcauygunmu = new SelectList(db.hst_hizmet_parca, "t_id", "t_adi", hst_hizmet.t_parcauygunmu);
             return View(hst_hizmet);
         }

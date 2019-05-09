@@ -22,7 +22,7 @@ namespace WEINCDENTAL.Models
     
         public int t_id { get; set; }
         public string t_basvuru { get; set; }
-        public decimal t_tc { get; set; }
+        public string t_tc { get; set; }
         public System.DateTime t_basvurutarihi { get; set; }
         public int t_bolumkodu { get; set; }
         public int t_cagriekraniistem { get; set; }
@@ -32,8 +32,8 @@ namespace WEINCDENTAL.Models
         public string t_createuser { get; set; }
         public bool t_aktif { get; set; }
     
-        public virtual adm_kullanicilar adm_kullanicilar { get; set; }
         public virtual hst_bölüm hst_bölüm { get; set; }
+        public virtual hst_hastakarti hst_hastakarti { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hst_his_hareket> hst_his_hareket { get; set; }
     }

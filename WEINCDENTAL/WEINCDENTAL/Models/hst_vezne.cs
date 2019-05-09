@@ -14,21 +14,17 @@ namespace WEINCDENTAL.Models
     
     public partial class hst_vezne
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public hst_vezne()
-        {
-            this.hst_his_hareket = new HashSet<hst_his_hareket>();
-        }
-    
         public int t_id { get; set; }
-        public int t_basvuru { get; set; }
-        public decimal t_tc { get; set; }
-        public int t_borc { get; set; }
+        public Nullable<int> t_hareketid { get; set; }
+        public decimal t_odenen { get; set; }
+        public decimal t_kalan { get; set; }
+        public int t_odemetipi { get; set; }
         public string t_createuser { get; set; }
+        public System.DateTime t_odemetarih { get; set; }
         public System.DateTime t_createdate { get; set; }
         public bool t_aktif { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<hst_his_hareket> hst_his_hareket { get; set; }
+        public virtual hst_his_hareket hst_his_hareket { get; set; }
+        public virtual hst_odemetip hst_odemetip { get; set; }
     }
 }

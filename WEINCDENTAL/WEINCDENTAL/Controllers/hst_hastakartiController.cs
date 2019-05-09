@@ -45,7 +45,7 @@ namespace WEINCDENTAL.Controllers
             ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi");
             return View();
         }
-
+       
         // POST: hst_hastakarti/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

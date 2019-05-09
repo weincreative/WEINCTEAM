@@ -14,12 +14,6 @@ namespace WEINCDENTAL.Models
     
     public partial class adm_kullanicilar
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public adm_kullanicilar()
-        {
-            this.hst_basvuru = new HashSet<hst_basvuru>();
-        }
-    
         public int t_id { get; set; }
         public string t_kodu { get; set; }
         public string t_adi { get; set; }
@@ -32,7 +26,5 @@ namespace WEINCDENTAL.Models
     
         public virtual adm_kullanicigrup adm_kullanicigrup { get; set; }
         public virtual adm_modulyetki adm_modulyetki { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<hst_basvuru> hst_basvuru { get; set; }
     }
 }

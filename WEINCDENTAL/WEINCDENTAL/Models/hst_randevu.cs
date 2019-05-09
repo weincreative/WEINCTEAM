@@ -15,14 +15,16 @@ namespace WEINCDENTAL.Models
     public partial class hst_randevu
     {
         public int t_id { get; set; }
-        public int t_basvuru { get; set; }
-        public decimal t_tc { get; set; }
+        public Nullable<int> t_basvuru { get; set; }
+        public string t_tc { get; set; }
         public System.DateTime t_tarih { get; set; }
         public System.DateTime t_basgicsaat { get; set; }
         public System.DateTime t_bitissaat { get; set; }
         public string t_createuser { get; set; }
         public System.DateTime t_createdate { get; set; }
-        public bool t_aktif { get; set; }
         public bool t_basvurudr { get; set; }
+        public bool t_aktif { get; set; }
+    
+        public virtual hst_hastakarti hst_hastakarti { get; set; }
     }
 }
