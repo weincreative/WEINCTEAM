@@ -94,6 +94,24 @@
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="hst_firma">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="t_fad" Type="nvarchar" MaxLength="50" />
+          <Property Name="t_mad" Type="nvarchar" MaxLength="50" />
+          <Property Name="t_aktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hst_hastadurum">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="t_tc" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="t_hdurumid" Type="int" Nullable="false" />
+          <Property Name="t_aktif" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="hst_hastakarti">
           <Key>
             <PropertyRef Name="t_tc" />
@@ -116,6 +134,14 @@
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="hst_hastalik">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="t_adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="t_aktif" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="hst_his_hareket">
           <Key>
             <PropertyRef Name="t_id" />
@@ -128,6 +154,7 @@
           <Property Name="t_parca" Type="int" Nullable="false" />
           <Property Name="t_cene" Type="int" Nullable="false" />
           <Property Name="t_odemevarmi" Type="bit" Nullable="false" />
+          <Property Name="t_firmaid" Type="int" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
@@ -226,6 +253,16 @@
           <Property Name="t_odemetarih" Type="datetime" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizHareket' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -358,6 +395,30 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_hst_hastadurum_hst_hastakarti">
+          <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="1" />
+          <End Role="hst_hastadurum" Type="Self.hst_hastadurum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_hastakarti">
+              <PropertyRef Name="t_tc" />
+            </Principal>
+            <Dependent Role="hst_hastadurum">
+              <PropertyRef Name="t_tc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hst_hastadurum_hst_hastalik">
+          <End Role="hst_hastalik" Type="Self.hst_hastalik" Multiplicity="1" />
+          <End Role="hst_hastadurum" Type="Self.hst_hastadurum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_hastalik">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="hst_hastadurum">
+              <PropertyRef Name="t_hdurumid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_hst_hastakarti_hst_cinsiyet">
           <End Role="hst_cinsiyet" Type="Self.hst_cinsiyet" Multiplicity="1" />
           <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="*" />
@@ -427,6 +488,18 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             </Principal>
             <Dependent Role="hst_his_hareket">
               <PropertyRef Name="t_basvuruid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hst_his_hareket_hst_firma">
+          <End Role="hst_firma" Type="Self.hst_firma" Multiplicity="0..1" />
+          <End Role="hst_his_hareket" Type="Self.hst_his_hareket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_firma">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="hst_his_hareket">
+              <PropertyRef Name="t_firmaid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -535,7 +608,10 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <EntitySet Name="hst_bölüm" EntityType="Self.hst_bölüm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_cene_uygunmu" EntityType="Self.hst_cene_uygunmu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_cinsiyet" EntityType="Self.hst_cinsiyet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hst_firma" EntityType="Self.hst_firma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hst_hastadurum" EntityType="Self.hst_hastadurum" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_hastakarti" EntityType="Self.hst_hastakarti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hst_hastalik" EntityType="Self.hst_hastalik" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_his_hareket" EntityType="Self.hst_his_hareket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_hizmet" EntityType="Self.hst_hizmet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_hizmet_parca" EntityType="Self.hst_hizmet_parca" Schema="dbo" store:Type="Tables" />
@@ -546,6 +622,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="View_HizHareket" EntityType="Self.View_HizHareket" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [View_HizHareket].[t_tc] AS [t_tc], 
@@ -604,6 +681,14 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
             <End Role="hst_basvuru" EntitySet="hst_basvuru" />
           </AssociationSet>
+          <AssociationSet Name="FK_hst_hastadurum_hst_hastakarti" Association="Self.FK_hst_hastadurum_hst_hastakarti">
+            <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
+            <End Role="hst_hastadurum" EntitySet="hst_hastadurum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hst_hastadurum_hst_hastalik" Association="Self.FK_hst_hastadurum_hst_hastalik">
+            <End Role="hst_hastalik" EntitySet="hst_hastalik" />
+            <End Role="hst_hastadurum" EntitySet="hst_hastadurum" />
+          </AssociationSet>
           <AssociationSet Name="FK_hst_hastakarti_hst_cinsiyet" Association="Self.FK_hst_hastakarti_hst_cinsiyet">
             <End Role="hst_cinsiyet" EntitySet="hst_cinsiyet" />
             <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
@@ -626,6 +711,10 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           </AssociationSet>
           <AssociationSet Name="FK_hst_his_hareket_hst_basvuru" Association="Self.FK_hst_his_hareket_hst_basvuru">
             <End Role="hst_basvuru" EntitySet="hst_basvuru" />
+            <End Role="hst_his_hareket" EntitySet="hst_his_hareket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hst_his_hareket_hst_firma" Association="Self.FK_hst_his_hareket_hst_firma">
+            <End Role="hst_firma" EntitySet="hst_firma" />
             <End Role="hst_his_hareket" EntitySet="hst_his_hareket" />
           </AssociationSet>
           <AssociationSet Name="FK_hst_his_hareket_hst_hizmet" Association="Self.FK_hst_his_hareket_hst_hizmet">
@@ -766,6 +855,27 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="hst_hastakarti" Relationship="Self.FK_hst_hastakarti_hst_cinsiyet" FromRole="hst_cinsiyet" ToRole="hst_hastakarti" />
         </EntityType>
+        <EntityType Name="hst_firma">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="t_fad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="t_mad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="t_aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="hst_his_hareket" Relationship="Self.FK_hst_his_hareket_hst_firma" FromRole="hst_firma" ToRole="hst_his_hareket" />
+        </EntityType>
+        <EntityType Name="hst_hastadurum">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_hdurumid" Type="Int32" Nullable="false" />
+          <Property Name="t_aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="hst_hastakarti" Relationship="Self.FK_hst_hastadurum_hst_hastakarti" FromRole="hst_hastadurum" ToRole="hst_hastakarti" />
+          <NavigationProperty Name="hst_hastalik" Relationship="Self.FK_hst_hastadurum_hst_hastalik" FromRole="hst_hastadurum" ToRole="hst_hastalik" />
+        </EntityType>
         <EntityType Name="hst_hastakarti">
           <Key>
             <PropertyRef Name="t_tc" />
@@ -790,11 +900,21 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <NavigationProperty Name="adm_pacs" Relationship="Self.FK_adm_pacs_hst_hastakarti" FromRole="hst_hastakarti" ToRole="adm_pacs" />
           <NavigationProperty Name="hst_basvuru" Relationship="Self.FK_hst_basvuru_hst_hastakarti" FromRole="hst_hastakarti" ToRole="hst_basvuru" />
           <NavigationProperty Name="hst_cinsiyet" Relationship="Self.FK_hst_hastakarti_hst_cinsiyet" FromRole="hst_hastakarti" ToRole="hst_cinsiyet" />
+          <NavigationProperty Name="hst_hastadurum" Relationship="Self.FK_hst_hastadurum_hst_hastakarti" FromRole="hst_hastakarti" ToRole="hst_hastadurum" />
           <NavigationProperty Name="hst_il" Relationship="Self.FK_hst_hastakarti_hst_il" FromRole="hst_hastakarti" ToRole="hst_il" />
           <NavigationProperty Name="hst_ilce" Relationship="Self.FK_hst_hastakarti_hst_ilce" FromRole="hst_hastakarti" ToRole="hst_ilce" />
           <NavigationProperty Name="hst_medenidurum" Relationship="Self.FK_hst_hastakarti_hst_medenidurum" FromRole="hst_hastakarti" ToRole="hst_medenidurum" />
           <NavigationProperty Name="hst_ulke" Relationship="Self.FK_hst_hastakarti_hst_ulke" FromRole="hst_hastakarti" ToRole="hst_ulke" />
           <NavigationProperty Name="hst_randevu" Relationship="Self.FK_hst_randevu_hst_hastakarti" FromRole="hst_hastakarti" ToRole="hst_randevu" />
+        </EntityType>
+        <EntityType Name="hst_hastalik">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="t_aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="hst_hastadurum" Relationship="Self.FK_hst_hastadurum_hst_hastalik" FromRole="hst_hastalik" ToRole="hst_hastadurum" />
         </EntityType>
         <EntityType Name="hst_his_hareket">
           <Key>
@@ -808,10 +928,12 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_parca" Type="Int32" Nullable="false" />
           <Property Name="t_cene" Type="Int32" Nullable="false" />
           <Property Name="t_odemevarmi" Type="Boolean" Nullable="false" />
+          <Property Name="t_firmaid" Type="Int32" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="hst_basvuru" Relationship="Self.FK_hst_his_hareket_hst_basvuru" FromRole="hst_his_hareket" ToRole="hst_basvuru" />
+          <NavigationProperty Name="hst_firma" Relationship="Self.FK_hst_his_hareket_hst_firma" FromRole="hst_his_hareket" ToRole="hst_firma" />
           <NavigationProperty Name="hst_hizmet" Relationship="Self.FK_hst_his_hareket_hst_hizmet" FromRole="hst_his_hareket" ToRole="hst_hizmet" />
           <NavigationProperty Name="hst_vezne" Relationship="Self.FK_hst_vezne_hst_his_hareket" FromRole="hst_his_hareket" ToRole="hst_vezne" />
         </EntityType>
@@ -925,6 +1047,16 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="hst_his_hareket" Relationship="Self.FK_hst_vezne_hst_his_hareket" FromRole="hst_vezne" ToRole="hst_his_hareket" />
           <NavigationProperty Name="hst_odemetip" Relationship="Self.FK_hst_vezne_hst_OdemeTip" FromRole="hst_vezne" ToRole="hst_odemetip" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="View_HizHareket">
           <Key>
@@ -1089,6 +1221,42 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_hst_his_hareket_hst_firma">
+          <End Role="hst_firma" Type="Self.hst_firma" Multiplicity="0..1" />
+          <End Role="hst_his_hareket" Type="Self.hst_his_hareket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_firma">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="hst_his_hareket">
+              <PropertyRef Name="t_firmaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hst_hastadurum_hst_hastakarti">
+          <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="1" />
+          <End Role="hst_hastadurum" Type="Self.hst_hastadurum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_hastakarti">
+              <PropertyRef Name="t_tc" />
+            </Principal>
+            <Dependent Role="hst_hastadurum">
+              <PropertyRef Name="t_tc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hst_hastadurum_hst_hastalik">
+          <End Role="hst_hastalik" Type="Self.hst_hastalik" Multiplicity="1" />
+          <End Role="hst_hastadurum" Type="Self.hst_hastadurum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_hastalik">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="hst_hastadurum">
+              <PropertyRef Name="t_hdurumid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_hst_hastakarti_hst_il">
           <End Role="hst_il" Type="Self.hst_il" Multiplicity="0..1" />
           <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="*" />
@@ -1230,7 +1398,10 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <EntitySet Name="hst_bölüm" EntityType="Self.hst_bölüm" />
           <EntitySet Name="hst_cene_uygunmu" EntityType="Self.hst_cene_uygunmu" />
           <EntitySet Name="hst_cinsiyet" EntityType="Self.hst_cinsiyet" />
+          <EntitySet Name="hst_firma" EntityType="Self.hst_firma" />
+          <EntitySet Name="hst_hastadurum" EntityType="Self.hst_hastadurum" />
           <EntitySet Name="hst_hastakarti" EntityType="Self.hst_hastakarti" />
+          <EntitySet Name="hst_hastalik" EntityType="Self.hst_hastalik" />
           <EntitySet Name="hst_his_hareket" EntityType="Self.hst_his_hareket" />
           <EntitySet Name="hst_hizmet" EntityType="Self.hst_hizmet" />
           <EntitySet Name="hst_hizmet_parca" EntityType="Self.hst_hizmet_parca" />
@@ -1241,6 +1412,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="View_HizHareket" EntityType="Self.View_HizHareket" />
           <EntitySet Name="View_Vezne" EntityType="Self.View_Vezne" />
           <AssociationSet Name="FK_adm_kullanicilar_adm_kullanicigrup1" Association="Self.FK_adm_kullanicilar_adm_kullanicigrup1">
@@ -1274,6 +1446,18 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <AssociationSet Name="FK_hst_hastakarti_hst_cinsiyet" Association="Self.FK_hst_hastakarti_hst_cinsiyet">
             <End Role="hst_cinsiyet" EntitySet="hst_cinsiyet" />
             <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hst_his_hareket_hst_firma" Association="Self.FK_hst_his_hareket_hst_firma">
+            <End Role="hst_firma" EntitySet="hst_firma" />
+            <End Role="hst_his_hareket" EntitySet="hst_his_hareket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hst_hastadurum_hst_hastakarti" Association="Self.FK_hst_hastadurum_hst_hastakarti">
+            <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
+            <End Role="hst_hastadurum" EntitySet="hst_hastadurum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hst_hastadurum_hst_hastalik" Association="Self.FK_hst_hastadurum_hst_hastalik">
+            <End Role="hst_hastalik" EntitySet="hst_hastalik" />
+            <End Role="hst_hastadurum" EntitySet="hst_hastadurum" />
           </AssociationSet>
           <AssociationSet Name="FK_hst_hastakarti_hst_il" Association="Self.FK_hst_hastakarti_hst_il">
             <End Role="hst_il" EntitySet="hst_il" />
@@ -1423,6 +1607,26 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="hst_firma">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.hst_firma">
+              <MappingFragment StoreEntitySet="hst_firma">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="t_fad" ColumnName="t_fad" />
+                <ScalarProperty Name="t_mad" ColumnName="t_mad" />
+                <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hst_hastadurum">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.hst_hastadurum">
+              <MappingFragment StoreEntitySet="hst_hastadurum">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="t_tc" ColumnName="t_tc" />
+                <ScalarProperty Name="t_hdurumid" ColumnName="t_hdurumid" />
+                <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="hst_hastakarti">
             <EntityTypeMapping TypeName="WEINCDENTALModel.hst_hastakarti">
               <MappingFragment StoreEntitySet="hst_hastakarti">
@@ -1446,6 +1650,15 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="hst_hastalik">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.hst_hastalik">
+              <MappingFragment StoreEntitySet="hst_hastalik">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="t_adi" ColumnName="t_adi" />
+                <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="hst_his_hareket">
             <EntityTypeMapping TypeName="WEINCDENTALModel.hst_his_hareket">
               <MappingFragment StoreEntitySet="hst_his_hareket">
@@ -1457,6 +1670,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="t_parca" ColumnName="t_parca" />
                 <ScalarProperty Name="t_cene" ColumnName="t_cene" />
                 <ScalarProperty Name="t_odemevarmi" ColumnName="t_odemevarmi" />
+                <ScalarProperty Name="t_firmaid" ColumnName="t_firmaid" />
                 <ScalarProperty Name="t_createuser" ColumnName="t_createuser" />
                 <ScalarProperty Name="t_createdate" ColumnName="t_createdate" />
                 <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
@@ -1564,6 +1778,17 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="t_odemetarih" ColumnName="t_odemetarih" />
                 <ScalarProperty Name="t_createdate" ColumnName="t_createdate" />
                 <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

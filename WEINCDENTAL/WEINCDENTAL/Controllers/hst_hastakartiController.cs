@@ -17,12 +17,28 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_hastakarti
         public ActionResult Index()
         {
-            var hst_hastakarti = db.hst_hastakarti.Include(h => h.hst_cinsiyet).Include(h => h.hst_il).Include(h => h.hst_ilce).Include(h => h.hst_medenidurum);
+            var hst_hastakarti = db.hst_hastakarti.Include(h => h.hst_cinsiyet).Include(h => h.hst_il).Include(h => h.hst_ilce).Include(h => h.hst_medenidurum).Include(h => h.hst_ulke);
             return View(hst_hastakarti.ToList());
         }
 
+        //İle göre ilçe getir...
+        [HttpPost]
+        public JsonResult GetIlIlce(int id)
+        {
+            List<hst_ilce> towns = null;
+            towns = db.hst_ilce.Where(k => k.t_aktif == true && k.t_ilId == id).OrderBy(a => a.t_adi).ToList();
+            List<SelectListItem> itemList = (from i in towns
+                                             select new SelectListItem
+                                             {
+                                                 Value = i.t_id.ToString(),
+                                                 Text = i.t_adi
+                                             }).ToList();
+            return Json(new { sonuc = itemList, JsonRequestBehavior.AllowGet });
+        }
+
+
         // GET: hst_hastakarti/Details/5
-        public ActionResult Details(decimal id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -43,32 +59,62 @@ namespace WEINCDENTAL.Controllers
             ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi");
             ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi");
             ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi");
+            List<hst_ulke> ulke = null;
+            ulke = db.hst_ulke.Where(k => k.Aktif == true).ToList();
+            List<SelectListItem> itemList = (from i in ulke
+
+                                             select new SelectListItem
+                                             {
+                                                 Value = i.CountryID.ToString(),
+                                                 Text = i.CountryName,
+                                                 Selected = i.CountryID == 212
+                                             }).ToList();
+
+            //    ViewBag.t_ulkeId = new SelectList(db.hst_ulke, "CountryID", "CountryName");
+            ViewBag.t_ulkeId = itemList;
             return View();
         }
-       
+        public ActionResult Create2()
+        {
+            ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi");
+            ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi");
+            ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi");
+            ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi");
+            ViewBag.t_ulkeId = new SelectList(db.hst_ulke, "CountryID", "CountryName");
+            return View();
+        }
+
         // POST: hst_hastakarti/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "t_id,t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_ilId,t_ilceId,t_adres,t_createuser,t_createdate,t_aktif")] hst_hastakarti hst_hastakarti)
+        public ActionResult Create([Bind(Include = "t_id,t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_ulkeId,t_ilId,t_ilceId,t_adres,t_createuser,t_createdate,t_aktif")] hst_hastakarti hst_hastakarti)
         {
             if (ModelState.IsValid)
             {
+
+                hst_hastakarti.t_createdate = DateTime.Now;
+                hst_hastakarti.t_createuser = "W3";
+                hst_hastakarti.t_aktif = true;
+
                 db.hst_hastakarti.Add(hst_hastakarti);
                 db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                // return View();
 
-            ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi", hst_hastakarti.t_cinsiyet);
-            ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi", hst_hastakarti.t_ilId);
-            ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi", hst_hastakarti.t_ilceId);
-            ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi", hst_hastakarti.t_medenidurum);
-            return View(hst_hastakarti);
+
+                ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi", hst_hastakarti.t_cinsiyet);
+                ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi", hst_hastakarti.t_ilId);
+                ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi", hst_hastakarti.t_ilceId);
+                ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi", hst_hastakarti.t_medenidurum);
+                ViewBag.t_ulkeId = new SelectList(db.hst_ulke, "CountryID", "BinaryCode", hst_hastakarti.t_ulkeId);
+                return View(hst_hastakarti);
+            }
+            return View();
         }
 
         // GET: hst_hastakarti/Edit/5
-        public ActionResult Edit(decimal id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -83,6 +129,7 @@ namespace WEINCDENTAL.Controllers
             ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi", hst_hastakarti.t_ilId);
             ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi", hst_hastakarti.t_ilceId);
             ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi", hst_hastakarti.t_medenidurum);
+            ViewBag.t_ulkeId = new SelectList(db.hst_ulke, "CountryID", "BinaryCode", hst_hastakarti.t_ulkeId);
             return View(hst_hastakarti);
         }
 
@@ -91,7 +138,7 @@ namespace WEINCDENTAL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "t_id,t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_ilId,t_ilceId,t_adres,t_createuser,t_createdate,t_aktif")] hst_hastakarti hst_hastakarti)
+        public ActionResult Edit([Bind(Include = "t_id,t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_ulkeId,t_ilId,t_ilceId,t_adres,t_createuser,t_createdate,t_aktif")] hst_hastakarti hst_hastakarti)
         {
             if (ModelState.IsValid)
             {
@@ -103,11 +150,12 @@ namespace WEINCDENTAL.Controllers
             ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi", hst_hastakarti.t_ilId);
             ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi", hst_hastakarti.t_ilceId);
             ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi", hst_hastakarti.t_medenidurum);
+            ViewBag.t_ulkeId = new SelectList(db.hst_ulke, "CountryID", "BinaryCode", hst_hastakarti.t_ulkeId);
             return View(hst_hastakarti);
         }
 
         // GET: hst_hastakarti/Delete/5
-        public ActionResult Delete(decimal id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -124,7 +172,7 @@ namespace WEINCDENTAL.Controllers
         // POST: hst_hastakarti/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(decimal id)
+        public ActionResult DeleteConfirmed(string id)
         {
             hst_hastakarti hst_hastakarti = db.hst_hastakarti.Find(id);
             db.hst_hastakarti.Remove(hst_hastakarti);

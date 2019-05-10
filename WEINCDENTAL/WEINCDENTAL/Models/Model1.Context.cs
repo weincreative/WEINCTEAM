@@ -33,7 +33,10 @@ namespace WEINCDENTAL.Models
         public virtual DbSet<hst_bölüm> hst_bölüm { get; set; }
         public virtual DbSet<hst_cene_uygunmu> hst_cene_uygunmu { get; set; }
         public virtual DbSet<hst_cinsiyet> hst_cinsiyet { get; set; }
+        public virtual DbSet<hst_firma> hst_firma { get; set; }
+        public virtual DbSet<hst_hastadurum> hst_hastadurum { get; set; }
         public virtual DbSet<hst_hastakarti> hst_hastakarti { get; set; }
+        public virtual DbSet<hst_hastalik> hst_hastalik { get; set; }
         public virtual DbSet<hst_his_hareket> hst_his_hareket { get; set; }
         public virtual DbSet<hst_hizmet> hst_hizmet { get; set; }
         public virtual DbSet<hst_hizmet_parca> hst_hizmet_parca { get; set; }
@@ -44,6 +47,7 @@ namespace WEINCDENTAL.Models
         public virtual DbSet<hst_randevu> hst_randevu { get; set; }
         public virtual DbSet<hst_ulke> hst_ulke { get; set; }
         public virtual DbSet<hst_vezne> hst_vezne { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<View_HizHareket> View_HizHareket { get; set; }
         public virtual DbSet<View_Vezne> View_Vezne { get; set; }
     }

@@ -13,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.t_tc)
+            @Html.DisplayNameFor(model => model.t_id)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.t_adi)
@@ -57,13 +57,16 @@
         <th>
             @Html.DisplayNameFor(model => model.hst_medenidurum.t_adi)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hst_ulke.BinaryCode)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.t_tc)
+            @Html.DisplayFor(modelItem => item.t_id)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.t_adi)
@@ -106,6 +109,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.hst_medenidurum.t_adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hst_ulke.BinaryCode)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.t_tc }) |

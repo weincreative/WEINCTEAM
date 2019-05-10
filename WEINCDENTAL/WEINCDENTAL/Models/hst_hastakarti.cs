@@ -19,6 +19,7 @@ namespace WEINCDENTAL.Models
         {
             this.adm_pacs = new HashSet<adm_pacs>();
             this.hst_basvuru = new HashSet<hst_basvuru>();
+            this.hst_hastadurum = new HashSet<hst_hastadurum>();
             this.hst_randevu = new HashSet<hst_randevu>();
         }
     
@@ -45,6 +46,8 @@ namespace WEINCDENTAL.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hst_basvuru> hst_basvuru { get; set; }
         public virtual hst_cinsiyet hst_cinsiyet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<hst_hastadurum> hst_hastadurum { get; set; }
         public virtual hst_il hst_il { get; set; }
         public virtual hst_ilce hst_ilce { get; set; }
         public virtual hst_medenidurum hst_medenidurum { get; set; }

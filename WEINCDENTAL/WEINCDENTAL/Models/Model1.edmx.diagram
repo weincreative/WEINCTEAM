@@ -4,28 +4,32 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6c2a801730c14d56b0283723ca5acada" Name="Diagram1">
+      <Diagram DiagramId="43823dbe44cd499abb4fe37e708626c5" Name="Diagram1">
         <EntityTypeShape EntityType="WEINCDENTALModel.adm_kullanicigrup" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="WEINCDENTALModel.adm_kullanicilar" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.adm_modulyetki" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.adm_pacs" Width="1.5" PointX="9.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.hst_basvuru" Width="1.5" PointX="12.75" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.hst_bölüm" Width="1.5" PointX="10.5" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.hst_cene_uygunmu" Width="1.5" PointX="10.5" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.hst_cinsiyet" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.hst_hastakarti" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.hst_his_hareket" Width="1.5" PointX="15" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.hst_hizmet" Width="1.5" PointX="12.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.hst_hizmet_parca" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.hst_il" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.hst_ilce" Width="1.5" PointX="5.25" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.hst_medenidurum" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.hst_odemetip" Width="1.5" PointX="15" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.hst_randevu" Width="1.5" PointX="9.75" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.hst_ulke" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.hst_vezne" Width="1.5" PointX="17.25" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.View_HizHareket" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.View_Vezne" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.adm_modulyetki" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.adm_pacs" Width="1.5" PointX="9.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_basvuru" Width="1.5" PointX="9.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_bölüm" Width="1.5" PointX="7.5" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_cene_uygunmu" Width="1.5" PointX="7.5" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_cinsiyet" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_firma" Width="1.5" PointX="9.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_hastadurum" Width="1.5" PointX="12.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_hastakarti" Width="1.5" PointX="7.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_hastalik" Width="1.5" PointX="10.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_his_hareket" Width="1.5" PointX="12" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_hizmet" Width="1.5" PointX="9.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_hizmet_parca" Width="1.5" PointX="7.5" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_il" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_ilce" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_medenidurum" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_odemetip" Width="1.5" PointX="12" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_randevu" Width="1.5" PointX="9.75" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_ulke" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.hst_vezne" Width="1.5" PointX="14.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.View_HizHareket" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.View_Vezne" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="WEINCDENTALModel.FK_adm_kullanicilar_adm_kullanicigrup1" ManuallyRouted="false" />
         <AssociationConnector Association="WEINCDENTALModel.FK_adm_kullanicilar_adm_modulyetki1" ManuallyRouted="false" />
         <AssociationConnector Association="WEINCDENTALModel.FK_adm_pacs_hst_hastakarti" ManuallyRouted="false" />
@@ -34,6 +38,9 @@
         <AssociationConnector Association="WEINCDENTALModel.FK_hst_his_hareket_hst_basvuru" ManuallyRouted="false" />
         <AssociationConnector Association="WEINCDENTALModel.FK_hst_hizmet_hst_cene_uygunmu" ManuallyRouted="false" />
         <AssociationConnector Association="WEINCDENTALModel.FK_hst_hastakarti_hst_cinsiyet" ManuallyRouted="false" />
+        <AssociationConnector Association="WEINCDENTALModel.FK_hst_his_hareket_hst_firma" ManuallyRouted="false" />
+        <AssociationConnector Association="WEINCDENTALModel.FK_hst_hastadurum_hst_hastakarti" ManuallyRouted="false" />
+        <AssociationConnector Association="WEINCDENTALModel.FK_hst_hastadurum_hst_hastalik" ManuallyRouted="false" />
         <AssociationConnector Association="WEINCDENTALModel.FK_hst_hastakarti_hst_il" ManuallyRouted="false" />
         <AssociationConnector Association="WEINCDENTALModel.FK_hst_hastakarti_hst_ilce" ManuallyRouted="false" />
         <AssociationConnector Association="WEINCDENTALModel.FK_hst_hastakarti_hst_medenidurum" ManuallyRouted="false" />

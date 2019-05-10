@@ -173,7 +173,16 @@
     <Compile Include="Models\hst_cinsiyet.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\hst_firma.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hst_hastadurum.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\hst_hastakarti.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hst_hastalik.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_his_hareket.cs">
@@ -220,6 +229,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModelAyarlar.cs" />
     <Compile Include="Models\View_HizHareket.cs">
@@ -911,6 +923,7 @@
     <Content Include="Scripts\smart-chat-ui\smart.chat.ui.min.js" />
     <Content Include="Scripts\smartwidgets\jarvis.widget.min.js" />
     <Content Include="Scripts\speech\voicecommand.min.js" />
+    <Content Include="Scripts\WeincdentalScript.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -986,11 +999,12 @@
     <Content Include="Views\hst_hizmet\Edit.cshtml" />
     <Content Include="Views\hst_hizmet\Index.cshtml" />
     <Content Include="Views\Ayarlar\AyarlarHizmet.cshtml" />
+    <Content Include="Views\hst_hastakarti\Create.cshtml" />
     <Content Include="Views\hst_hastakarti\Delete.cshtml" />
     <Content Include="Views\hst_hastakarti\Details.cshtml" />
     <Content Include="Views\hst_hastakarti\Edit.cshtml" />
     <Content Include="Views\hst_hastakarti\Index.cshtml" />
-    <Content Include="Views\hst_hastakarti\Create.cshtml" />
+    <Content Include="Views\hst_hastakarti\Create2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
