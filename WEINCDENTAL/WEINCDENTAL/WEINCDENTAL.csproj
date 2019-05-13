@@ -1005,6 +1005,7 @@
     <Content Include="Views\hst_hastakarti\Edit.cshtml" />
     <Content Include="Views\hst_hastakarti\Index.cshtml" />
     <Content Include="Views\hst_hastakarti\Create2.cshtml" />
+    <Content Include="Views\Shared\_TCSor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

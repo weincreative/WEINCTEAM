@@ -40,6 +40,7 @@
     @{ Html.RenderPartialIf("_Aside", !Request.IsAuthenticated); }
     <div id="main" role="main">
         @{ Html.RenderPartialIf("_Ribbon", !Request.IsAuthenticated); }
+        @{Html.RenderPartial("_TCSor");}
         @RenderBody()
     </div>
     @if (!Request.IsAuthenticated)
