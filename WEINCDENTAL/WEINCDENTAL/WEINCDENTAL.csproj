@@ -146,6 +146,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\hst_hastakartiController.cs" />
     <Compile Include="Controllers\hst_hizmetController.cs" />
+    <Compile Include="Controllers\YardimciController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -444,6 +445,9 @@
     <Content Include="Content\img\violate.jpg" />
     <Content Include="Content\img\voicecommand\active-btn.gif" />
     <Content Include="Content\img\vt-menu.png" />
+    <Content Include="Content\klinikImage\cliniclogo-1.png" />
+    <Content Include="Content\klinikImage\cliniclogo-2.png" />
+    <Content Include="Content\klinikImage\logo.png" />
     <Content Include="Content\sound\bigbox.mp3" />
     <Content Include="Content\sound\license.txt" />
     <Content Include="Content\sound\messagebox.mp3" />
@@ -957,7 +961,9 @@
     <Content Include="Scripts\plugin\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="Scripts\plugin\ckeditor\skins\moono\readme.md" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Yardimci\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

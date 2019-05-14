@@ -4,7 +4,7 @@
     <meta charset=" utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title> WEINCREATIVE - MVC5 </title>
+    <title> Özel akademi Ağız ve Diş Sağlığı Polikinliği </title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
 
     <!-- Specifying a Webpage Icon for Web Clip
-         Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+    Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
     <link rel="apple-touch-icon" href="~/content/img/splash/sptouch-icon-iphone.png">
     <link rel="apple-touch-icon" sizes="76x76" href="~/content/img/splash/touch-icon-ipad.png">
     <link rel="apple-touch-icon" sizes="120x120" href="~/content/img/splash/touch-icon-iphone-retina.png">
@@ -35,20 +35,36 @@
     <link rel="apple-touch-startup-image" href="~/content/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="~/content/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
 </head>
-<body class="@ViewBag.PageClass @Settings.CurrentTheme">
-    @{ Html.RenderPartial("_Header", RenderSection("topright", false)); }
-    @{ Html.RenderPartialIf("_Aside", !Request.IsAuthenticated); }
-    <div id="main" role="main">
-        @{ Html.RenderPartialIf("_Ribbon", !Request.IsAuthenticated); }
-        @{Html.RenderPartial("_TCSor");}
-        @RenderBody()
-    </div>
-    @if (!Request.IsAuthenticated)
-    {
-        Html.RenderPartial("_Footer");
-        Html.RenderPartialIf("_Tiles", Settings.EnableTiles);
-    }
-    @{ Html.RenderPartial("_Scripts", RenderSection("pagespecific", false)); }
+<body  class="@ViewBag.PageClass @Settings.CurrentTheme" >
+@*<img src="~/Content/klinikImage/cliniclogo-1.png"/>*@
+@{ Html.RenderPartial("_Header", RenderSection("topright", false)); }
+@{ Html.RenderPartialIf("_Aside", !Request.IsAuthenticated); }
+<div id="main" role="main">
+    @{ Html.RenderPartialIf("_Ribbon", !Request.IsAuthenticated); }
+  
+    
+    @* 
+        *_TCSor Session != admin    
+    *@
+    @{Html.RenderPartial("_TCSor");}
+    @RenderBody()
+</div>
+@if (!Request.IsAuthenticated)
+{
+    Html.RenderPartial("_Footer");
+    Html.RenderPartialIf("_Tiles", Settings.EnableTiles);
+}
+@{ Html.RenderPartial("_Scripts", RenderSection("pagespecific", false)); }
 </body>
 
 </html>
+
+<style>
+    #main {
+        background-image: url("/Content/klinikImage/cliniclogo-1.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 850px;
+        background-size: 40% 50%;
+    }
+</style>

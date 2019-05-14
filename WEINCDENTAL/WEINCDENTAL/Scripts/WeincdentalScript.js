@@ -11,10 +11,10 @@
             $("#ilce").prop("disabled", false);
 
             $.each(veri.sonuc, function (index, item) {
-              
+
                 var optionhtml = '<option value="' + item.Value + '"> ' + item.Text + '</option>';
                 $("#ilce").append(optionhtml);
-              
+
                 //$("#TownId").append(optionhtml);
             });
         },

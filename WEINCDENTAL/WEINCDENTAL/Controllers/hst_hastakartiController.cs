@@ -37,6 +37,12 @@ namespace WEINCDENTAL.Controllers
         }
 
 
+        //public PartialViewResult Details(string id)
+        //{
+        //    return PartialView();
+        //}
+
+
         // GET: hst_hastakarti/Details/5
         public ActionResult Details(string id)
         {

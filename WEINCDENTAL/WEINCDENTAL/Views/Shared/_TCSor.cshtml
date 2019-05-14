@@ -1,24 +1,33 @@
-﻿
+﻿<script src="~/Scripts/WeincdentalScript.js"></script>
+
 <div id="content" style="border-color: #8ac38b; background-color: #cde0c4;">
     <section>
         <hr />
         <div class="row">
-            <article class="col-sm-12 col-md-12 col-lg-3">
-                <fieldset>
-                    <div class="well col-md-12" style=" background-color: #cde0c4;border-color: #8ac38b">
-                        <div class="input-group">
-                            <input class="form-control" type="number" placeholder="T.C. No ara...">
-                            <div class="input-group-btn">
-                                <button class="btn btn-default btn-primary" type="button" id="btnSearch">
-                                    <i class="fa fa-search"></i> Sorgula
-                                </button>
+            
+            @using (Html.BeginForm("GetTc", "Yardimci"))
+            {
+                <article class="col-sm-12 col-md-12 col-lg-3">
+                    <fieldset>
+                        <div class="well col-md-12" style="background-color: #cde0c4; border-color: #8ac38b">
+                            <div class="input-group">
+                                <input class="form-control" type="number" placeholder="T.C. No ara..." id="tcid" name="tc">
+
+                                <div class="input-group-btn">
+                                 
+                                    <button class="btn btn-default btn-primary" type="submit" id="btnSearch">
+                                        <i class="fa fa-search"></i> Sorgula
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
 
-                </fieldset>
-            </article>
+                    </fieldset>
+                </article>
+
+            }
+           
             <article class="col-sm-12 col-md-12 col-lg-6">
                 <fieldset>
                     <div class="row">
@@ -51,11 +60,15 @@
 
     </section>
 </div>
+
 @section pagespecific {
     <script type="text/javascript">
-
+        
 
         $(document).ready(function () {
+         
+        
+          
 
         });
     </script>

@@ -2,16 +2,14 @@
 @model WEINCDENTAL.Models.hst_hastakarti
 
 @{
-    /**/
-
-    ViewBag.Title = "Create";
+    
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!-- MAIN CONTENT -->
 <div id="content">
-    
-<div class="row">
+
+    <div class="row">
         <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
             <h1 class="page-title txt-color-blueDark">
                 <!-- PAGE HEADER -->
@@ -32,7 +30,7 @@
             <!-- NEW COL START -->
             <article class="col-sm-12 col-md-12 col-lg-6">
                 <!-- Widget ID (each widget will need unique ID)-->
-                <div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false"  data-widget-deletebutton="false" data-widget-colorbutton="false" data-widget-custombutton="false">
+                <div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-colorbutton="false" data-widget-custombutton="false">
                     <!-- widget options:
                     usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
@@ -82,15 +80,12 @@
                                         </section>
                                     </div>
 
-
-
                                     <div class="row form-group">
                                         <section class="col col-6">
                                             <label class="input">
                                                 <i class="icon-prepend fa fa-tag"></i>
                                                 @Html.EditorFor(model => model.t_tc, new { htmlAttributes = new { @class = "form-control", placeholder = "T.C. / Yabancı Uyruklu Numarası"@*, Name = "tcname"*@}
                                         })
-                                                @*<input type="text" name="fname" placeholder="First name">*@
 
                                             </label>
                                         </section>
@@ -99,7 +94,6 @@
                                                 <i class="icon-prepend fa fa-user"></i>
                                                 @Html.EditorFor(model => model.t_adi, new { htmlAttributes = new { @class = "form-control", placeholder = "Ad Giriniz"@*, Name = "fname"*@}
                                         })
-                                                @*<input type="text" name="fname" placeholder="First name">*@
 
                                             </label>
                                         </section>
@@ -111,8 +105,6 @@
                                                 <i class="icon-prepend fa fa-user"></i>
                                                 @Html.EditorFor(model => model.t_soyadi, new { htmlAttributes = new { @class = "form-control", placeholder = "Soyad Giriniz"@*, Name = "lname"*@}
                                         })
-                                                @*@Html.ValidationMessageFor(model => model.t_tc, "", new { @class = "invalid" })*@
-                                                @*<input type="text" name="fname" placeholder="First name">*@
 
                                             </label>
                                         </section>
@@ -121,7 +113,6 @@
                                                 <i class="icon-prepend fa fa-location-arrow"></i>
                                                 @Html.EditorFor(model => model.t_dogumyeri, new { htmlAttributes = new { @class = "form-control", placeholder = "Doğum Yeri Giriniz"@*, Name = "dyeriname"*@}
                                         })
-                                                @*<input type="text" name="fname" placeholder="First name">*@
 
                                             </label>
                                         </section>
@@ -135,7 +126,6 @@
                                                 placeholder = "Doğum tarihini giriniz"
                                             }
                                         })
-                                                @*<input type="text" name="startdate" id="startdate" placeholder="Expected start date">*@
 
                                             </label>
                                         </section>
@@ -146,7 +136,6 @@
                                                 <i class="icon-prepend fa fa-phone"></i>
                                                 @Html.EditorFor(model => model.t_tel1, new { htmlAttributes = new { @class = "form-control", placeholder = "Telefon 1 Giriniz"@*, Name = "phone"*@}
                                         })
-                                                @*<input type="text" name="fname" placeholder="First name">*@
 
                                             </label>
                                         </section>
@@ -154,7 +143,6 @@
                                             <label class="input">
                                                 <i class="icon-prepend fa fa-phone"></i>
                                                 @Html.EditorFor(model => model.t_tel2, new { htmlAttributes = new { @class = "form-control", placeholder = "Telefon 2 Giriniz" } })
-                                                @*<input type="text" name="fname" placeholder="First name">*@
 
                                             </label>
                                         </section>
@@ -163,18 +151,15 @@
                                     <div class="row form-group">
                                         <section class="col col-6">
                                             <label class="select">
-                                                @*<i class="icon-prepend fa fa-female"></i>*@
-                                                @*<i class="icon-prepend fa fa-male"></i>*@
+                                                <i></i>
                                                 @Html.DropDownList("t_cinsiyet", null, "--Cinsiyet Seç--", htmlAttributes: new { @class = "form-control", placeholder = "Cinsiyet Seçiniz"@*, Name = "gender"*@})
-                                                @*<input type="text" name="fname" placeholder="First name">*@
 
                                             </label>
                                         </section>
                                         <section class="col col-6">
                                             <label class="select">
-                                                @Html.DropDownList("t_medenidurum", null, "--Medeni Durum Seç--", htmlAttributes: new { @class = "form-control", placeholder = "Medeni Durum Seçiniz"@*, Name = "medeni"*@})
-                                                @*<input type="text" name="fname" placeholder="First name">*@
-
+                                                <i></i>
+                                                @Html.DropDownList("t_medenidurum", null, "--Medeni Durum Seç--", htmlAttributes: new {@class = "form-control", placeholder = "Medeni Durum Seçiniz"@*, Name = "medeni"*@})
                                             </label>
                                         </section>
                                     </div>
@@ -182,23 +167,12 @@
                                     <div class="row form-group" id="iller">
                                         <section class="col col-6">
                                             <label class="select">
-                                                @*<i class="icon-prepend fa fa-female"></i>*@
-                                                @*<i class="icon-prepend fa fa-male"></i>*@
                                                 <i></i>
                                                 @Html.DropDownList("t_ilId", null, "--İl Seçiniz--", htmlAttributes: new { @class = "form-control",@id= "Citys",
                                                     placeholder = "İl Seçiniz "@*, Name = "country"*@})
-                                                @*<input type="text" name="fname" placeholder="First name">*@
 
                                             </label>
                                         </section>
-                                        @*<section class="col col-6">
-                                            <label class="select">
-                                                <i></i>*@
-                                        @*@Html.DropDownList("t_ilceId", null, "--İlçe Seçiniz--", htmlAttributes: new {@class = "form-control",@id="ilce", placeholder = "İlçe  Seçiniz"@*, Name = "city"*@@*})*@
-                                        @*<input type="text" name="fname" placeholder="First name">*@
-
-                                        @*</label>
-                                            </section>*@
                                         @Html.Hidden("t_ilceId")
                                         <section class="col col-6">
                                             <label class="select">
@@ -227,15 +201,8 @@
                                 </fieldset>
                                 <footer>
                                     <input type="submit" class="btn btn-primary" value="Kaydet" />
-                                    @*<ul class="demo-btns">
-                                            <li>
-                                                <button type="button" id="eg7" class="btn btn-default">
-                                                    <i class="fa fa-thumbs-up"></i> Extra Small Alert
-                                                </button>
-                                            </li>
-                                        </ul>*@
                                 </footer>
-                                @*</form>*@
+
 
                             }
                         </div>
@@ -262,7 +229,7 @@
 <!-- END MAIN CONTENT -->
 @section pagespecific {
     <script type="text/javascript">
-      
+
         // DO NOT REMOVE : GLOBAL FUNCTIONS!
         document.getElementById("ulkeid").style.display = 'none';
         $(":checkbox").change(function () {

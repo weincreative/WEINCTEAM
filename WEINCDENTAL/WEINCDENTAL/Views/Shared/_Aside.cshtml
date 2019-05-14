@@ -21,26 +21,37 @@
                 <a href="@Url.Action("Index", "Home")"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ana Sayfa</span></a>
             </li>
             @*<li class="@Html.RouteIf("adm_kullanicilar", "active")">
-                    <a href="@Url.Action("Index", "adm_kullanicilar")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Kullanıcılar</span></a>
-                </li>
-                <li class="@Html.RouteIf("adm_kullanicigrup", "active")">
-                    <a href="@Url.Action("Index", "adm_kullanicigrup")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Kullanıcı Grup</span></a>
-                </li>
-                    <li class="@Html.RouteIf("adm_modulyetki", "active")">
-                        <a href="@Url.Action("Index", "adm_modulyetki")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Modül Yetki</span></a>
-                    </li>
-                    <li class="@Html.RouteIf("hst_hizmet", "active")">
-                        <a href="@Url.Action("Index", "hst_hizmet")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Hizmetler</span></a>
-                    </li>*@
+            <a href="@Url.Action("Index", "adm_kullanicilar")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Kullanıcılar</span></a>
+        </li>
+        <li class="@Html.RouteIf("adm_kullanicigrup", "active")">
+            <a href="@Url.Action("Index", "adm_kullanicigrup")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Kullanıcı Grup</span></a>
+        </li>
+            <li class="@Html.RouteIf("adm_modulyetki", "active")">
+                <a href="@Url.Action("Index", "adm_modulyetki")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Modül Yetki</span></a>
+            </li>
+            <li class="@Html.RouteIf("hst_hizmet", "active")">
+                <a href="@Url.Action("Index", "hst_hizmet")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Hizmetler</span></a>
+            </li>*@
             <li class="@Html.RouteIf("Ayarlar", "active")">
                 <a href="@Url.Action("Ayarlar", "Home")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Ayarlar</span></a>
             </li>
             <li class="@Html.RouteIf("hst_hastakarti", "active")">
-                <a href="@Url.Action("Create", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Hasta Kartı</span></a>
+                <a href="#"><i class="fa fa-lg fa-fw fa-user"></i><span class="menu-item-parent">Hasta İşlemleri</span></a>
+                <ul>
+                   
+                    <li class="@Html.RouteIf("Create", "active")">
+                        <a href="@Url.Action("Create", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Hasta Kartı Oluştur</span></a>
+                    </li>
+                    <li class="@Html.RouteIf("Index", "active")">
+                        <a href="@Url.Action("Index", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Hasta Bilgileri</span></a>
+                    </li>
+                </ul>
             </li>
+
+           
             @*<li class="@Html.RouteIf("calendar", "active")">
-                    <a href="@Url.Action("calendar", "home")"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span class="menu-item-parent">Calendar</span></a>
-                </li>*@
+            <a href="@Url.Action("calendar", "home")"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span class="menu-item-parent">Calendar</span></a>
+        </li>*@
 
         </ul>
     </nav>
