@@ -13,8 +13,8 @@
     <!-- Basic Styles -->
     @Styles.Render("~/content/weincadmin")
     <!-- FAVICONS -->
-    <link rel="shortcut icon" href="~/content/klinikImage/favicon/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="~/content/klinikImage/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="~/content/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/content/img/favicon/favicon.ico" type="image/x-icon">
 
     <!-- GOOGLE FONT -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
@@ -35,31 +35,26 @@
     <link rel="apple-touch-startup-image" href="~/content/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="~/content/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
 </head>
-<body class="@ViewBag.PageClass @Settings.CurrentTheme">
-    @*<img src="~/Content/klinikImage/cliniclogo-1.png"/>*@
-    @{ Html.RenderPartial("_Header", RenderSection("topright", false)); }
-    @{ Html.RenderPartialIf("_Aside", !Request.IsAuthenticated); }
-    <div id="main" role="main">
-        @{ Html.RenderPartialIf("_Ribbon", !Request.IsAuthenticated); }
-
-
-        @*
-            *_TCSor Session != admin
-        *@
-
-
-        @{Html.RenderPartial("_TCSor");}
-
-        @*@{ @Html.Action("TCSor", "hst_hastakarti")}*@
-
-        @RenderBody()
-    </div>
-    @if (!Request.IsAuthenticated)
-    {
-        Html.RenderPartial("_Footer");
-        Html.RenderPartialIf("_Tiles", Settings.EnableTiles);
-    }
-    @{ Html.RenderPartial("_Scripts", RenderSection("pagespecific", false)); }
+<body  class="@ViewBag.PageClass @Settings.CurrentTheme" >
+@*<img src="~/Content/klinikImage/cliniclogo-1.png"/>*@
+@{ Html.RenderPartial("_Header", RenderSection("topright", false)); }
+@{ Html.RenderPartialIf("_Aside", !Request.IsAuthenticated); }
+<div id="main" role="main">
+    @{ Html.RenderPartialIf("_Ribbon", !Request.IsAuthenticated); }
+  
+    
+    @* 
+        *_TCSor Session != admin    
+    *@
+    @{Html.RenderPartial("_TCSor");}
+    @RenderBody()
+</div>
+@if (!Request.IsAuthenticated)
+{
+    Html.RenderPartial("_Footer");
+    Html.RenderPartialIf("_Tiles", Settings.EnableTiles);
+}
+@{ Html.RenderPartial("_Scripts", RenderSection("pagespecific", false)); }
 </body>
 
 </html>

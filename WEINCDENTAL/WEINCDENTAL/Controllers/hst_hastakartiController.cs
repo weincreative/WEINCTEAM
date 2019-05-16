@@ -46,9 +46,6 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_hastakarti/Details/5
         public ActionResult Details(string id)
         {
-
-            
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -58,25 +55,11 @@ namespace WEINCDENTAL.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.HastaTc = id;
             return View(hst_hastakarti);
         }
 
-        public PartialViewResult TCSor(string id)
-        {
-            //id = "12312312121";
-            if (id == null)
-            {
-               // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            hst_hastakarti hst_hastakarti = db.hst_hastakarti.Find(id);
-            if (hst_hastakarti == null)
-            {
-               // return HttpNotFound();
-            }
-            return PartialView(hst_hastakarti);
-        }
-       
+
+
 
         // GET: hst_hastakarti/Create
         public ActionResult Create()

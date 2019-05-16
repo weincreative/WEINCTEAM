@@ -33,17 +33,17 @@
                 <a href="@Url.Action("Index", "hst_hizmet")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Hizmetler</span></a>
             </li>*@
             <li class="@Html.RouteIf("Ayarlar", "active")">
-                <a href="@Url.Action("Ayarlar", "Home")"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent">Ayarlar</span></a>
+                <a href="@Url.Action("Ayarlar", "Home")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Ayarlar</span></a>
             </li>
             <li class="@Html.RouteIf("hst_hastakarti", "active")">
-                <a href="#"><i class="fa fa-lg fa-fw fa-group"></i><span class="menu-item-parent">Hasta İşlemleri</span></a>
+                <a href="#"><i class="fa fa-lg fa-fw fa-user"></i><span class="menu-item-parent">Hasta İşlemleri</span></a>
                 <ul>
                    
                     <li class="@Html.RouteIf("Create", "active")">
                         <a href="@Url.Action("Create", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Hasta Kartı Oluştur</span></a>
                     </li>
                     <li class="@Html.RouteIf("Index", "active")">
-                        <a href="@Url.Action("Index", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-info-circle"></i> <span class="menu-item-parent">Hasta Bilgileri</span></a>
+                        <a href="@Url.Action("Index", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Hasta Bilgileri</span></a>
                     </li>
                 </ul>
             </li>
