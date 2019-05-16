@@ -1,0 +1,43 @@
+﻿
+@model WEINCDENTAL.Models.hst_hastakarti
+
+
+            <article class="col-sm-12 col-md-12 col-lg-6" id="dinamikBilgi">
+                <fieldset>
+                    <div class="row">
+                        <section class="form-group col-md-3">
+                            <label class="col-md-5 control-label">T.C. :</label>
+                            @*<span class="control-label col-md-7">@Html.DisplayFor(model => model.t_tc)</span>*@
+                            @Html.DisplayFor(model => model.t_tc, new { @class = "col-md-7 control-label" })
+                            @*<label class="col-md-7 control-label" id="hstTc">589674589652</label>*@
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="form-group col-md-3">
+                            <label class="col-md-5 control-label">Ad:</label>
+                            @Html.DisplayFor(model => model.t_adi, new { @class = "col-md-7 control-label" })
+                            @*<label class="col-md-7 control-label" id="hstAd">Durali</label>*@
+
+                        </section>
+                        <section class="form-group col-md-3">
+                            <label class="col-md-5 control-label">Soyad:</label>
+                            @Html.DisplayFor(model => model.t_soyadi, new { @class = "col-md-7 control-label" })
+                            @*<label class="col-md-7 control-label" id="hstSoyad">KILINÇ</label>*@
+
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="form-group col-md-3">
+                            <label class="col-md-5 control-label">D.Tarihi:</label>
+                            @Html.DisplayFor(model => model.t_dogumtarihi, new { @class = "col-md-7 control-label" })
+                            @*<label class="col-md-7 control-label" id="hstDt"> 04.02.1993</label>*@
+                        </section>
+                        <section class="form-group col-md-3">
+                            <label class="col-md-5 control-label">Telefon:</label>
+                            @Html.DisplayFor(model => model.t_tel1, new { @class = "col-md-7 control-label" })
+                            @*<label class="col-md-7 control-label" id="hsttel"> 5555555555</label>*@
+                        </section>
+                    </div>
+
+                </fieldset>
+            </article>

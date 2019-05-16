@@ -1,10 +1,15 @@
-﻿<script src="~/Scripts/WeincdentalScript.js"></script>
+﻿@using WEINCDENTAL.Controllers
+
+
+@*@model WEINCDENTAL.Models.hst_hastakarti*@
+
+<script src="~/Scripts/WeincdentalScript.js"></script>
 
 <div id="content" style="border-color: #8ac38b; background-color: #cde0c4;">
     <section>
         <hr />
         <div class="row">
-            
+
             @using (Html.BeginForm("GetTc", "Yardimci"))
             {
                 <article class="col-sm-12 col-md-12 col-lg-3">
@@ -14,7 +19,7 @@
                                 <input class="form-control" type="number" placeholder="T.C. No ara..." id="tcid" name="tc">
 
                                 <div class="input-group-btn">
-                                 
+
                                     <button class="btn btn-default btn-primary" type="submit" id="btnSearch">
                                         <i class="fa fa-search"></i> Sorgula
                                     </button>
@@ -27,9 +32,17 @@
                 </article>
 
             }
-           
-            <article class="col-sm-12 col-md-12 col-lg-6">
+            
+            <div id="dinamikBilgi"></div>
+
+            @*<article class="col-sm-12 col-md-12 col-lg-6" id="dinamikBilgi">
                 <fieldset>
+                    <div class="row">
+                        <section class="form-group col-md-3">
+                            <label class="col-md-5 control-label">T.C. :</label>
+                            <label class="col-md-7 control-label" id="hstTc"></label>
+                        </section>
+                    </div>
                     <div class="row">
                         <section class="form-group col-md-3">
                             <label class="col-md-5 control-label">Ad:</label>
@@ -54,22 +67,27 @@
                     </div>
 
                 </fieldset>
-            </article>
+            </article>*@
 
         </div>
 
     </section>
 </div>
+@{
+    ViewBag.gdeger = Ortak._hastatc;
 
-@section pagespecific {
-    <script type="text/javascript">
-        
-
-        $(document).ready(function () {
-         
-        
-          
-
-        });
-    </script>
 }
+<script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        var gveri = @Html.Raw(Json.Encode(ViewBag.gdeger));
+       // alert(gveri );
+        if (gveri != null) {
+            $('#dinamikBilgi').load("@Url.Action("TCSor", "hst_hastakarti")", { id: gveri});
+           // ListHasta(gveri ); 
+        }
+       
+    });
+</script>
