@@ -36,6 +36,7 @@ namespace WEINCDENTAL.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            Ortak._hastatc = "";
             return RedirectToAction("Login");
         }
     }

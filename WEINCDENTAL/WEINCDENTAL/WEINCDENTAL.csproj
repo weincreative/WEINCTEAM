@@ -268,6 +268,7 @@
     <Content Include="Content\css\smartadmin-rtl.min.css" />
     <Content Include="Content\css\smartadmin-skins.min.css" />
     <Content Include="Content\css\validation-error-msg.min.css" />
+    <Content Include="Content\css\weinccreative.min.css" />
     <Content Include="Content\css\your_style.css" />
     <Content Include="Content\css\your_style.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
@@ -449,8 +450,10 @@
     <Content Include="Content\img\violate.jpg" />
     <Content Include="Content\img\voicecommand\active-btn.gif" />
     <Content Include="Content\img\vt-menu.png" />
+    <Content Include="Content\klinikImage\arkaplan.png" />
+    <Content Include="Content\klinikImage\bacground.jpg" />
+    <Content Include="Content\klinikImage\clinic-logo-2.png" />
     <Content Include="Content\klinikImage\cliniclogo-1.png" />
-    <Content Include="Content\klinikImage\cliniclogo-2.png" />
     <Content Include="Content\klinikImage\favicon\favicon.ico" />
     <Content Include="Content\klinikImage\logo.png" />
     <Content Include="Content\sound\bigbox.mp3" />
