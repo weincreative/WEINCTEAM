@@ -1,6 +1,6 @@
 ﻿<!-- collapse menu button -->
 <div id="hide-menu" class="btn-header pull-right">
-    <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+    <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Menüyü Kapat"><i class="fa fa-reorder"></i></a> </span>
 </div>
 <!-- end collapse menu -->
 <!-- #MOBILE -->
@@ -24,11 +24,11 @@
             </li>
             <li class="divider"></li>
             <li>
-                <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <>S</>creen</a>
+                <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> TAM <>E</>kran</a>
             </li>
             <li class="divider"></li>
             <li>
-                <a href="@Url.Action("login", "account")" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><>L</>ogout</strong></a>
+                <a href="@Url.Action("Logout", "Security")" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><>Ç</>ıkış Yap</strong></a>
             </li>
         </ul>
     </li>
@@ -36,7 +36,7 @@
 
 <!-- logout button -->
 <div id="logout" class="btn-header transparent pull-right">
-    <span> <a href="@Url.Action("login", "account")" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a> </span>
+    <span> <a href="@Url.Action("Logout", "Security")" title="Çıkış Yap" data-action="userLogout" data-logout-msg="Çıkış yapmak üzeresiniz buna emin misin ?"><i class="fa fa-sign-out"></i></a> </span>
 </div>
 <!-- end logout button -->
 <!-- search mobile button (this is hidden till mobile view port) -->
@@ -55,7 +55,7 @@
 <!-- end input: search field -->
 <!-- fullscreen button -->
 <div id="fullscreen" class="btn-header transparent pull-right">
-    <span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
+    <span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Tam Ekran"><i class="fa fa-arrows-alt"></i></a> </span>
 </div>
 <!-- end fullscreen button -->
 <!-- #Voice Command: Start Speech -->

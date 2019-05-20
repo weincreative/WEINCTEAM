@@ -15,7 +15,7 @@ namespace WEINCDENTAL.Content
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
 
         // GET: adm_modulyetki
-        public ActionResult Index()
+        public ActionResult Modulyetki_Index()
         {
             return View(db.adm_modulyetki.ToList());
         }

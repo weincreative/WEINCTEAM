@@ -38,18 +38,18 @@
 <body  class="@ViewBag.PageClass @Settings.CurrentTheme" >
 @*<img src="~/Content/klinikImage/cliniclogo-1.png"/>*@
 @{ Html.RenderPartial("_Header", RenderSection("topright", false)); }
-@{ Html.RenderPartialIf("_Aside", !Request.IsAuthenticated); }
+@{ Html.RenderPartialIf("_Aside", Request.IsAuthenticated); }
 <div id="main" role="main">
-    @{ Html.RenderPartialIf("_Ribbon", !Request.IsAuthenticated); }
+    @{ Html.RenderPartialIf("_Ribbon", Request.IsAuthenticated); }
   
     
     @* 
         *_TCSor Session != admin    
     *@
-    @{Html.RenderPartial("_TCSor");}
+    @*@{Html.RenderPartial("_TCSor");}*@
     @RenderBody()
 </div>
-@if (!Request.IsAuthenticated)
+@if (Request.IsAuthenticated)
 {
     Html.RenderPartial("_Footer");
     Html.RenderPartialIf("_Tiles", Settings.EnableTiles);

@@ -15,7 +15,7 @@ namespace WEINCDENTAL.Controllers
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
 
         // GET: adm_kullanicigrup
-        public ActionResult Index()
+        public ActionResult KullaniciGrup_Index()
         {
             return View(db.adm_kullanicigrup.ToList());
         }

@@ -11,20 +11,37 @@ namespace WEINCDENTAL.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class adm_kullanicilar
     {
+        [Display(Name = "Kullanýcý ID")]
+        [Required]
         public int t_id { get; set; }
+        [Display(Name = "Kullanýcý Kodu")]
+        [Required]
         public string t_kodu { get; set; }
+        [Display(Name = "Kullanýcý Adý")]
+        [Required]
         public string t_adi { get; set; }
+        [Display(Name = "Kullanýcý Þifre")]
+        [Required]
         public string t_sifre { get; set; }
+
         public int t_grup { get; set; }
+
         public int t_yetki { get; set; }
+        [Display(Name = "Oluþturan Kullanici")]
+        [Required]
         public string t_createuser { get; set; }
+        [Display(Name = "Oluþturulma Tarihi")]
+        [Required]
         public System.DateTime t_createdate { get; set; }
+        [Display(Name = "Aktif / Pasif")]
         public bool t_aktif { get; set; }
-    
+        [Display(Name = "Kullanýcý Grup")]
         public virtual adm_kullanicigrup adm_kullanicigrup { get; set; }
+        [Display(Name = "Kullanýcý Yetki")]
         public virtual adm_modulyetki adm_modulyetki { get; set; }
     }
 }

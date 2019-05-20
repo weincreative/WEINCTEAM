@@ -12,13 +12,18 @@ namespace WEINCDENTAL
         {
             bundles.Add(new StyleBundle("~/Content/weincadmin").IncludeDirectory("~/Content/css", "*.min.css"));
 
+            bundles.Add(new ScriptBundle("~/scripts/weincreative-js").Include(
+            "~/scripts/weincreative/custom-date-time.js"
+            ));
+
             bundles.Add(new ScriptBundle("~/scripts/weincadmin").Include(
                 "~/scripts/app.config.js",
                 "~/scripts/plugin/jquery-touch/jquery.ui.touch-punch.min.js",
                 "~/scripts/bootstrap/bootstrap.min.js",
                 "~/scripts/notification/SmartNotification.min.js",
                 "~/scripts/smartwidgets/jarvis.widget.min.js",
-                "~/scripts/plugin/jquery-validate/jquery.validate.min.js",
+                "~/scripts/plugin/jquery-validate/jquery.validate.min.js", //SERVER SİDE VALIDATION
+                "~/scripts/plugin/jquery-validate/jquery.validate.unobtrusive.min.js", //CLIENT SIDE VALIDATION
                 "~/scripts/plugin/masked-input/jquery.maskedinput.min.js",
                 "~/scripts/plugin/select2/select2.min.js",
                 "~/scripts/plugin/bootstrap-slider/bootstrap-slider.min.js",

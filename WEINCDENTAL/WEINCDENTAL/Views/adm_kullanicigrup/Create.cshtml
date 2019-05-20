@@ -14,7 +14,8 @@
             @Html.LabelFor(model => model.t_adi, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.t_adi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.t_adi, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.t_adi, "", new { @class = "text-danger" })*@
+                @Html.ValidationMessageFor(model => model.t_adi)
             </div>
         </div>
 
@@ -22,7 +23,8 @@
             @Html.LabelFor(model => model.t_createuser, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.t_createuser, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.t_createuser, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.t_createuser, "", new { @class = "text-danger" })*@
+                @Html.ValidationMessageFor(model => model.t_createuser)
             </div>
         </div>
 
@@ -30,7 +32,8 @@
             @Html.LabelFor(model => model.t_createdate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.t_createdate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.t_createdate, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.t_createdate, "", new { @class = "text-danger" })*@
+                @Html.ValidationMessageFor(model => model.t_createdate)
             </div>
         </div>
 
@@ -39,7 +42,8 @@
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.t_aktif)
-                    @Html.ValidationMessageFor(model => model.t_aktif, "", new { @class = "text-danger" })
+                    @*@Html.ValidationMessageFor(model => model.t_aktif, "", new { @class = "text-danger" })*@
+                    @Html.ValidationMessageFor(model => model.t_aktif)
                 </div>
             </div>
         </div>

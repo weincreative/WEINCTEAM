@@ -50,7 +50,7 @@ namespace WEINCDENTAL.Controllers
         {
             ViewBag.t_grup = new SelectList(db.adm_kullanicigrup, "t_id", "t_adi");
             ViewBag.t_yetki = new SelectList(db.adm_modulyetki, "t_id", "t_adi");
-            return View();
+            return View("Create", new adm_kullanicilar());
         }
 
         // POST: adm_kullanicilar/Create
@@ -60,7 +60,7 @@ namespace WEINCDENTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "t_id,t_kodu,t_adi,t_sifre,t_grup,t_yetki,t_createuser,t_createdate,t_aktif")] adm_kullanicilar adm_kullanicilar)
         {
-            if (ModelState.IsValid)
+             if (ModelState.IsValid)
             {
                 db.adm_kullanicilar.Add(adm_kullanicilar);
                 db.SaveChanges();

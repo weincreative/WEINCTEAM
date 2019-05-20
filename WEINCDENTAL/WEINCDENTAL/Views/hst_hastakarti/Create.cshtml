@@ -30,7 +30,7 @@
             <!-- NEW COL START -->
             <article class="col-sm-12 col-md-12 col-lg-6">
                 <!-- Widget ID (each widget will need unique ID)-->
-                <div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-colorbutton="false" data-widget-custombutton="false">
+                <div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-colorbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
                     <!-- widget options:
                     usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
@@ -75,6 +75,7 @@
                                             <label class="select">
                                                 <i></i>
                                                 @Html.DropDownList("t_ulkeId", null, htmlAttributes: new { @class = "form-control", placeholder = "Ülke Seçiniz" })
+                                                @Html.ValidationMessageFor(model => model.t_ulkeId)
 
                                             </label>
                                         </section>
@@ -84,16 +85,18 @@
                                         <section class="col col-6">
                                             <label class="input">
                                                 <i class="icon-prepend fa fa-tag"></i>
-                                                @Html.EditorFor(model => model.t_tc, new { htmlAttributes = new { @class = "form-control", placeholder = "T.C. / Yabancı Uyruklu Numarası"@*, Name = "tcname"*@}
+                                                @Html.EditorFor(model => model.t_tc, new { htmlAttributes = new { @class = "form-control", placeholder = "T.C. / Yabancı Uyruklu Numarası"}
                                         })
+                                                @Html.ValidationMessageFor(model => model.t_tc)
 
                                             </label>
                                         </section>
                                         <section class="col col-6">
                                             <label class="input">
                                                 <i class="icon-prepend fa fa-user"></i>
-                                                @Html.EditorFor(model => model.t_adi, new { htmlAttributes = new { @class = "form-control", placeholder = "Ad Giriniz"@*, Name = "fname"*@}
+                                                @Html.EditorFor(model => model.t_adi, new { htmlAttributes = new { @class = "form-control", placeholder = "Ad Giriniz"}
                                         })
+                                                @Html.ValidationMessageFor(model => model.t_adi)
 
                                             </label>
                                         </section>
@@ -103,17 +106,17 @@
                                         <section class="col col-6">
                                             <label class="input">
                                                 <i class="icon-prepend fa fa-user"></i>
-                                                @Html.EditorFor(model => model.t_soyadi, new { htmlAttributes = new { @class = "form-control", placeholder = "Soyad Giriniz"@*, Name = "lname"*@}
+                                                @Html.EditorFor(model => model.t_soyadi, new { htmlAttributes = new { @class = "form-control", placeholder = "Soyad Giriniz"}
                                         })
-
+                                                @Html.ValidationMessageFor(model => model.t_soyadi)
                                             </label>
                                         </section>
                                         <section class="col col-6">
                                             <label class="input">
                                                 <i class="icon-prepend fa fa-location-arrow"></i>
-                                                @Html.EditorFor(model => model.t_dogumyeri, new { htmlAttributes = new { @class = "form-control", placeholder = "Doğum Yeri Giriniz"@*, Name = "dyeriname"*@}
+                                                @Html.EditorFor(model => model.t_dogumyeri, new { htmlAttributes = new { @class = "form-control", placeholder = "Doğum Yeri Giriniz"}
                                         })
-
+                                                @Html.ValidationMessageFor(model => model.t_dogumyeri)
                                             </label>
                                         </section>
 
@@ -122,10 +125,11 @@
                                         <section class="col col-6">
                                             <label class="input">
                                                 <i class="icon-append fa fa-calendar"></i>
-                                                @Html.EditorFor(model => model.t_dogumtarihi, new { htmlAttributes = new { @class = "form-control", @*Name = "startdate",*@@id = "startdate",
-                                                placeholder = "Doğum tarihini giriniz"
-                                            }
-                                        })
+                                                @Html.EditorFor(model => model.t_dogumtarihi,"{0:yyyy-MM-dd}" ,new { htmlAttributes = new { @class = "form-control", @id = "startdate",
+                                               placeholder = "Doğum tarihini giriniz" ,onchange = "CheckDateTypeIsValid(this)"
+                                           }
+                                           })
+                                                @Html.ValidationMessageFor(model => model.t_dogumtarihi)
 
                                             </label>
                                         </section>
@@ -134,16 +138,16 @@
                                         <section class="col col-6">
                                             <label class="input">
                                                 <i class="icon-prepend fa fa-phone"></i>
-                                                @Html.EditorFor(model => model.t_tel1, new { htmlAttributes = new { @class = "form-control", placeholder = "Telefon 1 Giriniz"@*, Name = "phone"*@}
+                                                @Html.EditorFor(model => model.t_tel1, new { htmlAttributes = new { @class = "form-control", placeholder = "Telefon 1 Giriniz"}
                                         })
-
+                                                @Html.ValidationMessageFor(model => model.t_tel1)
                                             </label>
                                         </section>
                                         <section class="col col-6">
                                             <label class="input">
                                                 <i class="icon-prepend fa fa-phone"></i>
                                                 @Html.EditorFor(model => model.t_tel2, new { htmlAttributes = new { @class = "form-control", placeholder = "Telefon 2 Giriniz" } })
-
+                                                @Html.ValidationMessageFor(model => model.t_tel2)
                                             </label>
                                         </section>
 
@@ -152,14 +156,15 @@
                                         <section class="col col-6">
                                             <label class="select">
                                                 <i></i>
-                                                @Html.DropDownList("t_cinsiyet", null, "--Cinsiyet Seç--", htmlAttributes: new { @class = "form-control", placeholder = "Cinsiyet Seçiniz"@*, Name = "gender"*@})
-
+                                                @Html.DropDownList("t_cinsiyet", null, "--Cinsiyet Seç--", htmlAttributes: new { @class = "form-control", placeholder = "Cinsiyet Seçiniz"})
+                                                @Html.ValidationMessageFor(model => model.t_cinsiyet)
                                             </label>
                                         </section>
                                         <section class="col col-6">
                                             <label class="select">
                                                 <i></i>
-                                                @Html.DropDownList("t_medenidurum", null, "--Medeni Durum Seç--", htmlAttributes: new {@class = "form-control", placeholder = "Medeni Durum Seçiniz"@*, Name = "medeni"*@})
+                                                @Html.DropDownList("t_medenidurum", null, "--Medeni Durum Seç--", htmlAttributes: new { @class = "form-control", placeholder = "Medeni Durum Seçiniz" })
+                                                @Html.ValidationMessageFor(model => model.t_medenidurum)
                                             </label>
                                         </section>
                                     </div>
@@ -169,7 +174,8 @@
                                             <label class="select">
                                                 <i></i>
                                                 @Html.DropDownList("t_ilId", null, "--İl Seçiniz--", htmlAttributes: new { @class = "form-control",@id= "Citys",
-                                                    placeholder = "İl Seçiniz "@*, Name = "country"*@})
+                                                    placeholder = "İl Seçiniz "})
+                                                @Html.ValidationMessageFor(model => model.t_ilId)
 
                                             </label>
                                         </section>
@@ -179,6 +185,7 @@
                                                 <i></i>
                                                 <select id="ilce" disabled>
                                                     <option>Bir İlçe Seçiniz</option>
+                                                    @Html.ValidationMessageFor(model => model.t_ilceId)
                                                 </select>
                                             </label>
                                         </section>
@@ -188,8 +195,9 @@
                                         <section class="col col-lg-12">
                                             <label class="input">
                                                 <i class="icon-prepend fa fa-home"></i>
-                                                @Html.EditorFor(model => model.t_adres, new { htmlAttributes = new { @class = "form-control", placeholder = "Adres Giriniz"@*, Name = "address"*@}
+                                                @Html.EditorFor(model => model.t_adres, new { htmlAttributes = new { @class = "form-control", placeholder = "Adres Giriniz"}
                                         })
+                                                @Html.ValidationMessageFor(model => model.t_adres)
                                                 @*<input type="text" name="fname" placeholder="First name">*@
 
                                             </label>
