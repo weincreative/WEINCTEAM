@@ -15,6 +15,7 @@ namespace WEINCDENTAL.Controllers
         [HttpPost]
         public ActionResult GetTc(string tc)
         {
+            Ortak._hastatc = tc;
             var varmi = db.hst_hastakarti.Count(k => k.t_aktif == true && k.t_tc == tc) > 0 ? true : false; ;
 
             if (varmi)

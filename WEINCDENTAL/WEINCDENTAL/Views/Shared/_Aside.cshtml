@@ -48,7 +48,7 @@
             @*<li class="@Html.RouteIf("calendar", "active")">
             <a href="@Url.Action("calendar", "home")"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span class="menu-item-parent">Calendar</span></a>
         </li>*@
-            @if (User.IsInRole("1;2"))
+            @if (User.IsInRole("1")|| User.IsInRole("2"))
             {
                 <li class="@Html.RouteIf("Ayarlar", "active")">
                     <a href="@Url.Action("Ayarlar", "Home")"><i class="fa fa-lg fa-fw fa-empire"></i> <span class="menu-item-parent">Ayarlar</span></a>

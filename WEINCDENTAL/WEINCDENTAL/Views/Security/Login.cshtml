@@ -16,7 +16,7 @@
 <body>
     <div class="container">
         <div class="col-xs-12 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
-            @ViewBag.ErrorMsg
+            <div style="color: red;">@ViewBag.ErrorMsg</div>
             @using (Html.BeginForm("Login", "Security", FormMethod.Post))
             {
                 <div class="form-group">

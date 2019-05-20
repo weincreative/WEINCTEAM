@@ -55,10 +55,26 @@ namespace WEINCDENTAL.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.HastaTc = id;
             return View(hst_hastakarti);
         }
 
-
+        public PartialViewResult GetHastaBilgi(string id)
+        {
+            //id = "12312312121";
+            if (id == null)
+            {
+                // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            hst_hastakarti hst_hastakarti = db.hst_hastakarti.Find(id);
+            var ad_soyad = hst_hastakarti.t_adi + " " + hst_hastakarti.t_soyadi;
+            ViewBag.Ad = ad_soyad;
+            if (hst_hastakarti == null)
+            {
+                // return HttpNotFound();
+            }
+            return PartialView(hst_hastakarti);
+        }
 
 
         // GET: hst_hastakarti/Create

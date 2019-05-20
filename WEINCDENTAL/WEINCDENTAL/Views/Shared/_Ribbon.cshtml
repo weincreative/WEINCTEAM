@@ -1,16 +1,20 @@
-﻿<!-- RIBBON -->
+﻿@using WEINCDENTAL.Controllers
+<script src="~/Scripts/WeincdentalScript.js"></script>
+<!-- RIBBON -->
 <div id="ribbon">
-
-    <span class="ribbon-button-alignment">
-        <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Uyarı! Bu yenileme işlemi arayüzdeki alanları yenilecektir." data-html="true">
-            <i class="fa fa-refresh"></i>
+    <article class="col-sm-12 col-md-12 col-lg-3">
+        <span class="ribbon-button-alignment">
+            <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Uyarı! Bu yenileme işlemi arayüzdeki alanları yenilecektir." data-html="true">
+                <i class="fa fa-refresh"></i>
+            </span>
         </span>
-    </span>
-    <!-- breadcrumb -->
-    <ol class="breadcrumb">
-        @*<li> @ViewBag.Title</li>
-            <li>@ViewBag.Title2</li>*@
-    </ol>
+        <!-- breadcrumb -->
+        <ol class="breadcrumb">
+            @*<li> @ViewBag.Title</li>
+                <li>@ViewBag.Title2</li>*@
+        </ol>
+    </article>
+
     <!-- end breadcrumb -->
     <!-- You can also add more buttons to the
     ribbon for further usability
@@ -18,23 +22,54 @@
     Example below:
 
     <span class="ribbon-button-alignment pull-right">
-    <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
-    <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
-    <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+        <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+        <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+        <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
     </span> -->
-    @using (Html.BeginForm("GetTc", "Yardimci"))
-    {
-        <div class="input-group">
-            <input class="form-control" @*type="number"*@ placeholder="T.C. No ara..." id="tcid" name="tc">
+    <article class="col-sm-12 col-md-12 col-lg-3" style="padding-top: 4px;">
+        @using (Html.BeginForm("GetTc", "Yardimci"))
+        {
 
-            <div class="input-group-btn">
+            <fieldset>
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <input class="form-control" type="number" placeholder="T.C. No ara..." id="tcid" name="tc">
 
-                <button class="btn btn-default btn-primary" type="submit" id="btnSearch">
-                    <i class="fa fa-search"></i> Sorgula
-                </button>
-            </div>
-        </div>
-    }
+                        <div class="input-group-btn">
 
-    </div>
+                            <button class="btn btn-default btn-primary" type="submit" id="btnSearch">
+                                <i class="fa fa-search"></i> Sorgula
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+
+        }
+    </article>
+
+    <div id="dinamikBilgi" style="color: white;padding-top: 4px;"> </div>
+
+
+</div>
 <!-- END RIBBON -->
+@{
+    ViewBag.gdeger = Ortak._hastatc;
+
+}
+
+<script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        var gveri = @Html.Raw(Json.Encode(ViewBag.gdeger));
+        // alert(gveri );
+        if (gveri != null) {
+            $('#dinamikBilgi').load("@Url.Action("GetHastaBilgi", "hst_hastakarti")", { id: gveri});
+            // ListHasta(gveri );
+        }
+
+    });
+</script>

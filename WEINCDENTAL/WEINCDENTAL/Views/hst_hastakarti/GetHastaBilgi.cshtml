@@ -1,0 +1,43 @@
+﻿
+@model WEINCDENTAL.Models.hst_hastakarti
+
+
+<article class="col-sm-12 col-md-12 col-lg-6" id="dinamikBilgi">
+    <fieldset>
+        
+        <section class="form-group col-md-3">
+            <label class="col-md-4 control-label">T.C. :</label>
+            @Html.DisplayFor(model => model.t_tc, new { @class = "col-md-6 control-label" })
+              
+        </section>
+     
+        <section class="form-group col-md-3">
+            <label class="col-md-3 control-label">Ad:</label>
+            <label class="col-md-6 control-label">@ViewBag.Ad</label>
+            
+              
+        </section>
+        @*<section class="form-group col-md-3">
+            <label class="col-md-4 control-label">Soyad:</label>
+            @Html.DisplayFor(model => model.t_soyadi, new { @class = "col-md-6 control-label" })
+               
+
+        </section>*@
+       
+        <section class="form-group col-md-3">
+            <label class="col-md-5 control-label">D.Tarihi:</label>
+            @Html.DisplayFor(model => model.t_dogumtarihi, new { @class = "col-md-5 control-label" })
+                
+        </section>
+        <section class="form-group col-md-3">
+            <label class="col-md-5 control-label">Telefon:</label>
+            @Html.DisplayFor(model => model.t_tel1, new { @class = "col-md-6 control-label" })
+              
+        </section>
+     
+         
+      
+
+    </fieldset>
+</article>
+

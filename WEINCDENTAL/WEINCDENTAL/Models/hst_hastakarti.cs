@@ -40,6 +40,8 @@ namespace WEINCDENTAL.Models
         [Display(Name = "Hasta Medeni Durum")]
         public int t_medenidurum { get; set; }
         [Display(Name = "Hasta Doðum Tarihi")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public System.DateTime t_dogumtarihi { get; set; }
         [Display(Name = "Hasta Doðum Yeri")]
         public string t_dogumyeri { get; set; }
