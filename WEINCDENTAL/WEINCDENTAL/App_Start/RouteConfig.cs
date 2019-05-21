@@ -15,8 +15,8 @@ namespace WEINCDENTAL
             routes.LowercaseUrls = true;
             routes.MapRoute("Default", "{controller}/{action}/{id}", new
             {
-                controller = "Security",
-                action = "Login",
+                controller = "Home",
+                action = "Index",
                 id = UrlParameter.Optional
             }).RouteHandler = new DashRouteHandler();
         }

@@ -27,10 +27,8 @@ namespace WEINCDENTAL.Models
         [Required]
         public string t_adi { get; set; }
         [Display(Name = "Oluþturan Kullanýcý")]
-        [Required]
         public string t_createuser { get; set; }
         [Display(Name = "Oluþturulan Tarih")]
-        [Required]
         public System.DateTime t_createdate { get; set; }
         [Display(Name = "Aktif / Pasif")]
         public bool t_aktif { get; set; }

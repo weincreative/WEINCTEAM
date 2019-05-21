@@ -114,15 +114,21 @@ namespace WEINCDENTAL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "t_id,t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_ulkeId,t_ilId,t_ilceId,t_adres,t_createuser,t_createdate,t_aktif")] hst_hastakarti hst_hastakarti)
+        public ActionResult Create([Bind(Include = "t_id,t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_ulkeId,t_ilId,t_ilceId,t_adres,t_createuser,t_createdate,t_aktif,yabancimi")] hst_hastakarti hst_hastakarti)
         {
 
-            var ulke = hst_hastakarti.t_ulkeId;
+            var yabanci = hst_hastakarti.yabancimi;
 
-            if (ulke != 212)
+            // yabancı uyruklu checkbox işaretli ise..
+            if (yabanci)
             {
                 hst_hastakarti.t_ilId = null;
                 hst_hastakarti.t_ilceId = null;
+
+            }
+            else
+            {
+                hst_hastakarti.t_ulkeId = 212;
             }
 
             // mesaj=0 hiç bir uyarı yok.
@@ -141,9 +147,8 @@ namespace WEINCDENTAL.Controllers
             ViewBag.t_ulkeId = itemList;
             if (ModelState.IsValid)
             {
-
                 hst_hastakarti.t_createdate = DateTime.Now;
-                hst_hastakarti.t_createuser = "W3";
+                hst_hastakarti.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
                 hst_hastakarti.t_aktif = true;
 
                 db.hst_hastakarti.Add(hst_hastakarti);

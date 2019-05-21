@@ -23,6 +23,8 @@ namespace WEINCDENTAL.Models
             this.hst_hastadurum = new HashSet<hst_hastadurum>();
             this.hst_randevu = new HashSet<hst_randevu>();
         }
+
+        public bool yabancimi { get; set; }
         [Display(Name = "Hasta ID")]
         [Required]
         public int t_id { get; set; }
@@ -59,10 +61,8 @@ namespace WEINCDENTAL.Models
         [Display(Name = "Hasta Adres")]
         public string t_adres { get; set; }
         [Display(Name = "Oluþturan Kullanici")]
-        [Required]
         public string t_createuser { get; set; }
         [Display(Name = "Oluþturulma Tarihi")]
-        [Required]
         public System.DateTime t_createdate { get; set; }
         [Display(Name = "Aktif / Pasif")]
         public bool t_aktif { get; set; }

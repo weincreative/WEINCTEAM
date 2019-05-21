@@ -144,6 +144,7 @@
     <Compile Include="Controllers\adm_kullanicilarController.cs" />
     <Compile Include="Controllers\AyarlarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\hst_basvuruController.cs" />
     <Compile Include="Controllers\hst_hastakartiController.cs" />
     <Compile Include="Controllers\hst_hizmetController.cs" />
     <Compile Include="Controllers\Ortak.cs" />
@@ -1023,6 +1024,13 @@
     <Content Include="Views\Shared\_TCSor.cshtml" />
     <Content Include="Views\Security\Login.cshtml" />
     <Content Include="Views\hst_hastakarti\GetHastaBilgi.cshtml" />
+    <Content Include="Views\hst_basvuru\Create.cshtml" />
+    <Content Include="Views\hst_basvuru\Delete.cshtml" />
+    <Content Include="Views\hst_basvuru\Details.cshtml" />
+    <Content Include="Views\hst_basvuru\Edit.cshtml" />
+    <Content Include="Views\hst_basvuru\Index.cshtml" />
+    <Content Include="Views\hst_basvuru\Hastabasvuru_Index.cshtml" />
+    <Content Include="Views\hst_basvuru\HastaBasvuruCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

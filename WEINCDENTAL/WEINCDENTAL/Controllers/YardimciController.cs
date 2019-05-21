@@ -20,7 +20,7 @@ namespace WEINCDENTAL.Controllers
 
             if (varmi)
             {
-                return RedirectToAction("Details", "hst_hastakarti", new { @id = tc });
+                return RedirectToAction("Hastabasvuru_Index", "hst_basvuru", new { @id = tc });
             }
             else
             {
