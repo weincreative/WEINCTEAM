@@ -48,6 +48,10 @@ namespace WEINCDENTAL.Content
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "t_id,t_adi,t_createuser,t_createdate,t_aktif")] adm_modulyetki adm_modulyetki)
         {
+            adm_modulyetki.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
+            adm_modulyetki.t_createdate = DateTime.Now;
+            adm_modulyetki.t_aktif = true;
+
             if (ModelState.IsValid)
             {
                 db.adm_modulyetki.Add(adm_modulyetki);

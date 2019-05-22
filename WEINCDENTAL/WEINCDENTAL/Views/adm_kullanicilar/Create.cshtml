@@ -57,35 +57,6 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.t_createuser, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.t_createuser, new { htmlAttributes = new { @class = "form-control" } })
-            @*@Html.ValidationMessageFor(model => model.t_createuser, "asdfasdfasdfasdfa", new { @class = "text-danger" })*@
-            @Html.ValidationMessageFor(model => model.t_createuser)
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.t_createdate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.t_createdate, new { htmlAttributes = new { @class = "form-control" } })
-          @*  @Html.ValidationMessageFor(model => model.t_createdate, "asdfasdfasdfas", new { @class = "text-danger" })*@
-            @Html.ValidationMessageFor(model => model.t_createdate)
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.t_aktif, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.t_aktif)
-                @*@Html.ValidationMessageFor(model => model.t_aktif, "asdfasdfasdfasdf", new { @class = "text-danger" })*@
-                @Html.ValidationMessageFor(model => model.t_aktif)
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
         <div class="col-md-12">
             <input type="submit" value="Kaydet" class="btn btn-primary col-md-12 col-sm-12 col-xs-12 col-lg-12" />
         </div>

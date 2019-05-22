@@ -143,6 +143,7 @@
     <Compile Include="Controllers\adm_kullanicigrupController.cs" />
     <Compile Include="Controllers\adm_kullanicilarController.cs" />
     <Compile Include="Controllers\AyarlarController.cs" />
+    <Compile Include="Controllers\HisHareketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\hst_basvuruController.cs" />
     <Compile Include="Controllers\hst_hastakartiController.cs" />
@@ -238,6 +239,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModelAyarlar.cs" />
+    <Compile Include="Models\ViewModelHisHareket.cs" />
     <Compile Include="Models\View_HizHareket.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

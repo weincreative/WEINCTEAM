@@ -91,6 +91,7 @@ namespace WEINCDENTAL.Controllers
             hst_basvuru.t_cagriekraniistem = 0;
             hst_basvuru.t_taburcu = false;
             hst_basvuru.t_aktif = true;
+
             if (ModelState.IsValid)
             {
                 db.hst_basvuru.Add(hst_basvuru);

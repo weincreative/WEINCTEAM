@@ -48,6 +48,10 @@ namespace WEINCDENTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "t_id,t_adi,t_createuser,t_createdate,t_aktif")] adm_kullanicigrup adm_kullanicigrup)
         {
+            adm_kullanicigrup.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
+            adm_kullanicigrup.t_createdate = DateTime.Now;
+            adm_kullanicigrup.t_aktif = true;
+
             if (ModelState.IsValid)
             {
                 db.adm_kullanicigrup.Add(adm_kullanicigrup);
