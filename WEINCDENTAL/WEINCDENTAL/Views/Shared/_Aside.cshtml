@@ -39,13 +39,13 @@
                 <ul>
 
                     <li class="@Html.RouteIf("Create", "active")">
-                        <a href="@Url.Action("Create", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Hasta Kartı Oluştur</span></a>
+                        <a href="@Url.Action("Create", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Hasta Kartı</span></a>
                     </li>
                     <li class="@Html.RouteIf("Hastakarti_Index", "active")">
                         <a href="@Url.Action("Hastakarti_Index", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Hasta Bilgileri</span></a>
                     </li>
-                    <li class="@Html.RouteIf("Create", "active")">
-                        <a href="@Url.Action("Create", "hst_basvuru")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Hasta Başvuru</span></a>
+                    <li class="@Html.RouteIf("HastaBasvuruCreate", "active")">
+                        <a href="@Url.Action("HastaBasvuruCreate", "hst_basvuru")"><i class="fa fa-lg fa-fw  fa-paperclip"></i> <span class="menu-item-parent">Hasta Başvuru</span></a>
                     </li>
                 </ul>
             </li>

@@ -235,11 +235,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ViewModelAyarlar.cs" />
     <Compile Include="Models\ViewModelHisHareket.cs" />
+    <Compile Include="Models\View_HastalikDurum.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\View_HizHareket.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1026,13 +1026,13 @@
     <Content Include="Views\Shared\_TCSor.cshtml" />
     <Content Include="Views\Security\Login.cshtml" />
     <Content Include="Views\hst_hastakarti\GetHastaBilgi.cshtml" />
-    <Content Include="Views\hst_basvuru\Create.cshtml" />
+    <Content Include="Views\hst_basvuru\HastaBasvuruCreate.cshtml" />
     <Content Include="Views\hst_basvuru\Delete.cshtml" />
     <Content Include="Views\hst_basvuru\Details.cshtml" />
     <Content Include="Views\hst_basvuru\Edit.cshtml" />
     <Content Include="Views\hst_basvuru\Index.cshtml" />
     <Content Include="Views\hst_basvuru\Hastabasvuru_Index.cshtml" />
-    <Content Include="Views\hst_basvuru\HastaBasvuruCreate.cshtml" />
+    <Content Include="Views\hst_basvuru\HastaBPartialCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

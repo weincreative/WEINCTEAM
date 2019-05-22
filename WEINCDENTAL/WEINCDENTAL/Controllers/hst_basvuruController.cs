@@ -35,7 +35,7 @@ namespace WEINCDENTAL.Controllers
         }
 
 
-        public PartialViewResult HastaBasvuruCreate(string id)
+        public PartialViewResult HastaBPartialCreate(string id)
         {
             //if (id==null)
             //{
@@ -67,7 +67,7 @@ namespace WEINCDENTAL.Controllers
         }
 
         // GET: hst_basvuru/Create
-        public ActionResult Create()
+        public ActionResult HastaBasvuruCreate()
         {
             ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm, "t_id", "t_adi");
             ViewBag.t_tc = new SelectList(db.hst_hastakarti, "t_tc", "t_adi");
@@ -87,20 +87,27 @@ namespace WEINCDENTAL.Controllers
             hst_basvuru.t_basvuru = (son + 1).ToString();
             hst_basvuru.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
             hst_basvuru.t_createdate=DateTime.Now;
+            hst_basvuru.t_basvurutarihi=DateTime.Now;
             hst_basvuru.t_basvurudr = 0;
             hst_basvuru.t_cagriekraniistem = 0;
             hst_basvuru.t_taburcu = false;
             hst_basvuru.t_aktif = true;
-
+            // mesaj=0 hiç bir uyarı yok.
+            // mesaj=1 başarılı.
+            // mesaj=2 başarısız.
+            int mesaj = 0;
             if (ModelState.IsValid)
             {
                 db.hst_basvuru.Add(hst_basvuru);
                 db.SaveChanges();
+                mesaj = 1;
+                ViewBag.Message = mesaj;
                 return RedirectToAction("Hastabasvuru_Index",new{@id=hst_basvuru.t_tc});
             }
-
+            mesaj = 2;
             ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm, "t_id", "t_adi", hst_basvuru.t_bolumkodu);
             ViewBag.t_tc = new SelectList(db.hst_hastakarti, "t_tc", "t_adi", hst_basvuru.t_tc);
+            ViewBag.Message = mesaj;
             return View(hst_basvuru);
         }
 

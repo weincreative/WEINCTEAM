@@ -58,7 +58,7 @@
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_basvuru" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_tc" Type="nvarchar" MaxLength="12" />
-          <Property Name="t_basvurutarihi" Type="date" Nullable="false" />
+          <Property Name="t_basvurutarihi" Type="datetime" Nullable="false" />
           <Property Name="t_bolumkodu" Type="int" Nullable="false" />
           <Property Name="t_cagriekraniistem" Type="int" Nullable="false" />
           <Property Name="t_basvurudr" Type="int" />
@@ -254,20 +254,26 @@
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WEINCDENTAL.dbo.View_HastalikDurum' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_HastalikDurum">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="t_id" />
+            <PropertyRef Name="t_tc" />
+            <PropertyRef Name="t_adi" />
+            <PropertyRef Name="t_soyadi" />
           </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
+          <Property Name="t_id" Type="int" Nullable="false" />
+          <Property Name="t_tc" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hastalık" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizHareket' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_HizHareket">
           <Key>
+            <PropertyRef Name="basvuruid" />
             <PropertyRef Name="t_tc" />
             <PropertyRef Name="t_adi" />
             <PropertyRef Name="t_soyadi" />
@@ -282,11 +288,12 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizHareket' does not have a p
             <PropertyRef Name="t_islemtarihi" />
             <PropertyRef Name="Odemeyapildimi" />
           </Key>
+          <Property Name="basvuruid" Type="int" Nullable="false" />
           <Property Name="t_tc" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="BasvuruNo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_basvurutarihi" Type="date" Nullable="false" />
+          <Property Name="t_basvurutarihi" Type="datetime" Nullable="false" />
           <Property Name="Doktoradi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_basvurudr" Type="int" />
           <Property Name="t_taburcu" Type="bit" Nullable="false" />
@@ -622,9 +629,18 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_HastalikDurum" EntityType="Self.View_HastalikDurum" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_HastalikDurum].[t_id] AS [t_id], 
+    [View_HastalikDurum].[t_tc] AS [t_tc], 
+    [View_HastalikDurum].[t_adi] AS [t_adi], 
+    [View_HastalikDurum].[t_soyadi] AS [t_soyadi], 
+    [View_HastalikDurum].[Hastalık] AS [Hastalık]
+    FROM [dbo].[View_HastalikDurum] AS [View_HastalikDurum]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="View_HizHareket" EntityType="Self.View_HizHareket" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
+    [View_HizHareket].[basvuruid] AS [basvuruid], 
     [View_HizHareket].[t_tc] AS [t_tc], 
     [View_HizHareket].[t_adi] AS [t_adi], 
     [View_HizHareket].[t_soyadi] AS [t_soyadi], 
@@ -813,7 +829,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="t_basvuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="t_basvurutarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="t_basvurutarihi" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="t_bolumkodu" Type="Int32" Nullable="false" />
           <Property Name="t_cagriekraniistem" Type="Int32" Nullable="false" />
           <Property Name="t_basvurudr" Type="Int32" />
@@ -1048,18 +1064,22 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <NavigationProperty Name="hst_his_hareket" Relationship="Self.FK_hst_vezne_hst_his_hareket" FromRole="hst_vezne" ToRole="hst_his_hareket" />
           <NavigationProperty Name="hst_odemetip" Relationship="Self.FK_hst_vezne_hst_OdemeTip" FromRole="hst_vezne" ToRole="hst_odemetip" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="View_HastalikDurum">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="t_id" />
+            <PropertyRef Name="t_tc" />
+            <PropertyRef Name="t_adi" />
+            <PropertyRef Name="t_soyadi" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="t_id" Type="Int32" Nullable="false" />
+          <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hastalık" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="View_HizHareket">
           <Key>
+            <PropertyRef Name="basvuruid" />
             <PropertyRef Name="t_tc" />
             <PropertyRef Name="t_adi" />
             <PropertyRef Name="t_soyadi" />
@@ -1074,11 +1094,12 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <PropertyRef Name="t_islemtarihi" />
             <PropertyRef Name="Odemeyapildimi" />
           </Key>
+          <Property Name="basvuruid" Type="Int32" Nullable="false" />
           <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BasvuruNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_basvurutarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="t_basvurutarihi" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Doktoradi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_basvurudr" Type="Int32" />
           <Property Name="t_taburcu" Type="Boolean" Nullable="false" />
@@ -1412,7 +1433,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="View_HastalikDurum" EntityType="Self.View_HastalikDurum" />
           <EntitySet Name="View_HizHareket" EntityType="Self.View_HizHareket" />
           <EntitySet Name="View_Vezne" EntityType="Self.View_Vezne" />
           <AssociationSet Name="FK_adm_kullanicilar_adm_kullanicigrup1" Association="Self.FK_adm_kullanicilar_adm_kullanicigrup1">
@@ -1781,20 +1802,21 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="WEINCDENTALModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+          <EntitySetMapping Name="View_HastalikDurum">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.View_HastalikDurum">
+              <MappingFragment StoreEntitySet="View_HastalikDurum">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="t_tc" ColumnName="t_tc" />
+                <ScalarProperty Name="t_adi" ColumnName="t_adi" />
+                <ScalarProperty Name="t_soyadi" ColumnName="t_soyadi" />
+                <ScalarProperty Name="Hastalık" ColumnName="Hastalık" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="View_HizHareket">
             <EntityTypeMapping TypeName="WEINCDENTALModel.View_HizHareket">
               <MappingFragment StoreEntitySet="View_HizHareket">
+                <ScalarProperty Name="basvuruid" ColumnName="basvuruid" />
                 <ScalarProperty Name="t_tc" ColumnName="t_tc" />
                 <ScalarProperty Name="t_adi" ColumnName="t_adi" />
                 <ScalarProperty Name="t_soyadi" ColumnName="t_soyadi" />

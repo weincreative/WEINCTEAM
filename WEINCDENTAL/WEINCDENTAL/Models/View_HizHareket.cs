@@ -14,6 +14,7 @@ namespace WEINCDENTAL.Models
     
     public partial class View_HizHareket
     {
+        public int basvuruid { get; set; }
         public string t_tc { get; set; }
         public string t_adi { get; set; }
         public string t_soyadi { get; set; }

@@ -1,16 +1,12 @@
 ﻿<div class="login-info">
+  
     <span>
-        
-        <i class="fa  fa-check-square-o"></i>
-        <label style="padding: 10px 0 0 10px;">Hoşgeldiniz @HttpContext.Current.User.Identity.Name</label>
+        <i class="glyphicon glyphicon-tower"></i>
+        <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
+
+            <span> <label style="padding: 4px 0 0 10px;">Hoşgeldiniz @HttpContext.Current.User.Identity.Name</label>  
+           </span>
+
+        </a>
     </span>
-
-
-    @*<span>
-            <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
-                <img src="~/content/img/avatars/sunny.png" alt="me" class="online" />
-                <span>@User.Identity.Name.ToLower()</span>
-                <i class="fa fa-angle-down"></i>
-            </a>
-        </span>*@
 </div>
