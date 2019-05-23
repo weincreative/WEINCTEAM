@@ -146,30 +146,28 @@ namespace WEINCDENTAL.Controllers
             return View(hst_basvuru);
         }
 
-        // GET: hst_basvuru/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            hst_basvuru hst_basvuru = db.hst_basvuru.Find(id);
-            if (hst_basvuru == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hst_basvuru);
-        }
+        
+      
 
         // POST: hst_basvuru/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost]
+        public JsonResult Delete(int id)
         {
-            hst_basvuru hst_basvuru = db.hst_basvuru.Find(id);
-            db.hst_basvuru.Remove(hst_basvuru);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            var sonuc = 0;
+            try
+            {
+                hst_basvuru basvuru = db.hst_basvuru.Find(id);
+                basvuru.t_aktif = false;
+                db.Entry(basvuru).State=EntityState.Modified;
+                db.SaveChanges();
+                sonuc = 1;
+                return Json(sonuc, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(sonuc, JsonRequestBehavior.AllowGet);
+            }
+            
         }
 
         protected override void Dispose(bool disposing)
