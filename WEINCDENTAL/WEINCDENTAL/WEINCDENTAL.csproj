@@ -1028,10 +1028,6 @@
     <Content Include="Views\Security\Login.cshtml" />
     <Content Include="Views\hst_hastakarti\GetHastaBilgi.cshtml" />
     <Content Include="Views\hst_basvuru\HastaBasvuruCreate.cshtml" />
-    <Content Include="Views\hst_basvuru\Delete.cshtml" />
-    <Content Include="Views\hst_basvuru\Details.cshtml" />
-    <Content Include="Views\hst_basvuru\Edit.cshtml" />
-    <Content Include="Views\hst_basvuru\Index.cshtml" />
     <Content Include="Views\hst_basvuru\Hastabasvuru_Index.cshtml" />
     <Content Include="Views\hst_basvuru\HastaBPartialCreate.cshtml" />
   </ItemGroup>
