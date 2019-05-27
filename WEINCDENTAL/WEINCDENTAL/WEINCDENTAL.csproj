@@ -150,6 +150,7 @@
     <Compile Include="Controllers\hst_hizmetController.cs" />
     <Compile Include="Controllers\Ortak.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\View_HizHareketController.cs" />
     <Compile Include="Controllers\YardimciController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1019,17 +1020,21 @@
     <Content Include="Views\hst_hizmet\Index.cshtml" />
     <Content Include="Views\Ayarlar\AyarlarHizmet.cshtml" />
     <Content Include="Views\hst_hastakarti\Create.cshtml" />
-    <Content Include="Views\hst_hastakarti\Delete.cshtml" />
     <Content Include="Views\hst_hastakarti\Details.cshtml" />
     <Content Include="Views\hst_hastakarti\Edit.cshtml" />
     <Content Include="Views\hst_hastakarti\Hastakarti_Index.cshtml" />
-    <Content Include="Views\hst_hastakarti\Create2.cshtml" />
     <Content Include="Views\Shared\_TCSor.cshtml" />
     <Content Include="Views\Security\Login.cshtml" />
     <Content Include="Views\hst_hastakarti\GetHastaBilgi.cshtml" />
     <Content Include="Views\hst_basvuru\HastaBasvuruCreate.cshtml" />
     <Content Include="Views\hst_basvuru\Hastabasvuru_Index.cshtml" />
     <Content Include="Views\hst_basvuru\HastaBPartialCreate.cshtml" />
+    <Content Include="Views\View_HizHareket\Create.cshtml" />
+    <Content Include="Views\View_HizHareket\Delete.cshtml" />
+    <Content Include="Views\View_HizHareket\Details.cshtml" />
+    <Content Include="Views\View_HizHareket\Edit.cshtml" />
+    <Content Include="Views\View_HizHareket\Index.cshtml" />
+    <Content Include="Views\View_HizHareket\PartialHizHareket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

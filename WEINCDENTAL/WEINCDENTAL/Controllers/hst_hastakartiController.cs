@@ -161,7 +161,7 @@ namespace WEINCDENTAL.Controllers
                 ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi", hst_hastakarti.t_ilceId);
                 ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi", hst_hastakarti.t_medenidurum);
                 ViewBag.Message = mesaj;
-                return View();
+                return RedirectToAction("HastaBasvuruCreate","hst_basvuru");
             }
             mesaj = 2;
             ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi", hst_hastakarti.t_cinsiyet);
