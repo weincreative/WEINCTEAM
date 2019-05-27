@@ -943,7 +943,7 @@
     <Content Include="Scripts\smartwidgets\jarvis.widget.min.js" />
     <Content Include="Scripts\speech\voicecommand.min.js" />
     <Content Include="Scripts\WeincdentalScript.js" />
-    <Content Include="Scripts\weincreative-js\custom-date-time.js" />
+    <Content Include="Scripts\weincreativejs\custom-date-time.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1035,6 +1035,15 @@
     <Content Include="Views\View_HizHareket\Edit.cshtml" />
     <Content Include="Views\View_HizHareket\Index.cshtml" />
     <Content Include="Views\View_HizHareket\PartialHizHareket.cshtml" />
+    <Content Include="Views\Home\Randevu.cshtml" />
+    <Content Include="Views\HisHareket\HisHareket.cshtml" />
+    <Content Include="Views\HisHareket\HisHareketHizmet.cshtml" />
+    <Content Include="Views\HisHareket\HisHareketBasvuru.cshtml" />
+    <Content Include="Views\HisHareket\HisHareketHastakarti.cshtml" />
+    <Content Include="Views\HisHareket\HisHareketHastaDurum.cshtml" />
+    <Content Include="Views\HisHareket\HisHareketFirma.cshtml" />
+    <Content Include="Views\HisHareket\HisHareketPacs.cshtml" />
+    <Content Include="Views\Home\HisHareket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

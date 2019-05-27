@@ -5,4 +5,4 @@
     } else {
         $(dateElement).valid();
     }
-}
+};

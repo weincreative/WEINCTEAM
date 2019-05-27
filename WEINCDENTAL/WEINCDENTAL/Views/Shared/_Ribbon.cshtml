@@ -27,7 +27,7 @@
         <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
     </span> -->
     <article class="col-sm-12 col-md-12 col-lg-3" style="padding-top: 4px;">
-        @using (Html.BeginForm("GetTc", "Yardimci"))
+        @using (Html.BeginForm("GetTc", "Yardimci", FormMethod.Post))
         {
 
             <fieldset>
@@ -37,9 +37,15 @@
 
                         <div class="input-group-btn">
 
-                            <button class="btn btn-default btn-primary" type="submit" id="btnSearch">
+                            <button class="btn btn-default btn-primary" type="submit"  id="btnSearch">
                                 <i class="fa fa-search"></i> Sorgula
                             </button>
+                            <button class="btn btn-default btn-success" type="submit" id="btnHizmet">
+                                <i class="fa fa-bookmark"></i> Diş Hizmet
+                            </button>
+                            @*<input type="submit" value="Sor" name="action:Sor" />
+                            <input type="submit" value="Hiz" name="action:Hiz" />*@
+
                         </div>
                     </div>
                 </div>

@@ -27,6 +27,36 @@ namespace WEINCDENTAL.Controllers
                 return RedirectToAction("Create","hst_hastakarti");
             }
 
-        }
+        //            [HttpPost]
+        //public ActionResult Save(EmployeeModel objSave)
+        //{
+
+        //    ViewBag.Msg = "Details saved successfully.";
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult Draft(EmployeeModel objDraft)
+        //{
+        //    ViewBag.Msg = "Details saved as draft.";
+        //    return View();
+        //}
+
+        //    [HttpPost]
+        //[CokluButon(Argument = "btnA", Name = "action")]
+        //public ActionResult AAction()
+        //{
+        //    return RedirectToAction("Index");
+        //}
+
+        //[HttpPost]
+        //[CokluButon(Argument = "btnB", Name = "action")]
+        //public ActionResult BAction()
+        //{
+        //    return RedirectToAction("Index");
+        //}
+
+
+
+    }
     }
 }

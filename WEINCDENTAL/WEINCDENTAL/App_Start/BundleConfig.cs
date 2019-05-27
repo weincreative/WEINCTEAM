@@ -12,7 +12,7 @@ namespace WEINCDENTAL
         {
             bundles.Add(new StyleBundle("~/Content/weincadmin").IncludeDirectory("~/Content/css", "*.min.css"));
 
-            bundles.Add(new ScriptBundle("~/scripts/weincreative-js").Include(
+            bundles.Add(new ScriptBundle("~/scripts/weincreativejs").Include(
             "~/scripts/weincreative/custom-date-time.js"
             ));
 
