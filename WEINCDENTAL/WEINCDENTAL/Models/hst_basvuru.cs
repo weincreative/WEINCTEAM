@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace WEINCDENTAL.Models
 {
     using System;
@@ -24,7 +22,6 @@ namespace WEINCDENTAL.Models
     
         public int t_id { get; set; }
         public string t_basvuru { get; set; }
-        [Required]
         public string t_tc { get; set; }
         public System.DateTime t_basvurutarihi { get; set; }
         public int t_bolumkodu { get; set; }

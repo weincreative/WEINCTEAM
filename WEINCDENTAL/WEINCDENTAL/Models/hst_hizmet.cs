@@ -7,12 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace WEINCDENTAL.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class hst_hizmet
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,6 +21,7 @@ namespace WEINCDENTAL.Models
         {
             this.hst_his_hareket = new HashSet<hst_his_hareket>();
         }
+
         [Display(Name = "Hizmet ID")]
         [Required]
         public int t_id { get; set; }
@@ -40,11 +42,9 @@ namespace WEINCDENTAL.Models
         [Display(Name = "Aktif / Pasif")]
         public bool t_aktif { get; set; }
 
-        [Display(Name = "Hizmet Çene")]
         public virtual hst_cene_uygunmu hst_cene_uygunmu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hst_his_hareket> hst_his_hareket { get; set; }
-        [Display(Name = "Hizmet Parça")]
         public virtual hst_hizmet_parca hst_hizmet_parca { get; set; }
     }
 }

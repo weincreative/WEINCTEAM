@@ -151,6 +151,7 @@
     <Compile Include="Controllers\Ortak.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\View_HizHareketController.cs" />
+    <Compile Include="Controllers\View_HizmetDetayController.cs" />
     <Compile Include="Controllers\YardimciController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1042,7 +1043,7 @@
     <Content Include="Views\View_HizHareket\Index.cshtml" />
     <Content Include="Views\View_HizHareket\PartialHizHareket.cshtml" />
     <Content Include="Views\Home\Randevu.cshtml" />
-    <Content Include="Views\HisHareket\HisHareket.cshtml" />
+    <Content Include="Views\HisHareket\DisModul.cshtml" />
     <Content Include="Views\HisHareket\HisHareketHizmet.cshtml" />
     <Content Include="Views\HisHareket\HisHareketBasvuru.cshtml" />
     <Content Include="Views\HisHareket\HisHareketHastakarti.cshtml" />
@@ -1050,6 +1051,9 @@
     <Content Include="Views\HisHareket\HisHareketFirma.cshtml" />
     <Content Include="Views\HisHareket\HisHareketPacs.cshtml" />
     <Content Include="Views\Home\HisHareket.cshtml" />
+    <Content Include="Views\View_HizmetDetay\HizmetDetay.cshtml" />
+    <Content Include="Views\HisHareket\HisHareket.cshtml" />
+    <Content Include="Views\hst_hizmet\ListHizmet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

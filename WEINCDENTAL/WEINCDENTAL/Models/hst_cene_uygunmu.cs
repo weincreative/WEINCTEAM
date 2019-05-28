@@ -17,6 +17,8 @@ namespace WEINCDENTAL.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public hst_cene_uygunmu()
         {
+            this.hst_disno = new HashSet<hst_disno>();
+            this.hst_his_hareket = new HashSet<hst_his_hareket>();
             this.hst_hizmet = new HashSet<hst_hizmet>();
         }
     
@@ -26,6 +28,10 @@ namespace WEINCDENTAL.Models
         public System.DateTime t_createdate { get; set; }
         public bool t_aktif { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<hst_disno> hst_disno { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<hst_his_hareket> hst_his_hareket { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hst_hizmet> hst_hizmet { get; set; }
     }

@@ -23,10 +23,7 @@ namespace WEINCDENTAL.Controllers
         {
             return View();
         }
-        public ActionResult HisHareket()
-        {
-            return View();
-        }
+       
         //[HttpPost]
         //[MultipleButton(Name = "Action", Argument = "Sor")]
         //public ActionResult Sor(string tc)

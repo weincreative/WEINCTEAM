@@ -21,6 +21,13 @@ namespace WEINCDENTAL.Controllers
             return View(hst_hizmet.ToList());
         }
 
+        public PartialViewResult ListHizmet()
+        {
+            var hst_hizmet = db.hst_hizmet.Where(k=>k.t_aktif==true);
+            return PartialView(hst_hizmet.ToList());
+        }
+
+
         // GET: hst_hizmet/Details/5
         public ActionResult Details(int? id)
         {

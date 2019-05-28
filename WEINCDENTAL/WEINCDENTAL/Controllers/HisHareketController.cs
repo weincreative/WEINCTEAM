@@ -9,7 +9,14 @@ namespace WEINCDENTAL.Controllers
 {
     public class HisHareketController:Controller
     {
-        public PartialViewResult HisHareket()
+
+        public ActionResult HisHareket()
+        {
+            return View();
+        }
+
+
+        public PartialViewResult DisModul()
         {
             WEINCDENTALEntities db = new WEINCDENTALEntities();
             ViewModelHisHareket vm = new ViewModelHisHareket();
