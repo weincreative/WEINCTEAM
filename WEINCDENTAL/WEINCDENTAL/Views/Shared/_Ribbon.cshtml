@@ -41,10 +41,10 @@
                                 <i class="fa fa-search"></i> Sorgula
                             </button>
                             @*<button class="btn btn-default btn-success" type="submit" id="btnHizmet">
-                                <i class="fa fa-bookmark"></i> Diş Hizmet
-                            </button>*@
+                                        <i class="fa fa-bookmark"></i> Diş Hizmet
+                                 </button>*@
                             @*<input type="submit" value="Sor" name="action:Sor" />
-                                <input type="submit" value="Hiz" name="action:Hiz" />*@
+                                  <input type="submit" value="Hiz" name="action:Hiz" />*@
 
                         </div>
                     </div>
@@ -76,6 +76,24 @@
             $('#dinamikBilgi').load("@Url.Action("GetHastaBilgi", "hst_hastakarti")", { id: gveri});
             // ListHasta(gveri );
         }
-
     });
+
+        $(document).ready(function () {
+            var gveri = @Html.Raw(Json.Encode(ViewBag.gdeger));
+            /*
+             * Smart Notifications
+             */
+            $('#btnSearch').click(function (e) {
+                $.bigBox({
+                    title: gveri+" Hastanın Borcu Vardır",
+                    content: "ÖDEMEDİĞİ İŞLEMLERİN LİSTESİ",
+                    color: "#C46A69",
+                    //timeout: 8000,
+                    icon: "fa fa-bell swing animated",
+                    number: "1"
+                });
+                e.preventDefault();
+            })
+
+        });
 </script>

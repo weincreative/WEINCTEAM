@@ -6,6 +6,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="alert alert-danger alert-block col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <a class="close" data-dismiss="alert" href="#">×</a>
+    <h4 class="alert-heading">HATA!</h4>
+    Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+    <p class="text-align-left">
+        <br>
+        @*<a href="javascript:void(0);" class="btn btn-sm btn-default"><strong>Action Button</strong></a>*@
+    </p>
+</div>
 
 <div id="content">
     <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
@@ -14,6 +23,7 @@
             <i class="fa-fw fa fa-leaf"></i>
             Başvurular
         </h1>
+
     </div>
     <section id="widget-grid">
         <div class="row">
@@ -75,14 +85,14 @@
                                     <tbody>
                                         <!-- BODY BAŞLANGICI -->
 
-                                       
+
 
                                         @foreach (var item in Model)
                                         {
                                             <tr>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.t_basvuru)
-                                                    
+
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.t_tc)
@@ -106,75 +116,75 @@
                                                     </td>
                                                 }
 
-                                                    <td>
-                                                        @if (item.t_taburcu)
-                                                        {
-                                                            <button class="btn-labeled btn-success btn disabled" data-toggle="modal" data-target="#myModalCreateBasvuru">
-                                                                <span class="btn-label">
-                                                                    <i class="glyphicon glyphicon-list"></i>
-                                                                </span>Düzenle
-                                                            </button>
-                                                            <button class="btn btn-labeled btn-warning disabled">
-                                                                <span class="btn-label">
-                                                                    <i class="glyphicon glyphicon-new-window"></i>
-                                                                </span>Diş Hizmet Gir
-                                                            </button>
-                                                            <a class="btn btn-labeled btn-danger disabled">
-                                                                <span class="btn-label">
-                                                                    <i class="glyphicon glyphicon-trash"></i>
-                                                                </span>Sil
-                                                            </a>
-                                                            <a class="btn btn-labeled btn-info disabled">
-                                                                <span class="btn-label">
-                                                                    <i class="glyphicon glyphicon-export"></i>
-                                                                </span>Taburcu Et
-                                                            </a>
-                                                            <a onclick="GetHizmet('@item.t_id')" class="btn btn-labeled btn-default disabled">
-                                                                <span class="btn-label">
-                                                                    <i class="glyphicon glyphicon-chevron-right"></i>
-                                                                </span>Hiz.Dökümü
-                                                            </a>
-                                                        }
-                                                        else
-                                                        {
+                                                <td>
+                                                    @if (item.t_taburcu)
+                                                    {
+                                                        <button class="btn-labeled btn-success btn disabled" data-toggle="modal" data-target="#myModalCreateBasvuru">
+                                                            <span class="btn-label">
+                                                                <i class="glyphicon glyphicon-list"></i>
+                                                            </span>Düzenle
+                                                        </button>
+                                                        <button class="btn btn-labeled btn-warning disabled">
+                                                            <span class="btn-label">
+                                                                <i class="glyphicon glyphicon-new-window"></i>
+                                                            </span>Diş Hizmet Gir
+                                                        </button>
+                                                        <a class="btn btn-labeled btn-danger disabled">
+                                                            <span class="btn-label">
+                                                                <i class="glyphicon glyphicon-trash"></i>
+                                                            </span>Sil
+                                                        </a>
+                                                        <a class="btn btn-labeled btn-info disabled">
+                                                            <span class="btn-label">
+                                                                <i class="glyphicon glyphicon-export"></i>
+                                                            </span>Taburcu Et
+                                                        </a>
+                                                        <a onclick="GetHizmet('@item.t_id')" class="btn btn-labeled btn-default disabled">
+                                                            <span class="btn-label">
+                                                                <i class="glyphicon glyphicon-chevron-right"></i>
+                                                            </span>Hiz.Dökümü
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
 
 
 
 
-                                                            <button onclick="Doldur(@item.t_id,@item.t_bolumkodu,@item.t_basvuru)" class="btn-labeled btn-success btn" data-toggle="modal" @*data-target="#myModalEdit" data-value="@item.t_id"*@>
-                                                                <span class="btn-label">
-                                                                    <i class="glyphicon glyphicon-list"></i>
-                                                                </span>Düzenle
-                                                            </button>
+                                                        <button onclick="Doldur(@item.t_id,@item.t_bolumkodu,@item.t_basvuru)" class="btn-labeled btn-success btn" data-toggle="modal" @*data-target="#myModalEdit" data-value="@item.t_id"*@>
+                                                            <span class="btn-label">
+                                                                <i class="glyphicon glyphicon-list"></i>
+                                                            </span>Düzenle
+                                                        </button>
 
-                                                            @*@Html.ActionLink("Düzenle", "Edit", new {id = item.t_id}) |*@
+                                                        @*@Html.ActionLink("Düzenle", "Edit", new {id = item.t_id}) |*@
 
-                                                            @*@Html.ActionLink("Diş Hizmet Gir", "#", new { id = item.t_id})*@
-                                                            <button class="btn btn-labeled btn-warning">
-                                                                <span class="btn-label">
-                                                                    <i class="glyphicon glyphicon-new-window"></i>
-                                                                </span>Diş Hizmet Gir
-                                                            </button>
-                                                            <a onclick="Remove('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-danger">
-                                                                <span class="btn-label">
-                                                                    <i class="glyphicon glyphicon-trash"></i>
-                                                                </span>Sil
-                                                            </a>
+                                                        @*@Html.ActionLink("Diş Hizmet Gir", "#", new { id = item.t_id})*@
+                                                        <button class="btn btn-labeled btn-warning">
+                                                            <span class="btn-label">
+                                                                <i class="glyphicon glyphicon-new-window"></i>
+                                                            </span>Diş Hizmet Gir
+                                                        </button>
+                                                        <a onclick="Remove('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-danger">
+                                                            <span class="btn-label">
+                                                                <i class="glyphicon glyphicon-trash"></i>
+                                                            </span>Sil
+                                                        </a>
 
-                                                            <a onclick="HTaburcuEt('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-info">
-                                                                <span class="btn-label">
-                                                                    <i class="glyphicon glyphicon-export"></i>
-                                                                </span>Taburcu Et
-                                                            </a>
-                                                            <a onclick="GetHizmet('@item.t_id')" class="btn btn-labeled btn-default">
-                                                                <span class="btn-label">
-                                                                    <i class="glyphicon glyphicon-chevron-right"></i>
-                                                                </span>Hiz.Dökümü
-                                                            </a>
+                                                        <a onclick="HTaburcuEt('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-info">
+                                                            <span class="btn-label">
+                                                                <i class="glyphicon glyphicon-export"></i>
+                                                            </span>Taburcu Et
+                                                        </a>
+                                                        <a onclick="GetHizmet('@item.t_id')" class="btn btn-labeled btn-default">
+                                                            <span class="btn-label">
+                                                                <i class="glyphicon glyphicon-chevron-right"></i>
+                                                            </span>Hiz.Dökümü
+                                                        </a>
 
-                                                        }
+                                                    }
 
-                                                    </td>
+                                                </td>
                                             </tr>
 
 
@@ -197,12 +207,12 @@
                     <!-- end widget div -->
                 </div>
                 <!-- end widget -->
-                
+
                 <div id="dinamikTable"></div>
             </article>
             <!-- WIDGET END -->
-            
-            
+
+
 
         </div>
     </section>
@@ -242,48 +252,48 @@
                 <h4 class="modal-title" id="myModalLabel2">Başvuru Düzenle</h4>
             </div>
             <div class="modal-body">
-              
+
                 @*@Html.Action("HastaBPartialEdit", "hst_basvuru", new {@id = ""})*@
-                
-                
+
+
 
                 @using (Html.BeginForm("Edit", "hst_basvuru", FormMethod.Post, new { @class = "smart-form" }))
                 {
                     @Html.AntiForgeryToken()
-    
-                <fieldset>
-                    <center><h4>Hasta Başvuru Düzenle</h4></center>
-                    <hr />
 
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.Hidden("t_id")
-                    @Html.Hidden("t_basvuru")
-                    @Html.Hidden("t_tc",(string)ViewBag.tc)
-                    <br />
-                    <br />
-                    <br />
-                    <div class="row" style="padding-left: 30px;">
-                        @Html.Label("T.C. No:", htmlAttributes: new { @class = "col-md-2 control-label " })
-                        <section class="col-md-6">
-                            <label class="input">
-                                @Html.Display("tc", (string)@ViewBag.tc)
-                                @*@Html.Editor("t_tc")*@
+                    <fieldset>
+                        <center><h4>Hasta Başvuru Düzenle</h4></center>
+                        <hr />
 
-                            </label>
-                        </section>
-                    </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.Hidden("t_id")
+                        @Html.Hidden("t_basvuru")
+                        @Html.Hidden("t_tc", (string)ViewBag.tc)
+                        <br />
+                        <br />
+                        <br />
+                        <div class="row" style="padding-left: 30px;">
+                            @Html.Label("T.C. No:", htmlAttributes: new { @class = "col-md-2 control-label " })
+                            <section class="col-md-6">
+                                <label class="input">
+                                    @Html.Display("tc", (string)@ViewBag.tc)
+                                    @*@Html.Editor("t_tc")*@
 
-                    <div class="row" style="padding-left: 30px;">
-                        @Html.Label("Doktor Seç:", htmlAttributes: new { @class = "col-md-2" })
-                        <section class="col-md-6">
-                            <label class="select">
-                                <i></i>
-                                @Html.DropDownList("t_bolumkodu", null, htmlAttributes: new { @class = "form-control", id = "doktor" })
-                            </label>
-                        </section>
-                    </div>
+                                </label>
+                            </section>
+                        </div>
 
-                </fieldset>
+                        <div class="row" style="padding-left: 30px;">
+                            @Html.Label("Doktor Seç:", htmlAttributes: new { @class = "col-md-2" })
+                            <section class="col-md-6">
+                                <label class="select">
+                                    <i></i>
+                                    @Html.DropDownList("t_bolumkodu", null, htmlAttributes: new { @class = "form-control", id = "doktor" })
+                                </label>
+                            </section>
+                        </div>
+
+                    </fieldset>
                     <footer>
                         <div class="col-md-offset-3 col-md-7">
                             <input type="submit" value="Kaydet" class="btn btn-success" />
@@ -292,10 +302,10 @@
 
                 }
 
-                
 
 
-                
+
+
 
             </div>
             <div class="modal-footer">
@@ -371,7 +381,7 @@
                 });
         }
 
-      
+
 
         function GetHizmet(bid) {
             var gveri = bid;
@@ -391,7 +401,7 @@
 
 
         $(document).ready(function () {
-         
+
             var kayitdurum = @Html.Raw(Json.Encode(ViewBag.Message));
             if (kayitdurum==1) {
                 $.smallBox({
