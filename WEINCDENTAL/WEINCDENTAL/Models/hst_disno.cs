@@ -12,15 +12,14 @@ namespace WEINCDENTAL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class hst_hastadurum
+    public partial class hst_disno
     {
         public int t_id { get; set; }
-        public string t_tc { get; set; }
-        public int t_hdurumid { get; set; }
-        public string t_aciklama { get; set; }
+        public int t_disno { get; set; }
+        public int t_cene { get; set; }
+        public bool t_yetiskinmi { get; set; }
         public bool t_aktif { get; set; }
     
-        public virtual hst_hastakarti hst_hastakarti { get; set; }
-        public virtual hst_hastalik hst_hastalik { get; set; }
+        public virtual hst_cene_uygunmu hst_cene_uygunmu { get; set; }
     }
 }

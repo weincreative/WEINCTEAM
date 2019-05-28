@@ -48,7 +48,7 @@ namespace WEINCDENTAL.Controllers
         //public ActionResult Hiz(string tc)
         //{
         //    Ortak._hastatc = tc;
-        //        return RedirectToAction("Create", "hst_basvuru");
+        //    return RedirectToAction("HisHareket", "Home");
         //}
 
         //[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]

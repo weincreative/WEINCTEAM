@@ -27,6 +27,7 @@ namespace WEINCDENTAL.Models
         public int t_diskodu { get; set; }
         public int t_parca { get; set; }
         public int t_cene { get; set; }
+        public bool t_yetiskinmi { get; set; }
         public bool t_odemevarmi { get; set; }
         public Nullable<int> t_firmaid { get; set; }
         public string t_createuser { get; set; }
@@ -34,6 +35,7 @@ namespace WEINCDENTAL.Models
         public bool t_aktif { get; set; }
     
         public virtual hst_basvuru hst_basvuru { get; set; }
+        public virtual hst_cene_uygunmu hst_cene_uygunmu { get; set; }
         public virtual hst_firma hst_firma { get; set; }
         public virtual hst_hizmet hst_hizmet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

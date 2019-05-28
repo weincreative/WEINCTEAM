@@ -115,6 +115,7 @@ namespace WEINCDENTAL.Controllers
             int mesaj = 0;
             if (ModelState.IsValid)
             {
+
                 db.hst_basvuru.Add(hst_basvuru);
                 db.SaveChanges();
                 mesaj = 1;
