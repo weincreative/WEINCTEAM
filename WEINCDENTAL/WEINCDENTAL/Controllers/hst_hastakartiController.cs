@@ -67,18 +67,20 @@ namespace WEINCDENTAL.Controllers
                 // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             hst_hastakarti hst_hastakarti = db.hst_hastakarti.Find(id);
-            var ad_soyad = hst_hastakarti.t_adi + " " + hst_hastakarti.t_soyadi;
-            ViewBag.Ad = ad_soyad;
             if (hst_hastakarti == null)
             {
+                return PartialView();
                 // return HttpNotFound();
             }
+            var ad_soyad = hst_hastakarti.t_adi + " " + hst_hastakarti.t_soyadi;
+            ViewBag.Ad = ad_soyad;
+            
             return PartialView(hst_hastakarti);
         }
 
 
         // GET: hst_hastakarti/Create
-        public ActionResult Create()
+        public ActionResult Create(string id)
         {
             ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi");
             ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi");
@@ -96,7 +98,7 @@ namespace WEINCDENTAL.Controllers
 
             // ViewBag.t_ulkeId = new SelectList(db.hst_ulke, "CountryID", "CountryName");
             ViewBag.t_ulkeId = itemList;
-
+            ViewBag.tc = id;
             return View();
         }
         public ActionResult Create2()
@@ -161,7 +163,8 @@ namespace WEINCDENTAL.Controllers
                 ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi", hst_hastakarti.t_ilceId);
                 ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi", hst_hastakarti.t_medenidurum);
                 ViewBag.Message = mesaj;
-                return RedirectToAction("HastaBasvuruCreate","hst_basvuru");
+                Ortak._hastatc = hst_hastakarti.t_tc;
+                return RedirectToAction("HastaBasvuruCreate","hst_basvuru",new{id=hst_hastakarti.t_tc});
             }
             mesaj = 2;
             ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi", hst_hastakarti.t_cinsiyet);

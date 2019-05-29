@@ -24,7 +24,7 @@ namespace WEINCDENTAL.Controllers
             }
             else
             {
-                return RedirectToAction("Create","hst_hastakarti");
+                return RedirectToAction("Create","hst_hastakarti", new { @id = tc });
             }
 
         //            [HttpPost]

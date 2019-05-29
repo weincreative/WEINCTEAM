@@ -84,10 +84,10 @@ namespace WEINCDENTAL.Controllers
         }
 
         // GET: hst_basvuru/Create
-        public ActionResult HastaBasvuruCreate()
+        public ActionResult HastaBasvuruCreate(string id)
         {
             ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm, "t_id", "t_adi");
-            ViewBag.t_tc = new SelectList(db.hst_hastakarti, "t_tc", "t_adi");
+            ViewBag.t_tc = id;
             return View();
         }
 
