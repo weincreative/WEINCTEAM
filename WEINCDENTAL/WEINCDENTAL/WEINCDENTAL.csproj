@@ -146,10 +146,12 @@
     <Compile Include="Controllers\HisHareketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\hst_basvuruController.cs" />
+    <Compile Include="Controllers\hst_hastadurumController.cs" />
     <Compile Include="Controllers\hst_hastakartiController.cs" />
     <Compile Include="Controllers\hst_hizmetController.cs" />
     <Compile Include="Controllers\Ortak.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\View_HastalikDurumController.cs" />
     <Compile Include="Controllers\View_HizHareketController.cs" />
     <Compile Include="Controllers\View_HizmetDetayController.cs" />
     <Compile Include="Controllers\YardimciController.cs" />
@@ -1054,6 +1056,11 @@
     <Content Include="Views\View_HizmetDetay\HizmetDetay.cshtml" />
     <Content Include="Views\HisHareket\HisHareket.cshtml" />
     <Content Include="Views\hst_hizmet\ListHizmet.cshtml" />
+    <Content Include="Views\View_HastalikDurum\OzelDurumList.cshtml" />
+    <Content Include="Views\hst_hastadurum\Create.cshtml" />
+    <Content Include="Views\hst_hastadurum\Delete.cshtml" />
+    <Content Include="Views\hst_hastadurum\Edit.cshtml" />
+    <Content Include="Views\hst_hastadurum\HastaDPartialCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

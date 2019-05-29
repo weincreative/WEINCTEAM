@@ -148,23 +148,17 @@
                                                     else
                                                     {
 
-
-
-
                                                         <button onclick="Doldur(@item.t_id,@item.t_bolumkodu,@item.t_basvuru)" class="btn-labeled btn-success btn" data-toggle="modal" @*data-target="#myModalEdit" data-value="@item.t_id"*@>
                                                             <span class="btn-label">
                                                                 <i class="glyphicon glyphicon-list"></i>
                                                             </span>Düzenle
                                                         </button>
 
-                                                        @*@Html.ActionLink("Düzenle", "Edit", new {id = item.t_id}) |*@
-
-                                                        @*@Html.ActionLink("Diş Hizmet Gir", "#", new { id = item.t_id})*@
-                                                        <button class="btn btn-labeled btn-warning">
+                                                        <a class="btn btn-labeled btn-warning" href="@Url.Action("HisHareket","HisHareket"@*,new{@id=@item.t_id}*@)">
                                                             <span class="btn-label">
                                                                 <i class="glyphicon glyphicon-new-window"></i>
                                                             </span>Diş Hizmet Gir
-                                                        </button>
+                                                        </a>
                                                         <a onclick="Remove('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-danger">
                                                             <span class="btn-label">
                                                                 <i class="glyphicon glyphicon-trash"></i>

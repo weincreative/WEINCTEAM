@@ -58,5 +58,23 @@ namespace WEINCDENTAL.Controllers
 
 
     }
+
+        // hastanın özel durum sayısını getirir...
+        public int GetOzelDurumCount(string id)
+        {
+            var sonuc = 0;
+            try
+            {
+               sonuc= db.View_HastalikDurum.Count(k => k.t_aktif == true && k.t_tc == id);
+                return sonuc;
+            }
+            catch (Exception e)
+            {
+                return sonuc;
+            }
+           
+           
+        }
+
     }
 }

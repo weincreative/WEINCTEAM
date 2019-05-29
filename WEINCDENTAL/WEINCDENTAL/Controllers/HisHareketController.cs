@@ -12,6 +12,9 @@ namespace WEINCDENTAL.Controllers
 
         public ActionResult HisHareket()
         {
+            var tc = Ortak._hastatc;
+            
+            ViewBag.tc = tc;
             return View();
         }
 

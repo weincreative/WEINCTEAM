@@ -19,5 +19,7 @@ namespace WEINCDENTAL.Models
         public string t_adi { get; set; }
         public string t_soyadi { get; set; }
         public string Hastalık { get; set; }
+        public string Aciklama { get; set; }
+        public bool t_aktif { get; set; }
     }
 }

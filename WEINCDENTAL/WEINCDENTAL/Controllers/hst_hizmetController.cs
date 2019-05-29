@@ -24,6 +24,11 @@ namespace WEINCDENTAL.Controllers
         public PartialViewResult ListHizmet()
         {
             var hst_hizmet = db.hst_hizmet.Where(k=>k.t_aktif==true);
+            var tc = Ortak._hastatc;
+            ViewBag.tc = tc;
+            YardimciController yc=new YardimciController();
+            int count = yc.GetOzelDurumCount(tc);
+            ViewBag.OzelCount = count;
             return PartialView(hst_hizmet.ToList());
         }
 
