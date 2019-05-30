@@ -1061,6 +1061,7 @@
     <Content Include="Views\hst_hastadurum\Delete.cshtml" />
     <Content Include="Views\hst_hastadurum\Edit.cshtml" />
     <Content Include="Views\hst_hastadurum\HastaDPartialCreate.cshtml" />
+    <Content Include="Views\hst_hastadurum\HDurumPartialEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

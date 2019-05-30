@@ -10,6 +10,7 @@ using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Controllers
 {
+    [Authorize(Roles = "1,2")]
     public class hst_hastadurumController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
@@ -57,6 +58,32 @@ namespace WEINCDENTAL.Controllers
             return View(hst_hastadurum);
         }
 
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult HDurumCreate([Bind(Include = "t_id,t_tc,t_hdurumid,t_aciklama,t_aktif")] hst_hastadurum hst_hastadurum)
+        {
+            int mesaj = 0;
+            if (ModelState.IsValid)
+            {
+
+                hst_hastadurum.t_aktif = true;
+                db.hst_hastadurum.Add(hst_hastadurum);
+                db.SaveChanges();
+                mesaj = 1;
+                ViewBag.Message = mesaj;
+                ViewBag.t_tc = hst_hastadurum.t_tc;
+                return Json(mesaj,JsonRequestBehavior.AllowGet);
+            }
+            mesaj = 2;
+            ViewBag.Message = mesaj;
+            ViewBag.t_tc = new SelectList(db.hst_hastakarti, "t_tc", "t_adi", hst_hastadurum.t_tc);
+            ViewBag.t_hdurumid = new SelectList(db.hst_hastalik, "t_id", "t_adi", hst_hastadurum.t_hdurumid);
+            return Json(mesaj, JsonRequestBehavior.AllowGet);
+        }
+
+
         // GET: hst_hastadurum/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -74,6 +101,27 @@ namespace WEINCDENTAL.Controllers
             return View(hst_hastadurum);
         }
 
+
+
+        public PartialViewResult HDurumPartialEdit(int? id)
+        {
+            //if (id == null)
+            //{
+            //  //  return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            hst_hastadurum hst_hastadurum = db.hst_hastadurum.Find(id);
+            if (hst_hastadurum == null)
+            {
+                ViewBag.t_tc = new SelectList(db.hst_hastakarti, "t_tc", "t_adi");
+                ViewBag.t_hdurumid = new SelectList(db.hst_hastalik, "t_id", "t_adi");
+                return PartialView(hst_hastadurum);
+            }
+            ViewBag.t_tc = hst_hastadurum.t_tc;
+            ViewBag.t_hdurumid = new SelectList(db.hst_hastalik, "t_id", "t_adi", hst_hastadurum.t_hdurumid);
+            hst_hastadurum.t_aktif = !hst_hastadurum.t_aktif;
+            return PartialView(hst_hastadurum);
+        }
+
         // POST: hst_hastadurum/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -81,15 +129,19 @@ namespace WEINCDENTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "t_id,t_tc,t_hdurumid,t_aciklama,t_aktif")] hst_hastadurum hst_hastadurum)
         {
+            int mesaj = 0;
             if (ModelState.IsValid)
             {
+                hst_hastadurum.t_aktif = !hst_hastadurum.t_aktif;
                 db.Entry(hst_hastadurum).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                mesaj = 1;
+                ViewBag.Message = mesaj;
+                return Json(mesaj, JsonRequestBehavior.AllowGet);
             }
-            ViewBag.t_tc = new SelectList(db.hst_hastakarti, "t_tc", "t_adi", hst_hastadurum.t_tc);
-            ViewBag.t_hdurumid = new SelectList(db.hst_hastalik, "t_id", "t_adi", hst_hastadurum.t_hdurumid);
-            return View(hst_hastadurum);
+            mesaj = 2;
+            ViewBag.Message = mesaj;
+            return Json(mesaj, JsonRequestBehavior.AllowGet);
         }
 
         // GET: hst_hastadurum/Delete/5

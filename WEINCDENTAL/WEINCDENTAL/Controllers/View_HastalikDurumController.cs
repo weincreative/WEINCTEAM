@@ -19,7 +19,7 @@ namespace WEINCDENTAL.Controllers
         {
             var hlist = db.View_HastalikDurum.Where(k=>k.t_tc==id && k.t_aktif==true).ToList();
             ViewBag.tc = Ortak._hastatc;
-
+           // ViewBag.t_hdurumid = new SelectList(db.hst_hastalik, "t_id", "t_adi", hst_hastadurum.t_hdurumid);
             return PartialView(hlist);
         }
        
