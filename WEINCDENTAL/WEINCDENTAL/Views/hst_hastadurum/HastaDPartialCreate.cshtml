@@ -74,6 +74,7 @@
 @*Hasta Özel Durum Partial Create*@
 <script type="text/javascript">
     $(document).ready(function () {
+
         $("#HDCreate").submit(function (e) {
             e.preventDefault();
             if ($(this).valid()) {
@@ -90,6 +91,7 @@
                                 iconSmall: "fa fa-thumbs-up bounce animated",
                                 timeout: 4000
                             });
+
                         } else if (res == 2) {
                             $.smallBox({
                                 title: "Kayıt İşlemi Başarısız oldu.",
