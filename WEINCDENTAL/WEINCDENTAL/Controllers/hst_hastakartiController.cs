@@ -80,8 +80,9 @@ namespace WEINCDENTAL.Controllers
 
 
         // GET: hst_hastakarti/Create
-        public ActionResult Create(string id)
+        public ActionResult Create()
         {
+            string id = Ortak._hastatc;
             ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi");
             ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi");
             ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi");
