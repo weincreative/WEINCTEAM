@@ -26,8 +26,12 @@ namespace WEINCDENTAL.Models
         public int Hareketid { get; set; }
         public int t_hizmetkodu { get; set; }
         public string Hizmetadi { get; set; }
+        public bool t_yetiskinmi { get; set; }
+        public int t_diskodu { get; set; }
         public decimal t_fiyat { get; set; }
         public System.DateTime t_islemtarihi { get; set; }
         public bool Odemeyapildimi { get; set; }
+        public int CeneNo { get; set; }
+        public string CeneDurum { get; set; }
     }
 }

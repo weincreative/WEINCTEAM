@@ -194,7 +194,7 @@ namespace WEINCDENTAL.Controllers
                     ViewBag.Message = mesaj;
                     return RedirectToAction("Hastabasvuru_Index", new { @id = hst_basvuru.t_tc });
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     mesaj = 2;
                     ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm, "t_id", "t_adi", hst_basvuru.t_bolumkodu);

@@ -10,21 +10,30 @@ namespace WEINCDENTAL.Controllers
     public class HisHareketController:Controller
     {
 
-        public ActionResult HisHareket()
+        public ActionResult HisHareket(int id)
         {
             var tc = Ortak._hastatc;
-            
             ViewBag.tc = tc;
+            ViewBag.bid = id;
             return View();
         }
 
-        public PartialViewResult DisModul()
+        public PartialViewResult DisModul(int id)
         {
             WEINCDENTALEntities db = new WEINCDENTALEntities();
             ViewModelHisHareket vm = new ViewModelHisHareket();
             vm._ViewModelHisHareket = db.hst_his_hareket.ToList();
+            ViewBag.basid = id;
             return PartialView(vm);
         }
+
+        public PartialViewResult _NewHareket()
+        {
+
+            return PartialView();
+        }
+
+
         public PartialViewResult HisHareketHizmet()
         {
             WEINCDENTALEntities db = new WEINCDENTALEntities();

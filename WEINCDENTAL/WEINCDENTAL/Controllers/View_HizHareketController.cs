@@ -25,6 +25,12 @@ namespace WEINCDENTAL.Controllers
             var hizhareket = db.View_HizHareket.Where(k => k.basvuruid == id).ToList();
             return PartialView(hizhareket);
         }
+
+        public PartialViewResult _DisHHareket(int id)
+        {
+            var hizhareket = db.View_HizHareket.Where(k => k.basvuruid == id).ToList();
+            return PartialView(hizhareket);
+        }
         
         protected override void Dispose(bool disposing)
         {

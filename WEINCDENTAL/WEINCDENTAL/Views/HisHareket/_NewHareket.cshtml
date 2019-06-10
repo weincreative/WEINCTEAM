@@ -1,0 +1,52 @@
+﻿<div class="jarviswidget" id="wid-id-4" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-colorbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
+
+    <header>
+        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+        <h2>Yeni Hizmetler</h2>
+    </header>
+    <div>
+        <div class="jarviswidget-editbox">
+        </div>
+        <div class="widget-body no-padding">
+            <p> Hizmet Kaydı yapmadan önce kontrol ediniz!</p>
+            <div class="table-responsive">
+
+                <table class="table table-bordered" id="tblHizmet">
+                    <thead>
+                        <tr>
+                            <th>Hizmet Kodu</th>
+                            <th>Hizmet Adı</th>
+                            <th>Diş Kodu</th>
+                            <th>Çene Durumu</th>
+                            <th>Fiyat</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblbody">
+                        <tr class="success" id="newHizmet">
+                            <td> <label id="HKod"></label> </td>
+                            <td> <label id="HAd"></label> </td>
+                            <td> <label id="DKod"></label> </td>
+                            <td> <label id="CDurum"></label> </td>
+                            <td> <label id="Fiyat"></label> </td>
+                            <td class="danger" >
+                                <input type='button' id="btnremove" class='AddNew' value='Add new item'>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <div class="dt-toolbar-footer">
+                    <div style="float: right;">
+                        <button class="btn-labeled btn-success btn">
+                            <span class="btn-label">
+                                <i class="glyphicon glyphicon-plus-sign"></i>
+                            </span>Kaydet
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

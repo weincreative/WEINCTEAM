@@ -1120,6 +1120,8 @@
     <Content Include="Views\hst_his_hareket\Details.cshtml" />
     <Content Include="Views\hst_his_hareket\Edit.cshtml" />
     <Content Include="Views\hst_his_hareket\Index.cshtml" />
+    <Content Include="Views\View_HizHareket\_DisHHareket.cshtml" />
+    <Content Include="Views\HisHareket\_NewHareket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -20,6 +20,9 @@ namespace WEINCDENTAL.Controllers
             var hst_his_hareket = db.hst_his_hareket.Include(h => h.hst_basvuru).Include(h => h.hst_cene_uygunmu).Include(h => h.hst_firma).Include(h => h.hst_hizmet);
             return View(hst_his_hareket.ToList());
         }
+        
+        
+
 
         // GET: hst_his_hareket/Details/5
         public ActionResult Details(int? id)

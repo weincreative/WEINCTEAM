@@ -109,7 +109,7 @@
                                                         @*@Html.DisplayFor(modelItem => item.t_id) - @Html.DisplayFor(modelItem => item.t_adi) -
                                                         @Html.DisplayFor(modelItem => item.t_fiyat)*@
                                                     @*</a>*@
-                                                    <button class="btn btn-default hzmt-btn btn-block" onclick="SeciliHizmet('@item.t_id')">
+                                                    <button class="btn btn-default hzmt-btn btn-block" onclick="SeciliHizmet('@item.t_id','@item.t_adi','@item.t_fiyat')">
                                                         @Html.DisplayFor(modelItem => item.t_id) - @Html.DisplayFor(modelItem => item.t_adi) -
                                                         @Html.DisplayFor(modelItem => item.t_fiyat)
                                                     </button>
