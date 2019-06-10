@@ -15,5 +15,6 @@ namespace WEINCDENTAL.Models
         public IEnumerable<WEINCDENTAL.Models.hst_hastadurum> _ViewModelHastaDurum { get; set; }
         public IEnumerable<WEINCDENTAL.Models.hst_firma> _ViewModelFirma { get; set; }
         public IEnumerable<WEINCDENTAL.Models.adm_pacs> _ViewModelPacs { get; set; }
+        //public IEnumerable<WEINCDENTAL.Models.View_HastalikDurum> _ViewModelView_HastalikDurum { get; set; }
     }
 }

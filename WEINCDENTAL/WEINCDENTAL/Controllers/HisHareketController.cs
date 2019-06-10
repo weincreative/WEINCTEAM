@@ -18,7 +18,6 @@ namespace WEINCDENTAL.Controllers
             return View();
         }
 
-
         public PartialViewResult DisModul()
         {
             WEINCDENTALEntities db = new WEINCDENTALEntities();
@@ -68,5 +67,12 @@ namespace WEINCDENTAL.Controllers
             vm._ViewModelPacs = db.adm_pacs.ToList();
             return PartialView(vm);
         }
+        //public PartialViewResult HisHareketView_HastalikDurum()
+        //{
+        //    WEINCDENTALEntities db = new WEINCDENTALEntities();
+        //    ViewModelHisHareket vm = new ViewModelHisHareket();
+        //    vm._ViewModelView_HastalikDurum = db.View_HastalikDurum.ToList();
+        //    return PartialView(vm);
+        //}
     }
 }

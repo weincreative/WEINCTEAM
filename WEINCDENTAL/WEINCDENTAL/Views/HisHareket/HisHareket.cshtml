@@ -18,27 +18,27 @@
         <!-- right side of the page with the sparkline graphs -->
         <!-- col -->
         @*<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-            <ul id="sparks">
-                <li class="sparks-info">
-                    <h5> Kazanç <span class="txt-color-blue">$47,171</span></h5>
-                    <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
-                        1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
-                    </div>
-                </li>
-                <li class="sparks-info">
-                    <h5> Hasta <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
-                    <div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
-                        110,150,300,130,400,240,220,310,220,300, 270, 210
-                    </div>
-                </li>
-                <li class="sparks-info">
-                    <h5> İşlem <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
-                    <div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
-                        110,150,300,130,400,240,220,310,220,300, 270, 210
-                    </div>
-                </li>
-            </ul>
-        </div>*@
+                <ul id="sparks">
+                    <li class="sparks-info">
+                        <h5> Kazanç <span class="txt-color-blue">$47,171</span></h5>
+                        <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+                            1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
+                        </div>
+                    </li>
+                    <li class="sparks-info">
+                        <h5> Hasta <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
+                        <div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
+                            110,150,300,130,400,240,220,310,220,300, 270, 210
+                        </div>
+                    </li>
+                    <li class="sparks-info">
+                        <h5> İşlem <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
+                        <div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
+                            110,150,300,130,400,240,220,310,220,300, 270, 210
+                        </div>
+                    </li>
+                </ul>
+            </div>*@
         <!-- end col -->
     </div>
     <!-- end row -->
@@ -64,9 +64,53 @@
             <div class="col-sm-12">
                 <!-- your contents here -->
             </div>
+            <div id="dinamikTableHizHareket"></div>
         </div>
         <!-- end row -->
     </section>
     <!-- end widget grid -->
 </div>
+
+
+<script type="text/javascript">
+
+    var secilenHizmet;
+    var secilenDis;
+
+    function SeciliHizmet(SHid) {
+        secilenHizmet = SHid;
+    }
+
+    function SeciliDis(SDid) {
+        secilenDis = SDid;
+        if (secilenHizmet != null) {
+            if (secilenDis == null) {
+                $.smallBox({
+                    title: "İPTAL",
+                    content: "<i class='fa fa-clock-o'></i> <i>Seçili Diş getirilemedi...</i>",
+                    color: "#C46A69",
+                    iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                    timeout: 4000
+                });
+            } else {
+            @* $('#dinamikTableHizHareket').load("@Url.Action("PartialHizHareket", "View_HizHareket")", { id: gveri });*@
+                $.smallBox({
+                    title: "OKAY",
+                    content: "<i class='fa fa-clock-o'></i> <i>Seçili "+ "Diş No : " + secilenDis + " Hizmet No : " + secilenHizmet +"</i>",
+                    color: "#C46A69",
+                    iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                    timeout: 4000
+                });
+            }
+        } else {
+            $.smallBox({
+                title: "İPTAL",
+                content: "<i class='fa fa-clock-o'></i> <i>Hizmet Seçmediniz...</i>",
+                color: "#C46A69",
+                iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                timeout: 4000
+            });
+        }
+    }
+</script>
 

@@ -67,7 +67,25 @@ namespace WEINCDENTAL.Controllers
                 return Json(sonuc, JsonRequestBehavior.AllowGet);
             }
         }
-        
+
+        [HttpPost]
+        public JsonResult TaburcuGerial(int id)
+        {
+            var sonuc = 0;
+            try
+            {
+                hst_basvuru basvuru = db.hst_basvuru.Find(id);
+                basvuru.t_taburcu = false;
+                db.Entry(basvuru).State = EntityState.Modified;
+                db.SaveChanges();
+                sonuc = 1;
+                return Json(sonuc, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(sonuc, JsonRequestBehavior.AllowGet);
+            }
+        }
         // GET: hst_basvuru/Details/5
         public ActionResult Details(int? id)
         {

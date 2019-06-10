@@ -58,6 +58,7 @@
                         <!-- widget edit box -->
                         <div class="jarviswidget-editbox">
                             <!-- This area used as dropdown edit box -->
+                            <input class="form-control" type="text">
                         </div>
                         <!-- end widget edit box -->
                         <!-- widget content -->
@@ -116,69 +117,69 @@
                                                     </td>
                                                 }
 
-                                                <td>
-                                                    @if (item.t_taburcu)
-                                                    {
-                                                        <button class="btn-labeled btn-success btn disabled" data-toggle="modal" >
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-list"></i>
-                                                            </span>Düzenle
-                                                        </button>
-                                                        <button class="btn btn-labeled btn-warning disabled">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-new-window"></i>
-                                                            </span>Diş Hizmet Gir
-                                                        </button>
-                                                        <a class="btn btn-labeled btn-danger disabled">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-trash"></i>
-                                                            </span>Sil
-                                                        </a>
-                                                        <a class="btn btn-labeled btn-info disabled">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-export"></i>
-                                                            </span>Taburcu Et
-                                                        </a>
-                                                        <a onclick="GetHizmet('@item.t_id')" class="btn btn-labeled btn-default disabled">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-chevron-right"></i>
-                                                            </span>Hiz.Dökümü
-                                                        </a>
-                                                    }
-                                                    else
-                                                    {
+                                                    <td>
+                                                        @if (item.t_taburcu)
+                                                        {
+                                                            <button class="btn-labeled btn-success btn disabled" data-toggle="modal">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-list"></i>
+                                                                </span>Düzenle
+                                                            </button>
+                                                            <button class="btn btn-labeled btn-warning disabled">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-new-window"></i>
+                                                                </span>Diş Hizmet Gir
+                                                            </button>
+                                                            <a class="btn btn-labeled btn-danger disabled">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                                </span>Sil
+                                                            </a>
+                                                            <a onclick="HTaburcuGeriAl('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-info">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-export"></i>
+                                                                </span>Taburcu Geri Al
+                                                            </a>
+                                                            <a onclick="GetHizmet('@item.t_id')" class="btn btn-labeled btn-default">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-chevron-right"></i>
+                                                                </span>Hiz.Dökümü
+                                                            </a>
+                                                        }
+                                                        else
+                                                        {
 
-                                                        <button onclick="Doldur(@item.t_id,@item.t_bolumkodu,@item.t_basvuru)" class="btn-labeled btn-success btn" data-toggle="modal" @*data-target="#myModalEdit" data-value="@item.t_id"*@>
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-list"></i>
-                                                            </span>Düzenle
-                                                        </button>
+                                                            <button onclick="Doldur(@item.t_id,@item.t_bolumkodu,@item.t_basvuru)" class="btn-labeled btn-success btn" data-toggle="modal" @*data-target="#myModalEdit" data-value="@item.t_id"*@>
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-list"></i>
+                                                                </span>Düzenle
+                                                            </button>
 
-                                                        <a class="btn btn-labeled btn-warning" href="@Url.Action("HisHareket","HisHareket"@*,new{@id=@item.t_id}*@)">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-new-window"></i>
-                                                            </span>Diş Hizmet Gir
-                                                        </a>
-                                                        <a onclick="Remove('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-danger">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-trash"></i>
-                                                            </span>Sil
-                                                        </a>
+                                                            <a class="btn btn-labeled btn-warning" href="@Url.Action("HisHareket","HisHareket"@*,new{@id=@item.t_id}*@)">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-new-window"></i>
+                                                                </span>Diş Hizmet Gir
+                                                            </a>
+                                                            <a onclick="Remove('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-danger">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                                </span>Sil
+                                                            </a>
 
-                                                        <a onclick="HTaburcuEt('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-info">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-export"></i>
-                                                            </span>Taburcu Et
-                                                        </a>
-                                                        <a onclick="GetHizmet('@item.t_id')" class="btn btn-labeled btn-default">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-chevron-right"></i>
-                                                            </span>Hiz.Dökümü
-                                                        </a>
+                                                            <a onclick="HTaburcuEt('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-info">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-export"></i>
+                                                                </span>Taburcu Et
+                                                            </a>
+                                                            <a onclick="GetHizmet('@item.t_id')" class="btn btn-labeled btn-default">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-chevron-right"></i>
+                                                                </span>Hiz.Dökümü
+                                                            </a>
 
-                                                    }
+                                                        }
 
-                                                </td>
+                                                    </td>
                                             </tr>
 
 
@@ -366,6 +367,31 @@
                         $.smallBox({
                             title: "İPTAL",
                             content: "<i class='fa fa-clock-o'></i> <i>Taburcu işleminden vazgeçildi...</i>",
+                            color: "#C46A69",
+                            iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                            timeout: 4000
+                        });
+                    }
+
+                });
+        }
+
+        function HTaburcuGeriAl(id, ad, soyad) {
+
+            $.SmartMessageBox({
+                title: "UYARI!",
+                content: "Adı: " + ad + " Soyadı: " + soyad + " olan hasta Taburcusu geri alınacaktır. Emin misiniz?",
+                buttons: '[No][Yes]'
+            },
+                function (ButtonPressed) {
+                    if (ButtonPressed === "Yes") {
+                        HastaTaburcuGeriAl(id);
+
+                    }
+                    if (ButtonPressed === "No") {
+                        $.smallBox({
+                            title: "İPTAL",
+                            content: "<i class='fa fa-clock-o'></i> <i>Taburcu geri alma işleminden vazgeçildi...</i>",
                             color: "#C46A69",
                             iconSmall: "fa fa-times fa-2x fadeInRight animated",
                             timeout: 4000
