@@ -19,11 +19,8 @@
     <section id="widget-grid">
         <!-- row -->
         <div class="row">
-            @*@Html.Action("HisHareketBasvuru", "HisHareket")*@
             @Html.Action("DisModul", "HisHareket", new { @id = @ViewBag.bid })
-            @*@Html.Action("HisHareketHastaDurum", "HisHareket")*@
             @Html.Action("ListHizmet", "hst_hizmet")
-            @*@Html.Action("AyarlarHizmet", "Ayarlar")*@
         </div>
         <!-- end row -->
         <!-- row -->
@@ -38,10 +35,7 @@
                         <!-- START ROW -->
                         <div class="row">
                             <article class="col-sm-12 col-md-12 col-lg-12">
-                                <div id="refreshtable">
                                     @Html.Action("_NewHareket")
-                                </div>
-
                                 @Html.Action("_DisHHareket", "View_HizHareket", new { @id = ViewBag.bid })
 
                             </article>
@@ -115,6 +109,8 @@
 
         var row = $('#newHizmet').closest('tr').clone();
         row.find("#HKod").text(hkod);
+        //row.find("#HKod").val(hkod);
+        //row.find("#HAd").val(had);
         row.find("#HAd").text(had);
         row.find("#DKod").text(dkod);
         row.find("#Fiyat").text(hfiyat);
@@ -123,11 +119,11 @@
         $('input[type="button"]', row).removeClass('AddNew').addClass('RemoveRow').val('Remove item');
       //  row.find("input").id = "asd";
 
-        var rows = document.getElementById("tblbody").rows[0];
+      //  var rows = document.getElementById("tblbody").rows[0];
        // alert(rows);
-        var Cells = rows.getElementsByTagName("label");
+       // var Cells = rows.getElementsByTagName("label");
        // alert(Cells);
-        var remove = Cells[0].innerText;
+        //var remove = Cells[0].innerText;
        // alert(remove);
 
         //if (remove == null || remove == '') {

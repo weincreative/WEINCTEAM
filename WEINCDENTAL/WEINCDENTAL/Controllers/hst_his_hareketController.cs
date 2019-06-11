@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
@@ -53,21 +54,23 @@ namespace WEINCDENTAL.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "t_id,t_basvuruid,t_hizmetkodu,t_islemtarihi,t_diskodu,t_parca,t_cene,t_yetiskinmi,t_odemevarmi,t_firmaid,t_createuser,t_createdate,t_aktif")] hst_his_hareket hst_his_hareket)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Create(List<hst_his_hareket> hst_his_hareket)
         {
+            //[Bind(Include = "t_id,t_basvuruid,t_hizmetkodu,t_islemtarihi,t_diskodu,t_parca,t_cene,t_yetiskinmi,t_odemevarmi,t_firmaid,t_createuser,t_createdate,t_aktif")]
+            // hst_his_hareket hst_his_hareket
             if (ModelState.IsValid)
             {
-                db.hst_his_hareket.Add(hst_his_hareket);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+               // db.hst_his_hareket.Add(hst_his_hareket);
+               // db.SaveChanges();
+            //    return RedirectToAction("Index");
             }
 
-            ViewBag.t_basvuruid = new SelectList(db.hst_basvuru, "t_id", "t_basvuru", hst_his_hareket.t_basvuruid);
-            ViewBag.t_cene = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi", hst_his_hareket.t_cene);
-            ViewBag.t_firmaid = new SelectList(db.hst_firma, "t_id", "t_fad", hst_his_hareket.t_firmaid);
-            ViewBag.t_hizmetkodu = new SelectList(db.hst_hizmet, "t_id", "t_adi", hst_his_hareket.t_hizmetkodu);
-            return View(hst_his_hareket);
+           // ViewBag.t_basvuruid = new SelectList(db.hst_basvuru, "t_id", "t_basvuru", hst_his_hareket.t_basvuruid);
+           // ViewBag.t_cene = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi", hst_his_hareket.t_cene);
+           // ViewBag.t_firmaid = new SelectList(db.hst_firma, "t_id", "t_fad", hst_his_hareket.t_firmaid);
+           // ViewBag.t_hizmetkodu = new SelectList(db.hst_hizmet, "t_id", "t_adi", hst_his_hareket.t_hizmetkodu);
+            return Json("a",JsonRequestBehavior.AllowGet);
         }
 
         // GET: hst_his_hareket/Edit/5

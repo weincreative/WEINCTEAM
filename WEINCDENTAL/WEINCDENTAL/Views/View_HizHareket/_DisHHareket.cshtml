@@ -1,42 +1,42 @@
 ﻿@model IEnumerable<WEINCDENTAL.Models.View_HizHareket>
 
-    <!-- Widget ID (each widget will need unique ID)-->
-    <div class="jarviswidget" id="wid-id-4" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-colorbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
-        <!-- widget options:
-        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+<!-- Widget ID (each widget will need unique ID)-->
+<div class="jarviswidget" id="wid-id-4" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-colorbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
+    <!-- widget options:
+    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
-        data-widget-colorbutton="false"
-        data-widget-editbutton="false"
-        data-widget-togglebutton="false"
-        data-widget-deletebutton="false"
-        data-widget-fullscreenbutton="false"
-        data-widget-custombutton="false"
-        data-widget-collapsed="true"
-        data-widget-sortable="false"
+    data-widget-colorbutton="false"
+    data-widget-editbutton="false"
+    data-widget-togglebutton="false"
+    data-widget-deletebutton="false"
+    data-widget-fullscreenbutton="false"
+    data-widget-custombutton="false"
+    data-widget-collapsed="true"
+    data-widget-sortable="false"
 
-        -->
-        <header>
-            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-            <h2>Önceki Hizmet Bilgileri</h2>
-        </header>
-        <!-- widget div-->
-        <div>
-            <!-- widget edit box -->
-            <div class="jarviswidget-editbox">
-                <!-- This area used as dropdown edit box -->
-            </div>
-            <!-- end widget edit box -->
-            <!-- widget content -->
-            <div class="widget-body no-padding">
-                                            
-                <div id="dt_basic_wrapper" class="dataTables_wrapper form-inline no-footer">
-                    <!-- start widget head search-->
-                    <div class="dt-toolbar no-padding">
-                    </div>
+    -->
+    <header>
+        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+        <h2>Önceki Hizmet Bilgileri</h2>
+    </header>
+    <!-- widget div-->
+    <div>
+        <!-- widget edit box -->
+        <div class="jarviswidget-editbox">
+            <!-- This area used as dropdown edit box -->
+        </div>
+        <!-- end widget edit box -->
+        <!-- widget content -->
+        <div class="widget-body no-padding">
 
-                    <!-- end widget head search -->
-                    <table id="dt_basic3_2" class="table table-striped table-bordered table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
-                        <thead>
+            <div id="dt_basic_wrapper" class="dataTables_wrapper form-inline no-footer">
+                <!-- start widget head search-->
+                <div class="dt-toolbar no-padding">
+                </div>
+
+                <!-- end widget head search -->
+                <table id="dt_basic3_2" class="table table-striped table-bordered table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
+                    <thead>
                         <tr role="row">
                             <!-- HEAD BAŞLANGICI -->
                             <th data-hide="phone,tablet" class="sorting_asc" tabindex="0" aria-controls="dt_basic3_2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;"><i class="fa fa-fw fa-key text-muted hidden-md hidden-sm hidden-xs"></i> Başvuru Numarası</th>
@@ -50,18 +50,10 @@
                             <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_2" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 100px;"><i class="fa fa-money text-muted hidden-md hidden-sm hidden-xs"></i> Tutar</th>
                             <!-- HEAD BİTİŞİ -->
                         </tr>
-                        </thead>
-                        <tbody>
+                    </thead>
+                    <tbody>
                         <!-- BODY BAŞLANGICI -->
-                        @if (Model == null || Model.Count() == 0)
-                        {
-                            <tr>
-                                <td colspan="2"></td>
-                                <td colspan="3"> <center style="color: red;">Başvuruya ait hizmet bulunamadı</center> </td>
-                                <td colspan="2"></td>
-                            </tr>
-                        }
-                        else
+                        @if (Model != null || Model.Count() != 0)
                         {
                             foreach (var item in Model)
                             {
@@ -118,22 +110,22 @@
 
 
                         <!-- BODY BİTİŞİ -->
-                        </tbody>
-                    </table>
-                    <!-- start widget footer -->
-                    <div class="dt-toolbar-footer no-padding">
+                    </tbody>
+                </table>
+                <!-- start widget footer -->
+                <div class="dt-toolbar-footer no-padding">
 
-                    </div>
-                    <!-- end widget footer -->
                 </div>
-
+                <!-- end widget footer -->
             </div>
-            <!-- end widget content -->
+
         </div>
-        <!-- end widget div -->
+        <!-- end widget content -->
     </div>
-    <!-- end widget -->
-    <!-- Widget ID (each widget will need unique ID)-->
+    <!-- end widget div -->
+</div>
+<!-- end widget -->
+<!-- Widget ID (each widget will need unique ID)-->
 
 
 
@@ -155,17 +147,17 @@
                 "t" +
                 "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
             "autoWidth": true,
-            "preDrawCallback": function() {
+            "preDrawCallback": function () {
                 // Initialize the responsive datatables helper once.
                 if (!responsiveHelper_dt_basic) {
                     responsiveHelper_dt_basic =
                         new ResponsiveDatatablesHelper($('#dt_basic3_2'), breakpointDefinition);
                 }
             },
-            "rowCallback": function(nRow) {
+            "rowCallback": function (nRow) {
                 responsiveHelper_dt_basic.createExpandIcon(nRow);
             },
-            "drawCallback": function(oSettings) {
+            "drawCallback": function (oSettings) {
                 responsiveHelper_dt_basic.respond();
             }
         });

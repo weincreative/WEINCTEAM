@@ -7,8 +7,9 @@ using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Controllers
 {
-    public class HisHareketController:Controller
+    public class HisHareketController : Controller
     {
+        private WEINCDENTALEntities db = new WEINCDENTALEntities();
 
         public ActionResult HisHareket(int id)
         {
@@ -30,38 +31,27 @@ namespace WEINCDENTAL.Controllers
         public PartialViewResult _NewHareket()
         {
 
-            return PartialView();
+            //List<View_HizHareket> list = new List<View_HizHareket>()
+            //{
+            //    new View_HizHareket
+            //    {
+            //        t_hizmetkodu = 2,
+            //        BasvuruNo = "1",
+            //        CeneDurum = "Tek",
+            //        Doktoradi = "asd"
+            //    }
+            //};
+            //ListHizmet asd=new ListHizmet();
+            //asd.ListHareket = list;
+            //View_HizHareket hh=new View_HizHareket();
+            // hh.t_hizmetkodu = 2;
+            // hh.BasvuruNo = "1";
+            // hh.CeneDurum = "Tek";
+            // hh.Doktoradi = "asd";
+            return PartialView(/*asd*/);
         }
 
 
-        public PartialViewResult HisHareketHizmet()
-        {
-            WEINCDENTALEntities db = new WEINCDENTALEntities();
-            ViewModelHisHareket vm = new ViewModelHisHareket();
-            vm._ViewModelHizmet = db.hst_hizmet.ToList();
-            return PartialView(vm);
-        }
-        public PartialViewResult HisHareketBasvuru()
-        {
-            WEINCDENTALEntities db = new WEINCDENTALEntities();
-            ViewModelHisHareket vm = new ViewModelHisHareket();
-            vm._ViewModelBasvuru = db.hst_basvuru.ToList();
-            return PartialView(vm);
-        }
-        public PartialViewResult HisHareketHastakarti()
-        {
-            WEINCDENTALEntities db = new WEINCDENTALEntities();
-            ViewModelHisHareket vm = new ViewModelHisHareket();
-            vm._ViewModelHastakarti = db.hst_hastakarti.ToList();
-            return PartialView(vm);
-        }
-        public PartialViewResult HisHareketHastaDurum()
-        {
-            WEINCDENTALEntities db = new WEINCDENTALEntities();
-            ViewModelHisHareket vm = new ViewModelHisHareket();
-            vm._ViewModelHastaDurum = db.hst_hastadurum.ToList();
-            return PartialView(vm);
-        }
         public PartialViewResult HisHareketFirma()
         {
             WEINCDENTALEntities db = new WEINCDENTALEntities();

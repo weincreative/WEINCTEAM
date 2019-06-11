@@ -34,4 +34,5 @@ namespace WEINCDENTAL.Models
         public int CeneNo { get; set; }
         public string CeneDurum { get; set; }
     }
+
 }

@@ -1099,10 +1099,6 @@
     <Content Include="Views\View_HizHareket\PartialHizHareket.cshtml" />
     <Content Include="Views\Home\Randevu.cshtml" />
     <Content Include="Views\HisHareket\DisModul.cshtml" />
-    <Content Include="Views\HisHareket\HisHareketHizmet.cshtml" />
-    <Content Include="Views\HisHareket\HisHareketBasvuru.cshtml" />
-    <Content Include="Views\HisHareket\HisHareketHastakarti.cshtml" />
-    <Content Include="Views\HisHareket\HisHareketHastaDurum.cshtml" />
     <Content Include="Views\HisHareket\HisHareketFirma.cshtml" />
     <Content Include="Views\HisHareket\HisHareketPacs.cshtml" />
     <Content Include="Views\Home\HisHareket.cshtml" />
