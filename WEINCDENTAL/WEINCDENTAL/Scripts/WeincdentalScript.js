@@ -150,3 +150,60 @@ function HastaTaburcuGeriAl(bid) {
         }
     });
 }
+
+function TblEkle(tblList,tblNo,dkod, hkod, had, hfiyat) {
+   
+        var row = $('#newHizmet').closest('tr').clone();
+        row.find("#HKod").text(hkod);
+        row.find("#HAd").text(had);
+        row.find("#DKod").text(dkod);
+        row.find("#Fiyat").text(hfiyat);
+        row.find("#CDurum").text('Tek Diş');
+        $('#newHizmet').closest('tr').after(row);
+        // var btnName = tblNo.toString();
+    $('input[type="button"]', row).removeClass('AddNew').addClass('btn btn-labeled btn-danger RemoveRow').val('Sil')
+        .attr('name', tblNo);
+        
+    tblNo++;
+
+        {
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth();
+            month = month + 1;
+            if ((String(day)).length == 1)
+                day = '0' + day;
+            if ((String(month)).length == 1)
+                month = '0' + month;
+
+            var saat = date.getHours();
+            var dak = date.getMinutes();
+            var zmn =
+                date.getFullYear() +
+
+                    "-" +
+                    month +
+                    "-" + day +
+                    " " + saat +
+                    ":" + dak;
+            // alert(zmn);
+
+            tblList.push({
+                "t_basvuruid": 6,
+                "t_hizmetkodu": hkod,
+                "t_diskodu": dkod,
+                "t_cene": 9,
+                "t_parca": 0,
+                "t_yetiskinmi": true,
+                "t_odemevarmi": false,
+                "t_firmaid": 1,
+                "t_createuser": 1,
+                "t_aktif": 1,
+                "t_islemtarihi": zmn,
+                "t_createdate": zmn
+            });
+
+    }
+    var result = [tblList, tblNo];
+    return result;
+}

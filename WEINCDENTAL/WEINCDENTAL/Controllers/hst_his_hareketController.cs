@@ -57,19 +57,13 @@ namespace WEINCDENTAL.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult Create(List<hst_his_hareket> hst_his_hareket)
         {
-            //[Bind(Include = "t_id,t_basvuruid,t_hizmetkodu,t_islemtarihi,t_diskodu,t_parca,t_cene,t_yetiskinmi,t_odemevarmi,t_firmaid,t_createuser,t_createdate,t_aktif")]
-            // hst_his_hareket hst_his_hareket
-            if (ModelState.IsValid)
-            {
-               // db.hst_his_hareket.Add(hst_his_hareket);
-               // db.SaveChanges();
-            //    return RedirectToAction("Index");
-            }
 
-           // ViewBag.t_basvuruid = new SelectList(db.hst_basvuru, "t_id", "t_basvuru", hst_his_hareket.t_basvuruid);
-           // ViewBag.t_cene = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi", hst_his_hareket.t_cene);
-           // ViewBag.t_firmaid = new SelectList(db.hst_firma, "t_id", "t_fad", hst_his_hareket.t_firmaid);
-           // ViewBag.t_hizmetkodu = new SelectList(db.hst_hizmet, "t_id", "t_adi", hst_his_hareket.t_hizmetkodu);
+
+            using (db)
+            {
+                db.hst_his_hareket.AddRange(hst_his_hareket);
+                db.SaveChanges();
+            }
             return Json("a",JsonRequestBehavior.AllowGet);
         }
 

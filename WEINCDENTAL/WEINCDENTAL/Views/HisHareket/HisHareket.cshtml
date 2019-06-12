@@ -35,7 +35,7 @@
                         <!-- START ROW -->
                         <div class="row">
                             <article class="col-sm-12 col-md-12 col-lg-12">
-                                    @Html.Action("_NewHareket")
+                                @Html.Action("_NewHareket")
                                 @Html.Action("_DisHHareket", "View_HizHareket", new { @id = ViewBag.bid })
 
                             </article>
@@ -62,8 +62,10 @@
 </div>
 
 <script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>
+<script src="~/Scripts/WeincdentalScript.js"></script>
 <script type="text/javascript">
-
+    var list = [];
+    var tblNo = 0;
     var secilenHizmet;
     var secilenDis;
     var hizmetAd;
@@ -93,7 +95,11 @@
                     iconSmall: "fa fa-thumbs-up bounce animated",
                     timeout: 4000
                 });
-                Ekle(secilenDis, secilenHizmet, hizmetAd, hizmetFiyat);
+                var result = TblEkle(list, tblNo,secilenDis, secilenHizmet, hizmetAd, hizmetFiyat);
+                
+                list = result[0];
+                tblNo = result[1];
+              
             }
         } else {
             $.smallBox({
@@ -105,46 +111,32 @@
             });
         }
     }
-    function Ekle(dkod,hkod, had, hfiyat) {
+  
 
-        var row = $('#newHizmet').closest('tr').clone();
-        row.find("#HKod").text(hkod);
-        //row.find("#HKod").val(hkod);
-        //row.find("#HAd").val(had);
-        row.find("#HAd").text(had);
-        row.find("#DKod").text(dkod);
-        row.find("#Fiyat").text(hfiyat);
-        row.find("#CDurum").text('Tek Diş');
-        $('#newHizmet').closest('tr').after(row);
-        $('input[type="button"]', row).removeClass('AddNew').addClass('RemoveRow').val('Remove item');
-      //  row.find("input").id = "asd";
-
-      //  var rows = document.getElementById("tblbody").rows[0];
-       // alert(rows);
-       // var Cells = rows.getElementsByTagName("label");
-       // alert(Cells);
-        //var remove = Cells[0].innerText;
-       // alert(remove);
-
-        //if (remove == null || remove == '') {
-        //    document.getElementById('tblHizmet').deleteRow(1);
-        //}
-
-    }
-   
     $('table').on('click', '.RemoveRow', function () {
-            //Some code
-
+        //Some code
+        var btnName = this.name;
+        var number = parseInt(btnName);
         $(this).closest('tr').remove();
-        @*var rows = document.getElementById("tblbody").rows.length;
-        if (rows <= 1) {
-            $('#refreshtable').load("@Url.Action("_NewHareket")");
-        }*@
-    
+       // listeden eleman çıkarma..
+        list.splice(number, 1);
 
-   });
+    });
 
-   
+
+    function Gonder() {
+
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify({ hst_his_hareket: list }),
+            url: "../../hst_his_hareket/Create",
+            contentType: "application/json"
+        });
+        list = [];
+        tblNo = 0;
+    }
+
+
 
 </script>
 

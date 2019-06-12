@@ -12,11 +12,6 @@
         <div class="widget-body no-padding">
             <p> Hizmet Kaydı yapmadan önce kontrol ediniz!</p>
             <div class="table-responsive">
-                @*@using (Html.BeginForm("Create", "hst_his_hareket", FormMethod.Post))
-                    {*@
-                @* @Html.AntiForgeryToken()*@
-
-
                 <table class="table table-bordered" id="tblHizmet">
                     <thead>
                         <tr>
@@ -31,21 +26,15 @@
                     <tbody id="tblbody">
 
                         <tr class="success" id="newHizmet">
-                            @*<td>@Html.EditorFor(o =>o.ListHareket[0].t_hizmetkodu,
-                                new { htmlAttributes = new {@id = "HKod" } })</td>*@
                             <td> <label id="HKod" name="HKod"></label> </td>
-                            @*<td> <input type="text" id="HKod" name="HKod" /></td>*@
-                            @*<td>
-
-                                    <input type="text" id="HAd" name="HAd" disabled="disabled"/>
-
-                                </td>*@
                             <td> <label id="HAd" name="HAd"></label> </td>
                             <td> <label id="DKod"></label> </td>
                             <td> <label id="CDurum"></label> </td>
                             <td> <label id="Fiyat"></label> </td>
+
                             <td class="danger">
-                                <input type='button' id="btnremove" class='AddNew' value='Add new item'>
+                                    <input type='button' id="btnremove" class='btn  btn-labeled btn-danger AddNew'>
+                                    
                             </td>
                         </tr>
 
@@ -65,42 +54,8 @@
                     </div>
                 </div>
 
-
-
-                @* }*@
             </div>
         </div>
     </div>
 
 </div>
-<script type="text/javascript">
-
-    function Gonder() {
-        {
-            var list = [
-                {
-                    "t_basvuruid": 1,
-                    "t_hizmetkodu": 2,
-                    "t_diskodu": 22,
-                    "t_cene": 9
-
-                },
-                {
-                    "t_basvuruid": 6,
-                    "t_hizmetkodu": 4,
-                    "t_diskodu": 38,
-                    "t_cene": 9
-                }
-            ];
-            $.ajax({
-                type: "POST",
-                data: JSON.stringify({ hst_his_hareket: list }),
-                url: "../../hst_his_hareket/Create",
-                contentType: "application/json"
-            });
-        }
-
-    }
-
-       
-</script>
