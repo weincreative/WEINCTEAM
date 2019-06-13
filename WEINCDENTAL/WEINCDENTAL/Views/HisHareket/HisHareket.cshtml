@@ -35,8 +35,14 @@
                         <!-- START ROW -->
                         <div class="row">
                             <article class="col-sm-12 col-md-12 col-lg-12">
-                                @Html.Action("_NewHareket")
-                                @Html.Action("_DisHHareket", "View_HizHareket", new { @id = ViewBag.bid })
+                               
+                                <div id="refNewTabl">
+                                    @Html.Action("_NewHareket")    
+                                </div>
+                                
+                                <div id="refreshtbl">
+                                    @Html.Action("_DisHHareket", "View_HizmetDetay", new { @id = ViewBag.bid })
+                                </div>
 
                             </article>
                             <!-- NEW COL START -->
@@ -60,16 +66,18 @@
     </section>
     <!-- end widget grid -->
 </div>
-
+<script src="~/Scripts/Remove.js"></script>
 <script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>
 <script src="~/Scripts/WeincdentalScript.js"></script>
 <script type="text/javascript">
+    var cuser = "@HttpContext.Current.User.Identity.Name";
     var list = [];
     var tblNo = 0;
     var secilenHizmet;
     var secilenDis;
     var hizmetAd;
     var hizmetFiyat;
+    var bid=@Html.Raw(Json.Encode(ViewBag.bid));
     function SeciliHizmet(SHid, SHAd, SHFiyat) {
         secilenHizmet = SHid;
         hizmetAd = SHAd;
@@ -95,7 +103,7 @@
                     iconSmall: "fa fa-thumbs-up bounce animated",
                     timeout: 4000
                 });
-                var result = TblEkle(list, tblNo,secilenDis, secilenHizmet, hizmetAd, hizmetFiyat);
+                var result = TblEkle(list, tblNo, secilenDis, secilenHizmet, hizmetAd, hizmetFiyat, cuser, bid);
                 
                 list = result[0];
                 tblNo = result[1];
@@ -118,7 +126,7 @@
         var btnName = this.name;
         var number = parseInt(btnName);
         $(this).closest('tr').remove();
-       // listeden eleman çıkarma..
+        // listeden eleman çıkarma..
         list.splice(number, 1);
 
     });
@@ -130,13 +138,59 @@
             type: "POST",
             data: JSON.stringify({ hst_his_hareket: list }),
             url: "../../hst_his_hareket/Create",
-            contentType: "application/json"
+            contentType: "application/json",
+            success: function(veri) {
+                if (veri) {
+                    $('#refreshtbl').load("@Url.Action("_DisHHareket", "View_HizmetDetay")", { id: @ViewBag.bid });
+                    $('#refNewTabl').load("@Url.Action("_NewHareket")");
+                    list = [];
+                    tblNo = 0;
+                }
+               
+            },
+            error: function () {
+                // bu kısımda eğer ajax işlemi başarısız ise
+                // hata mesajı verebiliriz.
+                $.smallBox({
+                    title: "HATA",
+                    content: "<i class='fa fa-clock-o'></i> <i>Hizmet Eklenirken Bir Hata Meydana Geldi...</i>",
+                    color: "#C46A69",
+                    iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                    timeout: 2000
+                });
+            }
+
         });
-        list = [];
-        tblNo = 0;
+        
     }
+    function Remove(id, HAd, disNo) {
+        $.SmartMessageBox({
+            title: "UYARI!",
+            content: " Hizmet: " + HAd + "<div> Diş No: " + disNo + " olan hastanın hizmeti silinecektir.</div> <div><br></div><div>EMİN MİSİNİZ?</div>",
+            buttons: '[No][Yes]'
+        },
+            function (ButtonPressed) {
+                if (ButtonPressed === "Yes") {
+                    var rslt = HizmetRemove(id);
+                    if (rslt) {
+                       
+                        $('#refreshtbl').load("@Url.Action("_DisHHareket", "View_HizmetDetay")", { id: @ViewBag.bid });
+                    }
 
 
+                }
+                if (ButtonPressed === "No") {
+                    $.smallBox({
+                        title: "İPTAL",
+                        content: "<i class='fa fa-clock-o'></i> <i>Silme işleminden vazgeçildi...</i>",
+                        color: "#C46A69",
+                        iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                        timeout: 4000
+                    });
+                }
+
+            });
+    }
 
 </script>
 

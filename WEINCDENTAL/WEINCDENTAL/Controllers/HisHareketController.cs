@@ -21,7 +21,7 @@ namespace WEINCDENTAL.Controllers
 
         public PartialViewResult DisModul(int id)
         {
-            WEINCDENTALEntities db = new WEINCDENTALEntities();
+           
             ViewModelHisHareket vm = new ViewModelHisHareket();
             vm._ViewModelHisHareket = db.hst_his_hareket.ToList();
             ViewBag.basid = id;
@@ -30,25 +30,7 @@ namespace WEINCDENTAL.Controllers
 
         public PartialViewResult _NewHareket()
         {
-
-            //List<View_HizHareket> list = new List<View_HizHareket>()
-            //{
-            //    new View_HizHareket
-            //    {
-            //        t_hizmetkodu = 2,
-            //        BasvuruNo = "1",
-            //        CeneDurum = "Tek",
-            //        Doktoradi = "asd"
-            //    }
-            //};
-            //ListHizmet asd=new ListHizmet();
-            //asd.ListHareket = list;
-            //View_HizHareket hh=new View_HizHareket();
-            // hh.t_hizmetkodu = 2;
-            // hh.BasvuruNo = "1";
-            // hh.CeneDurum = "Tek";
-            // hh.Doktoradi = "asd";
-            return PartialView(/*asd*/);
+            return PartialView();
         }
 
 

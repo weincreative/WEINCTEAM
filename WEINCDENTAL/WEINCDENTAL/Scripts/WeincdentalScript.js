@@ -151,7 +151,7 @@ function HastaTaburcuGeriAl(bid) {
     });
 }
 
-function TblEkle(tblList,tblNo,dkod, hkod, had, hfiyat) {
+function TblEkle(tblList,tblNo,dkod, hkod, had, hfiyat,user,bid) {
    
         var row = $('#newHizmet').closest('tr').clone();
         row.find("#HKod").text(hkod);
@@ -187,9 +187,10 @@ function TblEkle(tblList,tblNo,dkod, hkod, had, hfiyat) {
                     " " + saat +
                     ":" + dak;
             // alert(zmn);
-
+            
+           
             tblList.push({
-                "t_basvuruid": 6,
+                "t_basvuruid": bid,
                 "t_hizmetkodu": hkod,
                 "t_diskodu": dkod,
                 "t_cene": 9,
@@ -197,7 +198,7 @@ function TblEkle(tblList,tblNo,dkod, hkod, had, hfiyat) {
                 "t_yetiskinmi": true,
                 "t_odemevarmi": false,
                 "t_firmaid": 1,
-                "t_createuser": 1,
+                "t_createuser": user,
                 "t_aktif": 1,
                 "t_islemtarihi": zmn,
                 "t_createdate": zmn

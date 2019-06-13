@@ -57,14 +57,22 @@ namespace WEINCDENTAL.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult Create(List<hst_his_hareket> hst_his_hareket)
         {
-
-
-            using (db)
+            bool durum = false;
+            try
             {
-                db.hst_his_hareket.AddRange(hst_his_hareket);
-                db.SaveChanges();
+                using (db)
+                {
+                    db.hst_his_hareket.AddRange(hst_his_hareket);
+                    db.SaveChanges();
+                    durum = true;
+                }
+                return Json(durum, JsonRequestBehavior.AllowGet);
             }
-            return Json("a",JsonRequestBehavior.AllowGet);
+            catch (Exception )
+            {
+                return Json(durum, JsonRequestBehavior.AllowGet);
+            }
+            
         }
 
         // GET: hst_his_hareket/Edit/5

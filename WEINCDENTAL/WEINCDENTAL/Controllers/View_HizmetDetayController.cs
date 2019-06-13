@@ -20,7 +20,30 @@ namespace WEINCDENTAL.Controllers
             return View(db.View_HizmetDetay.ToList());
         }
 
-       
+        public PartialViewResult _DisHHareket(int id)
+        {
+            var hizhareket = db.View_HizmetDetay.Where(k => k.BasvuruId == id && k.HHareketAktif==true).ToList();
+            return PartialView(hizhareket);
+        }
+        [HttpPost]
+        public JsonResult Delete(int id)
+        {
+            var sonuc = 0;
+            try
+            {
+                hst_his_hareket hhareket = db.hst_his_hareket.Find(id);
+                hhareket.t_aktif = false;
+                db.Entry(hhareket).State = EntityState.Modified;
+                db.SaveChanges();
+                sonuc = 1;
+                return Json(sonuc, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception )
+            {
+                return Json(sonuc, JsonRequestBehavior.AllowGet);
+            }
+            
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
