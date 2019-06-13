@@ -155,6 +155,7 @@
     <Compile Include="Controllers\View_HastalikDurumController.cs" />
     <Compile Include="Controllers\View_HizHareketController.cs" />
     <Compile Include="Controllers\View_HizmetDetayController.cs" />
+    <Compile Include="Controllers\View_VezneController.cs" />
     <Compile Include="Controllers\YardimciController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1118,6 +1119,12 @@
     <Content Include="Views\hst_his_hareket\Index.cshtml" />
     <Content Include="Views\View_HizHareket\_DisHHareket.cshtml" />
     <Content Include="Views\HisHareket\_NewHareket.cshtml" />
+    <Content Include="Views\View_Vezne\Create.cshtml" />
+    <Content Include="Views\View_Vezne\Delete.cshtml" />
+    <Content Include="Views\View_Vezne\Details.cshtml" />
+    <Content Include="Views\View_Vezne\Edit.cshtml" />
+    <Content Include="Views\View_Vezne\ViewVezne_Index.cshtml" />
+    <Content Include="Views\Home\Vezne.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

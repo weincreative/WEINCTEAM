@@ -23,7 +23,11 @@ namespace WEINCDENTAL.Controllers
         {
             return View();
         }
-       
+        public ActionResult Vezne()
+        {
+            return View();
+        }
+
         //[HttpPost]
         //[MultipleButton(Name = "Action", Argument = "Sor")]
         //public ActionResult Sor(string tc)
