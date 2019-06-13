@@ -30,5 +30,6 @@ namespace WEINCDENTAL.Models
         public decimal t_kalan { get; set; }
         public string Odemetip { get; set; }
         public System.DateTime Odemetarih { get; set; }
+        public bool t_borcdurum { get; set; }
     }
 }

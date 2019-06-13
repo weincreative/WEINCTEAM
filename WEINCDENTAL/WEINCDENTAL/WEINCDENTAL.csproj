@@ -143,6 +143,7 @@
     <Compile Include="Controllers\adm_kullanicigrupController.cs" />
     <Compile Include="Controllers\adm_kullanicilarController.cs" />
     <Compile Include="Controllers\AyarlarController.cs" />
+    <Compile Include="Controllers\DtoVezneController.cs" />
     <Compile Include="Controllers\HisHareketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\hst_basvuruController.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="Controllers\hst_hizmetController.cs" />
     <Compile Include="Controllers\Ortak.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\VezneController.cs" />
     <Compile Include="Controllers\View_HastalikDurumController.cs" />
     <Compile Include="Controllers\View_HizHareketController.cs" />
     <Compile Include="Controllers\View_HizmetDetayController.cs" />
@@ -172,6 +174,7 @@
     <Compile Include="Models\adm_pacs.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO_Vezne.cs" />
     <Compile Include="Models\hst_basvuru.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1040,7 +1043,9 @@
     <Content Include="Scripts\plugin\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="Scripts\plugin\ckeditor\skins\moono\readme.md" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\DtoVezne\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1122,8 +1127,8 @@
     <Content Include="Views\View_Vezne\Details.cshtml" />
     <Content Include="Views\View_Vezne\Edit.cshtml" />
     <Content Include="Views\View_Vezne\ViewVezne_Index.cshtml" />
-    <Content Include="Views\Home\Vezne.cshtml" />
     <Content Include="Views\View_HizmetDetay\_DisHHareket.cshtml" />
+    <Content Include="Views\Vezne\SearchBorc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

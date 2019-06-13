@@ -27,6 +27,7 @@ namespace WEINCDENTAL.Models
         public bool t_taburcu { get; set; }
         public string HizmetAd { get; set; }
         public decimal t_fiyat { get; set; }
+        public bool Odemedurumu { get; set; }
         public System.DateTime Hizmet_Tarih { get; set; }
         public int DisNo { get; set; }
         public int CeneNo { get; set; }
@@ -37,5 +38,6 @@ namespace WEINCDENTAL.Models
         public bool DoktorAktif { get; set; }
         public bool BasvuruAktif { get; set; }
         public bool HHareketAktif { get; set; }
+        public bool t_borcdurum { get; set; }
     }
 }
