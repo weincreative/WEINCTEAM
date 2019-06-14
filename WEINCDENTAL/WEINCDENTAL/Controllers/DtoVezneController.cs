@@ -11,13 +11,16 @@ namespace WEINCDENTAL.Controllers
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
         // GET: DtoVezne
-        public ActionResult Index()
+        public PartialViewResult _Vezne(string tc)
         {
-            
-            var hhareket = db.View_HizmetDetay.Where(k => k.HHareketAktif== true && k.Odemedurumu== false).ToList();
-            var vezne = db.View_Vezne.Where(k => k.t_borcdurum == false && k.t_odemevarmi == true).ToList();
-            
-            return View();
+            tc = "12312312312"; 
+            DTO_Vezne dtoVezne=new DTO_Vezne();
+            var hhareket = db.View_HizmetDetay.Where(k => k.HHareketAktif== true && k.TC==tc && k.Odemedurumu== false &&k.t_borcdurum==true).ToList();
+            var vezne = db.View_Vezne.Where(k => k.t_borcdurum == true && k.t_tc == tc && k.t_odemevarmi == true).ToList();
+            dtoVezne._ViewModelHDetay = hhareket;
+            dtoVezne._ViewModelVezne = vezne;
+
+            return PartialView(dtoVezne);
         }
     }
 }

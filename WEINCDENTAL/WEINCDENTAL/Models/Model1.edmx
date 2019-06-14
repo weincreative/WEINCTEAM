@@ -387,7 +387,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <PropertyRef Name="t_tc" />
             <PropertyRef Name="t_adi" />
             <PropertyRef Name="t_soyadi" />
-            <PropertyRef Name="t_basvuru" />
             <PropertyRef Name="t_basvurutarihi" />
             <PropertyRef Name="Doktoradi" />
             <PropertyRef Name="Hareketid" />
@@ -400,11 +399,12 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <PropertyRef Name="t_kalan" />
             <PropertyRef Name="Odemetip" />
             <PropertyRef Name="Odemetarih" />
+            <PropertyRef Name="t_borcdurum" />
+            <PropertyRef Name="t_basvuruid" />
           </Key>
           <Property Name="t_tc" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_basvuru" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_basvurutarihi" Type="datetime" Nullable="false" />
           <Property Name="Doktoradi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Hareketid" Type="int" Nullable="false" />
@@ -417,7 +417,8 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_kalan" Type="money" Nullable="false" />
           <Property Name="Odemetip" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Odemetarih" Type="datetime" Nullable="false" />
-          <Property Name="t_borcdurum" Type="bit" />
+          <Property Name="t_borcdurum" Type="bit" Nullable="false" />
+          <Property Name="t_basvuruid" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_adm_kullanicilar_adm_kullanicigrup1">
           <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
@@ -799,7 +800,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     [View_Vezne].[t_tc] AS [t_tc], 
     [View_Vezne].[t_adi] AS [t_adi], 
     [View_Vezne].[t_soyadi] AS [t_soyadi], 
-    [View_Vezne].[t_basvuru] AS [t_basvuru], 
     [View_Vezne].[t_basvurutarihi] AS [t_basvurutarihi], 
     [View_Vezne].[Doktoradi] AS [Doktoradi], 
     [View_Vezne].[Hareketid] AS [Hareketid], 
@@ -812,7 +812,8 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     [View_Vezne].[t_kalan] AS [t_kalan], 
     [View_Vezne].[Odemetip] AS [Odemetip], 
     [View_Vezne].[Odemetarih] AS [Odemetarih], 
-    [View_Vezne].[t_borcdurum] AS [t_borcdurum]
+    [View_Vezne].[t_borcdurum] AS [t_borcdurum], 
+    [View_Vezne].[t_basvuruid] AS [t_basvuruid]
     FROM [dbo].[View_Vezne] AS [View_Vezne]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_adm_kullanicilar_adm_kullanicigrup1" Association="Self.FK_adm_kullanicilar_adm_kullanicigrup1">
@@ -1339,7 +1340,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <PropertyRef Name="t_tc" />
             <PropertyRef Name="t_adi" />
             <PropertyRef Name="t_soyadi" />
-            <PropertyRef Name="t_basvuru" />
             <PropertyRef Name="t_basvurutarihi" />
             <PropertyRef Name="Doktoradi" />
             <PropertyRef Name="Hareketid" />
@@ -1352,11 +1352,12 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <PropertyRef Name="t_kalan" />
             <PropertyRef Name="Odemetip" />
             <PropertyRef Name="Odemetarih" />
+            <PropertyRef Name="t_borcdurum" />
+            <PropertyRef Name="t_basvuruid" />
           </Key>
           <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_basvuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_basvurutarihi" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Doktoradi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Hareketid" Type="Int32" Nullable="false" />
@@ -1369,7 +1370,8 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_kalan" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Odemetip" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Odemetarih" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="t_borcdurum" Type="Boolean" />
+          <Property Name="t_borcdurum" Type="Boolean" Nullable="false" />
+          <Property Name="t_basvuruid" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_adm_kullanicilar_adm_kullanicigrup1">
           <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
@@ -2150,7 +2152,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="t_tc" ColumnName="t_tc" />
                 <ScalarProperty Name="t_adi" ColumnName="t_adi" />
                 <ScalarProperty Name="t_soyadi" ColumnName="t_soyadi" />
-                <ScalarProperty Name="t_basvuru" ColumnName="t_basvuru" />
                 <ScalarProperty Name="t_basvurutarihi" ColumnName="t_basvurutarihi" />
                 <ScalarProperty Name="Doktoradi" ColumnName="Doktoradi" />
                 <ScalarProperty Name="Hareketid" ColumnName="Hareketid" />
@@ -2164,6 +2165,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="Odemetip" ColumnName="Odemetip" />
                 <ScalarProperty Name="Odemetarih" ColumnName="Odemetarih" />
                 <ScalarProperty Name="t_borcdurum" ColumnName="t_borcdurum" />
+                <ScalarProperty Name="t_basvuruid" ColumnName="t_basvuruid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1043,9 +1043,7 @@
     <Content Include="Scripts\plugin\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="Scripts\plugin\ckeditor\skins\moono\readme.md" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\DtoVezne\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1129,6 +1127,7 @@
     <Content Include="Views\View_Vezne\ViewVezne_Index.cshtml" />
     <Content Include="Views\View_HizmetDetay\_DisHHareket.cshtml" />
     <Content Include="Views\Vezne\SearchBorc.cshtml" />
+    <Content Include="Views\DtoVezne\_Vezne.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

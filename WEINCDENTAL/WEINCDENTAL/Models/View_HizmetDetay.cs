@@ -38,6 +38,6 @@ namespace WEINCDENTAL.Models
         public bool DoktorAktif { get; set; }
         public bool BasvuruAktif { get; set; }
         public bool HHareketAktif { get; set; }
-        public bool t_borcdurum { get; set; }
+        public Nullable<bool> t_borcdurum { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="25d86e9a0c5a4292a08f2cd221d438e5" Name="Diagram1">
+      <Diagram DiagramId="399900d3e66c4fc8a6b90f0142d9f3e3" Name="Diagram1">
         <EntityTypeShape EntityType="WEINCDENTALModel.adm_kullanicigrup" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="WEINCDENTALModel.adm_kullanicilar" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="WEINCDENTALModel.adm_modulyetki" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />

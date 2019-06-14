@@ -75,9 +75,9 @@
 
                                 </fieldset>
                             </form>
-                           
-                            <fieldset>
-                                
+                           <hr/>
+                            <fieldset >
+                                      @Html.Action("_Vezne", "DtoVezne",new{@tc=""})
                             </fieldset>
 
                         </div>
@@ -88,7 +88,7 @@
                 <!-- end widget -->
             </article>
             <!-- WIDGET END -->
-            @*@Html.Action("ViewVezne_Index", "View_Vezne")*@
+          
 
             <div class="col-sm-12">
                 <!-- your contents here -->
@@ -104,92 +104,33 @@
 
 
         $(document).ready(function () {
-            var $checkoutForm = $('#checkout-form').validate({
-                // Rules for form validation
-                rules: {
-                    fname: {
-                        required: true
-                    },
-                    tcname: {
-                        required: true
-                    },
-                    startdate: {
-                        required: true
-                    },
-                    lname: {
-                        required: true
-                    },
-                    phone: {
-                        required: true
-                    },
-                    dyeriname: {
-                        required: true
-                    },
-                    address: {
-                        required: true
-                    },
-                    gender: {
-                        required: true
-                    },
-                    medeni: {
-                        required: true
-                    },
-                    name: {
-                        required: true
+
+            var responsiveHelper_dt_basic = undefined;
+            var responsiveHelper_datatable_fixed_column = undefined;
+            var responsiveHelper_datatable_col_reorder = undefined;
+            var responsiveHelper_datatable_tabletools = undefined;
+            var breakpointDefinition = {
+                tablet: 1024,
+                phone: 480
+            };
+
+            $('#dt_basic3').dataTable({
+                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
+                    "t" +
+                    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+                "autoWidth": true,
+                "preDrawCallback": function () {
+                    // Initialize the responsive datatables helper once.
+                    if (!responsiveHelper_dt_basic) {
+                        responsiveHelper_dt_basic =
+                            new ResponsiveDatatablesHelper($('#dt_basic3'), breakpointDefinition);
                     }
                 },
-
-                // Messages for form validation
-                messages: {
-                    fname: {
-                        required: 'Lütfen Hastanın Adını Giriniz'
-
-                    },
-                    lname: {
-                        required: 'Lütfen Hastanın Soyadını Giriniz'
-                    },
-                    dyeriname: {
-                        required: 'Lütfen Hastanın Doğum Yerini Giriniz'
-                    },
-                    tcname: {
-                        required: 'Lütfen T.C.No /Yabancı Uyruk No giriniz'
-                    },
-                    startdate: {
-                        required: 'Lütfen Doğum tarihini  giriniz'
-                    },
-                    phone: {
-                        required: 'Lütfen Hastanın Telefon No Giriniz'
-                    },
-                    address: {
-                        required: 'Lütfen Hastanın Adresini Giriniz'
-                    },
-                    gender: {
-                        required: 'Lütfen Cinsiyet Seçiniz'
-                    },
-                    medeni: {
-                        required: 'Lütfen Medeni Durum Seçiniz'
-                    }
+                "rowCallback": function (nRow) {
+                    responsiveHelper_dt_basic.createExpandIcon(nRow);
                 },
-
-                // Do not change code below
-                errorPlacement: function (error, element) {
-                    error.insertAfter(element.parent());
-                }//,
-                //success: function (element) {
-                //   // alert("burda");
-                //  //  $(element).closest('.checkout-form').find('.help-block').html('');
-
-                //}
-            });
-
-
-            // DO NOT REMOVE : GLOBAL FUNCTIONS!
-            $('#startdate').datepicker({
-                dateFormat: 'dd.mm.yy',
-                prevText: '<i class="fa fa-chevron-left"></i>',
-                nextText: '<i class="fa fa-chevron-right"></i>',
-                onSelect: function (selectedDate) {
-                    $('#finishdate').datepicker('option', 'minDate', selectedDate);
+                "drawCallback": function (oSettings) {
+                    responsiveHelper_dt_basic.respond();
                 }
             });
 

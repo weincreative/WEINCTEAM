@@ -17,7 +17,6 @@ namespace WEINCDENTAL.Models
         public string t_tc { get; set; }
         public string t_adi { get; set; }
         public string t_soyadi { get; set; }
-        public string t_basvuru { get; set; }
         public System.DateTime t_basvurutarihi { get; set; }
         public string Doktoradi { get; set; }
         public int Hareketid { get; set; }
@@ -31,5 +30,6 @@ namespace WEINCDENTAL.Models
         public string Odemetip { get; set; }
         public System.DateTime Odemetarih { get; set; }
         public bool t_borcdurum { get; set; }
+        public int t_basvuruid { get; set; }
     }
 }
