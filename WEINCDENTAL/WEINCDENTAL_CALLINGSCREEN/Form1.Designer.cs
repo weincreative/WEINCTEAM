@@ -30,6 +30,7 @@ namespace WEINCDENTAL_CALLINGSCREEN
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
@@ -41,6 +42,7 @@ namespace WEINCDENTAL_CALLINGSCREEN
             this.cmbKullaniciSec = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tmrForm2CloseMu = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -151,6 +153,11 @@ namespace WEINCDENTAL_CALLINGSCREEN
             this.panel1.Size = new System.Drawing.Size(640, 226);
             this.panel1.TabIndex = 9;
             // 
+            // tmrForm2CloseMu
+            // 
+            this.tmrForm2CloseMu.Interval = 1000;
+            this.tmrForm2CloseMu.Tick += new System.EventHandler(this.tmrForm2CloseMu_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,6 +190,7 @@ namespace WEINCDENTAL_CALLINGSCREEN
         private System.Windows.Forms.ComboBox cmbKullaniciSec;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Timer tmrForm2CloseMu;
     }
 }
 

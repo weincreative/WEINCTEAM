@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Speech;
+using System.Speech.Synthesis;
+using static WEINCDENTAL_CALLINGSCREEN.Form1;
 
 #endregion
 
@@ -21,6 +24,9 @@ namespace WEINCDENTAL_CALLINGSCREEN
             InitializeComponent();
         }
         WEINCDENTALEntities db = new WEINCDENTALEntities();
+        SpeechSynthesizer reader = new SpeechSynthesizer();
+        public static int readerSayar = 0;
+        public static string Memory = null;
         //DateTime nowDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
 
         #endregion
@@ -28,61 +34,69 @@ namespace WEINCDENTAL_CALLINGSCREEN
         #region VOIDS
         private void form2Close()
         {
-            Form1.form2CloseValue = 0;
+            form2CloseValue = 0;
+            form2CloseMuValue = 1;
+            tmrForm2CagirildiHasta.Enabled = false;
+            tmrForm2CagirilcakHasta.Enabled = false;
             this.Close();
         }
 
-        public void cagriEkraniGetir()
-        {
-            //listBox1.Items.Clear();
-            //cagriListesi.Clear();
-            //LBsiradakiHasta1.Text = null;
-            //LBsiradakiHasta2.Text = null;
-            //WEINCDENTALEntities db = new WEINCDENTALEntities();
-                try
-                {
-                    var _cagriList = db.hst_basvuru.Where(x => x.t_cagriekraniistem == 0).Where(x => x.t_bolumkodu == 1).Where(x => x.t_basvurudr == 0)/*.Where(x => x.t_basvurutarihi == nowDate)*/.Where(x => x.t_aktif == true).Where(x => x.t_taburcu == false).ToList().OrderByDescending(x => x.t_basvurutarihi);
-                    if (_cagriList != null)
-                    {
-                        foreach (var item in _cagriList)
-                        {
-                            //cagriListesi.Add(item.hst_hastakarti.t_adi + " " + item.hst_hastakarti.t_soyadi + " " + item.t_basvurutarihi);
-                            //listBox1.Items.Add(item.hst_hastakarti.t_adi + " " + item.hst_hastakarti.t_soyadi + " " + item.t_basvurutarihi);
-                            //LBsiradakiHasta1.Text = cagriListesi[0];
-                        }
-                        //LBsiradakiHasta1.Text = cagriListesi[0];
-                    }
+		public void cagriEkraniGetir(int id)
+		{
+			int sayacIndex = 0;
+			cagrilacakList.Clear();
+			try
+				{
+					var _cagrilcakList = db.hst_basvuru.Where(x => x.t_cagriekraniistem == 0).Where(x => x.t_bolumkodu == id).Where(x => x.t_basvurudr == 0)/*.Where(x => x.t_basvurutarihi == nowDate)*/.Where(x => x.t_aktif == true).Where(x => x.t_taburcu == false).ToList().OrderByDescending(x => x.t_basvurutarihi);
+					if (_cagrilcakList != null)
+					{
+					foreach (var item in _cagrilcakList)
+					{
+					    cagrilacakList.Add(new cagrilacak { SIRA = sayacIndex, BASVURUNO = item.t_id, HASTAADI = item.hst_hastakarti.t_adi, HASTASOYADI = item.hst_hastakarti.t_soyadi });
+					    sayacIndex++;	  
+					}
+                    //dgvHastaListesi.ColumnHeadersDefaultCellStyle.BackColor = Color.Red;
+                    dgvHastaListesi.DataSource = cagrilacakList.ToList();
                 }
-                catch (Exception x)
-                {
-                    MessageBox.Show("HATA MESAJI : " + x);
-                }
-        }
+                tmrForm2CagirilcakHasta.Enabled = true;
+				}
+				catch (Exception)
+				{
+					//MessageBox.Show("HATA MESAJI 5: " + x);
+				}
+		}
 
-        public void cagrilanHastaGetir()
+        public void cagrilanHastaGetir(int id)
         {
-            //listBox1.Items.Clear();
-            //cagriListesi.Clear();
-            //LBsiradakiHasta1.Text = null;
-            //LBsiradakiHasta2.Text = null;
-            //WEINCDENTALEntities db = new WEINCDENTALEntities();
+            int sayacIndex = 0;
+            lblCagirilanHasta.Text = null;
+            cagrildiList.Clear();
+
             try
             {
-                var _cagrilanList = db.hst_basvuru.Where(c => c.t_cagriekraniistem == 0).Where(c => c.t_bolumkodu == 1).Where(c => c.t_basvurudr == 1)/*.Where(x => x.t_basvurutarihi == nowDate)*/.Where(c => c.t_aktif == true).Where(c => c.t_taburcu == false).ToList();
-                if (_cagrilanList != null)
+                var _cagrilanList = db.hst_basvuru.Where(c => c.t_cagriekraniistem == 0).Where(c => c.t_bolumkodu == id).Where(c => c.t_basvurudr == 1)/*.Where(x => x.t_basvurutarihi == nowDate)*/.Where(c => c.t_aktif == true).Where(c => c.t_taburcu == false).ToList();
+                if (_cagrilanList.Count != 0)
                 {
                     foreach (var item in _cagrilanList)
                     {
-                        //LBiceridekiHasta.Text = "İÇERİDE'Kİ HASTA";
-                        //LBLcagriDoktor.Text = "Doktorunuz : " + comboBox1.SelectedItem.ToString() + "'in odasına gidiniz.";
-                        //cagrilmisListesi.Add(item.hst_hastakarti.t_adi + " " + item.hst_hastakarti.t_soyadi);
-                        //LBLcagrilanHasta1.Text = item.hst_hastakarti.t_adi + " " + item.hst_hastakarti.t_soyadi;
+                        cagrildiList.Add(new cagrildi { CGRLDI_LID = sayacIndex, CGRLDI_ID = item.t_id, CGRLDI_AD = item.hst_hastakarti.t_adi, CGRLDI_SOYAD = item.hst_hastakarti.t_soyadi});
+                        sayacIndex++;
                     }
+                    lblCagirilanHasta.Text = cagrildiList[0].CGRLDI_AD + " " + cagrildiList[0].CGRLDI_SOYAD;
+                    if (Memory != lblCagirilanHasta.Text)
+                    {
+                        Memory = cagrildiList[0].CGRLDI_AD + " " + cagrildiList[0].CGRLDI_SOYAD;
+                        readerSayar = 0;
+                        lblBilgilendirme.Text = "SIRADA'Kİ HASTA";
+                        tmrBilgilendirme.Enabled = true;
+                    }
+
                 }
+                tmrForm2CagirildiHasta.Enabled = true;
             }
-            catch (Exception x)
+            catch (Exception)
             {
-                MessageBox.Show("HATA MESAJI : " + x);
+                //MessageBox.Show("HATA MESAJI 4: " + x);
             }
         }
 
@@ -91,9 +105,16 @@ namespace WEINCDENTAL_CALLINGSCREEN
         #region FORM2 LOAD
         private void Form2_Load(object sender, EventArgs e)
         {
-            this.Text = Form1.uygulamaAdı;
-            this.Bounds = Screen.AllScreens[Form1.pencereSec].Bounds;
+            form2CloseValue = 0;
+            form2CloseMuValue = 0;
+            this.Text = uygulamaAdı;
+            this.Bounds = Screen.AllScreens[pencereSec].Bounds;
             tmrForm2CloseValue.Enabled = true;
+            tmrSiradakiHYanSon.Enabled = true;
+            cagrilanHastaGetir(_BIDGetirList[secilenBolumVAL].BID);
+            cagriEkraniGetir(_BIDGetirList[secilenBolumVAL].BID);
+            lblHastaneAdi.Text = uygulamaAdı;
+            lblBolumDoktorBilgisi.Text = $"Bölüm : {_BIDGetirList[secilenBolumVAL].BAD} - Doktorunuz : {_KIDGetirList[secilenKullaniciVAL].KAD}";
         }
 
         #endregion
@@ -109,13 +130,51 @@ namespace WEINCDENTAL_CALLINGSCREEN
         #region TIMERS
         private void tmrForm2CloseValue_Tick(object sender, EventArgs e)
         {
-            if (Form1.form2CloseValue !=0)
+            if (form2CloseValue !=0)
             {
                 form2Close();
                 tmrForm2CloseValue.Enabled = false;
             }
         }
+        private void tmrForm2CagirildiHasta_Tick(object sender, EventArgs e)
+        {
+            cagrilanHastaGetir(_BIDGetirList[secilenBolumVAL].BID);
+        }
+        private void tmrForm2CagirilcakHasta_Tick(object sender, EventArgs e)
+        {
+            cagriEkraniGetir(_BIDGetirList[secilenBolumVAL].BID);
+        }
+        private void tmrSiradakiHYanSon_Tick(object sender, EventArgs e)
+        {
+            if (lblCagirilanHasta.Visible == true)
+            {
+                lblBilgilendirme.Visible = false;
+                lblCagirilanHasta.Visible = false;
+            }
+            else
+            {
+                lblBilgilendirme.Visible = true;
+                lblCagirilanHasta.Visible = true;
+            }
+        }
+        private void tmrBilgilendirme_Tick(object sender, EventArgs e)
+        {
+            if (readerSayar < 5)
+            {
+                reader.Dispose();
+                reader = new SpeechSynthesizer();
+                reader.SpeakAsync(lblCagirilanHasta.Text + "iceriye lutfen");
+                readerSayar++;
+            }
+            else
+            {
+                lblBilgilendirme.Text = "İÇERİDE'Kİ HASTA";
+                tmrBilgilendirme.Enabled = false;
+            }
+        }
 
         #endregion
+
+
     }
 }
