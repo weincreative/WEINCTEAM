@@ -35,11 +35,11 @@
                         <!-- START ROW -->
                         <div class="row">
                             <article class="col-sm-12 col-md-12 col-lg-12">
-                               
+
                                 <div id="refNewTabl">
-                                    @Html.Action("_NewHareket")    
+                                    @Html.Action("_NewHareket")
                                 </div>
-                                
+
                                 <div id="refreshtbl">
                                     @Html.Action("_DisHHareket", "View_HizmetDetay", new { @id = ViewBag.bid })
                                 </div>
@@ -66,6 +66,867 @@
     </section>
     <!-- end widget grid -->
 </div>
+
+<div class="modal left fade" id="pacsGoruntule" tabindex="-1" role="dialog" aria-labelledby="pacsGoruntule" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="pacsGoruntuleList">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="disHizmetleri18" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri18" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri18list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri17" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri17" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri17list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri16" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri16" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri16list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri15" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri15" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri15list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri14" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri14" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri14list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri13" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri13" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri13list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri12" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri12" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri12list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri11" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri11" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri11list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="disHizmetleri21" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri21" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri21list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri22" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri22" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri22list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri23" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri23" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri23list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri24" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri24" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri24list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri25" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri25" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri25list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri26" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri26" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri26list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri27" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri27" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri27list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri28" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri28" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri28list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="disHizmetleri48" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri48" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri48list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri47" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri47" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri47list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri46" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri46" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri46list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri45" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri45" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri45list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri44" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri44" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri44list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri43" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri43" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri43list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri42" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri42" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri42list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri41" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri41" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri41list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="disHizmetleri31" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri31" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri31list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri32" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri32" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri32list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri33" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri33" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri33list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri34" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri34" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri34list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri35" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri35" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri35list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri36" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri36" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri36list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri37" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri37" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri37list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri38" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri38" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri38list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+
+
+<div class="modal fade" id="disHizmetleri55" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri55" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri55list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri54" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri54" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri54list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri53" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri53" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri53list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri52" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri52" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri52list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri51" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri51" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri51list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="disHizmetleri61" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri61" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri61list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri62" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri62" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri62list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri63" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri63" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri63list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri64" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri64" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri64list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri65" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri65" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri65list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="disHizmetleri75" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri75" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri75list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri74" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri74" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri74list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri73" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri73" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri73list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri72" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri72" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri72list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri71" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri71" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri71list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="disHizmetleri81" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri81" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri81list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri82" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri82" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri82list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri83" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri83" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri83list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri84" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri84" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri84list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="disHizmetleri85" tabindex="-1" role="dialog" aria-labelledby="disHizmetleri85" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="disHizmetleri85list">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+
 <script src="~/Scripts/Remove.js"></script>
 <script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>
 <script src="~/Scripts/WeincdentalScript.js"></script>
@@ -77,7 +938,8 @@
     var secilenDis;
     var hizmetAd;
     var hizmetFiyat;
-    var bid=@Html.Raw(Json.Encode(ViewBag.bid));
+    var bid = @Html.Raw(Json.Encode(ViewBag.bid));
+    var tdhhtc = @Html.Raw(Json.Encode(ViewBag.tc));
     function SeciliHizmet(SHid, SHAd, SHFiyat) {
         secilenHizmet = SHid;
         hizmetAd = SHAd;
@@ -104,10 +966,10 @@
                     timeout: 4000
                 });
                 var result = TblEkle(list, tblNo, secilenDis, secilenHizmet, hizmetAd, hizmetFiyat, cuser, bid);
-                
+
                 list = result[0];
                 tblNo = result[1];
-              
+
             }
         } else {
             $.smallBox({
@@ -119,7 +981,6 @@
             });
         }
     }
-  
 
     $('table').on('click', '.RemoveRow', function () {
         //Some code
@@ -130,7 +991,6 @@
         list.splice(number, 1);
 
     });
-
 
     function Gonder() {
 
@@ -146,7 +1006,7 @@
                     list = [];
                     tblNo = 0;
                 }
-               
+
             },
             error: function () {
                 // bu kısımda eğer ajax işlemi başarısız ise
@@ -161,7 +1021,7 @@
             }
 
         });
-        
+
     }
     function Remove(id, HAd, disNo) {
         $.SmartMessageBox({
@@ -173,7 +1033,7 @@
                 if (ButtonPressed === "Yes") {
                     var rslt = HizmetRemove(id);
                     if (rslt) {
-                       
+
                         $('#refreshtbl').load("@Url.Action("_DisHHareket", "View_HizmetDetay")", { id: @ViewBag.bid });
                     }
 
@@ -191,6 +1051,438 @@
 
             });
     }
+
+    $("#pacs").mousedown(function (event) {
+        switch (event.which) {
+            case 2:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $("#pacsGoruntule").modal('show');
+        }
+    });
+        $("#18").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri18list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 18});
+                $("#disHizmetleri18").modal('show');
+        }
+    });
+        $("#17").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri17list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 17});
+                $("#disHizmetleri17").modal('show');
+        }
+    });
+        $("#16").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri16list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 16});
+                $("#disHizmetleri16").modal('show');
+        }
+    });
+        $("#15").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri15list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 15});
+                $("#disHizmetleri15").modal('show');
+        }
+    });
+        $("#14").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri14list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 14});
+                $("#disHizmetleri14").modal('show');
+        }
+    });
+        $("#13").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri13list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 13});
+                $("#disHizmetleri13").modal('show');
+        }
+    });
+        $("#12").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri12list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 12});
+                $("#disHizmetleri12").modal('show');
+        }
+    });
+        $("#11").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri11list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 11});
+                $("#disHizmetleri11").modal('show');
+        }
+    });
+
+        $("#21").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri21list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 21});
+                $("#disHizmetleri21").modal('show');
+        }
+    });
+        $("#22").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri22list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 22});
+                $("#disHizmetleri22").modal('show');
+        }
+    });
+        $("#23").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri23list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 23});
+                $("#disHizmetleri23").modal('show');
+        }
+    });
+        $("#24").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri24list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 24});
+                $("#disHizmetleri24").modal('show');
+        }
+    });
+        $("#25").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri25list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 25});
+                $("#disHizmetleri25").modal('show');
+        }
+    });
+        $("#26").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri26list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 26});
+                $("#disHizmetleri26").modal('show');
+        }
+    });
+        $("#27").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri27list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 27});
+                $("#disHizmetleri27").modal('show');
+        }
+    });
+        $("#28").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri28list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 28});
+                $("#disHizmetleri28").modal('show');
+        }
+    });
+
+            $("#48").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri48list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 48});
+                $("#disHizmetleri48").modal('show');
+        }
+    });
+        $("#47").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri47list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 47});
+                $("#disHizmetleri47").modal('show');
+        }
+    });
+        $("#46").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri46list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 46});
+                $("#disHizmetleri46").modal('show');
+        }
+    });
+        $("#45").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri45list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 45});
+                $("#disHizmetleri45").modal('show');
+        }
+    });
+        $("#44").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri44list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 44});
+                $("#disHizmetleri44").modal('show');
+        }
+    });
+        $("#43").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri43list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 43});
+                $("#disHizmetleri43").modal('show');
+        }
+    });
+        $("#42").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri42list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 42});
+                $("#disHizmetleri42").modal('show');
+        }
+    });
+        $("#41").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri41list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 41});
+                $("#disHizmetleri41").modal('show');
+        }
+    });
+
+        $("#31").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri31list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 31});
+                $("#disHizmetleri31").modal('show');
+        }
+    });
+        $("#32").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri32list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 32});
+                $("#disHizmetleri32").modal('show');
+        }
+    });
+        $("#33").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri33list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 33});
+                $("#disHizmetleri33").modal('show');
+        }
+    });
+        $("#34").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri34list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 34});
+                $("#disHizmetleri34").modal('show');
+        }
+    });
+        $("#35").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri35list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 35});
+                $("#disHizmetleri35").modal('show');
+        }
+    });
+        $("#36").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri36list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 36});
+                $("#disHizmetleri36").modal('show');
+        }
+    });
+        $("#37").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri37list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 37});
+                $("#disHizmetleri37").modal('show');
+        }
+    });
+        $("#38").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri38list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 38});
+                $("#disHizmetleri38").modal('show');
+        }
+    });
+
+        $("#55").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri55list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 55});
+                $("#disHizmetleri55").modal('show');
+        }
+    });
+        $("#54").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri54list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 54});
+                $("#disHizmetleri54").modal('show');
+        }
+    });
+        $("#53").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri53list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 53});
+                $("#disHizmetleri53").modal('show');
+        }
+    });
+        $("#52").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri52list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 52});
+                $("#disHizmetleri52").modal('show');
+        }
+    });
+        $("#51").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri51list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 51});
+                $("#disHizmetleri51").modal('show');
+        }
+    });
+
+        $("#61").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri61list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 61});
+                $("#disHizmetleri61").modal('show');
+        }
+    });
+        $("#62").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri62list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 62});
+                $("#disHizmetleri62").modal('show');
+        }
+    });
+        $("#63").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri63list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 63});
+                $("#disHizmetleri63").modal('show');
+        }
+    });
+        $("#64").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri64list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 64});
+                $("#disHizmetleri64").modal('show');
+        }
+    });
+        $("#65").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri65list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 65});
+                $("#disHizmetleri65").modal('show');
+        }
+    });
+
+        $("#75").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri75list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 75});
+                $("#disHizmetleri75").modal('show');
+        }
+    });
+        $("#74").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri74list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 74});
+                $("#disHizmetleri74").modal('show');
+        }
+    });
+        $("#73").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri73list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 73});
+                $("#disHizmetleri73").modal('show');
+        }
+    });
+        $("#72").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri72list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 72});
+                $("#disHizmetleri72").modal('show');
+        }
+    });
+        $("#71").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri71list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 71});
+                $("#disHizmetleri71").modal('show');
+        }
+    });
+
+        $("#81").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri81list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 81});
+                $("#disHizmetleri81").modal('show');
+        }
+    });
+        $("#82").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri82list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 82});
+                $("#disHizmetleri82").modal('show');
+        }
+    });
+        $("#83").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri83list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 83});
+                $("#disHizmetleri83").modal('show');
+        }
+    });
+        $("#84").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri84list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 84});
+                $("#disHizmetleri84").modal('show');
+        }
+    });
+        $("#85").mousedown(function (event) {
+        switch (event.which) {
+            case 3:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#disHizmetleri85list').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: 85});
+                $("#disHizmetleri85").modal('show');
+        }
+    });
+
 
 </script>
 

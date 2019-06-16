@@ -47,7 +47,6 @@
                                 <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3_1" rowspan="1" colspan="1" aria-label="Company: activate to sort column ascending" style="width: 50px;"><i class="fa fa-fw fa-key text-muted hidden-md hidden-sm hidden-xs"></i> T.C.</th>
                                 <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;"><i class="fa fa-fw  fa-stethoscope text-muted hidden-md hidden-sm hidden-xs"></i> Başvuru Yapan Doktor</th>
                                 <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_1" rowspan="1" colspan="1" aria-label=" Name: activate to sort column ascending" style="width: 50px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Başvuru Tarihi</th>
-                                <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_1" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 100px;"><i class="fa fa-times-circle-o text-muted hidden-md hidden-sm hidden-xs"></i> Taburcu Durumu</th>
                                 <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_1" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 100px;"><i class="fa fa-hospital-o text-muted hidden-md hidden-sm hidden-xs"></i> Hizmet Adı</th>
                                 <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_1" rowspan="1" colspan="1" aria-label=" Name: activate to sort column ascending" style="width: 50px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Hizmet Tarihi</th>
                                 <!-- HEAD BİTİŞİ -->
@@ -73,18 +72,6 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.t_basvurutarihi)
                                         </td>
-                                        @if (item.t_taburcu)
-                                        {
-                                            <td class="danger">
-                                                @Html.DisplayFor(modelItem => item.t_taburcu)
-                                            </td>
-                                        }
-                                        else
-                                        {
-                                            <td class="success">
-                                                @Html.DisplayFor(modelItem => item.t_taburcu)
-                                            </td>
-                                        }
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Hizmetadi)
                                         </td>

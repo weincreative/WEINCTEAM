@@ -24,6 +24,8 @@ namespace WEINCDENTAL.Controllers
            
             ViewModelHisHareket vm = new ViewModelHisHareket();
             vm._ViewModelHisHareket = db.hst_his_hareket.ToList();
+            var hastaYas = Ortak._hastayas;
+            ViewBag.hYas = hastaYas;
             ViewBag.basid = id;
             return PartialView(vm);
         }

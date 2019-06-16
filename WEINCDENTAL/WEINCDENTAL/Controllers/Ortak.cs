@@ -9,7 +9,7 @@ namespace WEINCDENTAL.Controllers
     public class Ortak
     {
         public static string _hastatc;
-
+        public static int _hastayas;
 
         // Son Kaydın İd sini alıyor
         public int GetSonIndex()

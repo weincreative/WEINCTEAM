@@ -34,7 +34,6 @@ namespace WEINCDENTAL.Controllers
             return PartialView(hst_hizmet.ToList());
         }
 
-
         // GET: hst_hizmet/Details/5
         public ActionResult Details(int? id)
         {

@@ -33,18 +33,21 @@
             <fieldset>
                 <div class="col-md-12">
                     <div class="input-group">
-                        <input class="form-control" placeholder="T.C. No ara / Başvuru Aç" id="tcid" name="tc">
+                        <input class="form-control" placeholder="T.C. No" id="tcid" name="tc">
 
                         <div class="input-group-btn">
 
                             <button class="btn btn-default btn-primary" type="submit" id="btnSearch">
                                 <i class="fa fa-search"></i> Sorgula
                             </button>
+                            <button class="btn btn-default  btn-warning" type="button" id="cagriEkrani">
+                                <i class="fa fa-reorder"></i> Çagri Ekranı
+                            </button>
                             @*<button class="btn btn-default btn-success" type="submit" id="btnHizmet">
-                                        <i class="fa fa-bookmark"></i> Diş Hizmet
-                                 </button>*@
+                                       <i class="fa fa-bookmark"></i> Diş Hizmet
+                                </button>*@
                             @*<input type="submit" value="Sor" name="action:Sor" />
-                                  <input type="submit" value="Hiz" name="action:Hiz" />*@
+                                <input type="submit" value="Hiz" name="action:Hiz" />*@
 
                         </div>
                     </div>
@@ -54,9 +57,31 @@
 
         }
     </article>
+    @*<div class="col-sm-12 col-md-12 col-lg-3" style="padding-top: 4px;">
+            <button type="button" class="btn btn-warning" id="cagriEkrani">
+                <i class="fa fa-search"></i> Cagri Ekranı
+            </button>
+        </div>*@
 
     <div id="dinamikBilgi" style="color: white;padding-top: 4px;"> </div>
 
+
+    <div class="modal right fade" id="cagriEkraniModal" tabindex="-1" role="dialog" aria-labelledby="cagriEkraniModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body" id="cagriEkraniList">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                        Kapat
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
 
 </div>
 <!-- END RIBBON -->
@@ -95,5 +120,16 @@
                 //e.preventDefault();
             });
 
-        });
+
+    });
+
+            $(document).ready(function () {
+            var gveri = @Html.Raw(Json.Encode(ViewBag.gdeger));
+                $('#cagriEkrani').click(function (e) {
+                    $("#dt_basic3_3").dataTable().fnDestroy();
+                  $('#cagriEkraniList').load("@Url.Action("_PartialCagriEkrani", "CagriEkrani")", { bid: 2});
+                  $("#cagriEkraniModal").modal('show');
+            });
+    });
+
 </script>

@@ -18,23 +18,32 @@
             <span class="widget-icon"> <i class="fa fa-bookmark"></i> </span>
             <h2>Diş Modülü</h2>
             <ul class="nav nav-tabs pull-right in">
+                @if (ViewBag.hYas > 18)
+                {
+                    <li class="active">
+                        <a data-toggle="tab" href="#hb1" aria-expanded="true"> <i class="fa fa-lg fa-arrow-circle-o-up"></i> <span class="hidden-mobile hidden-tablet"> YETİŞKİN </span> </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#hb2" aria-expanded="false"> <i class="fa fa-lg fa-arrow-circle-o-down"></i> <span class="hidden-mobile hidden-tablet"> ÇOCUK <span class="label bg-color-red txt-color-white"> -18 <i class="fa fa-exclamation"></i> </span> </span> </a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a data-toggle="tab" href="#hb1" aria-expanded="false"> <i class="fa fa-lg fa-arrow-circle-o-up"></i> <span class="hidden-mobile hidden-tablet"> YETİŞKİN </span> </a>
+                    </li>
+                    <li class="active">
+                        <a data-toggle="tab" href="#hb2" aria-expanded="true"> <i class="fa fa-lg fa-arrow-circle-o-down"></i> <span class="hidden-mobile hidden-tablet"> ÇOCUK <span class="label bg-color-red txt-color-white"> -18 <i class="fa fa-exclamation"></i> </span> </span> </a>
+                    </li>
+                }
 
-                <li class="active">
-
-                    <a data-toggle="tab" href="#hb1" aria-expanded="true"> <i class="fa fa-lg fa-arrow-circle-o-up"></i> <span class="hidden-mobile hidden-tablet"> YETİŞKİN </span> </a>
-
-                </li>
-
-                <li>
-                    <a data-toggle="tab" href="#hb2" aria-expanded="false"> <i class="fa fa-lg fa-arrow-circle-o-down"></i> <span class="hidden-mobile hidden-tablet"> ÇOCUK <span class="label bg-color-red txt-color-white"> -18 <i class="fa fa-exclamation"></i> </span> </span> </a>
-                </li>
 
             </ul>
             <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
         </header>
 
         <!-- widget div-->
-        <div role="content">
+        <div role="content" id="pacs">
 
             <!-- widget edit box -->
             <div class="jarviswidget-editbox">
@@ -46,184 +55,364 @@
             <div class="widget-body">
                 @Html.Hidden("t_basvuruid",(object)@ViewBag.basid)
                 <div class="tab-content">
-                    <div class="tab-pane active" id="hb1">
-                        <div class="tabbable tabs-below">
+                    @if (ViewBag.hYas > 18)
+                    {
+                        <div class="tab-pane active" id="hb1">
+                            <div class="tabbable tabs-below">
+                                <div class="tab-content padding-10">
+                                    <div class="tab-pane active">
+                                        <button class="btn btn-default ddisyetiskin-btn" id="18" onclick="SeciliDis('18')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/18.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="17" onclick="SeciliDis('17')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/17.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="16" onclick="SeciliDis('16')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/16.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="15" onclick="SeciliDis('15')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/15.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="14" onclick="SeciliDis('14')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/14.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="13" onclick="SeciliDis('13')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/13.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="12" onclick="SeciliDis('12')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/12.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="11" onclick="SeciliDis('11')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/11.png" />
+                                        </button>
+                                        @*<a href="javascript:void(0);" class="btn btn-default disabled">-</a>*@
+                                        <button class="btn btn-default ddisyetiskin-btn" id="21" onclick="SeciliDis('21')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/21.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="22" onclick="SeciliDis('22')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/22.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="23" onclick="SeciliDis('23')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/23.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="24" onclick="SeciliDis('24')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/24.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="25" onclick="SeciliDis('25')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/25.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="26" onclick="SeciliDis('26')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/26.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="27" onclick="SeciliDis('27')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/27.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="28" onclick="SeciliDis('28')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/28.png" />
+                                        </button>
+                                        <br />
+                                        <button class="btn btn-default ddisyetiskin-btn" id="48" onclick="SeciliDis('48')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/48.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="47" onclick="SeciliDis('47')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/47.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="46" onclick="SeciliDis('46')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/46.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="45" onclick="SeciliDis('45')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/45.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="44" onclick="SeciliDis('44')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/44.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="43" onclick="SeciliDis('43')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/43.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="42" onclick="SeciliDis('42')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/42.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="41" onclick="SeciliDis('41')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/41.png" />
+                                        </button>
+                                        @*<a href="javascript:void(0);" class="btn btn-default disabled">-</a>*@
+                                        <button class="btn btn-default ddisyetiskin-btn" id="31" onclick="SeciliDis('31')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/31.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="32" onclick="SeciliDis('32')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/32.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="33" onclick="SeciliDis('33')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/33.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="34" onclick="SeciliDis('34')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/34.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="35" onclick="SeciliDis('35')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/35.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="36" onclick="SeciliDis('36')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/36.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="37" onclick="SeciliDis('37')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/37.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="38" onclick="SeciliDis('38')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/38.png" />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="hb2">
                             <div class="tab-content padding-10">
-                                <div class="tab-pane active" >
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('18')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/18.png" />
+                                <div class="tab-pane active">
+                                    <button class="btn btn-default ddiscocuk-btn" id="55" onclick="SeciliDis('55')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/55.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('17')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/17.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="54" onclick="SeciliDis('54')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/54.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('16')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/16.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="53" onclick="SeciliDis('53')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/53.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('15')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/15.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="52" onclick="SeciliDis('52')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/52.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('14')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/14.png" />
-                                    </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('13')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/13.png" />
-                                    </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('12')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/12.png" />
-                                    </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('11')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/11.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="51" onclick="SeciliDis('51')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/51.png" />
                                     </button>
                                     @*<a href="javascript:void(0);" class="btn btn-default disabled">-</a>*@
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('21')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/21.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="61" onclick="SeciliDis('61')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/61.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('22')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/22.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="62" onclick="SeciliDis('62')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/62.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('23')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/23.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="63" onclick="SeciliDis('63')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/63.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('24')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/24.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="64" onclick="SeciliDis('64')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/64.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('25')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/25.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="65" onclick="SeciliDis('65')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/65.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('26')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/26.png" />
+                                    <br />
+                                    <button class="btn btn-default ddiscocuk-btn" id="75" onclick="SeciliDis('75')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/75.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('27')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/27.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="74" onclick="SeciliDis('74')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/74.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('28')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/28.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="73" onclick="SeciliDis('73')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/73.png" />
                                     </button>
-                                    <br /> 
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('48')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/48.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="72" onclick="SeciliDis('72')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/72.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('47')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/47.png" />
-                                    </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('46')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/46.png" />
-                                    </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('45')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/45.png" />
-                                    </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('44')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/44.png" />
-                                    </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('43')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/43.png" />
-                                    </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('42')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/42.png" />
-                                    </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('41')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/41.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="71" onclick="SeciliDis('71')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/71.png" />
                                     </button>
                                     @*<a href="javascript:void(0);" class="btn btn-default disabled">-</a>*@
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('31')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/31.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="81" onclick="SeciliDis('81')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/81.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('32')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/32.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="82" onclick="SeciliDis('82')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/82.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('33')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/33.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="83" onclick="SeciliDis('83')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/83.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('34')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/34.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="84" onclick="SeciliDis('84')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/84.png" />
                                     </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('35')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/35.png" />
-                                    </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('36')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/36.png" />
-                                    </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('37')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/37.png" />
-                                    </button>
-                                    <button class="btn btn-default ddisyetiskin-btn" onclick="SeciliDis('38')" >
-                                        <img src="~/Content/klinikImage/disImage/yetiskin/38.png" />
+                                    <button class="btn btn-default ddiscocuk-btn" id="85" onclick="SeciliDis('85')">
+                                        <img src="~/Content/klinikImage/disImage/cocuk/85.png" />
                                     </button>
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="tab-pane" id="hb2">
-                        <div class="tab-content padding-10">
-                            <div class="tab-pane active" >
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('55')" >
+                    }
+                    else
+                    {
+                        <div class="tab-pane" id="hb1">
+                            <div class="tabbable tabs-below">
+                                <div class="tab-content padding-10">
+                                    <div class="tab-pane active">
+                                        <button class="btn btn-default ddisyetiskin-btn" id="18" onclick="SeciliDis('18')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/18.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="17" onclick="SeciliDis('17')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/17.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="16" onclick="SeciliDis('16')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/16.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="15" onclick="SeciliDis('15')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/15.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="14" onclick="SeciliDis('14')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/14.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="13" onclick="SeciliDis('13')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/13.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="12" onclick="SeciliDis('12')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/12.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="11" onclick="SeciliDis('11')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/11.png" />
+                                        </button>
+                                        @*<a href="javascript:void(0);" class="btn btn-default disabled">-</a>*@
+                                        <button class="btn btn-default ddisyetiskin-btn" id="21" onclick="SeciliDis('21')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/21.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="22" onclick="SeciliDis('22')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/22.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="23" onclick="SeciliDis('23')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/23.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="24" onclick="SeciliDis('24')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/24.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="25" onclick="SeciliDis('25')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/25.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="26" onclick="SeciliDis('26')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/26.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="27" onclick="SeciliDis('27')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/27.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="28" onclick="SeciliDis('28')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/28.png" />
+                                        </button>
+                                        <br />
+                                        <button class="btn btn-default ddisyetiskin-btn" id="48" onclick="SeciliDis('48')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/48.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="47" onclick="SeciliDis('47')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/47.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="46" onclick="SeciliDis('46')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/46.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="45" onclick="SeciliDis('45')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/45.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="44" onclick="SeciliDis('44')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/44.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="43" onclick="SeciliDis('43')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/43.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="42" onclick="SeciliDis('42')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/42.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="41" onclick="SeciliDis('41')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/41.png" />
+                                        </button>
+                                        @*<a href="javascript:void(0);" class="btn btn-default disabled">-</a>*@
+                                        <button class="btn btn-default ddisyetiskin-btn" id="31" onclick="SeciliDis('31')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/31.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="32" onclick="SeciliDis('32')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/32.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="33" onclick="SeciliDis('33')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/33.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="34" onclick="SeciliDis('34')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/34.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="35" onclick="SeciliDis('35')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/35.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="36" onclick="SeciliDis('36')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/36.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="37" onclick="SeciliDis('37')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/37.png" />
+                                        </button>
+                                        <button class="btn btn-default ddisyetiskin-btn" id="38" onclick="SeciliDis('38')">
+                                            <img src="~/Content/klinikImage/disImage/yetiskin/38.png" />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane active" id="hb2">
+                            <div class="tab-content padding-10">
+                                <div class="tab-pane active">
+                                    <button class="btn btn-default ddiscocuk-btn" id="55" onclick="SeciliDis('55')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/55.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('54')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="54" onclick="SeciliDis('54')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/54.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('53')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="53" onclick="SeciliDis('53')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/53.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('52')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="52" onclick="SeciliDis('52')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/52.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('51')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="51" onclick="SeciliDis('51')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/51.png" />
                                     </button>
                                     @*<a href="javascript:void(0);" class="btn btn-default disabled">-</a>*@
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('61')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="61" onclick="SeciliDis('61')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/61.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('62')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="62" onclick="SeciliDis('62')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/62.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('63')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="63" onclick="SeciliDis('63')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/63.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('64')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="64" onclick="SeciliDis('64')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/64.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('65')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="65" onclick="SeciliDis('65')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/65.png" />
                                     </button>
                                     <br />
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('75')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="75" onclick="SeciliDis('75')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/75.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('74')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="74" onclick="SeciliDis('74')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/74.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('73')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="73" onclick="SeciliDis('73')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/73.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('72')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="72" onclick="SeciliDis('72')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/72.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('71')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="71" onclick="SeciliDis('71')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/71.png" />
                                     </button>
                                     @*<a href="javascript:void(0);" class="btn btn-default disabled">-</a>*@
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('81')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="81" onclick="SeciliDis('81')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/81.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('82')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="82" onclick="SeciliDis('82')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/82.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('83')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="83" onclick="SeciliDis('83')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/83.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('84')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="84" onclick="SeciliDis('84')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/84.png" />
                                     </button>
-                                    <button class="btn btn-default ddiscocuk-btn" onclick="SeciliDis('85')" >
+                                    <button class="btn btn-default ddiscocuk-btn" id="85" onclick="SeciliDis('85')">
                                         <img src="~/Content/klinikImage/disImage/cocuk/85.png" />
                                     </button>
+                                </div>
                             </div>
                         </div>
-
-                    </div>
+                    }
                 </div>
 
             </div>

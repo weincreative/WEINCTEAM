@@ -143,6 +143,7 @@
     <Compile Include="Controllers\adm_kullanicigrupController.cs" />
     <Compile Include="Controllers\adm_kullanicilarController.cs" />
     <Compile Include="Controllers\AyarlarController.cs" />
+    <Compile Include="Controllers\CagriEkraniController.cs" />
     <Compile Include="Controllers\DtoVezneController.cs" />
     <Compile Include="Controllers\HisHareketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1003,6 +1004,7 @@
     <Content Include="Scripts\plugin\x-editable\jquery.mockjax.min.js" />
     <Content Include="Scripts\plugin\x-editable\moment.min.js" />
     <Content Include="Scripts\plugin\x-editable\x-editable.min.js" />
+    <Content Include="Scripts\Cagir.js" />
     <Content Include="Scripts\Remove.js" />
     <Content Include="Scripts\smart-chat-ui\smart.chat.manager.min.js" />
     <Content Include="Scripts\smart-chat-ui\smart.chat.ui.min.js" />
@@ -1128,6 +1130,13 @@
     <Content Include="Views\View_HizmetDetay\_DisHHareket.cshtml" />
     <Content Include="Views\Vezne\SearchBorc.cshtml" />
     <Content Include="Views\DtoVezne\_Vezne.cshtml" />
+    <Content Include="Views\View_HizmetDetay\_TEKDisHHareket.cshtml" />
+    <Content Include="Views\CagriEkrani\Create.cshtml" />
+    <Content Include="Views\CagriEkrani\Delete.cshtml" />
+    <Content Include="Views\CagriEkrani\Details.cshtml" />
+    <Content Include="Views\CagriEkrani\Edit.cshtml" />
+    <Content Include="Views\CagriEkrani\CagriEkraniIndex.cshtml" />
+    <Content Include="Views\CagriEkrani\_PartialCagriEkrani.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

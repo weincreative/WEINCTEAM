@@ -43,6 +43,15 @@
 
 $.sound_path = "../../Content/sound/";
 $.sound_on = true; 
+
+/*
+ * SAĞ TUŞ MENÜ KAPANIR (DO NOT CHANGE)
+ * BROWSERLERDE MENÜYÜ AÇMAZ (window in the browser)
+ */
+$(document).bind("contextmenu", function (event) {
+    event.preventDefault();
+});
+
 /*
  * SAVE INSTANCE REFERENCE (DO NOT CHANGE)
  * Save a reference to the global object (window in the browser)

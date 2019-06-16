@@ -51,7 +51,7 @@
                                 </span>
 
                                 <span class="ribbon-button-alignment" style="height: 24px;">
-                                    <span id="refresh" onclick="ClickRefresh()" class="btn btn-ribbon" data-title="refresh" rel="tooltip" data-html="true">
+                                    <span id="refresh" id="disBtn" onclick="ClickRefresh()" class="btn btn-ribbon" data-title="refresh" rel="tooltip" data-html="true">
                                         <i class="fa fa-refresh"></i>
                                     </span>
 
@@ -109,8 +109,8 @@
                                                         @*@Html.DisplayFor(modelItem => item.t_id) - @Html.DisplayFor(modelItem => item.t_adi) -
                                                         @Html.DisplayFor(modelItem => item.t_fiyat)*@
                                                     @*</a>*@
-                                                    <button class="btn btn-default hzmt-btn btn-block" onclick="SeciliHizmet('@item.t_id','@item.t_adi','@item.t_fiyat')">
-                                                        @Html.DisplayFor(modelItem => item.t_id) - @Html.DisplayFor(modelItem => item.t_adi) -
+                                                    <button class="btn btn-default hzmt-btn btn-block" id="disBtn" onclick="SeciliHizmet('@item.t_id','@item.t_adi','@item.t_fiyat')">
+                                                        @Html.DisplayFor(modelItem => item.t_adi) -
                                                         @Html.DisplayFor(modelItem => item.t_fiyat)
                                                     </button>
                                                 </td>
