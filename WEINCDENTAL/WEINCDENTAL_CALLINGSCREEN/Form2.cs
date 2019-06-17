@@ -27,8 +27,8 @@ namespace WEINCDENTAL_CALLINGSCREEN
         SpeechSynthesizer reader = new SpeechSynthesizer();
         public static int readerSayar = 0;
         public static string Memory = null;
-        //DateTime nowDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-
+        DateTime nowDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+        DateTime sonrakiDate = Convert.ToDateTime(DateTime.Now.ToShortDateString()).AddDays(1);
         #endregion
 
         #region VOIDS
@@ -47,8 +47,8 @@ namespace WEINCDENTAL_CALLINGSCREEN
 			cagrilacakList.Clear();
 			try
 				{
-					var _cagrilcakList = db.hst_basvuru.Where(x => x.t_cagriekraniistem == 0).Where(x => x.t_bolumkodu == id).Where(x => x.t_basvurudr == 0)/*.Where(x => x.t_basvurutarihi == nowDate)*/.Where(x => x.t_aktif == true).Where(x => x.t_taburcu == false).ToList().OrderByDescending(x => x.t_basvurutarihi);
-					if (_cagrilcakList != null)
+					var _cagrilcakList = db.hst_basvuru.Where(c => c.t_cagriekraniistem == 0 && c.t_bolumkodu == id && c.t_basvurudr == 0 && c.t_aktif == true && c.t_taburcu == false).Where(k => k.t_basvurutarihi >= nowDate && k.t_basvurutarihi < sonrakiDate).ToList();
+                if (_cagrilcakList != null)
 					{
 					foreach (var item in _cagrilcakList)
 					{
@@ -74,7 +74,10 @@ namespace WEINCDENTAL_CALLINGSCREEN
 
             try
             {
-                var _cagrilanList = db.hst_basvuru.Where(c => c.t_cagriekraniistem == 0).Where(c => c.t_bolumkodu == id).Where(c => c.t_basvurudr == 1)/*.Where(x => x.t_basvurutarihi == nowDate)*/.Where(c => c.t_aktif == true).Where(c => c.t_taburcu == false).ToList();
+                //  var _cagrilanList = db.hst_basvuru.Where(c => c.t_cagriekraniistem == 0).Where(c => c.t_bolumkodu == id).Where(c => c.t_basvurudr == 1)/*.Where(x => x.t_basvurutarihi == nowDate)*/.Where(c => c.t_aktif == true).Where(c => c.t_taburcu == false).ToList();
+               
+
+                var _cagrilanList = db.hst_basvuru.Where(c => c.t_cagriekraniistem == 0 && c.t_bolumkodu==id && c.t_basvurudr==1 && c.t_aktif==true && c.t_taburcu==false).Where(k=>k.t_basvurutarihi>=nowDate && k.t_basvurutarihi<sonrakiDate).ToList();
                 if (_cagrilanList.Count != 0)
                 {
                     foreach (var item in _cagrilanList)
@@ -163,7 +166,7 @@ namespace WEINCDENTAL_CALLINGSCREEN
             {
                 reader.Dispose();
                 reader = new SpeechSynthesizer();
-                reader.SpeakAsync(lblCagirilanHasta.Text + "iceriye lutfen");
+               reader.SpeakAsync(lblCagirilanHasta.Text + "iceriye lutfen");
                 readerSayar++;
             }
             else

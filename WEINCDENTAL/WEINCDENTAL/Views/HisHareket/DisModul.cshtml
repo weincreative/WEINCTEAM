@@ -54,7 +54,7 @@
             <!-- widget content -->
             <div class="widget-body">
                 @Html.Hidden("t_basvuruid",(object)@ViewBag.basid)
-                <div class="tab-content">
+                <div class="tab-content" id="dishizmet">
                     @if (ViewBag.hYas > 18)
                     {
                         <div class="tab-pane active" id="hb1">
@@ -107,7 +107,7 @@
                                         <button class="btn btn-default ddisyetiskin-btn" id="27" onclick="SeciliDis('27')">
                                             <img src="~/Content/klinikImage/disImage/yetiskin/27.png" />
                                         </button>
-                                        <button class="btn btn-default ddisyetiskin-btn" id="28" onclick="SeciliDis('28')">
+                                        <button class="btn btn-default ddisyetiskin-btn" id="28" name="28" onclick="SeciliDis('28')">
                                             <img src="~/Content/klinikImage/disImage/yetiskin/28.png" />
                                         </button>
                                         <br />

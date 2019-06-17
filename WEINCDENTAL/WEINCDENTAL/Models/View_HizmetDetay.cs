@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace WEINCDENTAL.Models
 {
     using System;
@@ -26,6 +28,7 @@ namespace WEINCDENTAL.Models
         public string DoktorAd { get; set; }
         public bool t_taburcu { get; set; }
         public string HizmetAd { get; set; }
+        [DataType(DataType.Currency)]
         public decimal t_fiyat { get; set; }
         public bool Odemedurumu { get; set; }
         public System.DateTime Hizmet_Tarih { get; set; }

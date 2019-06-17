@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace WEINCDENTAL.Models
 {
     using System;
@@ -22,10 +24,13 @@ namespace WEINCDENTAL.Models
         public int Hareketid { get; set; }
         public int t_hizmetkodu { get; set; }
         public string Hizmetadi { get; set; }
+        [DataType(DataType.Currency)]
         public decimal t_fiyat { get; set; }
         public System.DateTime Hizmettarih { get; set; }
         public bool t_odemevarmi { get; set; }
+        [DataType(DataType.Currency)]
         public decimal t_odenen { get; set; }
+        [DataType(DataType.Currency)]
         public decimal t_kalan { get; set; }
         public string Odemetip { get; set; }
         public System.DateTime Odemetarih { get; set; }

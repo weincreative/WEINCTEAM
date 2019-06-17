@@ -51,7 +51,7 @@
                                 </span>
 
                                 <span class="ribbon-button-alignment" style="height: 24px;">
-                                    <span id="refresh" id="disBtn" onclick="ClickRefresh()" class="btn btn-ribbon" data-title="refresh" rel="tooltip" data-html="true">
+                                    <span id="refresh"  onclick="ClickRefresh()" class="btn btn-ribbon" data-title="refresh" rel="tooltip" data-html="true">
                                         <i class="fa fa-refresh"></i>
                                     </span>
 
@@ -63,17 +63,6 @@
                     <div class="tab-content">
                         <div class="tab-pane active " id="tab1">
 
-                            @* Tab 1 içerik *@
-                            @*<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-                                <h1 class="page-title txt-color-blueDark">
-                                     PAGE HEADER 
-                                    <i class="fa-fw fa fa-bookmark"></i>
-                                    Hizmetler
-                                </h1>
-
-                            </div>*@
-
-                            @*<div style="padding-top: 25%;">*@
 
                                 <!-- end widget head search -->
                                 <table id="dt_basic3" class="table table-striped table-bordered table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
@@ -81,9 +70,7 @@
                                         <tr role="row">
                                             <!-- HEAD BAŞLANGICI -->
                                             <th data-hide="phone,tablet" class="sorting_asc" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending"><i class="fa fa-fw fa-bookmark text-muted hidden-md hidden-sm hidden-xs"></i> Hizmet No - Hizmet Adı - Fiyatı </th>
-                                            @*<th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label="Company: activate to sort column ascending" ><i class="fa fa-fw  fa-bookmark text-muted hidden-md hidden-sm hidden-xs"></i> Hizmet Adı</th>
-                                                <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label="Company: activate to sort column ascending" ><i class="fa fa-fw  fa-money text-muted hidden-md hidden-sm hidden-xs"></i> Hizmet Fiyat (TL)</th>*@
-
+                                          
                                             <!-- HEAD BİTİŞİ -->
                                         </tr>
                                     </thead>
@@ -91,25 +78,11 @@
                                         <!-- BODY BAŞLANGICI -->
                                         @foreach (var item in Model)
                                         {
-                                            @*<tr>
-                                                    <td class="text-danger">
-                                                        @Html.DisplayFor(modelItem => item.t_id)
-                                                    </td>
-                                                    <td class="text-danger">
-                                                        @Html.DisplayFor(modelItem => item.t_adi)
-                                                    </td>
-                                                    <td class="text-success">
-                                                         @Html.DisplayFor(modelItem => item.t_fiyat)
-                                                    </td>
-
-                                                </tr>*@
+                                            
                                             <tr>
                                                 <td>
-                                                    @*<a onclick="SeciliHizmet('@item.t_id')" class="btn btn-default hzmt-btn btn-block">*@
-                                                        @*@Html.DisplayFor(modelItem => item.t_id) - @Html.DisplayFor(modelItem => item.t_adi) -
-                                                        @Html.DisplayFor(modelItem => item.t_fiyat)*@
-                                                    @*</a>*@
-                                                    <button class="btn btn-default hzmt-btn btn-block" id="disBtn" onclick="SeciliHizmet('@item.t_id','@item.t_adi','@item.t_fiyat')">
+                                                   
+                                                    <button class="btn btn-default hzmt-btn btn-block"  onclick="SeciliHizmet('@item.t_id','@item.t_adi','@item.t_fiyat')">
                                                         @Html.DisplayFor(modelItem => item.t_adi) -
                                                         @Html.DisplayFor(modelItem => item.t_fiyat)
                                                     </button>
@@ -171,7 +144,7 @@
 
 <script type="text/javascript">
     function ClickRefresh() {
-        $('#tab2').load(document.URL + ' #tab2');
+        $('#tab2').load(document.URL + '#tab2');
     }
 
     $(document).ready(function () {
