@@ -122,7 +122,7 @@
                                         <td>YOK</td>
                                         <td>YOK</td>
                                         <td>
-                                            <a onclick="GetOdeme()" href="javascript:void(0);" class="btn btn-labeled btn-success">
+                                            <a onclick="GetOdeme(@item.HizHareketId)" href="javascript:void(0);" class="btn btn-labeled btn-success">
                                                 <span class="btn-label"><i class="glyphicon glyphicon-euro"></i></span>ÖdemeYap
                                             </a>
                                         </td>
@@ -167,7 +167,7 @@
                                             @Html.DisplayFor(modelItem => item.Odemetarih)
                                         </td>
                                         <td>
-                                            <a onclick="GetOdeme()" href="javascript:void(0);" class="btn btn-labeled btn-success">
+                                            <a onclick="GetOdeme(@item.Hareketid)" href="javascript:void(0);" class="btn btn-labeled btn-success">
                                                 <span class="btn-label"><i class="glyphicon glyphicon-euro"></i></span>ÖdemeYap
                                             </a>
                                         </td>
@@ -220,8 +220,8 @@
                 </button>
                 <center>   <h4 class="modal-title" id="myModalLabel">Ödeme Yap</h4></center>
             </div>
-            <div class="modal-body">
-                @*@Html.Action("Create", "View_Vezne")*@
+            <div class="modal-body" id="loadPrice">
+                @*@Html.Action("_CreateVezne", "Vezne", new { id = 73 })*@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info col-lg-offset-3 col-md-6 col-sm-6 col-xs-6 col-lg-6" data-dismiss="modal">
@@ -233,6 +233,7 @@
 </div><!-- /.modal -->
 
 <script type="text/javascript">
+
 
     $(document).ready(function () {
 
@@ -268,7 +269,8 @@
 
     });
 
-    function GetOdeme() {
+    function GetOdeme(hhid) {
+        $('#loadPrice').load("@Url.Action("_CreateVezne", "Vezne")", { id: hhid });
         $("#myModalCreateVezne").modal('show');
     }
 </script>

@@ -74,7 +74,8 @@ namespace WEINCDENTAL.Controllers
             }
             var ad_soyad = hst_hastakarti.t_adi + " " + hst_hastakarti.t_soyadi;
             ViewBag.Ad = ad_soyad;
-            Ortak._hastayas = 2019-Convert.ToInt32(hst_hastakarti.t_dogumtarihi.Year);
+
+            Ortak._hastayas = new YardimciController().GetYas(id);
             
             return PartialView(hst_hastakarti);
         }

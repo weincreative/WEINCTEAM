@@ -7,6 +7,7 @@ using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Controllers
 {
+    [Authorize(Roles = "1,2")]
     public class DtoVezneController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
@@ -20,6 +21,7 @@ namespace WEINCDENTAL.Controllers
             dtoVezne._ViewModelHDetay = hhareket;
             dtoVezne._ViewModelVezne = vezne;
             dtoVezne.TotalOdenen = vezne.Sum(k => k.t_odenen);
+
             var hfiyat = db.View_HizmetDetay.Where(k => k.HHareketAktif == true && k.TC == tc && k.t_borcdurum == true).
                 Select(k=>k.t_fiyat)
                 .DefaultIfEmpty()
@@ -28,5 +30,7 @@ namespace WEINCDENTAL.Controllers
             dtoVezne.TotalFiyat = hfiyat;
             return PartialView(dtoVezne);
         }
+        
+
     }
 }

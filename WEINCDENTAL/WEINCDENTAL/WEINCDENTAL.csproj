@@ -152,6 +152,7 @@
     <Compile Include="Controllers\hst_hastakartiController.cs" />
     <Compile Include="Controllers\hst_his_hareketController.cs" />
     <Compile Include="Controllers\hst_hizmetController.cs" />
+    <Compile Include="Controllers\hst_vezneController.cs" />
     <Compile Include="Controllers\Ortak.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\VezneController.cs" />
@@ -1137,6 +1138,12 @@
     <Content Include="Views\CagriEkrani\Edit.cshtml" />
     <Content Include="Views\CagriEkrani\CagriEkraniIndex.cshtml" />
     <Content Include="Views\CagriEkrani\_PartialCagriEkrani.cshtml" />
+    <Content Include="Views\Vezne\_CreateVezne.cshtml" />
+    <Content Include="Views\hst_vezne\Create.cshtml" />
+    <Content Include="Views\hst_vezne\Delete.cshtml" />
+    <Content Include="Views\hst_vezne\Details.cshtml" />
+    <Content Include="Views\hst_vezne\Edit.cshtml" />
+    <Content Include="Views\hst_vezne\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -1,0 +1,133 @@
+﻿@model WEINCDENTAL.Models.hst_vezne
+
+@{
+    ViewBag.Title = "Ödeme Yap";
+    Layout = null;
+}
+
+@using (Html.BeginForm("Create", "Vezne", FormMethod.Post, new { @class = "form-horizontal", @id = "productForm" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    @*<center><h4>Ödeme Ekranı</h4></center>
+        <hr />*@
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <fieldset>
+        <div class="row form-group">
+            <label class="col-xs-2 col-lg-3 control-label"></label>
+            <div class="col-xs-9 col-lg-6 inputGroupContainer">
+                <div class="input-group">
+                    @Html.EditorFor(model => model.t_hareketid, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.hhid, @disabled = "disabled" } })
+                    <span class="input-group-addon"> <i class="icon-prepend fa fa-tag"></i></span>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <div class="row form-group">
+            <label class="col-xs-2 col-lg-3 control-label">Önceki Ödenen Tutar</label>
+            <div class="col-xs-9 col-lg-6 inputGroupContainer">
+                <div class="input-group">
+                    @Html.EditorFor(model => model.t_odenen, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.totalodenen, @disabled = "disabled" } })
+                    <span class="input-group-addon">TL</span>
+                </div>
+            </div>
+
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="row form-group">
+            <label class="col-xs-2 col-lg-3 control-label">Kalan Tutar</label>
+            <div class="col-xs-9 col-lg-6 inputGroupContainer">
+                <div class="input-group">
+                    @Html.EditorFor(model => model.t_odenen, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.kalan, @disabled = "disabled",@id="VKPrice" } })
+                    <span class="input-group-addon">TL</span>
+                </div>
+            </div>
+
+        </div>
+    </fieldset>
+    <fieldset class="col-lg-push-3 smart-form">
+        <div class="row ">
+            <div class=" col col-md-3">
+                <label style="padding-top: 0px;" class="radio state-success"><input type="radio" name="radio" value="1"><i></i>Tümünü Öde</label>
+            </div>
+            <div class="col col-md-4">
+                <label style="padding-top: 0px;" class="radio state-success"><input type="radio" name="radio" value="2"><i></i>Tutar Belirle</label>
+            </div>
+        </div>
+    </fieldset>
+    <br />
+    <fieldset id="AllPrice">
+        <div class="row form-group">
+            <label class="col-xs-2 col-lg-3 control-label"></label>
+            <div class="col-xs-9 col-lg-6 inputGroupContainer" >
+                <div class="input-group">
+                    @Html.EditorFor(model => model.t_odenen, new { htmlAttributes = new { @class = "form-control", placeholder = "Ödenecek Miktar", @disabled = "disabled",@id="VPrice" } })
+                    <span class="input-group-addon">TL</span>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset id="borcGir">
+        <div class="row form-group">
+            <label class="col-xs-2 col-lg-3 control-label"></label>
+            <div class="col-xs-9 col-lg-6 inputGroupContainer" >
+                <div class="input-group">
+                    @Html.EditorFor(model => model.t_odenen, new { htmlAttributes = new { @class = "form-control", placeholder = "Ödenecek Miktar" } })
+                    <span class="input-group-addon">TL</span>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    
+
+    <fieldset>
+        <div class="row form-group">
+            <label class="col-xs-2 col-lg-3 control-label"></label>
+            <div class="col-xs-9 col-lg-6 selectContainer">
+                <div class="input-group">
+                    @Html.DropDownList("t_odemetipi", null, "--Ödeme Tip Seç--", htmlAttributes: new { @class = "form-control", placeholder = "Ödeme Tipi Seçiniz" })
+                    <span class="input-group-addon"> <i class="icon-prepend fa fa-credit-card"></i></span>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="form-actions">
+        @*<footer>*@
+        <div class="row">
+            <div class="col-md-offset-3 col-md-7">
+                @*<input type="submit" value="Kaydet" class="btn btn-success" />*@
+                <button class="btn btn-default" type="submit">
+                    <i class="fa fa-eye"></i>
+                    Validate
+                </button>
+            </div>
+        </div>
+        @*</footer>*@
+    </div>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+      
+        document.getElementById("borcGir").style.display = 'none';
+        $(":radio").change(function () {
+            var deger = $(this).val();
+            //1 ise tümü öde; 2 ise belirle
+            if (deger == 1) {
+                document.getElementById("AllPrice").style.display = 'block';
+                document.getElementById("borcGir").style.display = 'none';
+                var price=parseFloat(@ViewBag.kalan);
+                $("#VPrice").val(price);
+            } else if (deger == 2) {
+                document.getElementById("AllPrice").style.display = 'none';
+                document.getElementById("borcGir").style.display = 'block';
+            }
+
+        });
+    });
+</script>

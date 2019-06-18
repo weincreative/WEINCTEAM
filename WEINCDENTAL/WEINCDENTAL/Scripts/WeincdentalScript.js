@@ -201,7 +201,8 @@ function TblEkle(tblList,tblNo,dkod, hkod, had, hfiyat,user,bid) {
                 "t_createuser": user,
                 "t_aktif": 1,
                 "t_islemtarihi": zmn,
-                "t_createdate": zmn
+                "t_createdate": zmn,
+                't_borcdurum':true
             });
 
     }

@@ -127,6 +127,7 @@ namespace WEINCDENTAL.Controllers
             hst_basvuru.t_cagriekraniistem = 0;
             hst_basvuru.t_taburcu = false;
             hst_basvuru.t_aktif = true;
+            
             // mesaj=0 hiç bir uyarı yok.
             // mesaj=1 başarılı.
             // mesaj=2 başarısız.

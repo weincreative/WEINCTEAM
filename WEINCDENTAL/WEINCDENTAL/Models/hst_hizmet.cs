@@ -30,6 +30,7 @@ namespace WEINCDENTAL.Models
         public string t_adi { get; set; }
         public int t_parcauygunmu { get; set; }
         public int t_ceneuygunmu { get; set; }
+        [DataType(DataType.Currency)]
         [Display(Name = "Hizmet Fiyat")]
         [Required]
         public decimal t_fiyat { get; set; }
