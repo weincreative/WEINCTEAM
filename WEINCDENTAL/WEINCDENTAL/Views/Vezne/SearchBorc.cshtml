@@ -69,4 +69,27 @@
             }
 
         }
+        @*$(document).ready(function () {
+            var kayitdurum = @Html.Raw(Json.Encode(ViewBag.error));
+            alert(kayitdurum);
+            if (kayitdurum == "") {
+                $.smallBox({
+                    title: "Ödeme İşlemi Başarılı oldu.",
+                    content: "<i class='fa fa-clock-o'></i> <i>Az önce...</i>",
+                    color: "#739E73",
+                    iconSmall: "fa fa-thumbs-up bounce animated",
+                    timeout: 4000
+                });
+            } else {
+                $.smallBox({
+                    title: "Bir Hata Meydana Geldi.",
+                    content: "<i class='fa fa-clock-o'></i> <i>Az önce... " + kayitdurum + " </i>",
+                    color: "#cc1818",
+                    iconSmall: "fa fa-times-circle bounce animated",
+                    timeout: 4000
+                });
+                
+            } 
+            
+        });*@
     </script>

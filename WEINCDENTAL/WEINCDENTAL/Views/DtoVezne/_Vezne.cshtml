@@ -122,7 +122,7 @@
                                         <td>YOK</td>
                                         <td>YOK</td>
                                         <td>
-                                            <a onclick="GetOdeme(@item.HizHareketId)" href="javascript:void(0);" class="btn btn-labeled btn-success">
+                                            <a onclick="GetOdeme(@item.HizHareketId,@item.Odemedurumu)" href="javascript:void(0);" class="btn btn-labeled btn-success">
                                                 <span class="btn-label"><i class="glyphicon glyphicon-euro"></i></span>ÖdemeYap
                                             </a>
                                         </td>
@@ -167,7 +167,7 @@
                                             @Html.DisplayFor(modelItem => item.Odemetarih)
                                         </td>
                                         <td>
-                                            <a onclick="GetOdeme(@item.Hareketid)" href="javascript:void(0);" class="btn btn-labeled btn-success">
+                                            <a onclick="GetOdeme(@item.Hareketid,@item.t_odemevarmi)" href="javascript:void(0);" class="btn btn-labeled btn-success">
                                                 <span class="btn-label"><i class="glyphicon glyphicon-euro"></i></span>ÖdemeYap
                                             </a>
                                         </td>
@@ -269,8 +269,10 @@
 
     });
 
-    function GetOdeme(hhid) {
-        $('#loadPrice').load("@Url.Action("_CreateVezne", "Vezne")", { id: hhid });
+    function GetOdeme(hhid, odurum) {
+        var durum = Boolean(odurum);
+     
+        $('#loadPrice').load("@Url.Action("_CreateVezne", "Vezne")",{ id: hhid, odurum: durum});
         $("#myModalCreateVezne").modal('show');
     }
 </script>

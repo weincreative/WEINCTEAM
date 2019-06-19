@@ -59,6 +59,8 @@ namespace WEINCDENTAL.Controllers
 
         }
 
+       
+
         // hastanın özel durum sayısını getirir...
         public int GetOzelDurumCount(string id)
         {
@@ -111,6 +113,16 @@ namespace WEINCDENTAL.Controllers
              kalan = hfiyat - tOdenen;
 
             return kalan;
+        }
+
+
+        //hizmethareket id ye göre tc...
+        public string HH_GetTC(int? id)
+        {
+            string tc = db.View_HizmetDetay.Where(k => k.HHareketAktif == true && k.HizHareketId == id)
+                .Select(d => d.TC).FirstOrDefault();
+
+            return tc;
         }
     }
 }
