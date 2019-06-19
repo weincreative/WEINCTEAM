@@ -65,7 +65,7 @@ function HizmetRemove(hid) {
         contentType: 'application/json',
         data: JSON.stringify({ id: hid }),
         dataType: "json",
-        async: true,
+        async: false,
         success: function (veri) {
             if (veri == 1) {
                 $.smallBox({
@@ -85,9 +85,9 @@ function HizmetRemove(hid) {
                     iconSmall: "fa fa-times fa-2x fadeInRight animated",
                     timeout: 4000
                 });
-                 
+
             }
-           
+
         },
         error: function () {
             // bu kısımda eğer ajax işlemi başarısız ise
@@ -100,7 +100,21 @@ function HizmetRemove(hid) {
                 timeout: 4000
             });
         }
-       
+
     });
     return rslt;
+}
+
+function TblRemove() {
+    $('table').on('click', '.RemoveRow', function () {
+        //Some code
+       
+        var btnName = this.name;
+        var number = parseInt(btnName);
+        $(this).closest('tr').remove();
+        // listeden eleman çıkarma..
+        list.splice(number, 1);
+
+    });
+
 }

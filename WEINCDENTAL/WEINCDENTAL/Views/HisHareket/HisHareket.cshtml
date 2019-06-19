@@ -102,9 +102,10 @@
 </div>
 
 <script src="~/Scripts/Remove.js"></script>
-<script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>
+@*<script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>*@
 <script src="~/Scripts/WeincdentalScript.js"></script>
 <script type="text/javascript">
+    //Pace.options = { ajax: { trackWebSockets: false } }
     var cuser = "@HttpContext.Current.User.Identity.Name";
     var list = [];
     var tblNo = 0;
@@ -114,6 +115,36 @@
     var hizmetFiyat;
     var bid = @Html.Raw(Json.Encode(ViewBag.bid));
     var tdhhtc = @Html.Raw(Json.Encode(ViewBag.tc));
+    $(document).ready(function () {
+
+        TblRemove();
+
+        $("#pacs").mousedown(function (event) {
+            switch (event.which) {
+            case 2:
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $("#pacsGoruntule").modal('show');
+            }
+        });
+        
+        // mousedown
+        $("#dishizmet").on('mousedown','button', function (event) {
+            switch (event.which) {
+            case 3:
+                var disNo = this.id;
+
+                LoadDisHizmet(disNo);
+            }
+        });
+
+        function LoadDisHizmet(getdis) {
+            $("#dt_basic3_3").dataTable().fnDestroy();
+            $('#loadDisHizmet').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: getdis});
+            $("#ModalDisHizmet").modal('show');
+        }
+
+    });
+
     function SeciliHizmet(SHid, SHAd, SHFiyat) {
         secilenHizmet = SHid;
         hizmetAd = SHAd;
@@ -156,34 +187,29 @@
         }
     }
 
-    
-   
-    $('table').on('click', '.RemoveRow', function () {
-        //Some code
-        alert("asd");
-        var btnName = this.name;
-        var number = parseInt(btnName);
-        $(this).closest('tr').remove();
-        // listeden eleman çıkarma..
-        list.splice(number, 1);
 
-    });
+
     function Gonder() {
 
         $.ajax({
 
-           // async: true,
+            // async: true,
             type: "POST",
             data: JSON.stringify({ hst_his_hareket: list }),
             url: "../../hst_his_hareket/Create",
             contentType: "application/json",
             success: function(veri) {
                 if (veri) {
+
                     $('#refreshtbl').load("@Url.Action("_DisHHareket", "View_HizmetDetay")", { id: @ViewBag.bid });
                     $('#refNewTabl').load("@Url.Action("_NewHareket")");
                     list = [];
                     tblNo = 0;
-                 
+                    var url = "../../Scripts/Remove.js";
+                    $.getScript(url, function () {
+                        TblRemove();
+                    });
+                    
                 }
 
             },
@@ -202,13 +228,14 @@
         });
 
     }
+
     function Remove(id, HAd, disNo) {
-        $.holdReady(true);
+        //$.holdReady(true);
         $.SmartMessageBox({
-            title: "UYARI!",
-            content: " Hizmet: " + HAd + "<div> Diş No: " + disNo + " olan hastanın hizmeti silinecektir.</div> <div><br></div><div>EMİN MİSİNİZ?</div>",
-            buttons: '[No][Yes]'
-        },
+                title: "UYARI!",
+                content: " Hizmet: " + HAd + "<div> Diş No: " + disNo + " olan hastanın hizmeti silinecektir.</div> <div><br></div><div>EMİN MİSİNİZ?</div>",
+                buttons: '[No][Yes]'
+            },
             function (ButtonPressed) {
                 if (ButtonPressed === "Yes") {
                     var rslt = HizmetRemove(id);
@@ -232,30 +259,6 @@
             });
     }
 
-    $("#pacs").mousedown(function (event) {
-        switch (event.which) {
-            case 2:
-                $("#dt_basic3_3").dataTable().fnDestroy();
-                $("#pacsGoruntule").modal('show');
-        }
-    });
-  
-
-   // mousedown
-    $("#dishizmet").on('mousedown','button', function (event) {
-        switch (event.which) {
-            case 3:
-                var disNo = this.id;
-                    
-                        LoadDisHizmet(disNo);
-        }
-    });
-
-    function LoadDisHizmet(getdis) {
-        $("#dt_basic3_3").dataTable().fnDestroy();
-        $('#loadDisHizmet').load("@Url.Action("_TEKDisHHareket", "View_HizmetDetay")", { tc: tdhhtc , dis: getdis});
-        $("#ModalDisHizmet").modal('show');
-    }
 
 </script>
 

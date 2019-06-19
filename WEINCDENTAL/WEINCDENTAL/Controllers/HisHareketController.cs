@@ -32,8 +32,7 @@ namespace WEINCDENTAL.Controllers
             ViewBag.basid = id;
             return PartialView(vm);
         }
-
-        public PartialViewResult _NewHareket()
+       public PartialViewResult _NewHareket()
         {
         //    var hst_firma = db.hst_firma.Include(h => h.hst_marka).ToList();
             ViewBag.t_fid = new SelectList(db.hst_firma.Where(k => k.t_aktif == true), "t_id", "t_fad");
