@@ -65,7 +65,7 @@ function HizmetRemove(hid) {
         contentType: 'application/json',
         data: JSON.stringify({ id: hid }),
         dataType: "json",
-        async: false,
+        async: true,
         success: function (veri) {
             if (veri == 1) {
                 $.smallBox({

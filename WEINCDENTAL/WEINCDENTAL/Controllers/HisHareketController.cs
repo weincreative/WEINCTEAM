@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
@@ -32,6 +35,9 @@ namespace WEINCDENTAL.Controllers
 
         public PartialViewResult _NewHareket()
         {
+        //    var hst_firma = db.hst_firma.Include(h => h.hst_marka).ToList();
+            ViewBag.t_fid = new SelectList(db.hst_firma.Where(k => k.t_aktif == true), "t_id", "t_fad");
+            ViewBag.t_mid = new SelectList(db.hst_marka.Where(k => k.t_aktif == true), "t_id", "t_mad");
             return PartialView();
         }
 

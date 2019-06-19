@@ -156,8 +156,11 @@
         }
     }
 
+    
+   
     $('table').on('click', '.RemoveRow', function () {
         //Some code
+        alert("asd");
         var btnName = this.name;
         var number = parseInt(btnName);
         $(this).closest('tr').remove();
@@ -165,10 +168,11 @@
         list.splice(number, 1);
 
     });
-
     function Gonder() {
 
         $.ajax({
+
+           // async: true,
             type: "POST",
             data: JSON.stringify({ hst_his_hareket: list }),
             url: "../../hst_his_hareket/Create",
@@ -179,6 +183,7 @@
                     $('#refNewTabl').load("@Url.Action("_NewHareket")");
                     list = [];
                     tblNo = 0;
+                 
                 }
 
             },
@@ -198,6 +203,7 @@
 
     }
     function Remove(id, HAd, disNo) {
+        $.holdReady(true);
         $.SmartMessageBox({
             title: "UYARI!",
             content: " Hizmet: " + HAd + "<div> Diş No: " + disNo + " olan hastanın hizmeti silinecektir.</div> <div><br></div><div>EMİN MİSİNİZ?</div>",
