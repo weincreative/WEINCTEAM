@@ -151,14 +151,14 @@ function HastaTaburcuGeriAl(bid) {
     });
 }
 
-function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid) {
+function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, ceneAD) {
     
     var row = $('#newHizmet').closest('tr').clone();
     row.find("#HKod").text(hkod);
     row.find("#HAd").text(had);
     row.find("#DKod").text(dkod);
     row.find("#Fiyat").text(hfiyat);
-    row.find("#CDurum").text('Tek Diş');
+    row.find("#CDurum").text(ceneAD);
     $('#newHizmet').closest('tr').after(row);
     $('input[type="button"]', row).removeClass('AddNew').addClass('btn btn-labeled btn-danger RemoveRow').val('Sil')
         .attr('name', tblNo);
@@ -196,13 +196,13 @@ function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid) {
             " " + saat +
             ":" + dak;
         // alert(zmn);
-
+        //alert(ceneid);
 
         tblList.push({
             "t_basvuruid": bid,
             "t_hizmetkodu": hkod,
             "t_diskodu": dkod,
-            "t_cene": 9,
+            "t_cene": ceneid,
             "t_parca": 0,
             "t_yetiskinmi": true,
             "t_odemevarmi": false,

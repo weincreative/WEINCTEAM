@@ -43,12 +43,12 @@ namespace WEINCDENTAL_CALLINGSCREEN
         public virtual DbSet<hst_hizmet_parca> hst_hizmet_parca { get; set; }
         public virtual DbSet<hst_il> hst_il { get; set; }
         public virtual DbSet<hst_ilce> hst_ilce { get; set; }
+        public virtual DbSet<hst_marka> hst_marka { get; set; }
         public virtual DbSet<hst_medenidurum> hst_medenidurum { get; set; }
         public virtual DbSet<hst_odemetip> hst_odemetip { get; set; }
         public virtual DbSet<hst_randevu> hst_randevu { get; set; }
         public virtual DbSet<hst_ulke> hst_ulke { get; set; }
         public virtual DbSet<hst_vezne> hst_vezne { get; set; }
-        public virtual DbSet<View_deneme> View_deneme { get; set; }
         public virtual DbSet<View_HastalikDurum> View_HastalikDurum { get; set; }
         public virtual DbSet<View_HizHareket> View_HizHareket { get; set; }
         public virtual DbSet<View_HizmetDetay> View_HizmetDetay { get; set; }

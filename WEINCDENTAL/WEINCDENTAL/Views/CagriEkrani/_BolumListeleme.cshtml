@@ -1,0 +1,11 @@
+﻿@using System.Web.UI.WebControls
+@model IEnumerable<WEINCDENTAL.Models.hst_bölüm>
+
+<i></i>
+<select id="bolumler">
+    <option value="0">- Bölüm Seçiniz -</option>
+    @foreach (var item in Model)
+    {
+        <option value="@item.t_id">@item.t_adi</option>
+    }
+</select>

@@ -33,11 +33,11 @@ namespace WEINCDENTAL_CALLINGSCREEN
         public int CeneNo { get; set; }
         public string CeneAdi { get; set; }
         public bool YetiskinMi { get; set; }
-        public string FirmaAd { get; set; }
-        public string MarkaAd { get; set; }
         public bool DoktorAktif { get; set; }
         public bool BasvuruAktif { get; set; }
         public bool HHareketAktif { get; set; }
         public bool t_borcdurum { get; set; }
+        public string t_fad { get; set; }
+        public string t_mad { get; set; }
     }
 }

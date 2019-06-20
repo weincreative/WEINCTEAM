@@ -478,6 +478,10 @@
     <Content Include="Content\klinikImage\bacground.jpg" />
     <Content Include="Content\klinikImage\clinic-logo-2.png" />
     <Content Include="Content\klinikImage\cliniclogo-1.png" />
+    <Content Include="Content\klinikImage\disImage\cene\SAGALT.png" />
+    <Content Include="Content\klinikImage\disImage\cene\SAGUST.png" />
+    <Content Include="Content\klinikImage\disImage\cene\SOLALT.png" />
+    <Content Include="Content\klinikImage\disImage\cene\SOLUST.png" />
     <Content Include="Content\klinikImage\disImage\cocuk\51.png" />
     <Content Include="Content\klinikImage\disImage\cocuk\52.png" />
     <Content Include="Content\klinikImage\disImage\cocuk\53.png" />
@@ -1153,6 +1157,7 @@
     <Content Include="Views\hst_firma\Details.cshtml" />
     <Content Include="Views\hst_firma\Edit.cshtml" />
     <Content Include="Views\hst_firma\Index.cshtml" />
+    <Content Include="Views\CagriEkrani\_BolumListeleme.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

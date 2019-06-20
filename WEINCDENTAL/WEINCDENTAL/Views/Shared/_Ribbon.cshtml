@@ -43,7 +43,7 @@
                             <button class="btn btn-default  btn-warning" type="button" id="cagriEkrani">
                                 <i class="fa fa-reorder"></i> Çagri Ekranı
                             </button>
-                            
+
 
                         </div>
                     </div>
@@ -66,6 +66,31 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
+
+                    <div class="well">
+                        <div class="btn-group btn-group-justified" data-toggle="buttons">
+                            <label class="btn btn-default active">
+                                <i class="glyphicon glyphicon-chevron-left"></i>
+                                <input type="radio" name="gender" id="Bekleyen" value="male">
+                                Bekleyen
+                            </label>
+                            <label class="btn btn-default">
+                                <i class="glyphicon glyphicon-chevron-right"></i>
+                                <input type="radio" name="gender" id="_Cagirdigim" value="female">
+                                Çağırdığım
+                            </label>
+                            <label class="btn btn-default col-lg-12">
+                                <i class="glyphicon glyphicon-info-sign"></i>
+                                <input type="radio" name="gender" id="_Baktigim"value="other">
+                                Baktiğım
+                            </label>
+
+                        </div>
+                        <label class="btn btn-default" id="bolums">
+
+                        </label>
+                    </div>
+
                 </div>
                 <div class="modal-body" id="cagriEkraniList">
 
@@ -116,8 +141,16 @@
                 //e.preventDefault();
             });
 
-
     });
+
+                $(document).ready(function () {
+                    $('#bolums').load("@Url.Action("_BolumListeleme", "CagriEkrani")");
+    });
+    //            $(document).ready(function () {
+    //                $("#bolums").change(function () {
+    //                    alert(this).val();
+    //                });
+    //});
 
             $(document).ready(function () {
             var gveri = @Html.Raw(Json.Encode(ViewBag.gdeger));
@@ -127,5 +160,7 @@
                   $("#cagriEkraniModal").modal('show');
             });
     });
+
+
 
 </script>

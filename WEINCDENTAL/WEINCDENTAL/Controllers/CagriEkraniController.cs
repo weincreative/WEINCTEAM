@@ -21,10 +21,16 @@ namespace WEINCDENTAL.Controllers
             return View(hst_basvuru.ToList());
         }
 
+        public PartialViewResult _BolumListeleme()
+        {
+            var bolumleriGetir = db.hst_bölüm.Where(x => x.t_aktif == true).OrderBy(x => x.t_id).ToList();
+            return PartialView(bolumleriGetir);
+        }
+
         public PartialViewResult _PartialCagriEkrani(int bid)
         {
             var _cagrilcakList = db.hst_basvuru.Where(x => x.t_cagriekraniistem == 0).Where(x => x.t_bolumkodu == bid).Where(x => x.t_basvurudr == 0);
-            return PartialView(_cagrilcakList);
+            return PartialView(_cagrilcakList.ToList());
         }
 
         [HttpPost]

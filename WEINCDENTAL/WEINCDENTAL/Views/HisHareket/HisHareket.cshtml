@@ -13,6 +13,21 @@
                 <i class="fa-fw fa fa-bookmark"></i>
                 Diş Hizmet Girişi
             </h1>
+            <div>
+                <button class="btn btn-default ddisCene-btn" id="SAGUST" onclick="SeciliCene1(1)">
+                    <img src="~/Content/klinikImage/disImage/cene/SAGUST.png" />
+                </button>
+                <button class="btn btn-default ddisCene-btn" id="SOLUST" onclick="SeciliCene2(1)">
+                    <img src="~/Content/klinikImage/disImage/cene/SOLUST.png" />
+                </button>
+                <br />
+                <button class="btn btn-default ddisCene-btn" id="SAGALT" onclick="SeciliCene3(1)">
+                    <img src="~/Content/klinikImage/disImage/cene/SAGALT.png" />
+                </button>
+                <button class="btn btn-default ddisCene-btn" id="SOLALT" onclick="SeciliCene4(1)">
+                    <img src="~/Content/klinikImage/disImage/cene/SOLALT.png" />
+                </button>
+            </div>
         </div>
     </div>
 
@@ -101,6 +116,37 @@
     </div><!-- /.modal-dialog -->
 </div>
 
+<style type="text/css">
+
+    .ddisCene-btn {
+        padding: 1px 1px;
+        height: 37px;
+        width: 63px;
+        cursor: pointer;
+        border: none;
+    }
+
+
+        .ddisCene-btn:focus {
+            color: #fff;
+            box-shadow: 0 0 0 0.3rem rgba(40,167,69,.5);
+            background-color: rgba(40,167,69,.5);
+            border-color: rgba(40,167,69,.5);
+        }
+
+        .ddisCene-btn:hover {
+            color: #fff;
+            background-color: rgba(40,167,69,.5);
+            border-color: #28a745;
+        }
+
+        .ddisCene-btn:active {
+            color: #fff;
+            background-color: rgba(40,167,69,.5);
+            border-color: #28a745;
+        }
+</style>
+
 <script src="~/Scripts/Remove.js"></script>
 @*<script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>*@
 <script src="~/Scripts/WeincdentalScript.js"></script>
@@ -111,6 +157,12 @@
     var tblNo = 0;
     var secilenHizmet;
     var secilenDis;
+    var secilenCene1 = 0;
+    var secilenCene2 = 0;
+    var secilenCene3 = 0;
+    var secilenCene4 = 0;
+    var secilenCene = 0;
+    var secilenCeneAD = "";
     var hizmetAd;
     var hizmetFiyat;
     var bid = @Html.Raw(Json.Encode(ViewBag.bid));
@@ -126,7 +178,7 @@
                 $("#pacsGoruntule").modal('show');
             }
         });
-        
+
         // mousedown
         $("#dishizmet").on('mousedown','button', function (event) {
             switch (event.which) {
@@ -150,9 +202,48 @@
         hizmetAd = SHAd;
         hizmetFiyat = SHFiyat;
     }
+    
+    function SeciliCene1(CHid1) {
+        secilenCene1 = CHid1;
+    }    function SeciliCene2(CHid2) {
+        secilenCene2 = CHid2;
+    }    function SeciliCene3(CHid3) {
+        secilenCene3 = CHid3;
+    }    function SeciliCene4(CHid4) {
+        secilenCene4 = CHid4;
+    } 
 
     function SeciliDis(SDid) {
         secilenDis = SDid;
+
+        //if (secilenCene1 != 0 && secilenCene2 != 0 && secilenCene3 != 0 && secilenCene4 != 0) {
+        //    SeciliCene = 1;
+        //} else
+        if (secilenCene1 == 0 && secilenCene2 == 0 && secilenCene3 == 0 && secilenCene4 == 0) {
+            secilenCene = 9;
+            secilenCeneAD = "TEK DİŞ";
+        } else if (secilenCene1 != 0 && secilenCene2 != 0 && secilenCene3 == 0 && secilenCene4 == 0) {
+            secilenCene = 2;
+            secilenCeneAD = "ÜST ÇENE";
+        } else if (secilenCene1 == 0 && secilenCene2 == 0 && secilenCene3 != 0 && secilenCene4 != 0) {
+            secilenCene = 3;
+            secilenCeneAD = "ALT ÇENE";
+        } else if (secilenCene1 != 0 && secilenCene2 == 0 && secilenCene3 == 0 && secilenCene4 == 0) {
+            secilenCene = 6
+            secilenCeneAD = "SAĞ ÜST ÇENE";
+        } else if (secilenCene1 == 0 && secilenCene2 != 0 && secilenCene3 == 0 && secilenCene4 == 0) {
+            secilenCene = 5;
+            secilenCeneAD = "SOL ÜST ÇENE";
+        } else if (secilenCene1 == 0 && secilenCene2 == 0 && secilenCene3 != 0 && secilenCene4 == 0) {
+            secilenCene = 8;
+            secilenCeneAD = "SAĞ ALT ÇENE";
+        } else if (secilenCene1 == 0 && secilenCene2 == 0 && secilenCene3 == 0 && secilenCene4 != 0) {
+            secilenCene = 7;
+            secilenCeneAD = "SOL ALT ÇENE";
+        } else {
+            secilenCene = 1;
+            secilenCeneAD = "TÜM ÇENE";
+        }
         if (secilenHizmet != null) {
             if (secilenDis == null) {
                 $.smallBox({
@@ -165,15 +256,22 @@
             } else {
                 $.smallBox({
                     title: "OKAY",
-                    content: "<i class='fa fa-clock-o'></i> <i>Seçili " + "Diş No : " + secilenDis + " Hizmet No : " + secilenHizmet + "</i>",
+                    content: "<i class='fa fa-clock-o'></i> <i>Seçili " + "Diş No : " + secilenDis + " Hizmet No : " + secilenHizmet +"</i>",
                     color: "#739E73",
                     iconSmall: "fa fa-thumbs-up bounce animated",
                     timeout: 4000
                 });
-                var result = TblEkle(list, tblNo, secilenDis, secilenHizmet, hizmetAd, hizmetFiyat, cuser, bid);
+                //alert(secilenCene);
+                var result = TblEkle(list, tblNo, secilenDis, secilenHizmet, hizmetAd, hizmetFiyat, cuser, bid, secilenCene, secilenCeneAD);
 
                 list = result[0];
                 tblNo = result[1];
+                 secilenCene1 = 0;
+                 secilenCene2 = 0;
+                 secilenCene3 = 0;
+                secilenCene4 = 0;
+                secilenCene = 0;
+                secilenCeneAD = "";
 
             }
         } else {
@@ -209,7 +307,7 @@
                     $.getScript(url, function () {
                         TblRemove();
                     });
-                    
+
                 }
 
             },

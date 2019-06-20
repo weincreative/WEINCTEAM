@@ -125,6 +125,9 @@
                                             <a onclick="GetOdeme(@item.HizHareketId,@item.Odemedurumu)" href="javascript:void(0);" class="btn btn-labeled btn-success">
                                                 <span class="btn-label"><i class="glyphicon glyphicon-euro"></i></span>ÖdemeYap
                                             </a>
+                                            <a @*onclick="GetOdeme(@item.HizHareketId,@item.Odemedurumu)"*@ href="javascript:void(0);" class="btn btn-labeled btn-danger">
+                                                <span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>Geri Al
+                                            </a>
                                         </td>
                                     </tr>
                                 }
@@ -169,6 +172,9 @@
                                         <td>
                                             <a onclick="GetOdeme(@item.Hareketid,@item.t_odemevarmi)" href="javascript:void(0);" class="btn btn-labeled btn-success">
                                                 <span class="btn-label"><i class="glyphicon glyphicon-euro"></i></span>ÖdemeYap
+                                            </a>
+                                            <a @*onclick="GetOdeme(@item.HizHareketId,@item.Odemedurumu)"*@ href="javascript:void(0);" class="btn btn-labeled btn-danger">
+                                                <span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>Geri Al
                                             </a>
                                         </td>
                                     </tr>

@@ -8,8 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Speech;
-using System.Speech.Synthesis;
+//using System.Speech;
+//using System.Speech.Synthesis;
 using static WEINCDENTAL_CALLINGSCREEN.Form1;
 
 #endregion
@@ -24,7 +24,7 @@ namespace WEINCDENTAL_CALLINGSCREEN
             InitializeComponent();
         }
         WEINCDENTALEntities db = new WEINCDENTALEntities();
-        SpeechSynthesizer reader = new SpeechSynthesizer();
+        //SpeechSynthesizer reader = new SpeechSynthesizer();
         public static int readerSayar = 0;
         public static string Memory = null;
         DateTime nowDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
@@ -55,7 +55,6 @@ namespace WEINCDENTAL_CALLINGSCREEN
 					    cagrilacakList.Add(new cagrilacak { SIRA = sayacIndex, BASVURUNO = item.t_id, HASTAADI = item.hst_hastakarti.t_adi, HASTASOYADI = item.hst_hastakarti.t_soyadi });
 					    sayacIndex++;	  
 					}
-                    //dgvHastaListesi.ColumnHeadersDefaultCellStyle.BackColor = Color.Red;
                     dgvHastaListesi.DataSource = cagrilacakList.ToList();
                 }
                 tmrForm2CagirilcakHasta.Enabled = true;
@@ -74,9 +73,6 @@ namespace WEINCDENTAL_CALLINGSCREEN
 
             try
             {
-                //  var _cagrilanList = db.hst_basvuru.Where(c => c.t_cagriekraniistem == 0).Where(c => c.t_bolumkodu == id).Where(c => c.t_basvurudr == 1)/*.Where(x => x.t_basvurutarihi == nowDate)*/.Where(c => c.t_aktif == true).Where(c => c.t_taburcu == false).ToList();
-               
-
                 var _cagrilanList = db.hst_basvuru.Where(c => c.t_cagriekraniistem == 0 && c.t_bolumkodu==id && c.t_basvurudr==1 && c.t_aktif==true && c.t_taburcu==false).Where(k=>k.t_basvurutarihi>=nowDate && k.t_basvurutarihi<sonrakiDate).ToList();
                 if (_cagrilanList.Count != 0)
                 {
@@ -88,6 +84,10 @@ namespace WEINCDENTAL_CALLINGSCREEN
                     lblCagirilanHasta.Text = cagrildiList[0].CGRLDI_AD + " " + cagrildiList[0].CGRLDI_SOYAD;
                     if (Memory != lblCagirilanHasta.Text)
                     {
+                        System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+                        player.SoundLocation = "DingDong.wav";
+                        player.Load();
+                        player.PlaySync();
                         Memory = cagrildiList[0].CGRLDI_AD + " " + cagrildiList[0].CGRLDI_SOYAD;
                         readerSayar = 0;
                         lblBilgilendirme.Text = "SIRADA'Kİ HASTA";
@@ -164,9 +164,9 @@ namespace WEINCDENTAL_CALLINGSCREEN
         {
             if (readerSayar < 5)
             {
-                reader.Dispose();
-                reader = new SpeechSynthesizer();
-               reader.SpeakAsync(lblCagirilanHasta.Text + "iceriye lutfen");
+               // reader.Dispose();
+               // reader = new SpeechSynthesizer();
+               //reader.SpeakAsync(lblCagirilanHasta.Text + "iceriye lutfen");
                 readerSayar++;
             }
             else
