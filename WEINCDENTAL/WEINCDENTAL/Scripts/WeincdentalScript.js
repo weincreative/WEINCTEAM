@@ -218,3 +218,30 @@ function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, cen
     var result = [tblList, tblNo];
     return result;
 }
+
+function GetDisHareket(bid) {
+    var result;
+    $.ajax({
+        type: 'GET',
+        url: '../../View_HizmetDetay/_DisHHareket',
+        data: { id: bid },
+        async: false,
+        success: function (veri) {
+            result = veri;
+        }
+    });
+    return result;
+}
+
+function GetNewHizmet() {
+    var result;
+    $.ajax({
+        type: 'GET',
+        url: '../_NewHareket',
+        async: false,
+        success: function (veri) {
+            result = veri;
+        }
+    });
+    return result;
+}
