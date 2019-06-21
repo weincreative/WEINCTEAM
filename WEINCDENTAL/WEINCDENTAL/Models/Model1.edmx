@@ -165,6 +165,7 @@
           <Property Name="t_cene" Type="int" Nullable="false" />
           <Property Name="t_yetiskinmi" Type="bit" Nullable="false" />
           <Property Name="t_odemevarmi" Type="bit" Nullable="false" />
+          <Property Name="t_totalborc" Type="money" />
           <Property Name="t_borcdurum" Type="bit" Nullable="false" />
           <Property Name="t_firmaid" Type="int" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -243,11 +244,11 @@
           <Property Name="t_basvuru" Type="int" />
           <Property Name="t_tc" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="t_tarih" Type="date" Nullable="false" />
-          <Property Name="t_basgicsaat" Type="datetime" Nullable="false" />
-          <Property Name="t_bitissaat" Type="datetime" Nullable="false" />
+          <Property Name="t_basgicsaat" Type="time" Precision="7" Nullable="false" />
+          <Property Name="t_bitissaat" Type="time" Precision="7" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_createdate" Type="date" Nullable="false" />
-          <Property Name="t_basvurudr" Type="bit" Nullable="false" />
+          <Property Name="t_createdate" Type="datetime" Nullable="false" />
+          <Property Name="t_basvurudr" Type="int" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="hst_ulke">
@@ -274,6 +275,24 @@
           <Property Name="t_odemetarih" Type="datetime" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WEINCDENTAL.dbo.View_CeneDis' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_CeneDis">
+          <Key>
+            <PropertyRef Name="CeneNo" />
+            <PropertyRef Name="DisNo" />
+            <PropertyRef Name="CeneAd" />
+            <PropertyRef Name="Yetiskin" />
+            <PropertyRef Name="DisAktif" />
+            <PropertyRef Name="CeneAktif" />
+          </Key>
+          <Property Name="CeneNo" Type="int" Nullable="false" />
+          <Property Name="DisNo" Type="int" Nullable="false" />
+          <Property Name="CeneAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Yetiskin" Type="bit" Nullable="false" />
+          <Property Name="DisAktif" Type="bit" Nullable="false" />
+          <Property Name="CeneAktif" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_HastalikDurum' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -351,19 +370,19 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizmetDetay' does not have a 
             <PropertyRef Name="DoktorAd" />
             <PropertyRef Name="t_taburcu" />
             <PropertyRef Name="HizmetAd" />
-            <PropertyRef Name="t_fiyat" />
-            <PropertyRef Name="Odemedurumu" />
-            <PropertyRef Name="Hizmet_Tarih" />
             <PropertyRef Name="DisNo" />
             <PropertyRef Name="CeneNo" />
             <PropertyRef Name="CeneAdi" />
+            <PropertyRef Name="t_fiyat" />
+            <PropertyRef Name="Odemedurumu" />
+            <PropertyRef Name="Hizmet_Tarih" />
             <PropertyRef Name="YetiskinMi" />
-            <PropertyRef Name="DoktorAktif" />
-            <PropertyRef Name="BasvuruAktif" />
-            <PropertyRef Name="HHareketAktif" />
             <PropertyRef Name="t_borcdurum" />
             <PropertyRef Name="t_fad" />
             <PropertyRef Name="t_mad" />
+            <PropertyRef Name="DoktorAktif" />
+            <PropertyRef Name="BasvuruAktif" />
+            <PropertyRef Name="HHareketAktif" />
           </Key>
           <Property Name="HizHareketId" Type="int" Nullable="false" />
           <Property Name="BasvuruId" Type="int" Nullable="false" />
@@ -377,19 +396,20 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizmetDetay' does not have a 
           <Property Name="DoktorAd" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_taburcu" Type="bit" Nullable="false" />
           <Property Name="HizmetAd" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_fiyat" Type="money" Nullable="false" />
-          <Property Name="Odemedurumu" Type="bit" Nullable="false" />
-          <Property Name="Hizmet_Tarih" Type="datetime" Nullable="false" />
           <Property Name="DisNo" Type="int" Nullable="false" />
           <Property Name="CeneNo" Type="int" Nullable="false" />
           <Property Name="CeneAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_fiyat" Type="money" Nullable="false" />
+          <Property Name="ToplamBorc" Type="money" />
+          <Property Name="Odemedurumu" Type="bit" Nullable="false" />
+          <Property Name="Hizmet_Tarih" Type="datetime" Nullable="false" />
           <Property Name="YetiskinMi" Type="bit" Nullable="false" />
-          <Property Name="DoktorAktif" Type="bit" Nullable="false" />
-          <Property Name="BasvuruAktif" Type="bit" Nullable="false" />
-          <Property Name="HHareketAktif" Type="bit" Nullable="false" />
           <Property Name="t_borcdurum" Type="bit" Nullable="false" />
           <Property Name="t_fad" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_mad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DoktorAktif" Type="bit" Nullable="false" />
+          <Property Name="BasvuruAktif" Type="bit" Nullable="false" />
+          <Property Name="HHareketAktif" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -756,6 +776,16 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_CeneDis" EntityType="Self.View_CeneDis" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_CeneDis].[CeneNo] AS [CeneNo], 
+    [View_CeneDis].[DisNo] AS [DisNo], 
+    [View_CeneDis].[CeneAd] AS [CeneAd], 
+    [View_CeneDis].[Yetiskin] AS [Yetiskin], 
+    [View_CeneDis].[DisAktif] AS [DisAktif], 
+    [View_CeneDis].[CeneAktif] AS [CeneAktif]
+    FROM [dbo].[View_CeneDis] AS [View_CeneDis]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="View_HastalikDurum" EntityType="Self.View_HastalikDurum" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [View_HastalikDurum].[t_id] AS [t_id], 
@@ -804,19 +834,20 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     [View_HizmetDetay].[DoktorAd] AS [DoktorAd], 
     [View_HizmetDetay].[t_taburcu] AS [t_taburcu], 
     [View_HizmetDetay].[HizmetAd] AS [HizmetAd], 
-    [View_HizmetDetay].[t_fiyat] AS [t_fiyat], 
-    [View_HizmetDetay].[Odemedurumu] AS [Odemedurumu], 
-    [View_HizmetDetay].[Hizmet_Tarih] AS [Hizmet_Tarih], 
     [View_HizmetDetay].[DisNo] AS [DisNo], 
     [View_HizmetDetay].[CeneNo] AS [CeneNo], 
     [View_HizmetDetay].[CeneAdi] AS [CeneAdi], 
+    [View_HizmetDetay].[t_fiyat] AS [t_fiyat], 
+    [View_HizmetDetay].[ToplamBorc] AS [ToplamBorc], 
+    [View_HizmetDetay].[Odemedurumu] AS [Odemedurumu], 
+    [View_HizmetDetay].[Hizmet_Tarih] AS [Hizmet_Tarih], 
     [View_HizmetDetay].[YetiskinMi] AS [YetiskinMi], 
-    [View_HizmetDetay].[DoktorAktif] AS [DoktorAktif], 
-    [View_HizmetDetay].[BasvuruAktif] AS [BasvuruAktif], 
-    [View_HizmetDetay].[HHareketAktif] AS [HHareketAktif], 
     [View_HizmetDetay].[t_borcdurum] AS [t_borcdurum], 
     [View_HizmetDetay].[t_fad] AS [t_fad], 
-    [View_HizmetDetay].[t_mad] AS [t_mad]
+    [View_HizmetDetay].[t_mad] AS [t_mad], 
+    [View_HizmetDetay].[DoktorAktif] AS [DoktorAktif], 
+    [View_HizmetDetay].[BasvuruAktif] AS [BasvuruAktif], 
+    [View_HizmetDetay].[HHareketAktif] AS [HHareketAktif]
     FROM [dbo].[View_HizmetDetay] AS [View_HizmetDetay]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_Vezne" EntityType="Self.View_Vezne" store:Type="Views" store:Schema="dbo">
@@ -1134,6 +1165,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_cene" Type="Int32" Nullable="false" />
           <Property Name="t_yetiskinmi" Type="Boolean" Nullable="false" />
           <Property Name="t_odemevarmi" Type="Boolean" Nullable="false" />
+          <Property Name="t_totalborc" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="t_borcdurum" Type="Boolean" Nullable="false" />
           <Property Name="t_firmaid" Type="Int32" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1229,11 +1261,11 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_basvuru" Type="Int32" />
           <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_tarih" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="t_basgicsaat" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="t_bitissaat" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_basgicsaat" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="t_bitissaat" Type="Time" Nullable="false" Precision="7" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="t_basvurudr" Type="Boolean" Nullable="false" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_basvurudr" Type="Int32" Nullable="false" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="hst_hastakarti" Relationship="Self.FK_hst_randevu_hst_hastakarti" FromRole="hst_randevu" ToRole="hst_hastakarti" />
         </EntityType>
@@ -1265,6 +1297,22 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="hst_his_hareket" Relationship="Self.FK_hst_vezne_hst_his_hareket" FromRole="hst_vezne" ToRole="hst_his_hareket" />
           <NavigationProperty Name="hst_odemetip" Relationship="Self.FK_hst_vezne_hst_OdemeTip" FromRole="hst_vezne" ToRole="hst_odemetip" />
+        </EntityType>
+        <EntityType Name="View_CeneDis">
+          <Key>
+            <PropertyRef Name="CeneNo" />
+            <PropertyRef Name="DisNo" />
+            <PropertyRef Name="CeneAd" />
+            <PropertyRef Name="Yetiskin" />
+            <PropertyRef Name="DisAktif" />
+            <PropertyRef Name="CeneAktif" />
+          </Key>
+          <Property Name="CeneNo" Type="Int32" Nullable="false" />
+          <Property Name="DisNo" Type="Int32" Nullable="false" />
+          <Property Name="CeneAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Yetiskin" Type="Boolean" Nullable="false" />
+          <Property Name="DisAktif" Type="Boolean" Nullable="false" />
+          <Property Name="CeneAktif" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="View_HastalikDurum">
           <Key>
@@ -1336,19 +1384,19 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <PropertyRef Name="DoktorAd" />
             <PropertyRef Name="t_taburcu" />
             <PropertyRef Name="HizmetAd" />
-            <PropertyRef Name="t_fiyat" />
-            <PropertyRef Name="Odemedurumu" />
-            <PropertyRef Name="Hizmet_Tarih" />
             <PropertyRef Name="DisNo" />
             <PropertyRef Name="CeneNo" />
             <PropertyRef Name="CeneAdi" />
+            <PropertyRef Name="t_fiyat" />
+            <PropertyRef Name="Odemedurumu" />
+            <PropertyRef Name="Hizmet_Tarih" />
             <PropertyRef Name="YetiskinMi" />
-            <PropertyRef Name="DoktorAktif" />
-            <PropertyRef Name="BasvuruAktif" />
-            <PropertyRef Name="HHareketAktif" />
             <PropertyRef Name="t_borcdurum" />
             <PropertyRef Name="t_fad" />
             <PropertyRef Name="t_mad" />
+            <PropertyRef Name="DoktorAktif" />
+            <PropertyRef Name="BasvuruAktif" />
+            <PropertyRef Name="HHareketAktif" />
           </Key>
           <Property Name="HizHareketId" Type="Int32" Nullable="false" />
           <Property Name="BasvuruId" Type="Int32" Nullable="false" />
@@ -1362,19 +1410,20 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="DoktorAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_taburcu" Type="Boolean" Nullable="false" />
           <Property Name="HizmetAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_fiyat" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Odemedurumu" Type="Boolean" Nullable="false" />
-          <Property Name="Hizmet_Tarih" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DisNo" Type="Int32" Nullable="false" />
           <Property Name="CeneNo" Type="Int32" Nullable="false" />
           <Property Name="CeneAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_fiyat" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ToplamBorc" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Odemedurumu" Type="Boolean" Nullable="false" />
+          <Property Name="Hizmet_Tarih" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="YetiskinMi" Type="Boolean" Nullable="false" />
-          <Property Name="DoktorAktif" Type="Boolean" Nullable="false" />
-          <Property Name="BasvuruAktif" Type="Boolean" Nullable="false" />
-          <Property Name="HHareketAktif" Type="Boolean" Nullable="false" />
           <Property Name="t_borcdurum" Type="Boolean" Nullable="false" />
           <Property Name="t_fad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_mad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DoktorAktif" Type="Boolean" Nullable="false" />
+          <Property Name="BasvuruAktif" Type="Boolean" Nullable="false" />
+          <Property Name="HHareketAktif" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="View_Vezne">
           <Key>
@@ -1739,6 +1788,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" />
+          <EntitySet Name="View_CeneDis" EntityType="Self.View_CeneDis" />
           <EntitySet Name="View_HastalikDurum" EntityType="Self.View_HastalikDurum" />
           <EntitySet Name="View_HizHareket" EntityType="Self.View_HizHareket" />
           <EntitySet Name="View_HizmetDetay" EntityType="Self.View_HizmetDetay" />
@@ -2022,6 +2072,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="t_cene" ColumnName="t_cene" />
                 <ScalarProperty Name="t_yetiskinmi" ColumnName="t_yetiskinmi" />
                 <ScalarProperty Name="t_odemevarmi" ColumnName="t_odemevarmi" />
+                <ScalarProperty Name="t_totalborc" ColumnName="t_totalborc" />
                 <ScalarProperty Name="t_borcdurum" ColumnName="t_borcdurum" />
                 <ScalarProperty Name="t_firmaid" ColumnName="t_firmaid" />
                 <ScalarProperty Name="t_createuser" ColumnName="t_createuser" />
@@ -2144,6 +2195,18 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="View_CeneDis">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.View_CeneDis">
+              <MappingFragment StoreEntitySet="View_CeneDis">
+                <ScalarProperty Name="CeneNo" ColumnName="CeneNo" />
+                <ScalarProperty Name="DisNo" ColumnName="DisNo" />
+                <ScalarProperty Name="CeneAd" ColumnName="CeneAd" />
+                <ScalarProperty Name="Yetiskin" ColumnName="Yetiskin" />
+                <ScalarProperty Name="DisAktif" ColumnName="DisAktif" />
+                <ScalarProperty Name="CeneAktif" ColumnName="CeneAktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="View_HastalikDurum">
             <EntityTypeMapping TypeName="WEINCDENTALModel.View_HastalikDurum">
               <MappingFragment StoreEntitySet="View_HastalikDurum">
@@ -2197,19 +2260,20 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="DoktorAd" ColumnName="DoktorAd" />
                 <ScalarProperty Name="t_taburcu" ColumnName="t_taburcu" />
                 <ScalarProperty Name="HizmetAd" ColumnName="HizmetAd" />
-                <ScalarProperty Name="t_fiyat" ColumnName="t_fiyat" />
-                <ScalarProperty Name="Odemedurumu" ColumnName="Odemedurumu" />
-                <ScalarProperty Name="Hizmet_Tarih" ColumnName="Hizmet_Tarih" />
                 <ScalarProperty Name="DisNo" ColumnName="DisNo" />
                 <ScalarProperty Name="CeneNo" ColumnName="CeneNo" />
                 <ScalarProperty Name="CeneAdi" ColumnName="CeneAdi" />
+                <ScalarProperty Name="t_fiyat" ColumnName="t_fiyat" />
+                <ScalarProperty Name="ToplamBorc" ColumnName="ToplamBorc" />
+                <ScalarProperty Name="Odemedurumu" ColumnName="Odemedurumu" />
+                <ScalarProperty Name="Hizmet_Tarih" ColumnName="Hizmet_Tarih" />
                 <ScalarProperty Name="YetiskinMi" ColumnName="YetiskinMi" />
-                <ScalarProperty Name="DoktorAktif" ColumnName="DoktorAktif" />
-                <ScalarProperty Name="BasvuruAktif" ColumnName="BasvuruAktif" />
-                <ScalarProperty Name="HHareketAktif" ColumnName="HHareketAktif" />
                 <ScalarProperty Name="t_borcdurum" ColumnName="t_borcdurum" />
                 <ScalarProperty Name="t_fad" ColumnName="t_fad" />
                 <ScalarProperty Name="t_mad" ColumnName="t_mad" />
+                <ScalarProperty Name="DoktorAktif" ColumnName="DoktorAktif" />
+                <ScalarProperty Name="BasvuruAktif" ColumnName="BasvuruAktif" />
+                <ScalarProperty Name="HHareketAktif" ColumnName="HHareketAktif" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

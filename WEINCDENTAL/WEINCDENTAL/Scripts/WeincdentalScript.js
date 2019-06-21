@@ -151,7 +151,7 @@ function HastaTaburcuGeriAl(bid) {
     });
 }
 
-function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, ceneAD) {
+function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, ceneAD, yetiskin) {
     
     var row = $('#newHizmet').closest('tr').clone();
     row.find("#HKod").text(hkod);
@@ -204,7 +204,7 @@ function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, cen
             "t_diskodu": dkod,
             "t_cene": ceneid,
             "t_parca": 0,
-            "t_yetiskinmi": true,
+            "t_yetiskinmi": yetiskin,
             "t_odemevarmi": false,
             "t_firmaid": 1,
             "t_createuser": user,

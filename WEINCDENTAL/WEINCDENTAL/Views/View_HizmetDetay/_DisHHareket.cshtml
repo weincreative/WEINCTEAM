@@ -33,9 +33,10 @@
                             <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_2" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 100px;"><i class="fa fa-hospital-o text-muted hidden-md hidden-sm hidden-xs"></i> Hizmet Adı</th>
                             <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_2" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 100px;"><i class="fa fa-hospital-o text-muted hidden-md hidden-sm hidden-xs"></i> Çene Durumu</th>
                             <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_2" rowspan="1" colspan="1" aria-label=" Name: activate to sort column ascending" style="width: 50px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Hizmet Tarihi</th>
-                            <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3_2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;"><i class="fa fa-fw  fa-stethoscope text-muted hidden-md hidden-sm hidden-xs"></i> Başvuru Yapan Doktor</th>
-                            <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_2" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 100px;"><i class="fa fa-money text-muted hidden-md hidden-sm hidden-xs"></i> Tutar</th>
-                            <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 50px;"><i class="fa fa-edit text-muted hidden-md hidden-sm hidden-xs"></i> İşlem Yap</th>
+                            <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3_2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;"><i class="fa fa-fw  fa-stethoscope text-muted hidden-md hidden-sm hidden-xs"></i> Baş.Yapan Doktor</th>
+                            <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_2" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 100px;"><i class="fa fa-money text-muted hidden-md hidden-sm hidden-xs"></i>Birim Fiyat</th>
+                            <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_2" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 100px;"><i class="fa fa-money text-muted hidden-md hidden-sm hidden-xs"></i>Toplam Tutar</th>
+                            <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_2" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 50px;"><i class="fa fa-edit text-muted hidden-md hidden-sm hidden-xs"></i> İşlem Yap</th>
                             <!-- HEAD BİTİŞİ -->
                         </tr>
                     </thead>
@@ -45,42 +46,44 @@
                         {
                             foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.BasvuruId)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.TC)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DisNo)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.HizmetAd)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CeneAdi)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Hizmet_Tarih)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DoktorAd)
-                                    </td>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BasvuruId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TC)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DisNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HizmetAd)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CeneAdi)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Hizmet_Tarih)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DoktorAd)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.t_fiyat)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ToplamBorc)
+                            </td>
+                            <td>
+                                <a onclick="Remove('@item.HizHareketId', '@item.HizmetAd', '@item.DisNo')" class="btn btn-labeled btn-danger">
+                                    <span class="btn-label">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </span>Sil
+                                </a>
+                            </td>
 
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.t_fiyat)
-                                    </td>   
-                                    <td>
-                                        <a onclick="Remove('@item.HizHareketId', '@item.HizmetAd', '@item.DisNo')" class="btn btn-labeled btn-danger">
-                                            <span class="btn-label">
-                                                <i class="glyphicon glyphicon-trash"></i>
-                                            </span>Sil
-                                        </a>
-                                    </td>
 
-
-                                </tr>
+                        </tr>
 
                             }
                         }

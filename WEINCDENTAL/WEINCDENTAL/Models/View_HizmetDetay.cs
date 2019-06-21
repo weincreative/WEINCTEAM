@@ -28,19 +28,21 @@ namespace WEINCDENTAL.Models
         public string DoktorAd { get; set; }
         public bool t_taburcu { get; set; }
         public string HizmetAd { get; set; }
-        [DataType(DataType.Currency)]
-        public decimal t_fiyat { get; set; }
-        public bool Odemedurumu { get; set; }
-        public System.DateTime Hizmet_Tarih { get; set; }
         public int DisNo { get; set; }
         public int CeneNo { get; set; }
         public string CeneAdi { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal t_fiyat { get; set; }
+        [DataType(DataType.Currency)]
+        public Nullable<decimal> ToplamBorc { get; set; }
+        public bool Odemedurumu { get; set; }
+        public System.DateTime Hizmet_Tarih { get; set; }
         public bool YetiskinMi { get; set; }
-        public bool DoktorAktif { get; set; }
-        public bool BasvuruAktif { get; set; }
-        public bool HHareketAktif { get; set; }
         public bool t_borcdurum { get; set; }
         public string t_fad { get; set; }
         public string t_mad { get; set; }
+        public bool DoktorAktif { get; set; }
+        public bool BasvuruAktif { get; set; }
+        public bool HHareketAktif { get; set; }
     }
 }

@@ -255,6 +255,9 @@
     </Compile>
     <Compile Include="Models\ViewModelAyarlar.cs" />
     <Compile Include="Models\ViewModelHisHareket.cs" />
+    <Compile Include="Models\View_CeneDis.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\View_HastalikDurum.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

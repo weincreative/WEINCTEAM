@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace WEINCDENTAL.Models
 {
     using System;
@@ -29,6 +31,8 @@ namespace WEINCDENTAL.Models
         public int t_cene { get; set; }
         public bool t_yetiskinmi { get; set; }
         public bool t_odemevarmi { get; set; }
+        [DataType(DataType.Currency)]
+        public Nullable<decimal> t_totalborc { get; set; }
         public bool t_borcdurum { get; set; }
         public Nullable<int> t_firmaid { get; set; }
         public string t_createuser { get; set; }
