@@ -39,7 +39,6 @@
 /*
  * GLOBAL: Sound Config (define sound path, enable or disable all sounds)
  */
-	
 
 $.sound_path = "../../Content/sound/";
 $.sound_on = true; 
