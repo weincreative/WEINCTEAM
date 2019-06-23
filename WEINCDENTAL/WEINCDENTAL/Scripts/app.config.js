@@ -1,17 +1,17 @@
-/*         _________________________________\
+/*_____________________________________\
   ________|                                      |___________
   \       |           WEINCREATIVE WebApp          |      /
-   \      |      Copyright © 2019 W3NOOM       |     /
+   \      |      Copyright © 2014 MyOrange       |     /
    /      |_____________________________ |     \
   /__________)                                (___________\
 
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * =======================================================================
- * WEINCREATIVE is FULLY owned and LICENSED by MYORANGE INC.
+ * SmartAdmin is FULLY owned and LICENSED by MYORANGE INC.
  * This script may NOT be RESOLD or REDISTRUBUTED under any
  * circumstances, and is only to be used with this purchased
- * copy of WEINCREATIVE Template.
+ * copy of SmartAdmin Template.
  * =======================================================================
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
@@ -40,8 +40,17 @@
  * GLOBAL: Sound Config (define sound path, enable or disable all sounds)
  */
 
-$.sound_path = "../content/sound/";
+$.sound_path = "../../Content/sound/";
 $.sound_on = true; 
+
+/*
+ * SAĞ TUŞ MENÜ KAPANIR (DO NOT CHANGE)
+ * BROWSERLERDE MENÜYÜ AÇMAZ (window in the browser)
+ */
+$(document).bind("contextmenu", function (event) {
+    event.preventDefault();
+});
+
 /*
  * SAVE INSTANCE REFERENCE (DO NOT CHANGE)
  * Save a reference to the global object (window in the browser)
@@ -217,7 +226,7 @@ $.sound_on = true;
  	if (voice_command) {
 	 		
 		var commands = {
-            'ana sayfa': function () { $('nav a[href="/Home/Index"]').trigger("click"); },	
+            'anasayfa': function () { $('#nav a[href="/Home/Index"]').trigger("click"); },	
 			'show dashboard' : function() { $('nav a[href="/home/inbox"]').trigger("click"); },
 			'show inbox' : function() { $('nav a[href="/home/inbox"]').trigger("click"); },
 			'show graphs' : function() { $('nav a[href="/home/flot"]').trigger("click"); },
@@ -270,7 +279,7 @@ $.sound_on = true;
 				} else {
 					$('#hide-menu > span > a').trigger("click"); 
 				}
-			},
+            },
 			'sessiz' : function() {
 				$.sound_on = false;
 				$.smallBox({
@@ -280,7 +289,7 @@ $.sound_on = true;
 					timeout: 4000,
 					icon : "fa fa-volume-off"
 				});
-			},
+          },
 			'sesi aç' : function() {
 				$.sound_on = true;
 				$.speechApp.playConfirmation();

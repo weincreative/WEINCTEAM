@@ -1,0 +1,385 @@
+﻿@using System.Web.UI.WebControls
+@model WEINCDENTAL.Models.hst_hastakarti
+
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- MAIN CONTENT -->
+<div id="content">
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+            <h1 class="page-title txt-color-blueDark">
+                <!-- PAGE HEADER -->
+                <i class="fa-fw fa fa-pencil-square-o"></i>
+                Hasta Kartı
+
+            </h1>
+        </div>
+
+    </div>
+
+    <!-- widget grid -->
+    <section id="widget-grid" class="">
+
+        <!-- START ROW -->
+        <div class="row">
+
+            <!-- NEW COL START -->
+            <article class="col-sm-12 col-md-12 col-lg-6">
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-colorbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
+                    <!-- widget options:
+                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"
+
+                    -->
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                        <h2>Hasta Bilgileri </h2>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget edit box -->
+                        <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+                        </div>
+                        <!-- end widget edit box -->
+                        <!-- widget content -->
+                        <div class="widget-body no-padding">
+
+                            @using (Html.BeginForm("Create", "hst_hastakarti", FormMethod.Post, new { id = "checkout-form", @class = "smart-form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <fieldset>
+                                    <div class="row">
+                                        @Html.HiddenFor(model=>model.yabancimi,new{id="Yabanci"})
+                                        <section class="col col-6">
+                                            <label class="checkbox">
+                                                <input type="checkbox" name="subscription" id="subscription">
+                                                <i></i>Yabancı Uyruklu mu?
+                                            </label>
+                                        </section>
+                                        <section class="col col-6" id="ulkeid">
+                                            <label class="select">
+                                                <i></i>
+                                                @Html.DropDownList("t_ulkeId", null, htmlAttributes: new {@class = "form-control", placeholder = "Ülke Seçiniz"})
+                                                @Html.ValidationMessageFor(model => model.t_ulkeId)
+
+                                            </label>
+                                        </section>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <section class="col col-6">
+                                            <label class="input">
+                                                <i class="icon-prepend fa fa-tag"></i>
+                                                @Html.EditorFor(model => model.t_tc, new { htmlAttributes = new { @class = "form-control", placeholder = "T.C. / Yabancı Uyruklu Numarası",@Value=@ViewBag.tc}})
+                                                @Html.ValidationMessageFor(model => model.t_tc)
+
+                                            </label>
+                                        </section>
+                                        <section class="col col-6">
+                                            <label class="input">
+                                                <i class="icon-prepend fa fa-user"></i>
+                                                @Html.EditorFor(model => model.t_adi, new { htmlAttributes = new { @class = "form-control", placeholder = "Ad Giriniz"}})
+                                                @Html.ValidationMessageFor(model => model.t_adi)
+
+                                            </label>
+                                        </section>
+
+                                    </div>
+                                    <div class="row form-group">
+                                        <section class="col col-6">
+                                            <label class="input">
+                                                <i class="icon-prepend fa fa-user"></i>
+                                                @Html.EditorFor(model => model.t_soyadi, new { htmlAttributes = new { @class = "form-control", placeholder = "Soyad Giriniz"}
+                                        })
+                                                @Html.ValidationMessageFor(model => model.t_soyadi)
+                                            </label>
+                                        </section>
+                                        <section class="col col-6">
+                                            <label class="input">
+                                                <i class="icon-prepend fa fa-location-arrow"></i>
+                                                @Html.EditorFor(model => model.t_dogumyeri, new { htmlAttributes = new { @class = "form-control", placeholder = "Doğum Yeri Giriniz"}
+                                        })
+                                                @Html.ValidationMessageFor(model => model.t_dogumyeri)
+                                            </label>
+                                        </section>
+
+                                    </div>
+                                    <div class="row form-group">
+                                        <section class="col col-6">
+                                            <label class="input">
+                                                <i class="icon-append fa fa-calendar"></i>
+                                                @Html.EditorFor(model => model.t_dogumtarihi,"{0:yyyy-MM-dd}" ,new { htmlAttributes = new { @class = "form-control", @id = "startdate",
+                                               placeholder = "Doğum tarihini giriniz" ,onchange = "CheckDateTypeIsValid(this)"
+                                           }
+                                           })
+                                                @Html.ValidationMessageFor(model => model.t_dogumtarihi)
+
+                                            </label>
+                                        </section>
+                                    </div>
+                                    <div class="row form-group">
+                                        <section class="col col-6">
+                                            <label class="input">
+                                                <i class="icon-prepend fa fa-phone"></i>
+                                                @Html.EditorFor(model => model.t_tel1, new { htmlAttributes = new { @class = "form-control", placeholder = "Telefon 1 Giriniz"}
+                                        })
+                                                @Html.ValidationMessageFor(model => model.t_tel1)
+                                            </label>
+                                        </section>
+                                        <section class="col col-6">
+                                            <label class="input">
+                                                <i class="icon-prepend fa fa-phone"></i>
+                                                @Html.EditorFor(model => model.t_tel2, new { htmlAttributes = new { @class = "form-control", placeholder = "Telefon 2 Giriniz" } })
+                                                @Html.ValidationMessageFor(model => model.t_tel2)
+                                            </label>
+                                        </section>
+
+                                    </div>
+                                    <div class="row form-group">
+                                        <section class="col col-6">
+                                            <label class="select">
+                                                <i></i>
+                                                @Html.DropDownList("t_cinsiyet", null, "--Cinsiyet Seç--", htmlAttributes: new { @class = "form-control", placeholder = "Cinsiyet Seçiniz"})
+                                                @Html.ValidationMessageFor(model => model.t_cinsiyet)
+                                            </label>
+                                        </section>
+                                        <section class="col col-6">
+                                            <label class="select">
+                                                <i></i>
+                                                @Html.DropDownList("t_medenidurum", null, "--Medeni Durum Seç--", htmlAttributes: new { @class = "form-control", placeholder = "Medeni Durum Seçiniz" })
+                                                @Html.ValidationMessageFor(model => model.t_medenidurum)
+                                            </label>
+                                        </section>
+                                    </div>
+
+                                    <div class="row form-group" id="iller">
+                                        <section class="col col-6">
+                                            <label class="select">
+                                                <i></i>
+                                                @Html.DropDownList("t_ilId", null, "--İl Seçiniz--", htmlAttributes: new { @class = "form-control",@id= "Citys",
+                                                    placeholder = "İl Seçiniz "})
+                                                @Html.ValidationMessageFor(model => model.t_ilId)
+
+                                            </label>
+                                        </section>
+                                        @Html.Hidden("t_ilceId")
+                                        <section class="col col-6">
+                                            <label class="select">
+                                                <i></i>
+                                                <select id="ilce" disabled>
+                                                    <option>Bir İlçe Seçiniz</option>
+                                                    @Html.ValidationMessageFor(model => model.t_ilceId)
+                                                </select>
+                                            </label>
+                                        </section>
+
+                                    </div>
+                                    <div class="row form-group">
+                                        <section class="col col-lg-12">
+                                            <label class="input">
+                                                <i class="icon-prepend fa fa-home"></i>
+                                                @Html.EditorFor(model => model.t_adres, new { htmlAttributes = new { @class = "form-control", placeholder = "Adres Giriniz"}
+                                        })
+                                                @Html.ValidationMessageFor(model => model.t_adres)
+                                                @*<input type="text" name="fname" placeholder="First name">*@
+
+                                            </label>
+                                        </section>
+
+                                    </div>
+
+
+                                </fieldset>
+                                <footer>
+                                    <input type="submit" class="btn btn-primary" value="Kaydet" />
+                                </footer>
+
+
+                            }
+                        </div>
+                        <!-- end widget content -->
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+                <!-- Widget ID (each widget will need unique ID)-->
+
+
+            </article>
+            <!-- END COL -->
+            <!-- NEW COL START -->
+
+        </div>
+        <!-- END ROW -->
+    </section>
+    <!-- end widget grid -->
+
+
+</div>
+<script src="~/Scripts/WeincdentalScript.js"></script>
+<!-- END MAIN CONTENT -->
+@section pagespecific {
+    <script type="text/javascript">
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+        document.getElementById("ulkeid").style.display = 'none';
+        document.getElementById("Yabanci").value = false;
+        $(":checkbox").change(function () {
+            var x = document.getElementById("subscription").checked;
+            if (x) {
+                document.getElementById("iller").style.display = 'none';
+               document.getElementById("ulkeid").style.display = 'block';
+            } else {
+               document.getElementById("iller").style.display = 'block';
+               document.getElementById("ulkeid").style.display = 'none';
+            }
+            document.getElementById("Yabanci").value = x;
+           
+           
+        });
+
+
+        $(document).ready(function () {
+            //alttaki kodu silme.
+            $("#t_ilceId").val(1);
+            var kayitdurum = @Html.Raw(Json.Encode(ViewBag.Message));
+            if (kayitdurum==1) {
+                $.smallBox({
+                    title: "Kayıt İşlemi Başarılı oldu.",
+                    content: "<i class='fa fa-clock-o'></i> <i>Az önce...</i>",
+                    color: "#739E73",
+                    iconSmall: "fa fa-thumbs-up bounce animated",
+                    timeout: 4000
+                });
+            } else if(kayitdurum==2) {
+                $.smallBox({
+                    title: "Kayıt İşlemi Başarısız oldu.",
+                    content: "<i class='fa fa-clock-o'></i> <i>Az önce...</i>",
+                    color: "#cc1818",
+                    iconSmall: "fa fa-times-circle bounce animated",
+                    timeout: 4000
+                });
+            }
+
+            $("#Citys").change(function () {
+                var cityId = $(this).val();
+                ListIlce(cityId);
+
+            });
+            $("#ilce").change(function () {
+                var deger = document.getElementById("ilce").value;
+                $("#t_ilceId").val(deger);
+
+
+
+            });
+            var $checkoutForm = $('#checkout-form').validate({
+                // Rules for form validation
+                rules: {
+                    fname: {
+                        required: true
+                    },
+                    tcname: {
+                        required: true
+                    },
+                    startdate: {
+                        required: true
+                    },
+                    lname: {
+                        required: true
+                    },
+                    phone: {
+                        required: true
+                    },
+                    dyeriname: {
+                        required: true
+                    },
+                    address: {
+                        required: true
+                    },
+                    gender: {
+                        required: true
+                    },
+                    medeni: {
+                        required: true
+                    },
+                    name: {
+                        required: true
+                    }
+                },
+
+                // Messages for form validation
+                messages: {
+                    fname: {
+                        required: 'Lütfen Hastanın Adını Giriniz'
+
+                    },
+                    lname: {
+                        required: 'Lütfen Hastanın Soyadını Giriniz'
+                    },
+                    dyeriname: {
+                        required: 'Lütfen Hastanın Doğum Yerini Giriniz'
+                    },
+                    tcname: {
+                        required: 'Lütfen T.C.No /Yabancı Uyruk No giriniz'
+                    },
+                    startdate: {
+                        required: 'Lütfen Doğum tarihini  giriniz'
+                    },
+                    phone: {
+                        required: 'Lütfen Hastanın Telefon No Giriniz'
+                    },
+                    address: {
+                        required: 'Lütfen Hastanın Adresini Giriniz'
+                    },
+                    gender: {
+                        required: 'Lütfen Cinsiyet Seçiniz'
+                    },
+                    medeni: {
+                        required: 'Lütfen Medeni Durum Seçiniz'
+                    }
+                },
+
+                // Do not change code below
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element.parent());
+                }//,
+                //success: function (element) {
+                //   // alert("burda");
+                //  //  $(element).closest('.checkout-form').find('.help-block').html('');
+
+                //}
+            });
+
+
+            // DO NOT REMOVE : GLOBAL FUNCTIONS!
+            $('#startdate').datepicker({
+                dateFormat: 'dd.mm.yy',
+                prevText: '<i class="fa fa-chevron-left"></i>',
+                nextText: '<i class="fa fa-chevron-right"></i>',
+                onSelect: function (selectedDate) {
+                    $('#finishdate').datepicker('option', 'minDate', selectedDate);
+                }
+            });
+
+
+        });
+
+    </script>
+}

@@ -1,0 +1,154 @@
+﻿@model WEINCDENTAL.Models.ViewModelAyarlar
+
+
+
+
+<div class="row">
+    <!-- NEW WIDGET START -->
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-collapsed="true" data-widget-sortable="false" data-widget-deletebutton="false" >
+            <!-- widget options:
+                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                data-widget-colorbutton="false"
+                data-widget-editbutton="false"
+                data-widget-togglebutton="false"
+                data-widget-deletebutton="false"
+                data-widget-fullscreenbutton="false"
+                data-widget-custombutton="false"
+                data-widget-collapsed="true"
+                data-widget-sortable="false"
+
+            -->
+            <header>
+                <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+                <h2>Kullanıcılar </h2>
+                <div class="widget-toolbar" role="menu">
+                    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalCreateKULLANICILAR">
+                        Yeni Oluştur
+                    </button>
+                </div>
+            </header>
+            <!-- widget div-->
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <!-- This area used as dropdown edit box -->
+                </div>
+                <!-- end widget edit box -->
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+                    <!-- this is what the user will see -->
+                    <div id="dt_basic_wrapper" class="dataTables_wrapper form-inline no-footer">
+                        <!-- start widget head search-->
+                        <div class="dt-toolbar no-padding">
+                        </div>
+                        @*@{
+                            var getId = 0;
+                        }*@
+                        <!-- end widget head search -->
+                        <table id="dt_basic3" class="table table-striped table-bordered table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
+                            <thead>
+                                <tr role="row">
+                                    <!-- HEAD BAŞLANGICI -->
+                                    <th data-hide="phone,tablet" class="sorting_asc" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;">Kullanıcı ID</th>
+                                    <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;">Kullanıcı Kodu</th>
+                                    <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Name: activate to sort column ascending" style="width: 50px;"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Kullanıcı Adı</th>
+                                    <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 100px;"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> Kullanıcı Şifre</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label="Company: activate to sort column ascending" style="width: 50px;"> Kullanıcıyı Oluşturan Kişi</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Zip: activate to sort column ascending" style="width: 100px;"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> Kullanıcı Oluşturulma Tarihi</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label="City: activate to sort column ascending" style="width: 30px;"> <i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Aktif/Pasif</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i>Grup Adı</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Modul Yetki Adı</th>
+                                    <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 50px;"> İşlem Yap</th>
+                                    <!-- HEAD BİTİŞİ -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- BODY BAŞLANGICI -->
+
+
+
+                                @foreach (var item in Model._ViewModelKullanicilar)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_kodu)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_adi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_sifre)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_createuser)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_createdate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_aktif)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.adm_kullanicigrup.t_adi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.adm_modulyetki.t_adi)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Düzenle", "../adm_kullanicilar/Edit", new { id = item.t_id }) |
+                                            @Html.ActionLink("Sil", "../adm_kullanicilar/Delete", new { id = item.t_id })
+                                        </td>
+                                    </tr>
+                                }
+
+
+
+
+                                <!-- BODY BİTİŞİ -->
+                            </tbody>
+                        </table>
+                        <!-- start widget footer -->
+                        <div class="dt-toolbar-footer no-padding">
+                        </div>
+                        <!-- end widget footer -->
+                    </div>
+                </div>
+                <!-- end widget content -->
+            </div>
+            <!-- end widget div -->
+        </div>
+        <!-- end widget -->
+    </article>
+    <!-- WIDGET END -->
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModalCreateKULLANICILAR" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Kullanıcı Oluştur</h4>
+            </div>
+            <div class="modal-body">
+                @Html.Action("Create", "adm_kullanicilar")
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+                @*<button value="Submit" class="btn btn-primary" id="SubmitBTN">
+                    Post Article
+                </button>*@
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

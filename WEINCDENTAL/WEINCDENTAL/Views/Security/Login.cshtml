@@ -1,0 +1,71 @@
+﻿@model WEINCDENTAL.Models.adm_kullanicilar
+@{
+    ViewBag.PageId = "extr-page";
+    ViewBag.PageClass = "animated fadeInDown";
+
+}
+
+@section topright{
+    <span id="extr-page-header-space"> <span class="hidden-mobile">Created by</span><a href="#" class="btn btn-danger">WEINCREATIVE</a></span>
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <div class="logo">
+            <img src="~/Content/klinikImage/clinic-logo-2.png" data-id="login-cover-image" alt="">
+
+        </div>
+
+
+        <div class="row middle-box text-center loginscreen">
+            <h1 class="logo-name">ÖZEL AKADEMİ</h1>
+        </div>
+        <hr />
+        @*<div class="middle-box text-center loginscreen" style="padding-top: 0px; margin-left: 29%;">
+                <h1 class="logo-name2">ÖZEL AKADEMİ</h1>
+            </div>*@
+        @*<div class="middle-box text-center loginscreen" style="padding-top: 0px;">
+                <h3>AĞIZ VE DİŞ SAĞLIĞI POLİKLİNİĞİ</h3>
+            </div>*@
+
+
+        <div class="row">
+            <div class="col-xs-12 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+                <div style="color: red;">@ViewBag.ErrorMsg</div>
+                @using (Html.BeginForm("Login", "Security", FormMethod.Post))
+                {
+
+
+                    <div class="form-group">
+                        @*<label for="username">Kullanıcı Adı</label>
+                            <input type="text" placeholder="" class="form-control" id="username" placeholder="Kullanıcı adınızı giriniz" />*@
+                        @Html.LabelFor(m => m.t_kodu)
+                        @Html.TextBoxFor(m => m.t_kodu, new { @class = "form-control", placeholder = "Kullanıcı adınızı giriniz" })
+                        @Html.ValidationMessageFor(model => model.t_kodu)
+                    </div>
+                    <div class="form-group">
+                        @*<label for="password">Şifre</label>
+                            <input type="password" placeholder="" class="form-control" id="password" placeholder="Şifrenizi giriniz" />*@
+                        @Html.LabelFor(m => m.t_sifre)
+                        @Html.PasswordFor(m => m.t_sifre, new { @class = "form-control", placeholder = "Kullanıcı şifrenizi giriniz" })
+                        @Html.ValidationMessageFor(model => model.t_sifre)
+                    </div>
+                    <input type="submit" class="btn btn-success btn-block" value="Giriş Yap" />
+
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

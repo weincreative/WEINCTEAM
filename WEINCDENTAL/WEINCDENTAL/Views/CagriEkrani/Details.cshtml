@@ -1,0 +1,106 @@
+﻿@model WEINCDENTAL.Models.hst_basvuru
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>hst_basvuru</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.t_basvuru)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.t_basvuru)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.t_basvurutarihi)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.t_basvurutarihi)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.t_cagriekraniistem)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.t_cagriekraniistem)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.t_basvurudr)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.t_basvurudr)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.t_taburcu)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.t_taburcu)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.t_createdate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.t_createdate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.t_createuser)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.t_createuser)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.t_aktif)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.t_aktif)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.hst_bölüm.t_adi)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.hst_bölüm.t_adi)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.hst_hastakarti.t_adi)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.hst_hastakarti.t_adi)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.t_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -45,13 +45,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -137,74 +139,139 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\adm_modulyetkiController.cs" />
+    <Compile Include="Controllers\adm_kullanicigrupController.cs" />
+    <Compile Include="Controllers\adm_kullanicilarController.cs" />
+    <Compile Include="Controllers\AyarlarController.cs" />
+    <Compile Include="Controllers\CagriEkraniController.cs" />
+    <Compile Include="Controllers\DtoVezneController.cs" />
+    <Compile Include="Controllers\HisHareketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\hst_basvuruController.cs" />
+    <Compile Include="Controllers\hst_firmaController.cs" />
+    <Compile Include="Controllers\hst_hastadurumController.cs" />
+    <Compile Include="Controllers\hst_hastakartiController.cs" />
+    <Compile Include="Controllers\hst_his_hareketController.cs" />
+    <Compile Include="Controllers\hst_hizmetController.cs" />
+    <Compile Include="Controllers\hst_vezneController.cs" />
+    <Compile Include="Controllers\Ortak.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\VezneController.cs" />
+    <Compile Include="Controllers\View_HastalikDurumController.cs" />
+    <Compile Include="Controllers\View_HizHareketController.cs" />
+    <Compile Include="Controllers\View_HizmetDetayController.cs" />
+    <Compile Include="Controllers\View_VezneController.cs" />
+    <Compile Include="Controllers\YardimciController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\adm_kullanicigrup.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\adm_kullanicilar.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\adm_modulyetki.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\adm_pacs.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO_Vezne.cs" />
     <Compile Include="Models\hst_basvuru.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_bölüm.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_cene_uygunmu.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_cinsiyet.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hst_disno.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hst_firma.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hst_hastadurum.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_hastakarti.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hst_hastalik.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_his_hareket.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_hizmet.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_hizmet_parca.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_il.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hst_ilce.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hst_marka.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_medenidurum.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hst_odemetip.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hst_randevu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hst_ulke.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hst_vezne.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\t_ilçe.cs">
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WEINCDENTALMODEL.Context.cs">
+    <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WEINCDENTALMODEL.Context.tt</DependentUpon>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\WEINCDENTALMODEL.cs">
+    <Compile Include="Models\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WEINCDENTALMODEL.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\WEINCDENTALMODEL.Designer.cs">
+    <Compile Include="Models\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WEINCDENTALMODEL.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModelAyarlar.cs" />
+    <Compile Include="Models\ViewModelHisHareket.cs" />
+    <Compile Include="Models\View_CeneDis.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_HastalikDurum.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_HizHareket.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_HizmetDetay.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_Vezne.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\UserINDBRoleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\ajax\email-compose.html" />
@@ -227,6 +294,8 @@
     <Content Include="Content\css\smartadmin-rtl.backup.min.css" />
     <Content Include="Content\css\smartadmin-rtl.min.css" />
     <Content Include="Content\css\smartadmin-skins.min.css" />
+    <Content Include="Content\css\validation-error-msg.min.css" />
+    <Content Include="Content\css\weinccreative.min.css" />
     <Content Include="Content\css\your_style.css" />
     <Content Include="Content\css\your_style.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
@@ -408,6 +477,68 @@
     <Content Include="Content\img\violate.jpg" />
     <Content Include="Content\img\voicecommand\active-btn.gif" />
     <Content Include="Content\img\vt-menu.png" />
+    <Content Include="Content\klinikImage\arkaplan.png" />
+    <Content Include="Content\klinikImage\bacground.jpg" />
+    <Content Include="Content\klinikImage\clinic-logo-2.png" />
+    <Content Include="Content\klinikImage\cliniclogo-1.png" />
+    <Content Include="Content\klinikImage\disImage\cene\SAGALT.png" />
+    <Content Include="Content\klinikImage\disImage\cene\SAGUST.png" />
+    <Content Include="Content\klinikImage\disImage\cene\SOLALT.png" />
+    <Content Include="Content\klinikImage\disImage\cene\SOLUST.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\51.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\52.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\53.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\54.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\55.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\61.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\62.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\63.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\64.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\65.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\71.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\72.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\73.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\74.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\75.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\81.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\82.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\83.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\84.png" />
+    <Content Include="Content\klinikImage\disImage\cocuk\85.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\11.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\12.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\13.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\14.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\15.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\16.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\17.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\18.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\21.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\22.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\23.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\24.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\25.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\26.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\27.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\28.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\31.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\32.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\33.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\34.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\35.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\36.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\37.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\38.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\41.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\42.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\43.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\44.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\45.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\46.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\47.png" />
+    <Content Include="Content\klinikImage\disImage\yetiskin\48.png" />
+    <Content Include="Content\klinikImage\favicon\favicon.ico" />
+    <Content Include="Content\klinikImage\logo.png" />
     <Content Include="Content\sound\bigbox.mp3" />
     <Content Include="Content\sound\license.txt" />
     <Content Include="Content\sound\messagebox.mp3" />
@@ -418,25 +549,18 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\WEINCDENTALMODEL.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>WEINCDENTALMODEL.Context.cs</LastGenOutput>
-      <DependentUpon>WEINCDENTALMODEL.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\WEINCDENTALMODEL.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WEINCDENTALMODEL.edmx</DependentUpon>
-      <LastGenOutput>WEINCDENTALMODEL.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\app.config.js" />
     <Content Include="Scripts\app.min.js" />
-    <EntityDeploy Include="Models\WEINCDENTALMODEL.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WEINCDENTALMODEL.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\WEINCDENTALMODEL.edmx.diagram">
-      <DependentUpon>WEINCDENTALMODEL.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\css\your_style.less" />
     <Content Include="Content\data\dataList.json" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
@@ -454,6 +578,13 @@
     <Content Include="Content\sound\voice_on.ogg" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\demo.min.js" />
+    <Content Include="Scripts\plugin\jquery-validate\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\plugin\jquery-validate\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery\jquery-migrate-1.1.0.js" />
+    <Content Include="Scripts\jquery\jquery-migrate-1.1.0.min.js" />
     <Content Include="Scripts\libs\jquery-2.1.1.min.js" />
     <Content Include="Scripts\libs\jquery-ui-1.10.3.min.js" />
     <Content Include="Scripts\notification\SmartNotification.min.js" />
@@ -885,10 +1016,14 @@
     <Content Include="Scripts\plugin\x-editable\jquery.mockjax.min.js" />
     <Content Include="Scripts\plugin\x-editable\moment.min.js" />
     <Content Include="Scripts\plugin\x-editable\x-editable.min.js" />
+    <Content Include="Scripts\Cagir.js" />
+    <Content Include="Scripts\Remove.js" />
     <Content Include="Scripts\smart-chat-ui\smart.chat.manager.min.js" />
     <Content Include="Scripts\smart-chat-ui\smart.chat.ui.min.js" />
     <Content Include="Scripts\smartwidgets\jarvis.widget.min.js" />
     <Content Include="Scripts\speech\voicecommand.min.js" />
+    <Content Include="Scripts\WeincdentalScript.js" />
+    <Content Include="Scripts\weincreativejs\custom-date-time.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -899,8 +1034,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\X_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LAYOUT_FIXED.cshtml" />
+    <Content Include="Views\Home\Ayarlar.cshtml" />
     <Content Include="Views\Shared\_Aside.cshtml" />
     <Content Include="Views\Shared\_CurrentUser.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
@@ -928,7 +1063,104 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
+    <Content Include="Views\Home\BLANK_PAGE_FIXED.cshtml" />
+    <Content Include="Views\adm_kullanicilar\Create.cshtml" />
+    <Content Include="Views\adm_kullanicilar\Delete.cshtml" />
+    <Content Include="Views\adm_kullanicilar\Details.cshtml" />
+    <Content Include="Views\adm_kullanicilar\Edit.cshtml" />
+    <Content Include="Views\Shared\_ASIDE_FIXED.cshtml" />
+    <Content Include="Views\adm_kullanicigrup\Create.cshtml" />
+    <Content Include="Views\adm_kullanicigrup\Delete.cshtml" />
+    <Content Include="Views\adm_kullanicigrup\Details.cshtml" />
+    <Content Include="Views\adm_kullanicigrup\Edit.cshtml" />
+    <Content Include="Views\adm_kullanicigrup\KullaniciGrup_Index.cshtml" />
+    <Content Include="Views\adm_modulyetki\Create.cshtml" />
+    <Content Include="Views\adm_modulyetki\Delete.cshtml" />
+    <Content Include="Views\adm_modulyetki\Details.cshtml" />
+    <Content Include="Views\adm_modulyetki\Edit.cshtml" />
+    <Content Include="Views\adm_modulyetki\Modulyetki_Index.cshtml" />
+    <Content Include="Views\adm_kullanicilar\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Ayarlar\AyarlarKullanicilar.cshtml" />
+    <Content Include="Views\Ayarlar\AyarlarKullaniciGrup.cshtml" />
+    <Content Include="Views\Ayarlar\AyarlarModulYetki.cshtml" />
+    <Content Include="Scripts\jquery\dist\jquery-migrate.min.map" />
+    <Content Include="Views\hst_hizmet\Create.cshtml" />
+    <Content Include="Views\hst_hizmet\Delete.cshtml" />
+    <Content Include="Views\hst_hizmet\Details.cshtml" />
+    <Content Include="Views\hst_hizmet\Edit.cshtml" />
+    <Content Include="Views\hst_hizmet\Index.cshtml" />
+    <Content Include="Views\Ayarlar\AyarlarHizmet.cshtml" />
+    <Content Include="Views\hst_hastakarti\Create.cshtml" />
+    <Content Include="Views\hst_hastakarti\Details.cshtml" />
+    <Content Include="Views\hst_hastakarti\Edit.cshtml" />
+    <Content Include="Views\hst_hastakarti\Hastakarti_Index.cshtml" />
+    <Content Include="Views\Shared\_TCSor.cshtml" />
+    <Content Include="Views\Security\Login.cshtml" />
+    <Content Include="Views\hst_hastakarti\GetHastaBilgi.cshtml" />
+    <Content Include="Views\hst_basvuru\HastaBasvuruCreate.cshtml" />
+    <Content Include="Views\hst_basvuru\Hastabasvuru_Index.cshtml" />
+    <Content Include="Views\hst_basvuru\HastaBPartialCreate.cshtml" />
+    <Content Include="Views\View_HizHareket\Create.cshtml" />
+    <Content Include="Views\View_HizHareket\Delete.cshtml" />
+    <Content Include="Views\View_HizHareket\Details.cshtml" />
+    <Content Include="Views\View_HizHareket\Edit.cshtml" />
+    <Content Include="Views\View_HizHareket\Index.cshtml" />
+    <Content Include="Views\View_HizHareket\PartialHizHareket.cshtml" />
+    <Content Include="Views\Home\Randevu.cshtml" />
+    <Content Include="Views\HisHareket\DisModul.cshtml" />
+    <Content Include="Views\HisHareket\HisHareketFirma.cshtml" />
+    <Content Include="Views\HisHareket\HisHareketPacs.cshtml" />
+    <Content Include="Views\Home\HisHareket.cshtml" />
+    <Content Include="Views\HisHareket\HisHareket.cshtml" />
+    <Content Include="Views\hst_hizmet\ListHizmet.cshtml" />
+    <Content Include="Views\View_HastalikDurum\OzelDurumList.cshtml" />
+    <Content Include="Views\hst_hastadurum\Create.cshtml" />
+    <Content Include="Views\hst_hastadurum\Delete.cshtml" />
+    <Content Include="Views\hst_hastadurum\Edit.cshtml" />
+    <Content Include="Views\hst_hastadurum\HastaDPartialCreate.cshtml" />
+    <Content Include="Views\hst_hastadurum\HDurumPartialEdit.cshtml" />
+    <Content Include="Views\hst_his_hareket\Create.cshtml" />
+    <Content Include="Views\hst_his_hareket\Delete.cshtml" />
+    <Content Include="Views\hst_his_hareket\Details.cshtml" />
+    <Content Include="Views\hst_his_hareket\Edit.cshtml" />
+    <Content Include="Views\hst_his_hareket\Index.cshtml" />
+    <Content Include="Views\HisHareket\_NewHareket.cshtml" />
+    <Content Include="Views\View_Vezne\Create.cshtml" />
+    <Content Include="Views\View_Vezne\Delete.cshtml" />
+    <Content Include="Views\View_Vezne\Details.cshtml" />
+    <Content Include="Views\View_Vezne\Edit.cshtml" />
+    <Content Include="Views\View_Vezne\ViewVezne_Index.cshtml" />
+    <Content Include="Views\View_HizmetDetay\_DisHHareket.cshtml" />
+    <Content Include="Views\Vezne\SearchBorc.cshtml" />
+    <Content Include="Views\DtoVezne\_Vezne.cshtml" />
+    <Content Include="Views\View_HizmetDetay\_TEKDisHHareket.cshtml" />
+    <Content Include="Views\CagriEkrani\Create.cshtml" />
+    <Content Include="Views\CagriEkrani\Delete.cshtml" />
+    <Content Include="Views\CagriEkrani\Details.cshtml" />
+    <Content Include="Views\CagriEkrani\Edit.cshtml" />
+    <Content Include="Views\CagriEkrani\CagriEkraniIndex.cshtml" />
+    <Content Include="Views\CagriEkrani\_PartialCagriEkrani.cshtml" />
+    <Content Include="Views\Vezne\_CreateVezne.cshtml" />
+    <Content Include="Views\hst_vezne\Create.cshtml" />
+    <Content Include="Views\hst_vezne\Delete.cshtml" />
+    <Content Include="Views\hst_vezne\Details.cshtml" />
+    <Content Include="Views\hst_vezne\Edit.cshtml" />
+    <Content Include="Views\hst_vezne\Index.cshtml" />
+    <Content Include="Views\hst_firma\Create.cshtml" />
+    <Content Include="Views\hst_firma\Delete.cshtml" />
+    <Content Include="Views\hst_firma\Details.cshtml" />
+    <Content Include="Views\hst_firma\Edit.cshtml" />
+    <Content Include="Views\hst_firma\Index.cshtml" />
+    <Content Include="Views\CagriEkrani\_BolumListeleme.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

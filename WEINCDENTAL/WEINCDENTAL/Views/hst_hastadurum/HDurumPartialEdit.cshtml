@@ -1,0 +1,108 @@
+﻿@model WEINCDENTAL.Models.hst_hastadurum
+
+
+<div class="modal-body" id="loadPartialEdit">
+
+    @using (Html.BeginForm("Edit", "hst_hastadurum", FormMethod.Post, new { @class = "smart-form",id="HDEdit" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <fieldset>
+            <center><h4>Hasta Başvuru Düzenle</h4></center>
+            <hr />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.Hidden("t_id")
+            @Html.Hidden("t_tc", (string)ViewBag.t_tc)
+            <br />
+            <br />
+            <br />
+            <div class="row" style="padding-left: 30px;">
+                @Html.Label("T.C. No:", htmlAttributes: new { @class = "col-md-2 control-label " })
+                <section class="col-md-6">
+                    <label class="input">
+                        @Html.Display("t_tc", (string)@ViewBag.t_tc)
+
+                    </label>
+                </section>
+            </div>
+
+            <div class="row" style="padding-left: 30px;">
+                @Html.Label("Hastalık Seç:", htmlAttributes: new { @class = "col-md-2" })
+                <section class="col-md-6">
+                    <label class="select">
+                        <i></i>
+                        @Html.DropDownList("t_hdurumid", null, htmlAttributes: new { @class = "form-control", id = "durum" })
+                        @Html.ValidationMessageFor(model => model.t_hdurumid, "", new { @class = "text-danger" })
+                    </label>
+                </section>
+            </div>
+            <div class="row" style="padding-left: 30px;">
+                @Html.Label("Açıklama Gir:", htmlAttributes: new { @class = "col-md-2" })
+                <section class="col-md-6">
+                    <label class="input">
+                        <i></i>
+                        @Html.EditorFor(model => model.t_aciklama, new { htmlAttributes = new { @class = "form-control",style = "min-width: 262px;min-height: 35px;max-width:422px;max-height:142px;" } })
+                        @Html.ValidationMessageFor(model => model.t_aciklama, "", new { @class = "text-danger" })
+                    </label>
+                </section>
+            </div>
+            <div class="row" style="padding-left: 30px;">
+                @Html.Label("Silinsin Mi?:", htmlAttributes: new { @class = "col-md-2" })
+                <section class="col-md-6">
+                    <label class="select">
+                        @Html.EditorFor(model=>model.t_aktif)
+                        @Html.ValidationMessageFor(model => model.t_aktif, "", new { @class = "text-danger" })
+                    </label>
+                </section>
+            </div>
+            
+        </fieldset>
+        <footer>
+            <div class="col-md-offset-3 col-md-7">
+                <input type="submit" value="Kaydet" class="btn btn-success"  onclick="ClickRefresh()"/>
+            </div>
+        </footer>
+
+    }
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#HDEdit").submit(function (e) {
+            e.preventDefault();
+            if ($(this).valid()) {
+                $.ajax({
+                    type: "POST",
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    success: function (res) {
+                        if (res == 1) {
+                            $.smallBox({
+                                title: "Kayıt İşlemi Başarılı oldu.",
+                                content: "<i class='fa fa-clock-o'></i> <i>Az önce...</i>",
+                                color: "#739E73",
+                                iconSmall: "fa fa-thumbs-up bounce animated",
+                                timeout: 4000
+                            });
+                        } else if (res == 2) {
+                            $.smallBox({
+                                title: "Kayıt İşlemi Başarısız oldu.",
+                                content: "<i class='fa fa-clock-o'></i> <i>Az önce...</i>",
+                                color: "#cc1818",
+                                iconSmall: "fa fa-times-circle bounce animated",
+                                timeout: 4000
+                            });
+                        }
+                       
+                        //  location.reload();
+                        //alert(res);
+                    }
+                });
+            }
+
+        });
+
+
+    });
+</script>

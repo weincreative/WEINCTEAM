@@ -1,17 +1,20 @@
-﻿<!-- RIBBON -->
+﻿@using WEINCDENTAL.Controllers
+<script src="~/Scripts/WeincdentalScript.js"></script>
+<!-- RIBBON -->
 <div id="ribbon">
+    <article class="col-sm-12 col-md-12 col-lg-1">
+        <span class="ribbon-button-alignment">
+            <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Uyarı! Bu yenileme işlemi arayüzdeki alanları yenilecektir." data-html="true">
+                <i class="fa fa-refresh"></i>
+            </span>
+        </span>
+        <!-- breadcrumb -->
+        <ol class="breadcrumb">
+            @*<li> @ViewBag.Title</li>
+                <li>@ViewBag.Title2</li>*@
+        </ol>
+    </article>
 
-    <span class="ribbon-button-alignment">
-        <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
-						<i class="fa fa-refresh"></i>
-					</span>
-    </span>
-
-    <!-- breadcrumb -->
-    <ol class="breadcrumb">
-        <li>Home</li>
-        <li>Dashboard</li>
-    </ol>
     <!-- end breadcrumb -->
     <!-- You can also add more buttons to the
     ribbon for further usability
@@ -19,10 +22,145 @@
     Example below:
 
     <span class="ribbon-button-alignment pull-right">
-    <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
-    <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
-    <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+        <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+        <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+        <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
     </span> -->
+    <article class="col-sm-12 col-md-12 col-lg-4" style="padding-top: 4px;">
+        @using (Html.BeginForm("GetTc", "Yardimci", FormMethod.Post))
+        {
+
+            <fieldset>
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="T.C. No" id="tcid" name="tc">
+
+                        <div class="input-group-btn">
+
+                            <button class="btn btn-default btn-primary" type="submit" id="btnSearch">
+                                <i class="fa fa-search"></i> Sorgula
+                            </button>
+                            <button class="btn btn-default  btn-warning" type="button" id="cagriEkrani">
+                                <i class="fa fa-reorder"></i> Çagri Ekranı
+                            </button>
+
+
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+
+        }
+    </article>
+    @*<div class="col-sm-12 col-md-12 col-lg-3" style="padding-top: 4px;">
+            <button type="button" class="btn btn-warning" id="cagriEkrani">
+                <i class="fa fa-search"></i> Cagri Ekranı
+            </button>
+        </div>*@
+
+    <div id="dinamikBilgi" style="color: white;padding-top: 4px;"> </div>
+
+
+    <div class="modal right fade" id="cagriEkraniModal" tabindex="-1" role="dialog" aria-labelledby="cagriEkraniModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <div class="well">
+                        <div class="btn-group btn-group-justified" data-toggle="buttons">
+                            <label class="btn btn-default active">
+                                <i class="glyphicon glyphicon-chevron-left"></i>
+                                <input type="radio" name="gender" id="Bekleyen" value="male">
+                                Bekleyen
+                            </label>
+                            <label class="btn btn-default">
+                                <i class="glyphicon glyphicon-chevron-right"></i>
+                                <input type="radio" name="gender" id="_Cagirdigim" value="female">
+                                Çağırdığım
+                            </label>
+                            <label class="btn btn-default col-lg-12">
+                                <i class="glyphicon glyphicon-info-sign"></i>
+                                <input type="radio" name="gender" id="_Baktigim"value="other">
+                                Baktiğım
+                            </label>
+
+                        </div>
+                        <label class="btn btn-default" id="bolums">
+
+                        </label>
+                    </div>
+
+                </div>
+                <div class="modal-body" id="cagriEkraniList">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                        Kapat
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
 
 </div>
 <!-- END RIBBON -->
+@{
+    ViewBag.gdeger = Ortak._hastatc;
+
+}
+
+<script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        var gveri = @Html.Raw(Json.Encode(ViewBag.gdeger));
+        // alert(gveri );
+        if (gveri != null) {
+            $('#dinamikBilgi').load("@Url.Action("GetHastaBilgi", "hst_hastakarti")", { id: gveri});
+            // ListHasta(gveri );
+        }
+    });
+
+        $(document).ready(function () {
+            var gveri = @Html.Raw(Json.Encode(ViewBag.gdeger));
+            /*
+             * Smart Notifications
+             */
+            $('#btnSearch').click(function (e) {
+                $.bigBox({
+                    title: gveri + " Hastanın Borcu Vardır",
+                    content: "ÖDEMEDİĞİ İŞLEMLERİN LİSTESİ",
+                    color: "#C46A69",
+                    //timeout: 8000,
+                    icon: "fa fa-bell swing animated",
+                    number: "1"
+                });
+                //e.preventDefault();
+            });
+
+    });
+
+                $(document).ready(function () {
+                    $('#bolums').load("@Url.Action("_BolumListeleme", "CagriEkrani")");
+    });
+    //            $(document).ready(function () {
+    //                $("#bolums").change(function () {
+    //                    alert(this).val();
+    //                });
+    //});
+
+            $(document).ready(function () {
+            var gveri = @Html.Raw(Json.Encode(ViewBag.gdeger));
+                $('#cagriEkrani').click(function (e) {
+                    $("#dt_basic3_3").dataTable().fnDestroy();
+                  $('#cagriEkraniList').load("@Url.Action("_PartialCagriEkrani", "CagriEkrani")", { bid: 2});
+                  $("#cagriEkraniModal").modal('show');
+            });
+    });
+
+
+
+</script>

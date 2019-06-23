@@ -1,0 +1,66 @@
+﻿
+@model WEINCDENTAL.Models.hst_basvuru
+
+@{
+    ViewBag.Title = "Başvuru Oluştur";
+    Layout = null;
+}
+
+@using (Html.BeginForm("Create", "hst_basvuru", FormMethod.Post, new { @class = "smart-form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <center><h4>Hasta Başvuru Oluştur</h4></center>
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <br />
+        <br />
+        <br />
+        <div class="row" style="padding-left: 30px;">
+            @Html.LabelFor(model => model.t_tc, "T.C. No:", htmlAttributes: new { @class = "col-md-2 control-label " })
+            <section class="col-md-6">
+                <label class="input">
+                    @if (@ViewBag.t_tc == null)
+                    {
+
+                        <i class="icon-prepend fa fa-tag"></i>
+                        @Html.EditorFor(model => model.t_tc, new { htmlAttributes = new { @class = "form-control", placeholder = "T.C. / Yabancı Uyruklu Numarası"}
+                        })
+                        @Html.ValidationMessageFor(model => model.t_tc)
+
+                    }
+                    else
+                    {
+                        @Html.Hidden("t_tc")
+                        @Html.Display("t_tc", (string)@ViewBag.t_tc)
+                        @*@Html.Editor("t_tc")*@
+                        @Html.ValidationMessageFor(model => model.t_tc, "", new { @class = "text-danger" })
+                    }
+
+                </label>
+            </section>
+        </div>
+
+
+        <div class="row" style="padding-left: 30px;">
+            @Html.LabelFor(model => model.t_bolumkodu, "Doktor Seç:", htmlAttributes: new { @class = "col-md-2" })
+            <section class="col-md-6">
+                <label class="select">
+                    <i></i>
+                    @Html.DropDownList("t_bolumkodu", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.t_bolumkodu, "", new { @class = "text-danger" })
+                </label>
+            </section>
+        </div>
+
+    </fieldset>
+    <footer>
+        <div class="col-md-offset-3 col-md-7">
+            <input type="submit" value="Kaydet" class="btn btn-success" />
+        </div>
+    </footer>
+
+}

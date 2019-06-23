@@ -1,0 +1,171 @@
+﻿@model IEnumerable<WEINCDENTAL.Models.View_Vezne>
+
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <!-- NEW WIDGET START -->
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-sortable="false" data-widget-deletebutton="false">
+            <!-- widget options:
+                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                data-widget-colorbutton="false"
+                data-widget-editbutton="false"
+                data-widget-togglebutton="false"
+                data-widget-deletebutton="false"
+                data-widget-fullscreenbutton="false"
+                data-widget-custombutton="false"
+                data-widget-collapsed="true"
+                data-widget-sortable="false"
+
+            -->
+            <header>
+                <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+                <h2>Vezne </h2>
+                <div class="widget-toolbar" role="menu">
+                    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalCreateVezne">
+                        Ödeme Oluştur
+                    </button>
+                </div>
+            </header>
+            <!-- widget div-->
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <!-- This area used as dropdown edit box -->
+                </div>
+                <!-- end widget edit box -->
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+                    <!-- this is what the user will see -->
+                    <div id="dt_basic_wrapper" class="dataTables_wrapper form-inline no-footer">
+                        <!-- start widget head search-->
+                        <div class="dt-toolbar no-padding">
+                        </div>
+                        <!-- end widget head search -->
+                        <table id="dt_basic3" class="table table-striped table-bordered table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
+                            <thead>
+                                <tr role="row">
+                                    <!-- HEAD BAŞLANGICI -->
+                                    <th data-hide="phone,tablet" class="sorting_asc" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;">Hareket ID</th>
+                                    <th data-class="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;">T.C.</th>
+                                    <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-label=" Name: activate to sort column ascending" style="width: 50px;"> Hasta Adı</th>
+                                    <th data-hide="expand" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;">Hasta Soyadı</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Başvuru No</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Başvuru Tarihi</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Doktor Adı</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Hizmet Kodu</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Hizmet Adı </th>
+                                    <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Tutar</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Hizmet Tarihi</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Ödeme Varmı ?</th>
+                                    <th data-hide="expand" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Ödenen </th>
+                                    <th data-hide="expand" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Kalan </th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Ödeme Tipi </th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Ödeme Tarihi </th>
+                                    <th data-class="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic1" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 50px;">İşlem Yap</th>
+                                    <!-- HEAD BİTİŞİ -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Hareketid)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_tc)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_adi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_soyadi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_basvuruid)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_basvurutarihi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Doktoradi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_hizmetkodu)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Hizmetadi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_fiyat)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Hizmettarih)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_odemevarmi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_odenen)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_kalan)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Odemetip)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Odemetarih)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("ÖDEME YAP", "Odeme", new { /* id=item.PrimaryKey */ }) 
+                                        </td>
+                                    </tr>
+                                }
+
+
+
+                                <!-- BODY BİTİŞİ -->
+                            </tbody>
+                        </table>
+                        <!-- start widget footer -->
+                        <div class="dt-toolbar-footer no-padding">
+                        </div>
+                        <!-- end widget footer -->
+                    </div>
+                </div>
+                <!-- end widget content -->
+            </div>
+            <!-- end widget div -->
+        </div>
+        <!-- end widget -->
+    </article>
+    <!-- WIDGET END -->
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModalCreateVezne2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Ödeme Oluştur</h4>
+            </div>
+            <div class="modal-body">
+                @Html.Action("Create", "View_Vezne")
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

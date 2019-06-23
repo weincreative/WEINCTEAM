@@ -1,0 +1,95 @@
+﻿@model WEINCDENTAL.Models.DTO_Vezne
+@{
+    ViewBag.Title = "Vezne";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- MAIN CONTENT -->
+<!-- DENEME FORK AMK -->
+<div id="content">
+    <!-- row -->
+    <div class="row">
+        <!-- col -->
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark">
+                <!-- PAGE HEADER -->
+                <i class="fa-fw fa fa-money"></i>
+                Vezne
+            </h1>
+        </div>
+
+    </div>
+    <!-- widget grid -->
+    <section id="widget-grid">
+        <!-- row -->
+        <div class="row">
+
+
+            <!-- NEW WIDGET START -->
+            <article class="col-lg-offset-2 col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <!-- Widget ID (each widget will need unique ID)-->
+
+
+                <div id="loadVezne">
+
+                    @Html.Action("_Vezne", "DtoVezne", new { tc = ViewBag.tc })
+
+                </div>
+
+
+
+            </article>
+            <!-- WIDGET END -->
+
+
+
+            <div class="col-sm-12">
+                <!-- your contents here -->
+            </div>
+        </div>
+        <!-- end row -->
+    </section>
+    <!-- end widget grid -->
+</div>
+
+<script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>
+
+    <script type="text/javascript">
+
+        function GetVezne() {
+            var tc = document.getElementById('Stc').value;
+            if (tc == null || tc == '') {
+                alert("Lütfen T.C. No giriniz...");
+
+            } else {
+
+                $('#loadVezne').load("@Url.Action("_Vezne", "DtoVezne")", { tc: tc });
+
+            }
+
+        }
+        @*$(document).ready(function () {
+            var kayitdurum = @Html.Raw(Json.Encode(ViewBag.error));
+            alert(kayitdurum);
+            if (kayitdurum == "") {
+                $.smallBox({
+                    title: "Ödeme İşlemi Başarılı oldu.",
+                    content: "<i class='fa fa-clock-o'></i> <i>Az önce...</i>",
+                    color: "#739E73",
+                    iconSmall: "fa fa-thumbs-up bounce animated",
+                    timeout: 4000
+                });
+            } else {
+                $.smallBox({
+                    title: "Bir Hata Meydana Geldi.",
+                    content: "<i class='fa fa-clock-o'></i> <i>Az önce... " + kayitdurum + " </i>",
+                    color: "#cc1818",
+                    iconSmall: "fa fa-times-circle bounce animated",
+                    timeout: 4000
+                });
+                
+            } 
+            
+        });*@
+    </script>
