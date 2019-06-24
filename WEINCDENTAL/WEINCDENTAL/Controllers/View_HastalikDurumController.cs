@@ -14,6 +14,7 @@ namespace WEINCDENTAL.Controllers
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
 
+        [HttpGet]
         // GET: View_HastalikDurum
         public PartialViewResult OzelDurumList(string id)
         {

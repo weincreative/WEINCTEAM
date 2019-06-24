@@ -51,7 +51,7 @@
                                 </span>
 
                                 <span class="ribbon-button-alignment" style="height: 24px;">
-                                    <span id="refresh"  onclick="ClickRefresh()" class="btn btn-ribbon" data-title="refresh" rel="tooltip" data-html="true">
+                                    <span id="refresh"  onclick="ClickRefresh2(@ViewBag.tc)" class="btn btn-ribbon" data-title="refresh" rel="tooltip" data-html="true">
                                         <i class="fa fa-refresh"></i>
                                     </span>
 
@@ -143,10 +143,23 @@
 </style>
 
 <script type="text/javascript">
-    function ClickRefresh() {
-        $('#tab2').load(document.URL + '#tab2');
+    function ClickRefresh2(deger) {
+        //$('#tab2').load(document.URL + '#tab2');
+            var result;
+            $.ajax({
+                type: 'GET',
+                url: '../../View_HastalikDurum/OzelDurumList',
+                data: { id: deger },
+                //async: false,
+                success: function (veri) {
+                    result = veri;
+                    $('#tab2').html(result);
+                }
+            });
+      
+       
     }
-
+   
     $(document).ready(function () {
         var responsiveHelper_dt_basic = undefined;
         var responsiveHelper_datatable_fixed_column = undefined;
