@@ -153,6 +153,7 @@
     <Compile Include="Controllers\hst_hastakartiController.cs" />
     <Compile Include="Controllers\hst_his_hareketController.cs" />
     <Compile Include="Controllers\hst_hizmetController.cs" />
+    <Compile Include="Controllers\hst_randevuController.cs" />
     <Compile Include="Controllers\hst_vezneController.cs" />
     <Compile Include="Controllers\Ortak.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
@@ -1161,6 +1162,11 @@
     <Content Include="Views\hst_firma\Edit.cshtml" />
     <Content Include="Views\hst_firma\Index.cshtml" />
     <Content Include="Views\CagriEkrani\_BolumListeleme.cshtml" />
+    <Content Include="Views\hst_randevu\Create.cshtml" />
+    <Content Include="Views\hst_randevu\Delete.cshtml" />
+    <Content Include="Views\hst_randevu\Details.cshtml" />
+    <Content Include="Views\hst_randevu\Edit.cshtml" />
+    <Content Include="Views\hst_randevu\Randevu_Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

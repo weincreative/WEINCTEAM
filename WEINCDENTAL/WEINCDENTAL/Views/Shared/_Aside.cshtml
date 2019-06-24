@@ -54,8 +54,8 @@
            
             @if (User.IsInRole("1") || User.IsInRole("2"))
             {
-                <li class="@Html.RouteIf("Randevu", "active")">
-                    <a href="@Url.Action("Randevu", "home")"><i class="fa fa-lg fa-fw fa-calendar">@*<em>3</em>*@</i> <span class="menu-item-parent">Randevu</span></a>
+                <li class="@Html.RouteIf("Randevu_Index", "active")">
+                    <a href="@Url.Action("Randevu_Index", "hst_randevu")"><i class="fa fa-lg fa-fw fa-calendar">@*<em>3</em>*@</i> <span class="menu-item-parent">Randevu</span></a>
                 </li>
             }
             @if (User.IsInRole("1") || User.IsInRole("2"))

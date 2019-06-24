@@ -17,12 +17,14 @@ namespace WEINCDENTAL_CALLINGSCREEN
         public int t_id { get; set; }
         public Nullable<int> t_basvuru { get; set; }
         public string t_tc { get; set; }
-        public System.DateTime t_tarih { get; set; }
-        public System.DateTime t_basgicsaat { get; set; }
+        public System.DateTime t_baslangicsaat { get; set; }
         public System.DateTime t_bitissaat { get; set; }
+        public string t_classname { get; set; }
+        public string t_icon { get; set; }
+        public bool allday { get; set; }
         public string t_createuser { get; set; }
         public System.DateTime t_createdate { get; set; }
-        public bool t_basvurudr { get; set; }
+        public int t_basvurudr { get; set; }
         public bool t_aktif { get; set; }
     
         public virtual hst_hastakarti hst_hastakarti { get; set; }

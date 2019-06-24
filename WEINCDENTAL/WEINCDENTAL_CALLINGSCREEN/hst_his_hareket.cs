@@ -29,6 +29,7 @@ namespace WEINCDENTAL_CALLINGSCREEN
         public int t_cene { get; set; }
         public bool t_yetiskinmi { get; set; }
         public bool t_odemevarmi { get; set; }
+        public Nullable<decimal> t_totalborc { get; set; }
         public bool t_borcdurum { get; set; }
         public Nullable<int> t_firmaid { get; set; }
         public string t_createuser { get; set; }

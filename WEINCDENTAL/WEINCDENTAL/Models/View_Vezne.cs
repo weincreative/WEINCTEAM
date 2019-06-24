@@ -26,6 +26,8 @@ namespace WEINCDENTAL.Models
         public string Hizmetadi { get; set; }
         [DataType(DataType.Currency)]
         public decimal t_fiyat { get; set; }
+        [DataType(DataType.Currency)]
+        public Nullable<decimal> ToplamBorc { get; set; }
         public System.DateTime Hizmettarih { get; set; }
         public bool t_odemevarmi { get; set; }
         [DataType(DataType.Currency)]
@@ -36,5 +38,7 @@ namespace WEINCDENTAL.Models
         public System.DateTime Odemetarih { get; set; }
         public bool t_borcdurum { get; set; }
         public int t_basvuruid { get; set; }
+        public bool VezneAktif { get; set; }
+        public bool HHareketAktif { get; set; }
     }
 }
