@@ -5,456 +5,263 @@
 <!-- MAIN CONTENT -->
 <!-- DENEME FORK AMK -->
 <div id="content">
-<!-- row -->
-<div class="row">
-    <!-- col -->
-    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-        <h1 class="page-title txt-color-blueDark">
-            <!-- PAGE HEADER -->
-            <i class="fa fa-calendar fa-fw "></i>
-            Randevu
-        </h1>
-    </div>
-    <!-- end col -->
-    <!-- right side of the page with the sparkline graphs -->
-    <!-- col -->
-    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-        <!-- sparks -->
-        <ul id="sparks">
-            <li class="sparks-info">
-                <h5> Kazanç <span class="txt-color-blue">$47,171</span></h5>
-                <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
-                    1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
-                </div>
-            </li>
-            <li class="sparks-info">
-                <h5> Hasta <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
-                <div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
-                    110,150,300,130,400,240,220,310,220,300, 270, 210
-                </div>
-            </li>
-            <li class="sparks-info">
-                <h5> İşlem <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
-                <div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
-                    110,150,300,130,400,240,220,310,220,300, 270, 210
-                </div>
-            </li>
-        </ul>
-        <!-- end sparks -->
-    </div>
-    <!-- end col -->
-</div>
-<!-- end row -->
-<!--
-The ID "widget-grid" will start to initialize all widgets below
-You do not need to use widgets if you dont want to. Simply remove
-the <section></section> and you can use wells or panels instead
--->
-<!-- widget grid -->
-<section id="widget-grid">
-<!-- row -->
-
-<div id="content">
     <!-- row -->
     <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-3">
-            <!-- new widget -->
-            <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
-                <header>
-                    <h2> Randevu Oluştur </h2>
-                </header>
-                <!-- widget div-->
-                <div>
-                    <div class="widget-body">
-                        <!-- content goes here -->
-                        <form id="add-event-form">
-                            <fieldset>
-                                <div class="form-group">
-                                    <label>Randevu Simgesi</label>
-                                    <div class="btn-group btn-group-sm btn-group-justified" data-toggle="buttons">
-                                        <label class="btn btn-default active">
-                                            <input type="radio" name="iconselect" id="icon-1" value="fa-info" checked>
-                                            <i class="fa fa-info text-muted"></i>
-                                        </label>
-                                        <label class="btn btn-default">
-                                            <input type="radio" name="iconselect" id="icon-2" value="fa-warning">
-                                            <i class="fa fa-warning text-muted"></i>
-                                        </label>
-                                        <label class="btn btn-default">
-                                            <input type="radio" name="iconselect" id="icon-3" value="fa-check">
-                                            <i class="fa fa-check text-muted"></i>
-                                        </label>
-                                        <label class="btn btn-default">
-                                            <input type="radio" name="iconselect" id="icon-4" value="fa-user">
-                                            <i class="fa fa-user text-muted"></i>
-                                        </label>
-                                        <label class="btn btn-default">
-                                            <input type="radio" name="iconselect" id="icon-5" value="fa-lock">
-                                            <i class="fa fa-lock text-muted"></i>
-                                        </label>
-                                        <label class="btn btn-default">
-                                            <input type="radio" name="iconselect" id="icon-6" value="fa-clock-o">
-                                            <i class="fa fa-clock-o text-muted"></i>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Randevu Başlığı</label>
-                                    <input class="form-control" id="title" name="title" maxlength="40" type="text" placeholder="Randevu Başlığı Giriniz">
-                                </div>
-                                <div class="form-group">
-                                    <label>Randevu Açıklaması</label>
-                                    <textarea class="form-control" placeholder="Kısaca açıklayınız" rows="3" maxlength="40" id="description"></textarea>
-                                    <p class="note">En fazla 40 karakterlik alan</p>
-                                </div>
-                                <div class="form-group">
-                                    <label>Randevu Öncelik Rengi</label>
-                                    <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
-                                        <label class="btn bg-color-darken active">
-                                            <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white" checked>
-                                            <i class="fa fa-check txt-color-white"></i>
-                                        </label>
-                                        <label class="btn bg-color-blue">
-                                            <input type="radio" name="priority" id="option2" value="bg-color-blue txt-color-white">
-                                            <i class="fa fa-check txt-color-white"></i>
-                                        </label>
-                                        <label class="btn bg-color-orange">
-                                            <input type="radio" name="priority" id="option3" value="bg-color-orange txt-color-white">
-                                            <i class="fa fa-check txt-color-white"></i>
-                                        </label>
-                                        <label class="btn bg-color-greenLight">
-                                            <input type="radio" name="priority" id="option4" value="bg-color-greenLight txt-color-white">
-                                            <i class="fa fa-check txt-color-white"></i>
-                                        </label>
-                                        <label class="btn bg-color-blueLight">
-                                            <input type="radio" name="priority" id="option5" value="bg-color-blueLight txt-color-white">
-                                            <i class="fa fa-check txt-color-white"></i>
-                                        </label>
-                                        <label class="btn bg-color-red">
-                                            <input type="radio" name="priority" id="option6" value="bg-color-red txt-color-white">
-                                            <i class="fa fa-check txt-color-white"></i>
-                                        </label>
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <div class="form-actions">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button class="btn btn-default" type="button" id="add-event">
-                                            Randevu Oluştur
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- end content -->
-                    </div>
-                </div>
-                <!-- end widget div -->
-            </div>
-            <!-- end widget -->
-            <div class="well well-sm" id="event-container">
-                <form>
-                    <fieldset>
-                        <legend>
-                            Sürüklenebilir İşlemler
-                        </legend>
-                        <ul id='external-events' class="list-unstyled">
-                            <li>
-                                <span class="bg-color-darken txt-color-white" data-description="Şu anda Meşgul" data-icon="fa-time">Ofis Toplantısı</span>
-                            </li>
-                            <li>
-                                <span class="bg-color-blue txt-color-white" data-description="Açıklama Yok" data-icon="fa-pie">Öğle Arası</span>
-                            </li>
-                            <li>
-                                <span class="bg-color-red txt-color-white" data-description="Acil Görevler" data-icon="fa-alert">ACİL</span>
-                            </li>
-                        </ul>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="drop-remove" class="checkbox style-0" checked="checked">
-                                <span>Sürükleme işleminden sonra sil</span>
-                            </label>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
+        <!-- col -->
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark">
+                <!-- PAGE HEADER -->
+                <i class="fa fa-calendar fa-fw "></i>
+                Randevu
+            </h1>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-9">
-            <!-- new widget -->
-            <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
-                <!-- widget options:
-                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-                data-widget-colorbutton="false"
-                data-widget-editbutton="false"
-                data-widget-togglebutton="false"
-                data-widget-deletebutton="false"
-                data-widget-fullscreenbutton="false"
-                data-widget-custombutton="false"
-                data-widget-collapsed="true"
-                data-widget-sortable="false"
-
-                -->
-                <header>
-                    <span class="widget-icon"> <i class="fa fa-calendar"></i> </span>
-                    <h2> Randevular </h2>
-                    <div class="widget-toolbar">
-                        <!-- add: non-hidden - to disable auto hide -->
-                        <div class="btn-group">
-                            <button class="btn dropdown-toggle btn-xs btn-default" data-toggle="dropdown">
-                                Görünüm <i class="fa fa-caret-down"></i>
-                            </button>
-                            <ul class="dropdown-menu js-status-update pull-right">
-                                <li>
-                                    <a href="javascript:void(0);" id="mt">Aylık</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);" id="ag">Haftalık</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);" id="td">Günlük</a>
-                                </li>
-                            </ul>
-                        </div>
+        <!-- end col -->
+        <!-- right side of the page with the sparkline graphs -->
+        <!-- col -->
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+            <!-- sparks -->
+            <ul id="sparks">
+                <li class="sparks-info">
+                    <h5> Kazanç <span class="txt-color-blue">$47,171</span></h5>
+                    <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+                        1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
                     </div>
-                </header>
-                <!-- widget div-->
-                <div>
-                    <div class="widget-body no-padding">
-                        <!-- content goes here -->
-                        <div class="widget-body-toolbar">
-                            <div id="calendar-buttons">
-                                <div class="btn-group">
-                                    <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i></a>
-                                    <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i class="fa fa-chevron-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="calendar"></div>
-                        <!-- end content -->
+                </li>
+                <li class="sparks-info">
+                    <h5> Hasta <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
+                    <div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
+                        110,150,300,130,400,240,220,310,220,300, 270, 210
                     </div>
-                </div>
-                <!-- end widget div -->
-            </div>
-            <!-- end widget -->
+                </li>
+                <li class="sparks-info">
+                    <h5> İşlem <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
+                    <div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
+                        110,150,300,130,400,240,220,310,220,300, 270, 210
+                    </div>
+                </li>
+            </ul>
+            <!-- end sparks -->
         </div>
+        <!-- end col -->
     </div>
     <!-- end row -->
-</div>
+    <!--
+    The ID "widget-grid" will start to initialize all widgets below
+    You do not need to use widgets if you dont want to. Simply remove
+    the <section></section> and you can use wells or panels instead
+    -->
+    <!-- widget grid -->
+    <section id="widget-grid">
+        <!-- row -->
 
-<!-- end row -->
-<!-- row -->
-<div class="row">
-    <!-- a blank row to get started -->
-    <div class="col-sm-12">
-        <!-- your contents here -->
-    </div>
-</div>
-<!-- end row -->
-</section>
-<!-- end widget grid -->
+        <div id="content">
+            <!-- row -->
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-3">
+                    <!-- new widget -->
+                    <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+                        <header>
+                            <h2> Randevu Oluştur </h2>
+                        </header>
+                        <!-- widget div-->
+                        <div>
+                            <div class="widget-body">
+                                <!-- content goes here -->
+                                <form id="add-event-form">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label>Randevu Simgesi</label>
+                                            <div class="btn-group btn-group-sm btn-group-justified" data-toggle="buttons">
+                                                <label class="btn btn-default active">
+                                                    <input type="radio" name="iconselect" id="icon-1" value="fa-info" checked>
+                                                    <i class="fa fa-info text-muted"></i>
+                                                </label>
+                                                <label class="btn btn-default">
+                                                    <input type="radio" name="iconselect" id="icon-2" value="fa-warning">
+                                                    <i class="fa fa-warning text-muted"></i>
+                                                </label>
+                                                <label class="btn btn-default">
+                                                    <input type="radio" name="iconselect" id="icon-3" value="fa-check">
+                                                    <i class="fa fa-check text-muted"></i>
+                                                </label>
+                                                <label class="btn btn-default">
+                                                    <input type="radio" name="iconselect" id="icon-4" value="fa-user">
+                                                    <i class="fa fa-user text-muted"></i>
+                                                </label>
+                                                <label class="btn btn-default">
+                                                    <input type="radio" name="iconselect" id="icon-5" value="fa-lock">
+                                                    <i class="fa fa-lock text-muted"></i>
+                                                </label>
+                                                <label class="btn btn-default">
+                                                    <input type="radio" name="iconselect" id="icon-6" value="fa-clock-o">
+                                                    <i class="fa fa-clock-o text-muted"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Randevu Başlığı</label>
+                                            <input class="form-control" id="title" name="title" maxlength="40" type="text" placeholder="Randevu Başlığı Giriniz">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Randevu Açıklaması</label>
+                                            <textarea class="form-control" placeholder="Kısaca açıklayınız" rows="3" maxlength="40" id="description"></textarea>
+                                            <p class="note">En fazla 40 karakterlik alan</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Randevu Öncelik Rengi</label>
+                                            <div class="btn-group btn-group-justified btn-select-tick col-md-12" data-toggle="buttons">
+                                                <label class="btn bg-color-darken active">
+                                                    <input type="radio" name="priority" id="option1" value="bg-color-darken" checked>
+                                                    <i class="fa fa-check txt-color-white"></i>
+                                                </label>
+                                                <label class="btn bg-color-blue">
+                                                    <input type="radio" name="priority" id="option2" value="bg-color-blue">
+                                                    <i class="fa fa-check txt-color-white"></i>
+                                                </label>
+                                                <label class="btn bg-color-orange">
+                                                    <input type="radio" name="priority" id="option3" value="bg-color-orange">
+                                                    <i class="fa fa-check txt-color-white"></i>
+                                                </label>
+                                                <label class="btn bg-color-greenLight">
+                                                    <input type="radio" name="priority" id="option4" value="bg-color-greenLight">
+                                                    <i class="fa fa-check txt-color-white"></i>
+                                                </label>
+                                                <label class="btn bg-color-blueLight">
+                                                    <input type="radio" name="priority" id="option5" value="bg-color-blueLight">
+                                                    <i class="fa fa-check txt-color-white"></i>
+                                                </label>
+                                                <label class="btn bg-color-red">
+                                                    <input type="radio" name="priority" id="option6" value="bg-color-red">
+                                                    <i class="fa fa-check txt-color-white"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <div class="form-actions">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <button class="btn btn-default" type="button" id="add-event">
+                                                    Randevu Oluştur
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- end content -->
+                            </div>
+                        </div>
+                        <!-- end widget div -->
+                    </div>
+                    <!-- end widget -->
+                    <div class="well well-sm" id="event-container">
+                        <form>
+                            <fieldset>
+                                <legend>
+                                    Sürüklenebilir İşlemler
+                                </legend>
+                                <ul id='external-events' class="list-unstyled">
+                                    @*<li>
+                                            <span class="bg-color-darken txt-color-white" data-description="Şu anda Meşgul" data-icon="fa-time">Ofis Toplantısı</span>
+                                        </li>
+                                        <li>
+                                            <span class="bg-color-blue txt-color-white" data-description="Açıklama Yok" data-icon="fa-pie">Öğle Arası</span>
+                                        </li>
+                                        <li>
+                                            <span class="bg-color-red txt-color-white" data-description="Acil Görevler" data-icon="fa-alert">ACİL</span>
+                                        </li>*@
+                                </ul>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="drop-remove" class="checkbox style-0">
+                                        <span>Sürükleme işleminden sonra sil</span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-9">
+                    <!-- new widget -->
+                    <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+                        <!-- widget options:
+                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                        data-widget-colorbutton="false"
+                        data-widget-editbutton="false"
+                        data-widget-togglebutton="false"
+                        data-widget-deletebutton="false"
+                        data-widget-fullscreenbutton="false"
+                        data-widget-custombutton="false"
+                        data-widget-collapsed="true"
+                        data-widget-sortable="false"
+
+                        -->
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-calendar"></i> </span>
+                            <h2> Randevular </h2>
+                            <div class="widget-toolbar">
+                                <!-- add: non-hidden - to disable auto hide -->
+                                <div class="btn-group">
+                                    <button class="btn dropdown-toggle btn-xs btn-default" data-toggle="dropdown">
+                                        Görünüm <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu js-status-update pull-right">
+                                        <li>
+                                            <a href="javascript:void(0);" id="mt">Aylık</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" id="ag">Haftalık</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" id="td">Günlük</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </header>
+                        <!-- widget div-->
+                        <div>
+                            <div class="widget-body no-padding">
+                                <!-- content goes here -->
+                                <div class="widget-body-toolbar">
+                                    <div id="calendar-buttons">
+                                        <div class="btn-group">
+                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i class="fa fa-chevron-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="calendar"></div>
+                                <!-- end content -->
+                            </div>
+                        </div>
+                        <!-- end widget div -->
+                    </div>
+                    <!-- end widget -->
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+
+        <!-- end row -->
+        <!-- row -->
+        <div class="row">
+            <!-- a blank row to get started -->
+            <div class="col-sm-12">
+                <!-- your contents here -->
+            </div>
+        </div>
+        <!-- end row -->
+    </section>
+    <!-- end widget grid -->
 </div>
 
 
 @section pagespecific {
     <script type="text/javascript">
-        $(document).ready(function () {
-            var responsiveHelper_dt_basic = undefined;
-            var responsiveHelper_datatable_fixed_column = undefined;
-            var responsiveHelper_datatable_col_reorder = undefined;
-            var responsiveHelper_datatable_tabletools = undefined;
-            var breakpointDefinition = {
-                tablet: 1024,
-                phone: 480
-            };
-
-            $('#dt_basic1').dataTable({
-                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-                    "t" +
-                    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-                "autoWidth": true,
-                "preDrawCallback": function () {
-                    // Initialize the responsive datatables helper once.
-                    if (!responsiveHelper_dt_basic) {
-                        responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic1'), breakpointDefinition);
-                    }
-                },
-                "rowCallback": function (nRow) {
-                    responsiveHelper_dt_basic.createExpandIcon(nRow);
-                },
-                "drawCallback": function (oSettings) {
-                    responsiveHelper_dt_basic.respond();
-                }
-            });
-
-        })
-
-        $(document).ready(function () {
-            var responsiveHelper_dt_basic = undefined;
-            var responsiveHelper_datatable_fixed_column = undefined;
-            var responsiveHelper_datatable_col_reorder = undefined;
-            var responsiveHelper_datatable_tabletools = undefined;
-            var breakpointDefinition = {
-                tablet: 1024,
-                phone: 480
-            };
-
-            $('#dt_basic2').dataTable({
-                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-                    "t" +
-                    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-                "autoWidth": true,
-                "preDrawCallback": function () {
-                    // Initialize the responsive datatables helper once.
-                    if (!responsiveHelper_dt_basic) {
-                        responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic2'), breakpointDefinition);
-                    }
-                },
-                "rowCallback": function (nRow) {
-                    responsiveHelper_dt_basic.createExpandIcon(nRow);
-                },
-                "drawCallback": function (oSettings) {
-                    responsiveHelper_dt_basic.respond();
-                }
-            });
-
-        })
-
-        $(document).ready(function () {
-            var responsiveHelper_dt_basic = undefined;
-            var responsiveHelper_datatable_fixed_column = undefined;
-            var responsiveHelper_datatable_col_reorder = undefined;
-            var responsiveHelper_datatable_tabletools = undefined;
-            var breakpointDefinition = {
-                tablet: 1024,
-                phone: 480
-            };
-
-            $('#dt_basic3').dataTable({
-                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-                    "t" +
-                    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-                "autoWidth": true,
-                "preDrawCallback": function () {
-                    // Initialize the responsive datatables helper once.
-                    if (!responsiveHelper_dt_basic) {
-                        responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic3'), breakpointDefinition);
-                    }
-                },
-                "rowCallback": function (nRow) {
-                    responsiveHelper_dt_basic.createExpandIcon(nRow);
-                },
-                "drawCallback": function (oSettings) {
-                    responsiveHelper_dt_basic.respond();
-                }
-            });
-        })
-
-        $(document).ready(function () {
-            var responsiveHelper_dt_basic = undefined;
-            var responsiveHelper_datatable_fixed_column = undefined;
-            var responsiveHelper_datatable_col_reorder = undefined;
-            var responsiveHelper_datatable_tabletools = undefined;
-            var breakpointDefinition = {
-                tablet: 1024,
-                phone: 480
-            };
-
-            $('#dt_basic4').dataTable({
-                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-                    "t" +
-                    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-                "autoWidth": true,
-                "preDrawCallback": function () {
-                    // Initialize the responsive datatables helper once.
-                    if (!responsiveHelper_dt_basic) {
-                        responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic4'), breakpointDefinition);
-                    }
-                },
-                "rowCallback": function (nRow) {
-                    responsiveHelper_dt_basic.createExpandIcon(nRow);
-                },
-                "drawCallback": function (oSettings) {
-                    responsiveHelper_dt_basic.respond();
-                }
-            });
-        })
-
-        $(document).ready(function () {
-            var responsiveHelper_dt_basic = undefined;
-            var responsiveHelper_datatable_fixed_column = undefined;
-            var responsiveHelper_datatable_col_reorder = undefined;
-            var responsiveHelper_datatable_tabletools = undefined;
-            var breakpointDefinition = {
-                tablet: 1024,
-                phone: 480
-            };
-
-            $('#dt_basic5').dataTable({
-                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-                    "t" +
-                    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-                "autoWidth": true,
-                "preDrawCallback": function () {
-                    // Initialize the responsive datatables helper once.
-                    if (!responsiveHelper_dt_basic) {
-                        responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic5'), breakpointDefinition);
-                    }
-                },
-                "rowCallback": function (nRow) {
-                    responsiveHelper_dt_basic.createExpandIcon(nRow);
-                },
-                "drawCallback": function (oSettings) {
-                    responsiveHelper_dt_basic.respond();
-                }
-            });
-        })
-
-        $(document).ready(function () {
-            var responsiveHelper_dt_basic = undefined;
-            var responsiveHelper_datatable_fixed_column = undefined;
-            var responsiveHelper_datatable_col_reorder = undefined;
-            var responsiveHelper_datatable_tabletools = undefined;
-            var breakpointDefinition = {
-                tablet: 1024,
-                phone: 480
-            };
-
-            $('#dt_basic6').dataTable({
-                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-                    "t" +
-                    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-                "autoWidth": true,
-                "preDrawCallback": function () {
-                    // Initialize the responsive datatables helper once.
-                    if (!responsiveHelper_dt_basic) {
-                        responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic6'), breakpointDefinition);
-                    }
-                },
-                "rowCallback": function (nRow) {
-                    responsiveHelper_dt_basic.createExpandIcon(nRow);
-                },
-                "drawCallback": function (oSettings) {
-                    responsiveHelper_dt_basic.respond();
-                }
-            });
-        })
-        //$(document).ready(function () {
-        //    $('table tbody tr').click(function () {
-        //        alert($(this).text());
-        //    });
-        //})
-
-        //BUTONA TIKLAYINCA TAG'I BULDUGU YERE BASAR
-        // $('#buttonCloseID').click(function () {
-        //var databack = $("#buttonCloseID").val().trim();
-        //var amk = "adm_kullanicilar/Edit/" + databack;
-        //getId = databack;
-        //$('#result').html(amk);
-        // val - text - html
-        //$('#result').html( Html.Action("Edit", "adm_kullanicilar", new { id = databack }) );
-        // });
+        var cuser = "@HttpContext.Current.User.Identity.Name";
+        var RandtblList = [];
+        var RandtblNo = 0;
 
         $(document).ready(function () {
 
@@ -464,6 +271,8 @@ the <section></section> and you can use wells or panels instead
             var d = date.getDate();
             var m = date.getMonth();
             var y = date.getFullYear();
+            var RandIcon = null;
+            var RandClassName = null;
 
             var hdr = {
                 left: 'title',
@@ -493,13 +302,16 @@ the <section></section> and you can use wells or panels instead
             };
 
             var addEvent = function (title, priority, description, icon) {
-                title = title.length === 0 ? "Untitled Event" : title;
+                title = title.length === 0 ? "BOŞ" : title;
                 description = description.length === 0 ? "No Description" : description;
                 icon = icon.length === 0 ? " " : icon;
                 priority = priority.length === 0 ? "label label-default" : priority;
 
                 var html = $('<li><span class="' + priority + '" data-description="' + description + '" data-icon="' +
                     icon + '">' + title + '</span></li>').prependTo('ul#external-events').hide().fadeIn();
+
+                RandIcon = priority;
+                RandClassName = icon;
 
                 $("#event-container").effect("highlight", 800);
 
@@ -547,6 +359,23 @@ the <section></section> and you can use wells or panels instead
                     // assign it the date that was reported
                     copiedEventObject.start = date;
                     copiedEventObject.allDay = allDay;
+                    if (copiedEventObject.title != "BOŞ") {
+                        var RandResult = RandTblEkle(RandtblList, RandtblNo, "", "", "", copiedEventObject.title, copiedEventObject.description, copiedEventObject.start, copiedEventObject.start, RandIcon, RandClassName, true, cuser, "", 0, true);
+                        RandtblList = RandResult[0];
+                        RandtblNo = RandResult[1];
+                        RandevuTEMIZOlustur(RandtblList);
+                        RandIcon = null;
+                        RandClassName = null;
+                    } else {
+                            $.smallBox({
+                            title: "İPTAL",
+                            content: "<i class='fa fa-clock-o'></i> <i>Boş Randevuyu Takvime Ekleyemezsiniz...</i>",
+                            color: "#C46A69",
+                            iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                            timeout: 4000
+                        });
+                    }
+
 
                     // render the event on the calendar
                     // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
@@ -560,108 +389,98 @@ the <section></section> and you can use wells or panels instead
 
                 },
 
-                select: function (start, end, allDay) {
-                    var title = prompt('Event Title:');
-                    if (title) {
-                        calendar.fullCalendar('renderEvent', {
-                                title: title,
-                                start: start,
-                                end: end,
-                                allDay: allDay
-                            }, true // make the event "stick"
-                        );
-                    }
-                    calendar.fullCalendar('unselect');
+                eventClick: function (event) {
+                    RanSil(event.id, event.title);
+                    $('#calendar').fullCalendar('updateEvent', event);
                 },
 
-                 eventClick: function(event) {
-                    alert(event.id);
-                    alert(event.title);
-                    alert(event.description);
-                    alert(event.start);
-                    alert(event.end);
-                    alert(event.allDay);
-
-                    //event.title = "CLICKED!";
-                    //$('#calendar').fullCalendar('updateEvent', event);
-
-                },
-
-                 // Sürüklenince..
+                // Sürüklenince..
                 eventDrop: function (info) {
-                    //alert(info.id);
-                    //alert(info.title);
-                    //alert(info.description);
+                    //Wed Jun 26 2019 02: 00: 00 GMT + 0000
+                    //"2019-06-26T00:00:00.000Z"
+                    //var RandResult = RandTblEkle(RandtblList,RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title, rt_aciklama, rt_baslangicsaat, rt_bitissaat, rt_classname, rt_icon, rt_allday, rt_createuser, rt_createdate, rt_basvurudr, rt_aktif);
                     //alert(info.start);
                     //alert(info.end);
-                    //alert(info.allDay);
+                    if (info.end != null) {
+                        if (info.id != null) {
+                            //alert("DROP tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);
+                            var RandResult = RandTblEkle(RandtblList, RandtblNo, info.id, "", "", info.title, info.description, info.start, info.end, "", "", info.allDay, cuser, "", 0, true);
+                            RandtblList = RandResult[0];
+                            RandtblNo = RandResult[1];
+                            RandevuDuzelt(RandtblList);
+                        } else {
+                            //alert("DROP tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);
+                            var RandResult = RandTblEkle(RandtblList, RandtblNo, "", "", "", info.title, info.description, info.start, info.end, "", "", info.allDay, cuser, "", 0, true);
+                            RandtblList = RandResult[0];
+                            RandtblNo = RandResult[1];
+                            RandevuOlustur(RandtblList);
+                        }
+                    }
+                    else if (info.end == null && info.allDay == true) {
+                        if (info.id != null) {
+                            //alert("DROP tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);
+                            var RandResult = RandTblEkle(RandtblList, RandtblNo, info.id, "", "", info.title, info.description, info.start, info.start, "", "", info.allDay, cuser, "", 0, true);
+                            RandtblList = RandResult[0];
+                            RandtblNo = RandResult[1];
+                            RandevuDuzelt(RandtblList);
+                        } else {
+                            //alert("DROP tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);
+                            var RandResult = RandTblEkle(RandtblList, RandtblNo, "", "", "", info.title, info.description, info.start, info.start, "", "", info.allDay, cuser, "", 0, true);
+                            RandtblList = RandResult[0];
+                            RandtblNo = RandResult[1];
+                            RandevuOlustur(RandtblList);
+                        }
+                    }
+                    else {
+                        alert("DROP Son Tarih Boş Geldi");
+                    }
+                    $('#calendar').fullCalendar('updateEvent', info);
                 },
 
                 // click bırakıldıgında-- saat uzatılınca
                 eventResize: function (info) {
-                    alert(info.id);
-                    alert(info.title);
-                    alert(info.description);
-                    alert(info.start);
-                    alert(info.end);
-                    alert(info.allDay);
-                    if (info.end == null) {
-                        info.allDay = false;
-                        $('#calendar').fullCalendar('updateEvent', info);
+                    //Wed Jun 26 2019 02: 00: 00 GMT + 0000
+                    //"2019-06-26T00:00:00.000Z"
+                    //var RandResult = RandTblEkle(RandtblList,RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title, rt_aciklama, rt_baslangicsaat, rt_bitissaat, rt_classname, rt_icon, rt_allday, rt_createuser, rt_createdate, rt_basvurudr, rt_aktif);
+                    //alert(info.start);
+                    //alert(info.end);
+                    if (info.end != null) {
+                        if (info.id != null) {
+                            //alert("RESIZE tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);
+                            var RandResult = RandTblEkle(RandtblList, RandtblNo, info.id, "", "", info.title, info.description, info.start, info.end, "", "", info.allDay, cuser, "", 0, true);
+                            RandtblList = RandResult[0];
+                            RandtblNo = RandResult[1];
+                            RandevuDuzelt(RandtblList);
+                        } else {
+                            //alert("RESIZE tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);
+                            var RandResult = RandTblEkle(RandtblList, RandtblNo, "", "", "", info.title, info.description, info.start, info.end, "", "", info.allDay, cuser, "", 0, true);
+                            RandtblList = RandResult[0];
+                            RandtblNo = RandResult[1];
+                            RandevuOlustur(RandtblList);
+                        }
                     }
+                    else if (info.end == null && info.allDay == true) {
+                        if (info.id != null) {
+                            //alert("RESIZE tablo oluşturmaya geçiyorum _id :" + info.id +" " + info.allDay);
+                            var RandResult = RandTblEkle(RandtblList, RandtblNo, info.id, "", "", info.title, info.description, info.start, info.start, "", "", info.allDay, cuser, "", 0, true);
+                            RandtblList = RandResult[0];
+                            RandtblNo = RandResult[1];
+                            RandevuDuzelt(RandtblList);
+                        } else {
+                            //alert("RESIZE tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);
+                            var RandResult = RandTblEkle(RandtblList, RandtblNo, "", "", "", info.title, info.description, info.start, info.start, "", "", info.allDay, cuser, "", 0, true);
+                            RandtblList = RandResult[0];
+                            RandtblNo = RandResult[1];
+                            RandevuOlustur(RandtblList);
+                        }
+                    }
+                    else {
+                        alert("RESIZE Son Tarih Boş Geldi");
+                    }
+                    $('#calendar').fullCalendar('updateEvent', info);
                 },
 
                 events: '/hst_randevu/Randevular',
-
-                //    [{
-                //    title: 'All Day Event',
-                //    start: new Date(y, m, 1),
-                //    description: 'long description',
-                //    className: ["event", "bg-color-greenLight"],
-                //    icon: 'fa-check'
-                //}, {
-                //    title: 'Long Event',
-                //    start: new Date(y, m, d - 5),
-                //    end: new Date(y, m, d - 2),
-                //    className: ["event", "bg-color-red"],
-                //    icon: 'fa-lock'
-                //}, {
-                //    id: 999,
-                //    title: 'Repeating Event',
-                //    start: new Date(y, m, d - 3, 16, 0),
-                //    allDay: false,
-                //    className: ["event", "bg-color-blue"],
-                //    icon: 'fa-clock-o'
-                //}, {
-                //    id: 999,
-                //    title: 'Repeating Event',
-                //    start: new Date(y, m, d + 4, 16, 0),
-                //    allDay: false,
-                //    className: ["event", "bg-color-blue"],
-                //    icon: 'fa-clock-o'
-                //}, {
-                //    title: 'Meeting',
-                //    start: new Date(y, m, d, 10, 30),
-                //    allDay: false,
-                //    className: ["event", "bg-color-darken"]
-                //}, {
-                //    title: 'Lunch',
-                //    start: new Date(y, m, d, 12, 0),
-                //    end: new Date(y, m, d, 14, 0),
-                //    allDay: false,
-                //    className: ["event", "bg-color-darken"]
-                //}, {
-                //    title: 'Birthday Party',
-                //    start: new Date(y, m, d + 1, 19, 0),
-                //    end: new Date(y, m, d + 1, 22, 30),
-                //    allDay: false,
-                //    className: ["event", "bg-color-darken"]
-                //}, {
-                //    title: 'Smartadmin Open Day',
-                //    start: new Date(y, m, 28),
-                //    end: new Date(y, m, 29),
-                //    className: ["event", "bg-color-darken"]
-                //}],
 
                 eventRender: function (event, element, icon) {
                     if (!event.description == "") {
@@ -681,7 +500,6 @@ the <section></section> and you can use wells or panels instead
 
             /* hide default buttons */
             $('.fc-header-right, .fc-header-center').hide();
-
 
             $('#calendar-buttons #btn-prev').click(function () {
                 $('.fc-button-prev').click();
@@ -711,6 +529,29 @@ the <section></section> and you can use wells or panels instead
             });
 
         })
+
+
+        function RanSil(rid, tit) {
+            $.SmartMessageBox({
+                title: "UYARI!",
+                content: "Randevu No: " + rid + " Randevu Başlığı: " + tit + " olan randevu silinicektir. Emin misiniz?",
+                buttons: '[No][Yes]'
+            },
+                function (ButtonPressed) {
+                    if (ButtonPressed === "Yes") {
+                        RandevuSil(rid);
+                    }
+                    //if (ButtonPressed === "No") {
+                    //    $.smallBox({
+                    //        title: "İPTAL",
+                    //        content: "<i class='fa fa-clock-o'></i> <i>Randevu silme işleminden vazgeçildi...</i>",
+                    //        color: "#C46A69",
+                    //        iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                    //        timeout: 4000
+                    //    });
+                    //}
+                });
+        }
 
     </script>
 }

@@ -17,15 +17,17 @@ namespace WEINCDENTAL.Models
         public int t_id { get; set; }
         public Nullable<int> t_basvuru { get; set; }
         public string t_tc { get; set; }
-        public System.DateTime t_baslangicsaat { get; set; }
-        public System.DateTime t_bitissaat { get; set; }
+        public string t_title { get; set; }
+        public string t_aciklama { get; set; }
+        public string t_baslangicsaat { get; set; }
+        public string t_bitissaat { get; set; }
         public string t_classname { get; set; }
         public string t_icon { get; set; }
-        public bool allday { get; set; }
+        public Nullable<bool> t_allday { get; set; }
         public string t_createuser { get; set; }
-        public System.DateTime t_createdate { get; set; }
-        public int t_basvurudr { get; set; }
-        public bool t_aktif { get; set; }
+        public Nullable<System.DateTime> t_createdate { get; set; }
+        public Nullable<int> t_basvurudr { get; set; }
+        public Nullable<bool> t_aktif { get; set; }
     
         public virtual hst_hastakarti hst_hastakarti { get; set; }
     }

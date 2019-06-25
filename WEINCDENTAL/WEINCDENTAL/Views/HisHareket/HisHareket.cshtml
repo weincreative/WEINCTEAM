@@ -392,40 +392,6 @@
         });
     }
 
-    function Remove(id, HAd, disNo) {
-        //$.holdReady(true);
-        $.SmartMessageBox({
-                title: "UYARI!",
-                content: " Hizmet: " + HAd + "<div> Diş No: " + disNo + " olan hastanın hizmeti silinecektir.</div> <div><br></div><div>EMİN MİSİNİZ?</div>",
-                buttons: '[No][Yes]'
-            },
-            function (ButtonPressed) {
-                if (ButtonPressed === "Yes") {
-                    var rslt = HizmetRemove(id);
-                    if (rslt) {
-
-                        $('#refreshtbl').load("@Url.Action("_DisHHareket", "View_HizmetDetay")", { id: @ViewBag.bid });
-                        var url = "../../Scripts/Remove.js";
-                        $.getScript(url, function () {
-                            TblRemove();
-                        });
-                    }
-                   
-
-                }
-                if (ButtonPressed === "No") {
-                    $.smallBox({
-                        title: "İPTAL",
-                        content: "<i class='fa fa-clock-o'></i> <i>Silme işleminden vazgeçildi...</i>",
-                        color: "#C46A69",
-                        iconSmall: "fa fa-times fa-2x fadeInRight animated",
-                        timeout: 4000
-                    });
-                }
-
-            });
-    }
-
 
 </script>
 

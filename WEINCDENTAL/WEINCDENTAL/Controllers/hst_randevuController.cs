@@ -22,22 +22,40 @@ namespace WEINCDENTAL.Controllers
         }
         public ActionResult Randevular()
         {
-
-            var list = db.hst_randevu.Where(k=>k.t_aktif==true).AsEnumerable().Select(e => new
+            var list = db.hst_randevu.Where(k => k.t_aktif == true).AsEnumerable().Select(e => new
             {
                 id = e.t_id,
-                title = e.t_tc,
-                description = e.hst_hastakarti.t_adi + " " + e.hst_hastakarti.t_soyadi,
-                start = e.t_baslangicsaat.ToString("MM/dd/yyyy HH:mm:ss"),
-                end = e.t_bitissaat.ToString("MM/dd/yyyy HH:mm:ss"),
-                allDay = e.allday,
-                className = "event, bg-color-" + e.t_classname,
+                title = e.t_tc + " " + e.hst_hastakarti.t_adi + " " + e.hst_hastakarti.t_soyadi,
+                description = e.t_aciklama,
+                start = Convert.ToDateTime(e.t_baslangicsaat),
+                end = Convert.ToDateTime(e.t_bitissaat),
+                allDay = e.t_allday,
+                className = "event, " + e.t_classname,
                 icon = e.t_icon
             }).ToList();
-           // var renk = "red";
 
             return Json(list, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult RandevuPasif(int rid)
+        {
+            var sonuc = 0;
+            try
+            {
+                hst_randevu randevuPasifeAl = db.hst_randevu.Find(rid);
+                randevuPasifeAl.t_aktif = false;
+                db.Entry(randevuPasifeAl).State = EntityState.Modified;
+                db.SaveChanges();
+                sonuc = 1;
+                return Json(sonuc, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(sonuc, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         // GET: hst_randevu/Details/5
         public ActionResult Details(int? id)
         {
@@ -60,22 +78,28 @@ namespace WEINCDENTAL.Controllers
             return View();
         }
 
-        // POST: hst_randevu/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //POST: hst_randevu/Create
+        //To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "t_id,t_basvuru,t_tc,t_baslangicsaat,t_bitissaat,t_classname,t_icon,allday,t_createuser,t_createdate,t_basvurudr,t_aktif")] hst_randevu hst_randevu)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Create(List<hst_randevu> hst_randevu)
         {
-            if (ModelState.IsValid)
+            bool durum = false;
+            try
             {
-                db.hst_randevu.Add(hst_randevu);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                using (db)
+                {
+                    db.hst_randevu.AddRange(hst_randevu);
+                    db.SaveChanges();
+                    durum = true;
+                }
+                return Json(durum, JsonRequestBehavior.AllowGet);
             }
-
-            ViewBag.t_tc = new SelectList(db.hst_hastakarti, "t_tc", "t_adi", hst_randevu.t_tc);
-            return View(hst_randevu);
+            catch (Exception)
+            {
+                return Json(durum, JsonRequestBehavior.AllowGet);
+            }
         }
 
         // GET: hst_randevu/Edit/5
@@ -98,17 +122,27 @@ namespace WEINCDENTAL.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "t_id,t_basvuru,t_tc,t_baslangicsaat,t_bitissaat,t_classname,t_icon,allday,t_createuser,t_createdate,t_basvurudr,t_aktif")] hst_randevu hst_randevu)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "t_id,t_basvuru,t_tc,t_title,t_aciklama,t_baslangicsaat,t_bitissaat,t_classname,t_icon,t_allday,t_createuser,t_createdate,t_basvurudr,t_aktif")] List<hst_randevu> hst_randevu)
         {
-            if (ModelState.IsValid)
+            bool durum = false;
+            try
             {
-                db.Entry(hst_randevu).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    using (db)
+                    {
+                        hst_randevu.ForEach(p => db.Entry(p).State = EntityState.Modified);
+                        db.SaveChanges();
+                        durum = true;
+                    }
+                }
+                return Json(durum, JsonRequestBehavior.AllowGet);
             }
-            ViewBag.t_tc = new SelectList(db.hst_hastakarti, "t_tc", "t_adi", hst_randevu.t_tc);
-            return View(hst_randevu);
+            catch (Exception)
+            {
+                return Json(durum, JsonRequestBehavior.AllowGet);
+            }
         }
 
         // GET: hst_randevu/Delete/5
