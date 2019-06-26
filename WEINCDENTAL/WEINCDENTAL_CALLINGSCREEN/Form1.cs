@@ -27,6 +27,8 @@ namespace WEINCDENTAL_CALLINGSCREEN
         public static int pencereSec { get; set; }
         public static int form2CloseValue { get; set; }
         public static int form2CloseMuValue { get; set; }
+        public static int form3CloseValue { get; set; }
+        public static int form3CloseMuValue { get; set; }
         public static int secilenBolumVAL { get; set; }
         public static int secilenKullaniciVAL { get; set; }
         public static List<cagrilacak> cagrilacakList = new List<cagrilacak>();

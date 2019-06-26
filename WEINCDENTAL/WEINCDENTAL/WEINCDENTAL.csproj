@@ -1148,7 +1148,7 @@
     <Content Include="Views\CagriEkrani\Details.cshtml" />
     <Content Include="Views\CagriEkrani\Edit.cshtml" />
     <Content Include="Views\CagriEkrani\CagriEkraniIndex.cshtml" />
-    <Content Include="Views\CagriEkrani\_PartialCagriEkrani.cshtml" />
+    <Content Include="Views\CagriEkrani\PartialCagriEkrani.cshtml" />
     <Content Include="Views\Vezne\_CreateVezne.cshtml" />
     <Content Include="Views\hst_vezne\Create.cshtml" />
     <Content Include="Views\hst_vezne\Delete.cshtml" />

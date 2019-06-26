@@ -10,8 +10,6 @@
         </span>
         <!-- breadcrumb -->
         <ol class="breadcrumb">
-            @*<li> @ViewBag.Title</li>
-                <li>@ViewBag.Title2</li>*@
         </ol>
     </article>
 
@@ -29,71 +27,56 @@
     <article class="col-sm-12 col-md-12 col-lg-4" style="padding-top: 4px;">
         @using (Html.BeginForm("GetTc", "Yardimci", FormMethod.Post))
         {
-
             <fieldset>
                 <div class="col-md-12">
                     <div class="input-group">
                         <input class="form-control" placeholder="T.C. No" id="tcid" name="tc">
-
                         <div class="input-group-btn">
-
                             <button class="btn btn-default btn-primary" type="submit" id="btnSearch">
                                 <i class="fa fa-search"></i> Sorgula
                             </button>
                             <button class="btn btn-default  btn-warning" type="button" id="cagriEkrani">
                                 <i class="fa fa-reorder"></i> Çagri Ekranı
                             </button>
-
-
                         </div>
                     </div>
                 </div>
             </fieldset>
-
-
         }
     </article>
-    @*<div class="col-sm-12 col-md-12 col-lg-3" style="padding-top: 4px;">
-            <button type="button" class="btn btn-warning" id="cagriEkrani">
-                <i class="fa fa-search"></i> Cagri Ekranı
-            </button>
-        </div>*@
 
     <div id="dinamikBilgi" style="color: white;padding-top: 4px;"> </div>
-
 
     <div class="modal right fade" id="cagriEkraniModal" tabindex="-1" role="dialog" aria-labelledby="cagriEkraniModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-
-                    <div class="well">
-                        <div class="btn-group btn-group-justified" data-toggle="buttons">
-                            <label class="btn btn-default active">
-                                <i class="glyphicon glyphicon-chevron-left"></i>
-                                <input type="radio" name="gender" id="Bekleyen" value="male">
-                                Bekleyen
-                            </label>
-                            <label class="btn btn-default">
-                                <i class="glyphicon glyphicon-chevron-right"></i>
-                                <input type="radio" name="gender" id="_Cagirdigim" value="female">
-                                Çağırdığım
-                            </label>
-                            <label class="btn btn-default col-lg-12">
-                                <i class="glyphicon glyphicon-info-sign"></i>
-                                <input type="radio" name="gender" id="_Baktigim"value="other">
-                                Baktiğım
-                            </label>
-
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="btn-group btn-group-sm btn-group-justified" data-toggle="buttons">
+                                <label class="btn btn-default active">
+                                    <input type="radio" name="hastaSec" id="icon-1" value="0" checked>
+                                    <i class="fa fa-warning text-muted"></i>
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="hastaSec" id="icon-3" value="1">
+                                    <i class="fa fa-check text-muted"></i>
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="hastaSec" id="icon-6" value="2">
+                                    <i class="fa fa-clock-o text-muted"></i>
+                                </label>
+                            </div>
                         </div>
-                        <label class="btn btn-default" id="bolums">
-
-                        </label>
-                    </div>
-
+                        <div class="form-group">
+                            <label>Bölümü Seçiniz</label>
+                            <select class="form-control" id="Bolumler" name="Bolumler">
+                                <option id="" value="Select"> Bölüm Seçiniz </option>
+                            </select>
+                        </div>
+                    </fieldset>
                 </div>
                 <div class="modal-body" id="cagriEkraniList">
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
@@ -114,24 +97,17 @@
 <script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
 
-
     $(document).ready(function () {
         var gveri = @Html.Raw(Json.Encode(ViewBag.gdeger));
-        // alert(gveri );
         if (gveri != null) {
             $('#dinamikBilgi').load("@Url.Action("GetHastaBilgi", "hst_hastakarti")", { id: gveri});
-            // ListHasta(gveri );
         }
     });
 
         $(document).ready(function () {
-            var gveri = @Html.Raw(Json.Encode(ViewBag.gdeger));
-            /*
-             * Smart Notifications
-             */
             $('#btnSearch').click(function (e) {
                 $.bigBox({
-                    title: gveri + " Hastanın Borcu Vardır",
+                    title: " Hastanın Borcu Vardır",
                     content: "ÖDEMEDİĞİ İŞLEMLERİN LİSTESİ",
                     color: "#C46A69",
                     //timeout: 8000,
@@ -143,24 +119,14 @@
 
     });
 
-                $(document).ready(function () {
-                    $('#bolums').load("@Url.Action("_BolumListeleme", "CagriEkrani")");
-    });
-    //            $(document).ready(function () {
-    //                $("#bolums").change(function () {
-    //                    alert(this).val();
-    //                });
-    //});
-
             $(document).ready(function () {
-            var gveri = @Html.Raw(Json.Encode(ViewBag.gdeger));
-                $('#cagriEkrani').click(function (e) {
-                    $("#dt_basic3_3").dataTable().fnDestroy();
-                  $('#cagriEkraniList').load("@Url.Action("_PartialCagriEkrani", "CagriEkrani")", { bid: 2});
+                $('#cagriEkrani').click(function () {
                   $("#cagriEkraniModal").modal('show');
-            });
-    });
+                });
 
+                CagriEkraniBolumListele();
+
+    });
 
 
 </script>

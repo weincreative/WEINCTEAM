@@ -218,6 +218,35 @@ function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, cen
     return result;
 }
 
+
+function GetDisHareket(bid) {
+    var result;
+    $.ajax({
+        type: 'GET',
+        url: '../../View_HizmetDetay/_DisHHareket',
+        data: { id: bid },
+        async: false,
+        success: function (veri) {
+            result = veri;
+        }
+    });
+    return result;
+}
+
+function GetNewHizmet() {
+    var result;
+    $.ajax({
+        type: 'GET',
+        url: '../_NewHareket',
+        async: false,
+        success: function (veri) {
+            result = veri;
+        }
+    });
+    return result;
+}
+
+////////////RANDEVU/////////////
 function RandTblEkle(RandtblList, RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title, rt_aciklama, rt_baslangicsaat, rt_bitissaat, rt_classname, rt_icon, rt_allday, rt_createuser, rt_createdate, rt_basvurudr, rt_aktif) {
     RandtblNo++;
     var tempTc = rt_title.split(" ");
@@ -291,33 +320,6 @@ function RandTblEkle(RandtblList, RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title,
     tempClassName = null;
     var RandResult = [RandtblList, RandtblNo];
     return RandResult;
-}
-
-function GetDisHareket(bid) {
-    var result;
-    $.ajax({
-        type: 'GET',
-        url: '../../View_HizmetDetay/_DisHHareket',
-        data: { id: bid },
-        async: false,
-        success: function (veri) {
-            result = veri;
-        }
-    });
-    return result;
-}
-
-function GetNewHizmet() {
-    var result;
-    $.ajax({
-        type: 'GET',
-        url: '../_NewHareket',
-        async: false,
-        success: function (veri) {
-            result = veri;
-        }
-    });
-    return result;
 }
 
 function RandevuSil(Rrid) {
@@ -480,12 +482,9 @@ function RandevuDuzelt(_RandtblList) {
                 });
                 RandtblList = [];
                 RandtblNo = 0;
-                //location.reload();
             }
         },
         error: function () {
-            // bu kısımda eğer ajax işlemi başarısız ise
-            // hata mesajı verebiliriz.
             $.smallBox({
                 title: "HATA",
                 content: "<i class='fa fa-clock-o'></i> <i>Randevu Ekleme İşleminde hata oluştu...</i>",
@@ -520,7 +519,13 @@ function RandevuHastaListele() {
             $('#Hastalar').append(options);
         }
     }).fail(function (error) {
-        alert(error.StatusText);
+        $.smallBox({
+            title: "HATA",
+            content: "<i class='fa fa-clock-o'></i> <i>Hastalar Getirilirken hata oluştu...</i>",
+            color: "#818F9A",
+            iconSmall: "fa fa-times fa-2x fadeInRight animated",
+            timeout: 4000
+        });
     });
 
     $('#Hastalar').on("change", function () {
@@ -537,3 +542,61 @@ function AjaxCall(url, data, type) {
         contentType: 'application/json'
     });
 }
+///////////////////////////////////
+
+////////////////CAGRIEKRANI///////////////////
+//cagriekrani/BolumleriGetir
+function CagriEkraniBolumListele() {
+    AjaxCall('/CagriEkrani/BolumleriGetir', null).done(function (response) {
+        if (response.length > 0) {
+            $('#Bolumler').html('');
+            var options = '';
+            options += '<option id="" value="">Bölüm Seçiniz</option>';
+            response.forEach(function (entry) {
+                options += '<option id="' + entry.Index + '" value="' + entry.bolumlerID + '">' + entry.bolumlerADI + '</option>';
+            });
+            $('#Bolumler').append(options);
+        }
+    }).fail(function (error) {
+        $.smallBox({
+            title: "HATA",
+            content: "<i class='fa fa-clock-o'></i> <i>Çağrı Ekranı Bölüm Listelemede hata oluştu...</i>",
+            color: "#818F9A",
+            iconSmall: "fa fa-times fa-2x fadeInRight animated",
+            timeout: 4000
+        });
+    });
+
+    $('#Bolumler').on("change", function () {
+        var listelenecekHValue = $("input[name='hastaSec']:checked").val();
+        var seciliBolum = $('#Bolumler').val();
+        //setInterval(function () {
+        //    // KODLARI BURAYA YAZ
+        //}, 10000);
+            $.ajax({
+                url: '/CagriEkrani/PartialCagriEkrani',
+                type: 'GET',
+                data: { bsid: parseInt(seciliBolum), hcid: parseInt(listelenecekHValue) },
+                async: false,
+                success: function (partialView) {
+                    $("#dt_basic3_3").dataTable().fnDestroy();
+                    $('#cagriEkraniList').html(partialView);
+                    $('#cagriEkraniList').show();
+                }
+            });
+
+
+    });
+
+}
+function AjaxCall(url, data, type) {
+    return $.ajax({
+        url: url,
+        type: type ? type : 'GET',
+        data: data,
+        contentType: 'application/json'
+    });
+}
+
+
+///////////////////////////////////////
