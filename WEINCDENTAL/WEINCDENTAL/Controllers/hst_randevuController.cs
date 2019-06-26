@@ -20,6 +20,20 @@ namespace WEINCDENTAL.Controllers
             var hst_randevu = db.hst_randevu.Include(h => h.hst_hastakarti);
             return View(hst_randevu.ToList());
         }
+
+        [HttpGet]
+        public ActionResult HastaListele()
+        {
+            var sayac = 0;
+            var list = db.hst_hastakarti.Where(k => k.t_aktif == true).AsEnumerable().Select(e => new
+            {
+                Index = sayac,
+                titleDeger = e.t_tc + " " + e.t_adi + " " + e.t_soyadi
+            }).ToList();
+
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Randevular()
         {
             var list = db.hst_randevu.Where(k => k.t_aktif == true).AsEnumerable().Select(e => new

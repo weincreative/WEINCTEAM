@@ -20,15 +20,6 @@ namespace WEINCDENTAL.Controllers
             var adm_kullanicilar = db.adm_kullanicilar.Include(a => a.adm_kullanicigrup).Include(a => a.adm_modulyetki);
             return View(adm_kullanicilar.ToList());
         }
-
-        //public ActionResult getData()
-        //{
-        //    using (WEINCDENTALEntities db = new WEINCDENTALEntities())
-        //    {
-        //        var adm_kullanicilar = db.adm_kullanicilar.ToList<adm_kullanicilar>();
-        //        return Json(new { rows = adm_kullanicilar }, JsonRequestBehavior.AllowGet);
-        //    }
-        //}
         
         // GET: adm_kullanicilar/Details/5
         public ActionResult Details(int? id)

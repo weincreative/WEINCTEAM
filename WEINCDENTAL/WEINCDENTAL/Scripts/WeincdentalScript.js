@@ -224,7 +224,14 @@ function RandTblEkle(RandtblList, RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title,
     var date = new Date();
     var day = date.getDate();
     var month = date.getMonth();
+    var tempClassName = null;
     month = month + 1;
+
+    if (Array.isArray('rt_classname') != true) {
+        tempClassName = rt_classname;
+    } else {
+        tempClassName = rt_classname[1];
+    }
 
     if ((String(day)).length == 1)
         day = '0' + day;
@@ -252,7 +259,7 @@ function RandTblEkle(RandtblList, RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title,
                 "t_aciklama": rt_aciklama,
                 "t_baslangicsaat": rt_baslangicsaat,
                 "t_bitissaat": rt_baslangicsaat,
-                "t_classname": rt_classname,
+                "t_classname": tempClassName,
                 "t_icon": rt_icon,
                 "t_allday": rt_allday,
                 "t_createuser": rt_createuser,
@@ -271,7 +278,7 @@ function RandTblEkle(RandtblList, RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title,
                 "t_aciklama": rt_aciklama,
                 "t_baslangicsaat": rt_baslangicsaat,
                 "t_bitissaat": rt_bitissaat,
-                "t_classname": rt_classname,
+                "t_classname": tempClassName,
                 "t_icon": rt_icon,
                 "t_allday": rt_allday,
                 "t_createuser": rt_createuser,
@@ -281,6 +288,7 @@ function RandTblEkle(RandtblList, RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title,
             });
         }
     }
+    tempClassName = null;
     var RandResult = [RandtblList, RandtblNo];
     return RandResult;
 }
@@ -499,3 +507,33 @@ function RandevuDuzelt(_RandtblList) {
     });
 }
 
+//hst_randevu/HastaListele
+function RandevuHastaListele() {
+    AjaxCall('/hst_randevu/HastaListele', null).done(function (response) {
+        if (response.length > 0) {
+            $('#Hastalar').html('');
+            var options = '';
+            options += '<option id="" value="">Hasta Seçiniz</option>';
+            response.forEach(function (entry) {
+                options += '<option id="' + entry.Index + '" value="' + entry.titleDeger + '">' + entry.titleDeger + '</option>';
+            });
+            $('#Hastalar').append(options);
+        }
+    }).fail(function (error) {
+        alert(error.StatusText);
+    });
+
+    $('#Hastalar').on("change", function () {
+        var seciliHasta = $('#Hastalar').val();
+        $('#title').val(seciliHasta);
+    });
+
+}
+function AjaxCall(url, data, type) {
+    return $.ajax({
+        url: url,
+        type: type ? type : 'GET',
+        data: data,
+        contentType: 'application/json'
+    });
+}
