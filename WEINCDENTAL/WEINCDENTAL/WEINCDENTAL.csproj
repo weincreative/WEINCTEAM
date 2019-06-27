@@ -1141,7 +1141,7 @@
     <Content Include="Views\View_Vezne\ViewVezne_Index.cshtml" />
     <Content Include="Views\View_HizmetDetay\_DisHHareket.cshtml" />
     <Content Include="Views\Vezne\SearchBorc.cshtml" />
-    <Content Include="Views\DtoVezne\_Vezne.cshtml" />
+    <Content Include="Views\DtoVezne\_Vezne2.cshtml" />
     <Content Include="Views\View_HizmetDetay\_TEKDisHHareket.cshtml" />
     <Content Include="Views\CagriEkrani\Create.cshtml" />
     <Content Include="Views\CagriEkrani\Delete.cshtml" />
@@ -1166,6 +1166,7 @@
     <Content Include="Views\hst_randevu\Details.cshtml" />
     <Content Include="Views\hst_randevu\Edit.cshtml" />
     <Content Include="Views\hst_randevu\Randevu_Index.cshtml" />
+    <Content Include="Views\Vezne\_Vezne.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

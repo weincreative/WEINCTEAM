@@ -11,7 +11,7 @@
 
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.Hidden("odurum", (object)ViewBag.odurum)
+    @*@Html.Hidden("odurum", (object)ViewBag.odurum)*@
     <fieldset>
         <div class="row form-group">
             <label class="col-xs-2 col-lg-3 control-label"></label>
@@ -83,17 +83,17 @@
             </div>
         </div>
     </fieldset>
-    <fieldset id="borcGir">
+    @*<fieldset id="borcGir">
         <div class="row form-group">
             <label class="col-xs-2 col-lg-3 control-label"></label>
             <div class="col-xs-9 col-lg-6 inputGroupContainer" >
                 <div class="input-group">
-                    @Html.EditorFor(model => model.t_odenen, new { htmlAttributes = new { @class = "form-control", placeholder = "Ödenecek Miktar" } })
+                    @Html.EditorFor(model => model.t_odenen, new { htmlAttributes = new { @class = "form-control", placeholder = "Ödenecek Miktar", @id = "VPrice2" } })
                     <span class="input-group-addon">TL</span>
                 </div>
             </div>
         </div>
-    </fieldset>
+    </fieldset>*@
 
     <fieldset>
         <div class="row form-group">
@@ -121,18 +121,21 @@
 <script type="text/javascript">
     $(document).ready(function () {
       
-        document.getElementById("borcGir").style.display = 'none';
+        document.getElementById("AllPrice").style.display = 'none';
         $(":radio").change(function () {
             var deger = $(this).val();
             //1 ise tümü öde; 2 ise belirle
             if (deger == 1) {
                 document.getElementById("AllPrice").style.display = 'block';
-                document.getElementById("borcGir").style.display = 'none';
+                //document.getElementById("borcGir").style.display = 'none';
                 var price=parseFloat(@ViewBag.kalan);
                 $("#VPrice").val(price);
+                $("#VPrice").attr("readonly", "readonly");
+                //$("#VPrice").removeAttr("readonly");
             } else if (deger == 2) {
-                document.getElementById("AllPrice").style.display = 'none';
-                document.getElementById("borcGir").style.display = 'block';
+                $("#VPrice").removeAttr("readonly");
+                //document.getElementById("AllPrice").style.display = 'none';
+                //document.getElementById("borcGir").style.display = 'block';
             }
 
         });

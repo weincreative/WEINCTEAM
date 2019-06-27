@@ -207,6 +207,7 @@ function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, cen
             "t_odemevarmi": false,
             "t_firmaid": 1,
             "t_createuser": user,
+            "t_totalborc":0,
             "t_aktif": 1,
             "t_islemtarihi": zmn,
             "t_createdate": zmn,

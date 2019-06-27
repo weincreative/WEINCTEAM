@@ -242,18 +242,18 @@
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_basvuru" Type="int" />
-          <Property Name="t_tc" Type="nvarchar" MaxLength="12" />
-          <Property Name="t_title" Type="nvarchar" MaxLength="100" />
+          <Property Name="t_tc" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="t_title" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="t_aciklama" Type="nvarchar" MaxLength="200" />
-          <Property Name="t_baslangicsaat" Type="nvarchar" MaxLength="50" />
-          <Property Name="t_bitissaat" Type="nvarchar" MaxLength="50" />
+          <Property Name="t_baslangicsaat" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_bitissaat" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_classname" Type="nvarchar" MaxLength="50" />
           <Property Name="t_icon" Type="nvarchar" MaxLength="50" />
-          <Property Name="t_allday" Type="bit" />
-          <Property Name="t_createuser" Type="nvarchar" MaxLength="50" />
-          <Property Name="t_createdate" Type="datetime" />
-          <Property Name="t_basvurudr" Type="int" />
-          <Property Name="t_aktif" Type="bit" />
+          <Property Name="t_allday" Type="bit" Nullable="false" />
+          <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_createdate" Type="datetime" Nullable="false" />
+          <Property Name="t_basvurudr" Type="int" Nullable="false" />
+          <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="hst_ulke">
           <Key>
@@ -422,6 +422,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <PropertyRef Name="t_tc" />
             <PropertyRef Name="t_adi" />
             <PropertyRef Name="t_soyadi" />
+            <PropertyRef Name="DTarih" />
             <PropertyRef Name="t_basvurutarihi" />
             <PropertyRef Name="Doktoradi" />
             <PropertyRef Name="Hareketid" />
@@ -442,6 +443,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_tc" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DTarih" Type="date" Nullable="false" />
           <Property Name="t_basvurutarihi" Type="datetime" Nullable="false" />
           <Property Name="Doktoradi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Hareketid" Type="int" Nullable="false" />
@@ -725,7 +727,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_hst_randevu_hst_hastakarti">
-          <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="0..1" />
+          <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="1" />
           <End Role="hst_randevu" Type="Self.hst_randevu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="hst_hastakarti">
@@ -864,6 +866,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     [View_Vezne].[t_tc] AS [t_tc], 
     [View_Vezne].[t_adi] AS [t_adi], 
     [View_Vezne].[t_soyadi] AS [t_soyadi], 
+    [View_Vezne].[DTarih] AS [DTarih], 
     [View_Vezne].[t_basvurutarihi] AS [t_basvurutarihi], 
     [View_Vezne].[Doktoradi] AS [Doktoradi], 
     [View_Vezne].[Hareketid] AS [Hareketid], 
@@ -1271,18 +1274,18 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           </Key>
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="t_basvuru" Type="Int32" />
-          <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="t_title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_aciklama" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="t_baslangicsaat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="t_bitissaat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="t_baslangicsaat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_bitissaat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_classname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="t_icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="t_allday" Type="Boolean" />
-          <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="t_createdate" Type="DateTime" Precision="3" />
-          <Property Name="t_basvurudr" Type="Int32" />
-          <Property Name="t_aktif" Type="Boolean" />
+          <Property Name="t_allday" Type="Boolean" Nullable="false" />
+          <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_basvurudr" Type="Int32" Nullable="false" />
+          <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="hst_hastakarti" Relationship="Self.FK_hst_randevu_hst_hastakarti" FromRole="hst_randevu" ToRole="hst_hastakarti" />
         </EntityType>
         <EntityType Name="hst_ulke">
@@ -1446,6 +1449,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <PropertyRef Name="t_tc" />
             <PropertyRef Name="t_adi" />
             <PropertyRef Name="t_soyadi" />
+            <PropertyRef Name="DTarih" />
             <PropertyRef Name="t_basvurutarihi" />
             <PropertyRef Name="Doktoradi" />
             <PropertyRef Name="Hareketid" />
@@ -1466,6 +1470,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DTarih" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_basvurutarihi" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Doktoradi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Hareketid" Type="Int32" Nullable="false" />
@@ -1701,7 +1706,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_hst_randevu_hst_hastakarti">
-          <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="0..1" />
+          <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="1" />
           <End Role="hst_randevu" Type="Self.hst_randevu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="hst_hastakarti">
@@ -2308,6 +2313,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="t_tc" ColumnName="t_tc" />
                 <ScalarProperty Name="t_adi" ColumnName="t_adi" />
                 <ScalarProperty Name="t_soyadi" ColumnName="t_soyadi" />
+                <ScalarProperty Name="DTarih" ColumnName="DTarih" />
                 <ScalarProperty Name="t_basvurutarihi" ColumnName="t_basvurutarihi" />
                 <ScalarProperty Name="Doktoradi" ColumnName="Doktoradi" />
                 <ScalarProperty Name="Hareketid" ColumnName="Hareketid" />

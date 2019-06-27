@@ -1,0 +1,237 @@
+﻿@model IEnumerable<WEINCDENTAL.Models.View_Vezne>
+
+
+
+
+<div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false"
+     data-widget-colorbutton="false"
+     data-widget-sortable="false"
+     data-widget-deletebutton="false">
+
+    <header>
+        <span class="widget-icon"> <i class="fa fa-money"></i> </span>
+        <h2>Borç Sorgula </h2>
+
+    </header>
+    <!-- widget div-->
+    <div>
+
+        <div class="jarviswidget-editbox">
+
+        </div>
+        <!-- end widget edit box -->
+        <!-- widget content -->
+
+        <div class="widget-body no-padding">
+            <!-- this is what the user will see -->
+
+            <div>
+                <fieldset style="padding-top: 25px;">
+                    <div class="row col-lg-push-4 col-md-4">
+
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="T.C. No ile sorgula" id="Stc" name="tc">
+                            <div class="input-group-btn">
+                                <button class="btn btn-primary" type="submit" onclick="GetVezne()">
+                                    <i class="fa fa-search"></i> Sorgula
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </fieldset>
+            </div>
+            <hr />
+            <div id="loadVezne">
+                @{
+                    var list = Model.FirstOrDefault();
+                }
+
+                <fieldset class="col-lg-offset-1">
+                    @if (list !=null)
+                    {<h4 class="col-md-3"><span class="label label-success">T.C.No: @list.t_tc</span></h4>
+                    <h4 class="col-md-2"><span class="label label-default ">Ad: @list.t_adi</span></h4>
+                    <h4 class="col-md-2"> <span class="label label-default">Soyad: @list.t_soyadi</span></h4>
+                    <h4 class="col-md-3"> <span class="label label-default ">D.Tarihi: @list.DTarih.ToString()</span></h4>
+
+                }
+
+                </fieldset>
+                <hr />
+
+                <fieldset>
+                    <div id="dt_basic_wrapper" class="dataTables_wrapper form-inline no-footer">
+                        <!-- start widget head search-->
+                        <div class="dt-toolbar no-padding">
+                        </div>
+                        <!-- end widget head search -->
+                        <table id="dt_basic4" class="table table-striped table-bordered table-hover dataTable" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
+                            <thead>
+                                <tr role="row">
+                                    <!-- HEAD BAŞLANGICI -->
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Başvuru No</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Başvuru Tarihi</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Doktor Adı</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Hizmet Adı </th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Hizmet Tarihi</th>
+                                    <th data-hide="expand" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Ödenen </th>
+                                    <th data-hide="expand" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Kalan </th>
+                                    <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Tutar</th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Ödeme Tipi </th>
+                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"> Ödeme Tarihi </th>
+                                    <th data-class="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic4" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 50px;">İşlem Yap</th>
+                                    <!-- HEAD BİTİŞİ -->
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_basvuruid)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_basvurutarihi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Doktoradi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Hizmetadi)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Hizmettarih)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_odenen)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_kalan)
+                                        </td>
+                                        <td class="danger">
+                                            @Html.DisplayFor(modelItem => item.ToplamBorc)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Odemetip)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Odemetarih)
+                                        </td>
+
+                                        <td>
+                                            <a onclick="GetOdeme(@item.Hareketid,@item.t_odemevarmi)" href="javascript:void(0);" class="btn btn-labeled btn-success">
+                                                <span class="btn-label"><i class="glyphicon glyphicon-euro"></i></span>ÖdemeYap
+                                            </a>
+                                            <a @*onclick="GetOdeme(@item.HizHareketId,@item.Odemedurumu)"*@ href="javascript:void(0);" class="btn btn-labeled btn-danger">
+                                                <span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>Geri Al
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                            @if (Model.Count() != 0)
+                            {
+
+
+                                <tr style="color: red;">
+                                    <th>TOPLAM</th>
+                                    <th colspan="4"></th>
+                                    <th style="color: green;">@ViewBag.TotalOdenen</th>
+                                    <th>@ViewBag.TotalKalan</th>
+                                    <th>@ViewBag.TotalFiyat</th>
+                                    <th colspan="3"></th>
+
+
+                                </tr>
+                            }
+                        </table>
+                        <!-- start widget footer -->
+                        <div class="dt-toolbar-footer no-padding">
+                        </div>
+                        <!-- end widget footer -->
+                    </div>
+                </fieldset>
+
+
+            </div>
+
+
+
+        </div>
+        <!-- widget edit box -->
+        <!-- end widget content -->
+    </div>
+    <!-- end widget div -->
+</div>
+<!-- end widget -->
+<div class="modal fade" id="myModalCreateVezne" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <center>   <h4 class="modal-title" id="myModalLabel">Ödeme Yap</h4></center>
+            </div>
+            <div class="modal-body" id="loadPrice">
+                @*@Html.Action("_CreateVezne", "Vezne", new { id = 73 })*@
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info col-lg-offset-3 col-md-6 col-sm-6 col-xs-6 col-lg-6" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        var responsiveHelper_dt_basic = undefined;
+        var responsiveHelper_datatable_fixed_column = undefined;
+        var responsiveHelper_datatable_col_reorder = undefined;
+        var responsiveHelper_datatable_tabletools = undefined;
+        var breakpointDefinition = {
+            tablet: 1024,
+            phone: 480
+        };
+
+        $('#dt_basic4').dataTable({
+            "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
+                "t" +
+                "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+            "autoWidth": true,
+            "preDrawCallback": function () {
+                // Initialize the responsive datatables helper once.
+                if (!responsiveHelper_dt_basic) {
+                    responsiveHelper_dt_basic =
+                        new ResponsiveDatatablesHelper($('#dt_basic4'), breakpointDefinition);
+                }
+            },
+            "rowCallback": function (nRow) {
+                responsiveHelper_dt_basic.createExpandIcon(nRow);
+            },
+            "drawCallback": function (oSettings) {
+                responsiveHelper_dt_basic.respond();
+            }
+        });
+
+
+    });
+
+    function GetOdeme(hhid) {
+
+        $('#loadPrice').load("@Url.Action("_CreateVezne", "Vezne")",{ id: hhid});
+        $("#myModalCreateVezne").modal('show');
+    }
+</script>

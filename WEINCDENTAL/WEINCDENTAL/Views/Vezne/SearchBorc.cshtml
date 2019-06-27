@@ -33,7 +33,7 @@
 
                 <div id="loadVezne">
 
-                    @Html.Action("_Vezne", "DtoVezne", new { tc = ViewBag.tc })
+                    @Html.Action("_Vezne", new { tc = ViewBag.tc })
 
                 </div>
 
@@ -64,7 +64,7 @@
 
             } else {
 
-                $('#loadVezne').load("@Url.Action("_Vezne", "DtoVezne")", { tc: tc });
+                $('#loadVezne').load("@Url.Action("_Vezne")", { tc: tc });
 
             }
 

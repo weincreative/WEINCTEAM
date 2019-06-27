@@ -51,7 +51,7 @@ namespace WEINCDENTAL.Controllers
                 {
                     Index = sayac,
                     topOdeme = e.t_odenen
-                }).ToList().Count();
+                }).ToList().Sum(p=>p.topOdeme);
                 return Json(bugunAlinanOdemeTutari, JsonRequestBehavior.AllowGet);
             }
             return Json(null, JsonRequestBehavior.AllowGet);

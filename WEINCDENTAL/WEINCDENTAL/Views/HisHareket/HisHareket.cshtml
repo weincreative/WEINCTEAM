@@ -345,7 +345,7 @@
 
 
     function Gonder() {
-
+    
         $.ajax({
             type: "POST",
             data: JSON.stringify({ hst_his_hareket: list }),
@@ -356,20 +356,30 @@
                     var getdismodul = GetDisHareket(bid);
                     $('#refreshtbl').html(getdismodul);
                     var url = "../../Scripts/Remove.js";
-                    $.getScript(url, function () {
-                        TblRemove();
-                    });
+                    $.getScript(url,
+                        function() {
+                            TblRemove();
+                        });
 
                     var getnhizmet = GetNewHizmet();
                     $("#refNewTabl").html(getnhizmet);
                     var url2 = "../../Scripts/Remove.js";
-                    $.getScript(url2, function () {
-                        TblRemove();
-                    });
+                    $.getScript(url2,
+                        function() {
+                            TblRemove();
+                        });
                     list = [];
                     tblNo = 0;
-                   
 
+
+                } else {
+                    $.smallBox({
+                        title: "HATA",
+                        content: "<i class='fa fa-clock-o'></i> <i>Hizmet Eklenirken Bir Hata Meydana Geldi...</i>",
+                        color: "#C46A69",
+                        iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                        timeout: 2000
+                    });
                 }
 
             },
@@ -391,7 +401,40 @@
             TblRemove();
         });
     }
+    function Remove(id, HAd, disNo) {
+        //$.holdReady(true);
+        $.SmartMessageBox({
+                title: "UYARI!",
+                content: " Hizmet: " + HAd + "<div> Diş No: " + disNo + " olan hastanın hizmeti silinecektir.</div> <div><br></div><div>EMİN MİSİNİZ?</div>",
+                buttons: '[No][Yes]'
+            },
+            function (ButtonPressed) {
+                if (ButtonPressed === "Yes") {
+                    var rslt = HizmetRemove(id);
+                    if (rslt) {
+                        var getdismodul = GetDisHareket(bid);
+                        $('#refreshtbl').html(getdismodul);
+                        var url = "../../Scripts/Remove.js";
+                        $.getScript(url,
+                            function() {
+                                TblRemove();
+                            });
+                    }
+                   
 
+                }
+                if (ButtonPressed === "No") {
+                    $.smallBox({
+                        title: "İPTAL",
+                        content: "<i class='fa fa-clock-o'></i> <i>Silme işleminden vazgeçildi...</i>",
+                        color: "#C46A69",
+                        iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                        timeout: 4000
+                    });
+                }
+
+            });
+    }
 
 </script>
 

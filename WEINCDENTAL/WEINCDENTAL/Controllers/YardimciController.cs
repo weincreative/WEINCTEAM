@@ -94,7 +94,8 @@ namespace WEINCDENTAL.Controllers
         public decimal GetTotalOdenen(int id)
         {
             decimal totalOdenen = 0;
-            var vezne = db.View_Vezne.Where(k => k.t_borcdurum == true && k.Hareketid == id && k.t_odemevarmi == true).ToList();
+            var vezne = db.View_Vezne.Where(k => k.t_borcdurum == true && k.Hareketid == id && k.VezneAktif==true && k.HHareketAktif==true)
+                .ToList();
 
             if (vezne.Count!=0)
             {
@@ -108,13 +109,49 @@ namespace WEINCDENTAL.Controllers
             decimal kalan = 0;
             decimal tOdenen = GetTotalOdenen(id);
             var hfiyat =
-                db.View_HizmetDetay.Where(k => k.HHareketAktif == true && k.HizHareketId == id &&
-                                               k.t_borcdurum == true).Select(d=>d.t_fiyat).FirstOrDefault();
-             kalan = hfiyat - tOdenen;
+                db.View_Vezne.Where(k => k.HHareketAktif == true && k.Hareketid == id && k.VezneAktif==true &&
+                                               k.t_borcdurum == true).Select(d=>d.ToplamBorc).FirstOrDefault();
+            var o = hfiyat - tOdenen;
+            if (o != null) kalan = (decimal) o;
+
+            return kalan;
+        }
+        public decimal GetTotalOdenen(string tc)
+        {
+            decimal totalOdenen = 0;
+            var vezne = db.View_Vezne.Where(k => k.t_borcdurum == true && k.t_tc == tc && k.VezneAktif == true
+            && k.HHareketAktif==true)
+                .ToList();
+
+            if (vezne.Count != 0)
+            {
+                totalOdenen = vezne.Sum(d => d.t_odenen);
+            }
+            return totalOdenen;
+        }
+        public decimal GetKalanBorc(string tc)
+        {
+            decimal kalan = 0;
+            decimal tOdenen = GetTotalOdenen(tc);
+            decimal? tfiyat = GetTopTutar(tc);
+            var o = tfiyat - tOdenen;
+            if (o != null) kalan = (decimal)o;
 
             return kalan;
         }
 
+        public decimal GetTopTutar(string tc)
+        {
+            decimal tutar = 0;
+
+            var sum = db.View_Vezne.Where(k => k.HHareketAktif == true && k.t_tc == tc &&
+                                               k.VezneAktif == true &&
+                                               k.t_borcdurum == true).Sum(d => d.ToplamBorc);
+            if (sum != null)
+                tutar = (decimal) sum;
+
+            return tutar;
+        }
 
         //hizmethareket id ye göre tc...
         public string HH_GetTC(int? id)

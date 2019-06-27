@@ -68,7 +68,7 @@ namespace WEINCDENTAL.Controllers
                 }
                 return Json(durum, JsonRequestBehavior.AllowGet);
             }
-            catch (Exception )
+            catch (Exception ex)
             {
                 return Json(durum, JsonRequestBehavior.AllowGet);
             }
