@@ -10,7 +10,7 @@ using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,2")]
+    [Authorize(Roles = "1,3,4")]
     public class View_VezneController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();

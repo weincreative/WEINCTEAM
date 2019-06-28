@@ -127,7 +127,7 @@
                                             <a onclick="GetOdeme(@item.Hareketid,@item.t_odemevarmi)" href="javascript:void(0);" class="btn btn-labeled btn-success">
                                                 <span class="btn-label"><i class="glyphicon glyphicon-euro"></i></span>ÖdemeYap
                                             </a>
-                                            <a @*onclick="GetOdeme(@item.HizHareketId,@item.Odemedurumu)"*@ href="javascript:void(0);" class="btn btn-labeled btn-danger">
+                                            <a onclick="OdemeGeriAl(@item.VezneId,@item.t_tc)" href="javascript:void(0);" class="btn btn-labeled btn-danger">
                                                 <span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>Geri Al
                                             </a>
                                         </td>
@@ -193,10 +193,10 @@
 </div><!-- /.modal -->
 
 <script type="text/javascript">
-
+    
 
     $(document).ready(function () {
-
+      
         var responsiveHelper_dt_basic = undefined;
         var responsiveHelper_datatable_fixed_column = undefined;
         var responsiveHelper_datatable_col_reorder = undefined;
@@ -225,7 +225,7 @@
                 responsiveHelper_dt_basic.respond();
             }
         });
-
+       
 
     });
 
@@ -234,4 +234,6 @@
         $('#loadPrice').load("@Url.Action("_CreateVezne", "Vezne")",{ id: hhid});
         $("#myModalCreateVezne").modal('show');
     }
+    
+   
 </script>

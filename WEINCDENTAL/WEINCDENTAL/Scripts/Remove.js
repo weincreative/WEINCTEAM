@@ -118,3 +118,51 @@ function TblRemove() {
     });
 
 }
+
+function VezneRemove(vid) {
+    var rslt = false;
+   
+    $.ajax({
+        type: "POST",
+        url: "Delete",
+        contentType: 'application/json',
+        data: JSON.stringify({ vid: vid }),
+        dataType: "json",
+        async: false,
+        success: function (veri) {
+            if (veri == 1) {
+                $.smallBox({
+                    title: "BAŞARILI",
+                    content: "<i class='fa fa-clock-o'></i> <i>Silme işlemi başarılı...</i>",
+                    color: "#659265",
+                    iconSmall: "fa fa-check fa-2x fadeInRight animated",
+                    timeout: 4000
+                });
+                rslt = true;
+            } else {
+                $.smallBox({
+                    title: "HATA",
+                    content: "<i class='fa fa-clock-o'></i> <i>Silme işleminde hata oluştu...</i>",
+                    color: "#C46A69",
+                    iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                    timeout: 4000
+                });
+
+            }
+
+        },
+        error: function () {
+            // bu kısımda eğer ajax işlemi başarısız ise
+            // hata mesajı verebiliriz.
+            $.smallBox({
+                title: "HATA",
+                content: "<i class='fa fa-clock-o'></i> <i>Silme işleminde hata oluştu...</i>",
+                color: "#C46A69",
+                iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                timeout: 4000
+            });
+        }
+
+    });
+    return rslt;
+}

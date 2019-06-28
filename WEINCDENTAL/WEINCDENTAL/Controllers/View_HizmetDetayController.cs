@@ -10,6 +10,7 @@ using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Controllers
 {
+    [Authorize(Roles = "1,3,4,5")]
     public class View_HizmetDetayController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();

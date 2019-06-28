@@ -16,6 +16,7 @@ namespace WEINCDENTAL.Models
     
     public partial class View_Vezne
     {
+        public int VezneId { get; set; }
         public string t_tc { get; set; }
         public string t_adi { get; set; }
         public string t_soyadi { get; set; }
@@ -27,7 +28,6 @@ namespace WEINCDENTAL.Models
         public string Hizmetadi { get; set; }
         [DataType(DataType.Currency)]
         public decimal t_fiyat { get; set; }
-        [DataType(DataType.Currency)]
         public Nullable<decimal> ToplamBorc { get; set; }
         public System.DateTime Hizmettarih { get; set; }
         public bool t_odemevarmi { get; set; }

@@ -17,14 +17,20 @@ namespace WEINCDENTAL.Models
     public partial class hst_vezne
     {
         public int t_id { get; set; }
+        [Required]
         public Nullable<int> t_hareketid { get; set; }
+        [Required]
         [DataType(DataType.Currency)]
+        [Range(0, int.MaxValue, ErrorMessage = "Yanlýþ deðer girdiniz...")]
         public decimal t_odenen { get; set; }
         [DataType(DataType.Currency)]
         public decimal t_kalan { get; set; }
+        [Required]
         public int t_odemetipi { get; set; }
         public string t_createuser { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime t_odemetarih { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime t_createdate { get; set; }
         public bool t_aktif { get; set; }
     

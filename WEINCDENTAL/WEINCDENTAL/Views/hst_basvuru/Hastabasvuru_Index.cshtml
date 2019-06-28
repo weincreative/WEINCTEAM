@@ -39,6 +39,9 @@
                         <span class="widget-icon"> <i class="fa fa-leaf"></i> </span>
                         <h2>Başvurular </h2>
                         <div class="widget-toolbar" role="menu">
+                            <button class="btn btn-warning btn-lg" onclick="location.href='@Url.Action("Randevu_Index", "hst_randevu",new{tc=@ViewBag.tc})'">
+                                Randevu Oluştur
+                            </button>
                             <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalCreateBasvuru">
                                 Yeni Başvuru Aç
                             </button>

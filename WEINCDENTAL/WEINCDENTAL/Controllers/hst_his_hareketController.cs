@@ -11,6 +11,7 @@ using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Controllers
 {
+    [Authorize(Roles = "1,3,4,5")]
     public class hst_his_hareketController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();

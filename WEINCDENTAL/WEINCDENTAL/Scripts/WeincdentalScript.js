@@ -247,6 +247,20 @@ function GetNewHizmet() {
     return result;
 }
 
+function GetNewVezne(htc) {
+    var result;
+    $.ajax({
+        type: 'GET',
+        url: '_Vezne',
+        data: { tc: htc },
+        async: false,
+        success: function (veri) {
+            result = veri;
+        }
+    });
+    return result;
+}
+
 ////////////RANDEVU/////////////
 function RandTblEkle(RandtblList, RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title, rt_aciklama, rt_baslangicsaat, rt_bitissaat, rt_classname, rt_icon, rt_allday, rt_createuser, rt_createdate, rt_basvurudr, rt_aktif) {
     RandtblNo++;
@@ -509,28 +523,32 @@ function RandevuDuzelt(_RandtblList) {
 
 //hst_randevu/HastaListele
 function RandevuHastaListele() {
-    AjaxCall('/hst_randevu/HastaListele', null).done(function (response) {
-        if (response.length > 0) {
-            $('#Hastalar').html('');
-            var options = '';
-            options += '<option id="" value="">Hasta Seçiniz</option>';
-            response.forEach(function (entry) {
-                options += '<option id="' + entry.Index + '" value="' + entry.titleDeger + '">' + entry.titleDeger + '</option>';
-            });
-            $('#Hastalar').append(options);
-        }
-    }).fail(function (error) {
-        $.smallBox({
-            title: "HATA",
-            content: "<i class='fa fa-clock-o'></i> <i>Hastalar Getirilirken hata oluştu...</i>",
-            color: "#818F9A",
-            iconSmall: "fa fa-times fa-2x fadeInRight animated",
-            timeout: 4000
-        });
-    });
-
+    //AjaxCall('/hst_randevu/HastaListele', null).done(function (response) {
+    //    if (response.length > 0) {
+    //        $('#Hastalar').html('');
+    //        var options = '';
+    //        options += '<option id="" value="">Hasta Seçiniz</option>';
+    //        response.forEach(function (entry) {
+    //            options += '<option id="' + entry.Index + '" value="' + entry.titleDeger + '">' + entry.titleDeger + '</option>';
+    //        });
+    //        $('#Hastalar').append(options);
+    //    }
+    //}).fail(function (error) {
+    //    $.smallBox({
+    //        title: "HATA",
+    //        content: "<i class='fa fa-clock-o'></i> <i>Hastalar Getirilirken hata oluştu...</i>",
+    //        color: "#818F9A",
+    //        iconSmall: "fa fa-times fa-2x fadeInRight animated",
+    //        timeout: 4000
+    //    });
+    //});
+    var e = document.getElementById("Hastalar");
+    var seciliHasta = e.options[e.selectedIndex].innerHTML;
+    $('#title').val();
+    $('#title').val(seciliHasta);
     $('#Hastalar').on("change", function () {
-        var seciliHasta = $('#Hastalar').val();
+        var e = document.getElementById("Hastalar");
+        var seciliHasta = e.options[e.selectedIndex].innerHTML;
         $('#title').val(seciliHasta);
     });
 

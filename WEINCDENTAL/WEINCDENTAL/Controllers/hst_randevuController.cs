@@ -10,13 +10,33 @@ using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Controllers
 {
+    [Authorize(Roles = "1,3,4,5")]
     public class hst_randevuController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
 
         // GET: hst_randevu
-        public ActionResult Randevu_Index()
+        public ActionResult Randevu_Index(string tc)
         {
+
+            if (tc == null)
+            {
+                ViewBag.t_tc = new SelectList(db.hst_hastakarti.Where(k => k.t_aktif == true).Select(d => new { HstTCkNo = d.t_tc, HstAd = d.t_tc + " " + d.t_adi+" "+d.t_soyadi}), "HstTCkNo", "HstAd");
+            }
+            else
+            {
+                List<hst_hastakarti> list = null;
+                list = db.hst_hastakarti.Where(k => k.t_aktif == true).ToList();
+                List<SelectListItem> itemList = (from i in list
+                                                 select new SelectListItem
+                                                 {
+                                                     Value = i.t_tc,
+                                                     Text = i.t_tc +" "+i.t_adi+" "+i.t_soyadi,
+                                                     Selected = i.t_tc == tc
+                                                 }).ToList();
+                ViewBag.t_tc = itemList;
+            }
+
             var hst_randevu = db.hst_randevu.Include(h => h.hst_hastakarti);
             return View(hst_randevu.ToList());
         }

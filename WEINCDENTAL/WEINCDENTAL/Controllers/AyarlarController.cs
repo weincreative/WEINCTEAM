@@ -7,7 +7,7 @@ using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,2")]
+    [Authorize(Roles = "1")]
     public class AyarlarController : Controller
     {
         // GET: Ayarlar
