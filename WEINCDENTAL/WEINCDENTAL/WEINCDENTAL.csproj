@@ -153,6 +153,7 @@
     <Compile Include="Controllers\hst_his_hareketController.cs" />
     <Compile Include="Controllers\hst_hizmetController.cs" />
     <Compile Include="Controllers\hst_randevuController.cs" />
+    <Compile Include="Controllers\IstatistikController.cs" />
     <Compile Include="Controllers\Ortak.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\VezneController.cs" />
@@ -1056,7 +1057,9 @@
     <Content Include="Scripts\plugin\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="Scripts\plugin\ckeditor\skins\moono\readme.md" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Istatistik\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
