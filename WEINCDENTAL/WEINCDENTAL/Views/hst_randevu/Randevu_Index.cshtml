@@ -301,7 +301,6 @@
                 };
                 // store the Event Object in the DOM element so we can get to it later
                 e.data('eventObject', eventObject);
-
                 // make the event draggable using jQuery UI
                 e.draggable({
                     zIndex: 999,
@@ -412,6 +411,7 @@
                     //var RandResult = RandTblEkle(RandtblList,RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title, rt_aciklama, rt_baslangicsaat, rt_bitissaat, rt_classname, rt_icon, rt_allday, rt_createuser, rt_createdate, rt_basvurudr, rt_aktif);
                     //alert(info.start);
                     //alert(info.end);
+                    //alert(info.className);
                     if (info.end != null) {
                         if (info.id != null) {
                             //alert("DROP tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);
@@ -461,6 +461,7 @@
                     //var RandResult = RandTblEkle(RandtblList,RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title, rt_aciklama, rt_baslangicsaat, rt_bitissaat, rt_classname, rt_icon, rt_allday, rt_createuser, rt_createdate, rt_basvurudr, rt_aktif);
                     //alert(info.start);
                     //alert(info.end);
+                    //alert(info.className);
                     if (info.end != null) {
                         if (info.id != null) {
                             //alert("RESIZE tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);

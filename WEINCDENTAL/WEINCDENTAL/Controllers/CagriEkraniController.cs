@@ -35,10 +35,29 @@ namespace WEINCDENTAL.Controllers
             return Json(list, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
-        public PartialViewResult PartialCagriEkrani(int bsid ,int hcid)
+        public PartialViewResult PartialCagriEkrani(int bsid, int hcid)
         {
+            ViewBag.Cagirildi = 0;
+            if (hcid == 2)
+            {
+                ViewBag.Cagirildi = 2;
+                var cagrilcakList = db.hst_basvuru.Where(x => x.t_cagriekraniistem == 1).Where(x => x.t_bolumkodu == bsid).Where(x => x.t_basvurudr == hcid);
+                return PartialView(cagrilcakList.ToList());
+
+            }
+            else if (hcid == 1)
+            {
+                ViewBag.Cagirildi = 1;
                 var cagrilcakList = db.hst_basvuru.Where(x => x.t_cagriekraniistem == 0).Where(x => x.t_bolumkodu == bsid).Where(x => x.t_basvurudr == hcid);
                 return PartialView(cagrilcakList.ToList());
+            }
+            else if (hcid == 0)
+            {
+                ViewBag.Cagirildi = 0;
+                var cagrilcakList = db.hst_basvuru.Where(x => x.t_cagriekraniistem == 0).Where(x => x.t_bolumkodu == bsid).Where(x => x.t_basvurudr == hcid);
+                return PartialView(cagrilcakList.ToList());
+            }
+            return PartialView();
         }
 
         [HttpPost]

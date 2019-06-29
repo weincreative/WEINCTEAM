@@ -4,39 +4,57 @@
 
 <article class="col-sm-12 col-md-12 col-lg-6" id="dinamikBilgi">
     <fieldset>
-        
+
         <section class="form-group col-md-3">
-            <label class="col-md-4 control-label">T.C. :</label>
-            @Html.DisplayFor(model => model.t_tc, new { @class = "col-md-6 control-label" })
-              
+            <h5>
+                <span>
+                    <label class="col-md-4 label label-info">T.C. :</label>
+                    <label class="col-md-8 label label-default">@Html.DisplayFor(model => model.t_tc)</label>
+                </span>
+            </h5>
         </section>
-     
+
         <section class="form-group col-md-3">
-            <label class="col-md-3 control-label">Ad:</label>
-            <label class="col-md-6 control-label">@ViewBag.Ad</label>
-            
-              
+            <h5>
+                <span>
+                    <label class="col-md-4 label label-info">Ad:</label>
+                    <label class="col-md-8 label label-default">@ViewBag.Ad</label>
+                </span>
+            </h5>
         </section>
         @*<section class="form-group col-md-3">
             <label class="col-md-4 control-label">Soyad:</label>
             @Html.DisplayFor(model => model.t_soyadi, new { @class = "col-md-6 control-label" })
-               
+
 
         </section>*@
-       
+
+        @*<button type="button" class="btn btn-labeled btn-success">
+            <span class="btn-label">
+                <i class="glyphicon glyphicon-ok"></i>
+                </>Success
+        </button>*@
+        @*<h4 class="col-md-3"> <span class="label label-default ">D.Tarihi: @list.DTarih.ToString()</span></h4>*@
+
         <section class="form-group col-md-3">
-            <label class="col-md-5 control-label">D.Tarihi:</label>
-            @Html.DisplayFor(model => model.t_dogumtarihi, new { @class = "col-md-5 control-label" })
-                
+            <h5>
+            <span>
+                <label class="col-md-4 label label-info">D.Tar:</label>
+                <label class="col-md-8 label label-default">@Html.DisplayFor(model => model.t_dogumtarihi) </label>
+            </span>
+            </h5>
         </section>
         <section class="form-group col-md-3">
-            <label class="col-md-5 control-label">Telefon:</label>
-            @Html.DisplayFor(model => model.t_tel1, new { @class = "col-md-6 control-label" })
-              
+            <h5>
+                <span>
+                    <label class="col-md-4 label label-info">Tel:</label>
+                    <label class="col-md-8 label label-default">@Html.DisplayFor(model => model.t_tel1) </label>
+                </span>
+            </h5>
         </section>
-     
-         
-      
+
+
+
 
     </fieldset>
 </article>

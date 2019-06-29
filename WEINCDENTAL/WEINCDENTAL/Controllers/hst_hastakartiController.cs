@@ -106,6 +106,7 @@ namespace WEINCDENTAL.Controllers
             ViewBag.tc = id;
             return View();
         }
+
         public ActionResult Create2()
         {
             ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi");
@@ -222,7 +223,7 @@ namespace WEINCDENTAL.Controllers
         }
 
         // GET: hst_hastakarti/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult DeleteESKI(string id)
         {
             if (id == null)
             {
@@ -237,14 +238,24 @@ namespace WEINCDENTAL.Controllers
         }
 
         // POST: hst_hastakarti/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        [HttpPost]
+        public JsonResult Delete(string tc)
         {
-            hst_hastakarti hst_hastakarti = db.hst_hastakarti.Find(id);
-            db.hst_hastakarti.Remove(hst_hastakarti);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            var sonuc = 0;
+            try
+            {
+                hst_hastakarti hastakartiRem = db.hst_hastakarti.Find(tc);
+                hastakartiRem.t_aktif = false;
+                db.Entry(hastakartiRem).State = EntityState.Modified;
+                db.SaveChanges();
+                sonuc = 1;
+                return Json(sonuc, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(sonuc, JsonRequestBehavior.AllowGet);
+            }
+
         }
 
         protected override void Dispose(bool disposing)

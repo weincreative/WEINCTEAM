@@ -477,6 +477,7 @@
     <Content Include="Content\img\violate.jpg" />
     <Content Include="Content\img\voicecommand\active-btn.gif" />
     <Content Include="Content\img\vt-menu.png" />
+    <Content Include="Content\klinikImage\akademi-black-left.png" />
     <Content Include="Content\klinikImage\arkaplan.png" />
     <Content Include="Content\klinikImage\bacground.jpg" />
     <Content Include="Content\klinikImage\clinic-logo-2.png" />
@@ -539,6 +540,8 @@
     <Content Include="Content\klinikImage\disImage\yetiskin\48.png" />
     <Content Include="Content\klinikImage\favicon\favicon.ico" />
     <Content Include="Content\klinikImage\logo.png" />
+    <Content Include="Content\klinikImage\yeni-akademi-black-left.png" />
+    <Content Include="Content\klinikImage\yeni_akademi_main_logo.png" />
     <Content Include="Content\sound\bigbox.mp3" />
     <Content Include="Content\sound\license.txt" />
     <Content Include="Content\sound\messagebox.mp3" />

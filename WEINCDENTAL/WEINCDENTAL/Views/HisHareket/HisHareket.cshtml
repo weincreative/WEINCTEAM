@@ -11,51 +11,40 @@
     <!-- row -->
     <div class="row">
         <!-- col -->
-        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
             <h1 class="page-title txt-color-blueDark">
-                <!-- PAGE HEADER -->
                 <i class="fa-fw fa fa-bookmark"></i>
                 Diş Hizmet Girişi
             </h1>
 
-
-            <fieldset class="col-lg-push-2">
+            <fieldset class="col-lg-push-3 padding-bottom-2">
                 <div class="btn-group btn-group-justified" data-toggle="buttons" style="width: 25%;">
-                   
-                        <label class="ddisCene-btn1 btn btn-default dCene">
-                            <input type="checkbox" id="chckDis" name="cene" value="1" />
-                        </label>
-                   
-
-                        <label class="ddisCene-btn2 btn btn-default dCene">
-                            <input type="checkbox" id="chckDis" name="cene" value="2"  />
-                        </label>
-                   
-                   
+                    <label class="ddisCene-btn1 btn btn-default dCene">
+                        <input type="checkbox" id="chckDis" name="cene" value="1" />
+                    </label>
+                    <label class="ddisCene-btn2 btn btn-default dCene padding-left-5">
+                        <input type="checkbox" id="chckDis" name="cene" value="2" />
+                    </label>
                 </div>
             </fieldset>
 
-            <fieldset class="col-lg-push-2">
+            <fieldset class="col-lg-push-3">
                 <div class="btn-group btn-group-justified" data-toggle="buttons" style="width: 25%;">
-                   
-                        <label class="ddisCene-btn3 btn btn-default dCene">
-                            <input type="checkbox" id="chckDis" name="cene" value="3" >
-                        </label>
-                    
-                        <label class="ddisCene-btn4 btn btn-default dCene ">
-                            <input type="checkbox" id="chckDis" name="cene" value="4">
-                        </label>
-                   
-                  
-                   
+                    <label class="ddisCene-btn3 btn btn-default dCene">
+                        <input type="checkbox" id="chckDis" name="cene" value="3">
+                    </label>
+                    <label class="ddisCene-btn4 btn btn-default dCene padding-left-5">
+                        <input type="checkbox" id="chckDis" name="cene" value="4">
+                    </label>
                 </div>
             </fieldset>
 
 
             <br />
-            <br />
-            <br />
-          
+                <br />
+                <br />
+
         </div>
     </div>
 
@@ -154,23 +143,27 @@
         border: none;
         background-position: center;
     }
-    .btn-group-justified >  .ddisCene-btn1 {
+
+    .btn-group-justified > .ddisCene-btn1 {
         background-image: url("/Content/klinikImage/disImage/cene/SAGUST.png");
         background-repeat: no-repeat;
     }
 
-    .btn-group-justified >  .ddisCene-btn2 {
+    .btn-group-justified > .ddisCene-btn2 {
         background-image: url("/Content/klinikImage/disImage/cene/SOLUST.png");
         background-repeat: no-repeat;
     }
-    .btn-group-justified >  .ddisCene-btn3 {
+
+    .btn-group-justified > .ddisCene-btn3 {
         background-image: url("/Content/klinikImage/disImage/cene/SAGALT.png");
         background-repeat: no-repeat;
     }
-    .btn-group-justified >  .ddisCene-btn4 {
+
+    .btn-group-justified > .ddisCene-btn4 {
         background-image: url("/Content/klinikImage/disImage/cene/SOLALT.png");
         background-repeat: no-repeat;
     }
+
     .ddisCene-btn:focus {
         color: #fff;
         box-shadow: 0 0 0 0.3rem rgba(40,167,69,.5);
@@ -184,7 +177,7 @@
         border-color: #28a745;
     }
 
-    .btn-group-justified >  .btn.active {
+    .btn-group-justified > .btn.active {
         color: #fff;
         background-color: rgba(40,167,69,.5);
         box-shadow: 0 0 0 0.3rem rgba(40, 167, 69, .5);
@@ -217,7 +210,7 @@
     $(document).ready(function () {
 
         TblRemove();
-        
+
         $(":checkbox").change(function () {
             var deger=0;
             if (this.checked) {
@@ -280,7 +273,7 @@
         hizmetFiyat = SHFiyat;
     }
 
-   
+
 
     function SeciliDis(SDid) {
         secilenDis = SDid;
@@ -345,7 +338,7 @@
 
 
     function Gonder() {
-    
+
         $.ajax({
             type: "POST",
             data: JSON.stringify({ hst_his_hareket: list }),
@@ -420,7 +413,7 @@
                                 TblRemove();
                             });
                     }
-                   
+
 
                 }
                 if (ButtonPressed === "No") {

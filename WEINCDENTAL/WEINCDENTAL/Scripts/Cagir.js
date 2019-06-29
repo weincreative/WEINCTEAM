@@ -15,7 +15,7 @@
                     iconSmall: "fa fa-check fa-2x fadeInRight animated",
                     timeout: 4000
                 });
-                location.reload(); 
+                //location.reload(); 
             } else {
                 $.smallBox({
                     title: "HATA",

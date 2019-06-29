@@ -9,8 +9,7 @@
             </span>
         </span>
         <!-- breadcrumb -->
-        <ol class="breadcrumb">
-        </ol>
+        <ol class="breadcrumb"></ol>
     </article>
 
     <!-- end breadcrumb -->
@@ -56,14 +55,17 @@
                             <div class="btn-group btn-group-sm btn-group-justified" data-toggle="buttons">
                                 <label class="btn btn-default active">
                                     <input type="radio" name="hastaSec" id="icon-1" value="0" checked>
+                                    Bekleyen
                                     <i class="fa fa-warning text-muted"></i>
                                 </label>
                                 <label class="btn btn-default">
                                     <input type="radio" name="hastaSec" id="icon-3" value="1">
+                                    Çağırılan
                                     <i class="fa fa-check text-muted"></i>
                                 </label>
                                 <label class="btn btn-default">
                                     <input type="radio" name="hastaSec" id="icon-6" value="2">
+                                    Baktığım
                                     <i class="fa fa-clock-o text-muted"></i>
                                 </label>
                             </div>
@@ -73,6 +75,11 @@
                             <select class="form-control" id="Bolumler" name="Bolumler">
                                 <option id="" value="Select"> Bölüm Seçiniz </option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-default  btn-warning col-md-12 col-sm-12 col-xs-12 col-lg-12" type="button" id="cagriListesiYenile">
+                                <i class="fa fa-check"></i> Listeyi Yenile
+                            </button>
                         </div>
                     </fieldset>
                 </div>
@@ -104,20 +111,20 @@
         }
     });
 
-        $(document).ready(function () {
-            $('#btnSearch').click(function (e) {
-                $.bigBox({
-                    title: " Hastanın Borcu Vardır",
-                    content: "ÖDEMEDİĞİ İŞLEMLERİN LİSTESİ",
-                    color: "#C46A69",
-                    //timeout: 8000,
-                    icon: "fa fa-bell swing animated",
-                    number: "1"
-                });
-                //e.preventDefault();
-            });
+    //    $(document).ready(function () {
+    //        $('#btnSearch').click(function (e) {
+    //            $.bigBox({
+    //                title: " Hastanın Borcu Vardır",
+    //                content: "ÖDEMEDİĞİ İŞLEMLERİN LİSTESİ",
+    //                color: "#C46A69",
+    //                //timeout: 8000,
+    //                icon: "fa fa-bell swing animated",
+    //                number: "1"
+    //            });
+    //            //e.preventDefault();
+    //        });
 
-    });
+    //});
 
             $(document).ready(function () {
                 $('#cagriEkrani').click(function () {

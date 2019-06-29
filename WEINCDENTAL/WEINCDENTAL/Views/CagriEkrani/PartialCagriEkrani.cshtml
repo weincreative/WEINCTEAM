@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<WEINCDENTAL.Models.hst_basvuru>
 
+
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget jarviswidget-color-red" id="wid-id-4" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-colorbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
     <!-- widget options:
@@ -17,7 +18,7 @@
     -->
     <header>
         <span class="widget-icon"> <i class="fa fa-reorder"></i> </span>
-        <h2>Çağrı Listesi</h2>
+        <h2>Hasta Çağrı Listesi</h2>
     </header>
     <!-- widget div-->
     <div>
@@ -37,9 +38,9 @@
                     <thead>
                         <tr role="row">
                             <!-- HEAD BAŞLANGICI -->
-                            <th data-hide="phone,tablet" class="sorting_asc" tabindex="0" aria-controls="dt_basic3_3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;"><i class="fa fa-fw fa-key text-muted hidden-md hidden-sm hidden-xs"></i> Başvuru Numarası</th>
-                            <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3_3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;"><i class="fa fa-fw  fa-stethoscope text-muted hidden-md hidden-sm hidden-xs"></i> Hasta Adı</th>
-                            <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3_3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;"><i class="fa fa-fw  fa-stethoscope text-muted hidden-md hidden-sm hidden-xs"></i> Hasta Soyadı</th>
+                            <th data-hide="phone,tablet" class="sorting_asc" tabindex="0" aria-controls="dt_basic3_3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 10px;"><i class="fa fa-fw fa-key text-muted hidden-md hidden-sm hidden-xs"></i> Başvuru Numarası</th>
+                            <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3_3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 35px;"><i class="fa fa-fw  fa-stethoscope text-muted hidden-md hidden-sm hidden-xs"></i> Hasta Adı</th>
+                            <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3_3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 35px;"><i class="fa fa-fw  fa-stethoscope text-muted hidden-md hidden-sm hidden-xs"></i> Hasta Soyadı</th>
                             <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_3" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 50px;"><i class="fa fa-edit text-muted hidden-md hidden-sm hidden-xs"></i> İşlem Yap</th>
                             <!-- HEAD BİTİŞİ -->
                         </tr>
@@ -50,47 +51,73 @@
                         {
                             foreach (var item in Model)
                             {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.t_id)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.hst_hastakarti.t_adi)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.hst_hastakarti.t_soyadi)
-                            </td>
-                            <td>
-                                <a onclick="Cagir('@item.t_id')" class="btn btn-labeled btn-danger">
-                                    <span class="btn-label">
-                                        <i class="glyphicon glyphicon-export"></i>
-                                    </span>Çağır
-                                </a>
-                                <a class="btn btn-labeled btn-warning" href="@Url.Action("HisHareket","HisHareket",new{@id=@item.t_id})">
-                                    <span class="btn-label">
-                                        <i class="glyphicon glyphicon-new-window"></i>
-                                    </span>Diş Hizmet Gir
-                                </a>
-                            </td>
-                        </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.t_id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.hst_hastakarti.t_adi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.hst_hastakarti.t_soyadi)
+                                    </td>
+                                    @if (@ViewBag.Cagirildi == 2)
+                                    {
+                                        <td>
+                                            <a onclick="Cagir('@item.t_id')" class="btn btn-labeled btn-danger" disabled>
+                                                <span class="btn-label">
+                                                    <i class="glyphicon glyphicon-export"></i>
+                                                </span>Çağır
+                                            </a>
+                                            <a class="btn btn-labeled btn-warning" href="@Url.Action("HisHareket", "HisHareket", new { @id = @item.t_id })">
+                                                <span class="btn-label">
+                                                    <i class="glyphicon glyphicon-new-window"></i>
+                                                </span>Diş Hizmet
+                                            </a>
+                                        </td>
+                                    }
+                                    else if (@ViewBag.Cagirildi == 1)
+                                    {
+                                        <td>
+                                            <a onclick="Cagir('@item.t_id')" class="btn btn-labeled btn-danger" disabled>
+                                                <span class="btn-label">
+                                                    <i class="glyphicon glyphicon-export"></i>
+                                                </span>Çağır
+                                            </a>
+                                            <a class="btn btn-labeled btn-warning" href="@Url.Action("HisHareket", "HisHareket", new { @id = @item.t_id })">
+                                                <span class="btn-label">
+                                                    <i class="glyphicon glyphicon-new-window"></i>
+                                                </span>Diş Hizmet
+                                            </a>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <a onclick="Cagir('@item.t_id')" class="btn btn-labeled btn-danger">
+                                                <span class="btn-label">
+                                                    <i class="glyphicon glyphicon-export"></i>
+                                                </span>Çağır
+                                            </a>
+                                            <a class="btn btn-labeled btn-warning" href="@Url.Action("HisHareket", "HisHareket", new { @id = @item.t_id })" disabled>
+                                                <span class="btn-label">
+                                                    <i class="glyphicon glyphicon-new-window"></i>
+                                                </span>Diş Hizmet
+                                            </a>
+                                        </td>
+                                    }
+                                </tr>
                             }
                         }
                         <!-- BODY BİTİŞİ -->
                     </tbody>
-                </table>
-                <!-- start widget footer -->
-                <div class="dt-toolbar-footer no-padding">
+                </table><!-- start widget footer --><div class="dt-toolbar-footer no-padding">
 
-                </div>
-                <!-- end widget footer -->
+                </div><!-- end widget footer -->
             </div>
-        </div>
-        <!-- end widget content -->
-    </div>
-    <!-- end widget div -->
-</div>
-<!-- end widget -->
-<!-- Widget ID (each widget will need unique ID)-->
+        </div><!-- end widget content -->
+    </div><!-- end widget div -->
+</div><!-- end widget --><!-- Widget ID (each widget will need unique ID)-->
 <script src="~/Scripts/Cagir.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -125,6 +152,3 @@
 
     });
 </script>
-
-
-

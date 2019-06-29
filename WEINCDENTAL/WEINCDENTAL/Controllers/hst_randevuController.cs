@@ -30,7 +30,7 @@ namespace WEINCDENTAL.Controllers
                 List<SelectListItem> itemList = (from i in list
                                                  select new SelectListItem
                                                  {
-                                                     Value = i.t_tc,
+                                                     Value = i.t_tc + " " + i.t_adi + " " + i.t_soyadi,
                                                      Text = i.t_tc +" "+i.t_adi+" "+i.t_soyadi,
                                                      Selected = i.t_tc == tc
                                                  }).ToList();

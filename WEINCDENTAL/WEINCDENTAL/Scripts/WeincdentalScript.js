@@ -207,7 +207,7 @@ function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, cen
             "t_odemevarmi": false,
             "t_firmaid": 1,
             "t_createuser": user,
-            "t_totalborc":0,
+            "t_totalborc": 0,
             "t_aktif": 1,
             "t_islemtarihi": zmn,
             "t_createdate": zmn,
@@ -271,10 +271,10 @@ function RandTblEkle(RandtblList, RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title,
     var tempClassName = null;
     month = month + 1;
 
-    if (Array.isArray('rt_classname') != true) {
-        tempClassName = rt_classname;
-    } else {
+    if (rt_classname.length <= 2) {
         tempClassName = rt_classname[1];
+    } else {
+        tempClassName = rt_classname;
     }
 
     if ((String(day)).length == 1)
@@ -542,15 +542,19 @@ function RandevuHastaListele() {
     //        timeout: 4000
     //    });
     //});
+
     var e = document.getElementById("Hastalar");
     var seciliHasta = e.options[e.selectedIndex].innerHTML;
-    $('#title').val();
-    $('#title').val(seciliHasta);
+    if (seciliHasta != null || seciliHasta.length > 0 || seciliHasta != "--Hasta Seçiniz--") {
+        $('#title').val(seciliHasta);
+    }
+
     $('#Hastalar').on("change", function () {
         var e = document.getElementById("Hastalar");
         var seciliHasta = e.options[e.selectedIndex].innerHTML;
         $('#title').val(seciliHasta);
     });
+
 
 }
 function AjaxCall(url, data, type) {
@@ -586,26 +590,47 @@ function CagriEkraniBolumListele() {
         });
     });
 
-    $('#Bolumler').on("change", function () {
+    //$('#Bolumler').on("change", function () {
+    //    var listelenecekHValue = $("input[name='hastaSec']:checked").val();
+    //    var seciliBolum = $('#Bolumler').val();
+    //    //setInterval(function () {
+    //    //    // KODLARI BURAYA YAZ
+    //    //}, 10000);
+    //        $.ajax({
+    //            url: '/CagriEkrani/PartialCagriEkrani',
+    //            type: 'GET',
+    //            data: { bsid: parseInt(seciliBolum), hcid: parseInt(listelenecekHValue) },
+    //            async: false,
+    //            success: function (partialView) {
+    //                $("#dt_basic3_3").dataTable().fnDestroy();
+    //                $('#cagriEkraniList').html(partialView);
+    //                $('#cagriEkraniList').show();
+    //            }
+    //        });
+
+
+    //});
+
+    $('#cagriListesiYenile').click(function () {
         var listelenecekHValue = $("input[name='hastaSec']:checked").val();
         var seciliBolum = $('#Bolumler').val();
-        //setInterval(function () {
-        //    // KODLARI BURAYA YAZ
-        //}, 10000);
-            $.ajax({
-                url: '/CagriEkrani/PartialCagriEkrani',
-                type: 'GET',
-                data: { bsid: parseInt(seciliBolum), hcid: parseInt(listelenecekHValue) },
-                async: false,
-                success: function (partialView) {
-                    $("#dt_basic3_3").dataTable().fnDestroy();
-                    $('#cagriEkraniList').html(partialView);
-                    $('#cagriEkraniList').show();
-                }
-            });
+        $.ajax({
+            url: '/CagriEkrani/PartialCagriEkrani',
+            type: 'GET',
+            data: { bsid: parseInt(seciliBolum), hcid: parseInt(listelenecekHValue) },
+            async: true,
+            success: function (partialView) {
+                $("#dt_basic3_3").dataTable().fnDestroy();
+                $('#cagriEkraniList').html(partialView);
+                $('#cagriEkraniList').show();
+            }
+        });
 
 
     });
+
+
+
 
 }
 function AjaxCall(url, data, type) {

@@ -35,11 +35,11 @@
                     <header>
                         <span class="widget-icon"> <i class="fa fa-plus-square"></i> </span>
                         <h2>Hasta Listesi </h2>
-                        <div class="widget-toolbar" role="menu">
+                        @*<div class="widget-toolbar" role="menu">
                             <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalCreateKULLANICILAR">
                                 Yeni Oluştur
                             </button>
-                        </div>
+                        </div>*@
                     </header>
                     <!-- widget div-->
                     <div>
@@ -126,14 +126,14 @@
                                                 </td>
 
                                                 <td>
-                                                    @*@Html.ActionLink("Düzenle", "../adm_kullanicilar/Edit", new { id = item.t_id }) |
-                                                        @Html.ActionLink("Sil", "../adm_kullanicilar/Delete", new { id = item.t_id })*@
+                                                    <a onclick="Remove(@item.t_tc)" class="btn btn-labeled btn-danger">
+                                                        <span class="btn-label">
+                                                            <i class="glyphicon glyphicon-trash"></i>
+                                                        </span>Sil
+                                                    </a>
                                                 </td>
                                             </tr>
                                         }
-
-
-
 
                                         <!-- BODY BİTİŞİ -->
                                     </tbody>
@@ -154,7 +154,8 @@
         </div>
     </section>
 </div>
-<!-- Modal -->
+
+@*<!-- Modal -->
 <div class="modal fade" id="myModalCreateKULLANICILAR" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -165,24 +166,28 @@
                 <h4 class="modal-title" id="myModalLabel">Kullanıcı Oluştur</h4>
             </div>
             <div class="modal-body">
-                @Html.Action("Create", "adm_kullanicilar")
+                @Html.Action("CreateNoLayout", "hst_hastakarti")
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
                     Kapat
                 </button>
-                @*<button value="Submit" class="btn btn-primary" id="SubmitBTN">
+                <button value="Submit" class="btn btn-primary" id="SubmitBTN">
                         Post Article
-                    </button>*@
+                    </button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+</div><!-- /.modal -->*@
 
 
+
+<script src="~/Scripts/Remove.js"></script>
+<script src="~/Scripts/WeincdentalScript.js"></script>
+<script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>
 @section pagespecific {
     <script type="text/javascript">
-       
+
 
         $(document).ready(function () {
             var responsiveHelper_dt_basic = undefined;
@@ -214,7 +219,29 @@
             });
         })
 
-      
+        function Remove(hastaTc) {
+            $.SmartMessageBox({
+                title: "UYARI!",
+                content: " Hastanın hastakartı silinecektir.</div> <div><br></div><div>EMİN MİSİNİZ?</div>",
+                buttons: '[No][Yes]'
+            },
+                function (ButtonPressed) {
+                    if (ButtonPressed === "Yes") {
+                        HastaKartiRemove(hastaTc);
+
+                    }
+                    if (ButtonPressed === "No") {
+                        $.smallBox({
+                            title: "İPTAL",
+                            content: "<i class='fa fa-clock-o'></i> <i>Silme işleminden vazgeçildi...</i>",
+                            color: "#C46A69",
+                            iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                            timeout: 4000
+                        });
+                    }
+
+                });
+        }
 
     </script>
 }
