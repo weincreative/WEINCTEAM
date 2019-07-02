@@ -19,13 +19,17 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_his_hareket
         public ActionResult Index()
         {
-            var hst_his_hareket = db.hst_his_hareket.Include(h => h.hst_basvuru).Include(h => h.hst_cene_uygunmu).Include(h => h.hst_firma).Include(h => h.hst_hizmet);
-            return View(hst_his_hareket.ToList());
+            try
+            {
+                var hst_his_hareket = db.hst_his_hareket.Include(h => h.hst_basvuru).Include(h => h.hst_cene_uygunmu).Include(h => h.hst_firma).Include(h => h.hst_hizmet);
+                return View(hst_his_hareket.ToList());
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
         }
         
-        
-
-
         // GET: hst_his_hareket/Details/5
         public ActionResult Details(int? id)
         {
@@ -44,11 +48,18 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_his_hareket/Create
         public ActionResult Create()
         {
-            ViewBag.t_basvuruid = new SelectList(db.hst_basvuru, "t_id", "t_basvuru");
-            ViewBag.t_cene = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi");
-            ViewBag.t_firmaid = new SelectList(db.hst_firma, "t_id", "t_fad");
-            ViewBag.t_hizmetkodu = new SelectList(db.hst_hizmet, "t_id", "t_adi");
-            return View();
+            try
+            {
+                ViewBag.t_basvuruid = new SelectList(db.hst_basvuru, "t_id", "t_basvuru");
+                ViewBag.t_cene = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi");
+                ViewBag.t_firmaid = new SelectList(db.hst_firma, "t_id", "t_fad");
+                ViewBag.t_hizmetkodu = new SelectList(db.hst_hizmet, "t_id", "t_adi");
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
         }
 
         // POST: hst_his_hareket/Create

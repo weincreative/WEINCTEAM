@@ -18,57 +18,79 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_randevu
         public ActionResult Randevu_Index(string tc)
         {
-
-            if (tc == null)
+            try
             {
-                ViewBag.t_tc = new SelectList(db.hst_hastakarti.Where(k => k.t_aktif == true).Select(d => new { HstTCkNo = d.t_tc, HstAd = d.t_tc + " " + d.t_adi+" "+d.t_soyadi}), "HstTCkNo", "HstAd");
+                if (tc == null)
+                {
+                    ViewBag.t_tc = new SelectList(db.hst_hastakarti.Where(k => k.t_aktif == true).Select(d => new { HstTCkNo = d.t_tc, HstAd = d.t_tc + " " + d.t_adi + " " + d.t_soyadi }), "HstTCkNo", "HstAd");
+                }
+                else
+                {
+                    List<hst_hastakarti> list = null;
+                    list = db.hst_hastakarti.Where(k => k.t_aktif == true).ToList();
+                    List<SelectListItem> itemList = (from i in list
+                                                     select new SelectListItem
+                                                     {
+                                                         Value = i.t_tc + " " + i.t_adi + " " + i.t_soyadi,
+                                                         Text = i.t_tc + " " + i.t_adi + " " + i.t_soyadi,
+                                                         Selected = i.t_tc == tc
+                                                     }).ToList();
+                    ViewBag.t_tc = itemList;
+                }
+
+                var hst_randevu = db.hst_randevu.Include(h => h.hst_hastakarti);
+                return View(hst_randevu.ToList());
             }
-            else
+            catch (Exception ex)
             {
-                List<hst_hastakarti> list = null;
-                list = db.hst_hastakarti.Where(k => k.t_aktif == true).ToList();
-                List<SelectListItem> itemList = (from i in list
-                                                 select new SelectListItem
-                                                 {
-                                                     Value = i.t_tc + " " + i.t_adi + " " + i.t_soyadi,
-                                                     Text = i.t_tc +" "+i.t_adi+" "+i.t_soyadi,
-                                                     Selected = i.t_tc == tc
-                                                 }).ToList();
-                ViewBag.t_tc = itemList;
+                return View();
             }
 
-            var hst_randevu = db.hst_randevu.Include(h => h.hst_hastakarti);
-            return View(hst_randevu.ToList());
         }
 
         [HttpGet]
         public ActionResult HastaListele()
         {
-            var sayac = 0;
-            var list = db.hst_hastakarti.Where(k => k.t_aktif == true).AsEnumerable().Select(e => new
+            try
             {
-                Index = sayac,
-                titleDeger = e.t_tc + " " + e.t_adi + " " + e.t_soyadi
-            }).ToList();
+                var sayac = 0;
+                var list = db.hst_hastakarti.Where(k => k.t_aktif == true).AsEnumerable().Select(e => new
+                {
+                    Index = sayac,
+                    titleDeger = e.t_tc + " " + e.t_adi + " " + e.t_soyadi
+                }).ToList();
 
-            return Json(list, JsonRequestBehavior.AllowGet);
+                return Json(list, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
+
         }
 
         public ActionResult Randevular()
         {
-            var list = db.hst_randevu.Where(k => k.t_aktif == true).AsEnumerable().Select(e => new
+            try
             {
-                id = e.t_id,
-                title = e.t_tc + " " + e.hst_hastakarti.t_adi + " " + e.hst_hastakarti.t_soyadi,
-                description = e.t_aciklama,
-                start = Convert.ToDateTime(e.t_baslangicsaat),
-                end = Convert.ToDateTime(e.t_bitissaat),
-                allDay = e.t_allday,
-                className = "event, " + e.t_classname,
-                icon = e.t_icon
-            }).ToList();
+                var list = db.hst_randevu.Where(k => k.t_aktif == true).AsEnumerable().Select(e => new
+                {
+                    id = e.t_id,
+                    title = e.t_tc + " " + e.hst_hastakarti.t_adi + " " + e.hst_hastakarti.t_soyadi,
+                    description = e.t_aciklama,
+                    start = Convert.ToDateTime(e.t_baslangicsaat),
+                    end = Convert.ToDateTime(e.t_bitissaat),
+                    allDay = e.t_allday,
+                    className = "event, " + e.t_classname,
+                    icon = e.t_icon
+                }).ToList();
 
-            return Json(list, JsonRequestBehavior.AllowGet);
+                return Json(list, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
         }
 
         [HttpPost]

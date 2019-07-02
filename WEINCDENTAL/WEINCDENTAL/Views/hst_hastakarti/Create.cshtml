@@ -2,7 +2,7 @@
 @model WEINCDENTAL.Models.hst_hastakarti
 
 @{
-    
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -65,7 +65,7 @@
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <fieldset>
                                     <div class="row">
-                                        @Html.HiddenFor(model=>model.yabancimi,new{id="Yabanci"})
+                                        @Html.HiddenFor(model => model.yabancimi, new { id = "Yabanci" })
                                         <section class="col col-6">
                                             <label class="checkbox">
                                                 <input type="checkbox" name="subscription" id="subscription">
@@ -75,7 +75,7 @@
                                         <section class="col col-6" id="ulkeid">
                                             <label class="select">
                                                 <i></i>
-                                                @Html.DropDownList("t_ulkeId", null, htmlAttributes: new {@class = "form-control", placeholder = "Ülke Seçiniz"})
+                                                @Html.DropDownList("t_ulkeId", null, htmlAttributes: new { @class = "form-control", placeholder = "Ülke Seçiniz" })
                                                 @Html.ValidationMessageFor(model => model.t_ulkeId)
 
                                             </label>
@@ -86,7 +86,7 @@
                                         <section class="col col-6">
                                             <label class="input">
                                                 <i class="icon-prepend fa fa-tag"></i>
-                                                @Html.EditorFor(model => model.t_tc, new { htmlAttributes = new { @class = "form-control", placeholder = "T.C. / Yabancı Uyruklu Numarası",@Value=@ViewBag.tc}})
+                                                @Html.EditorFor(model => model.t_tc, new { htmlAttributes = new { @class = "form-control", placeholder = "T.C. / Yabancı Uyruklu Numarası", @Value = @ViewBag.tc } })
                                                 @Html.ValidationMessageFor(model => model.t_tc)
 
                                             </label>
@@ -94,7 +94,7 @@
                                         <section class="col col-6">
                                             <label class="input">
                                                 <i class="icon-prepend fa fa-user"></i>
-                                                @Html.EditorFor(model => model.t_adi, new { htmlAttributes = new { @class = "form-control", placeholder = "Ad Giriniz"}})
+                                                @Html.EditorFor(model => model.t_adi, new { htmlAttributes = new { @class = "form-control", placeholder = "Ad Giriniz" } })
                                                 @Html.ValidationMessageFor(model => model.t_adi)
 
                                             </label>
@@ -125,7 +125,8 @@
                                             <label class="input">
                                                 <i class="icon-append fa fa-calendar"></i>
                                                 @Html.EditorFor(model => model.t_dogumtarihi,"{0:yyyy-MM-dd}" ,new { htmlAttributes = new { @class = "form-control", @id = "startdate",
-                                               placeholder = "Doğum tarihini giriniz" ,onchange = "CheckDateTypeIsValid(this)"
+                                               placeholder = "Doğum tarihini giriniz"
+                                               //placeholder = "Doğum tarihini giriniz" ,onchange = "CheckDateTypeIsValid(this)"
                                            }
                                            })
                                                 @Html.ValidationMessageFor(model => model.t_dogumtarihi)
@@ -155,7 +156,7 @@
                                         <section class="col col-6">
                                             <label class="select">
                                                 <i></i>
-                                                @Html.DropDownList("t_cinsiyet", null, "--Cinsiyet Seç--", htmlAttributes: new { @class = "form-control", placeholder = "Cinsiyet Seçiniz"})
+                                                @Html.DropDownList("t_cinsiyet", null, "--Cinsiyet Seç--", htmlAttributes: new { @class = "form-control", placeholder = "Cinsiyet Seçiniz" })
                                                 @Html.ValidationMessageFor(model => model.t_cinsiyet)
                                             </label>
                                         </section>
@@ -212,6 +213,22 @@
 
 
                             }
+                            @*@if (ViewBag.HataMessage != null)
+                            {
+                                <script type="text/javascript">
+                                    window.onload = function () {
+                                        alert("@ViewBag.HataMessage");
+                                    };
+                                    $.smallBox({
+                                        title: "",
+                                        content: "<i class='fa fa-clock-o'></i> <i> "+ @ViewBag.HataMessage +".</i>",
+                                        //content: "<i class='fa fa-clock-o'></i> <i> HASTA KARTINDA HATA OLUŞTU.</i>",
+                                        color: "#818F9A",
+                                        iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                                        timeout: 4000
+                                    });
+                                </script>
+                            }*@
                         </div>
                         <!-- end widget content -->
                     </div>
@@ -250,10 +267,11 @@
                document.getElementById("ulkeid").style.display = 'none';
             }
             document.getElementById("Yabanci").value = x;
-           
-           
+
+
         });
 
+        @Html.Raw(Json.Encode(ViewBag.DynamicScripts));
 
         $(document).ready(function () {
             //alttaki kodu silme.
@@ -289,84 +307,86 @@
 
 
             });
-            var $checkoutForm = $('#checkout-form').validate({
-                // Rules for form validation
-                rules: {
-                    fname: {
-                        required: true
-                    },
-                    tcname: {
-                        required: true
-                    },
-                    startdate: {
-                        required: true
-                    },
-                    lname: {
-                        required: true
-                    },
-                    phone: {
-                        required: true
-                    },
-                    dyeriname: {
-                        required: true
-                    },
-                    address: {
-                        required: true
-                    },
-                    gender: {
-                        required: true
-                    },
-                    medeni: {
-                        required: true
-                    },
-                    name: {
-                        required: true
-                    }
-                },
+            //var $checkoutForm = $('#checkout-form').validate({
+            //    // Rules for form validation
+            //    rules: {
+            //        fname: {
+            //            required: true
+            //        },
+            //        tcname: {
+            //            required: true
+            //        },
+            //        startdate: {
+            //            required: true
+            //        },
+            //        lname: {
+            //            required: true
+            //        },
+            //        phone: {
+            //            required: true
+            //        },
+            //        dyeriname: {
+            //            required: true
+            //        },
+            //        address: {
+            //            required: true
+            //        },
+            //        gender: {
+            //            required: true
+            //        },
+            //        medeni: {
+            //            required: true
+            //        },
+            //        name: {
+            //            required: true
+            //        }
+            //    },
 
-                // Messages for form validation
-                messages: {
-                    fname: {
-                        required: 'Lütfen Hastanın Adını Giriniz'
+            //    // Messages for form validation
+            //    messages: {
+            //        fname: {
+            //            required: 'Lütfen Hastanın Adını Giriniz'
 
-                    },
-                    lname: {
-                        required: 'Lütfen Hastanın Soyadını Giriniz'
-                    },
-                    dyeriname: {
-                        required: 'Lütfen Hastanın Doğum Yerini Giriniz'
-                    },
-                    tcname: {
-                        required: 'Lütfen T.C.No /Yabancı Uyruk No giriniz'
-                    },
-                    startdate: {
-                        required: 'Lütfen Doğum tarihini  giriniz'
-                    },
-                    phone: {
-                        required: 'Lütfen Hastanın Telefon No Giriniz'
-                    },
-                    address: {
-                        required: 'Lütfen Hastanın Adresini Giriniz'
-                    },
-                    gender: {
-                        required: 'Lütfen Cinsiyet Seçiniz'
-                    },
-                    medeni: {
-                        required: 'Lütfen Medeni Durum Seçiniz'
-                    }
-                },
+            //        },
+            //        lname: {
+            //            required: 'Lütfen Hastanın Soyadını Giriniz'
+            //        },
+            //        dyeriname: {
+            //            required: 'Lütfen Hastanın Doğum Yerini Giriniz'
+            //        },
+            //        tcname: {
+            //            required: 'Lütfen T.C.No /Yabancı Uyruk No giriniz'
+            //        },
+            //        startdate: {
+            //            required: 'Lütfen Doğum tarihini  giriniz'
+            //        },
+            //        phone: {
+            //            required: 'Lütfen Hastanın Telefon No Giriniz'
+            //        },
+            //        address: {
+            //            required: 'Lütfen Hastanın Adresini Giriniz'
+            //        },
+            //        gender: {
+            //            required: 'Lütfen Cinsiyet Seçiniz'
+            //        },
+            //        medeni: {
+            //            required: 'Lütfen Medeni Durum Seçiniz'
+            //        }
+            //    },
 
-                // Do not change code below
-                errorPlacement: function (error, element) {
-                    error.insertAfter(element.parent());
-                }//,
-                //success: function (element) {
-                //   // alert("burda");
-                //  //  $(element).closest('.checkout-form').find('.help-block').html('');
+            //    // Do not change code below
+            //    errorPlacement: function (error, element) {
+            //        error.insertAfter(element.parent());
+            //    }//,
+            //    //success: function (element) {
+            //    //   // alert("burda");
+            //    //  //  $(element).closest('.checkout-form').find('.help-block').html('');
 
-                //}
-            });
+            //    //}
+            //});
 
+
+            @*@if (ViewBag.IsOptPropSet && ViewBag.OptProp != null)*@
 
             // DO NOT REMOVE : GLOBAL FUNCTIONS!
             $('#startdate').datepicker({

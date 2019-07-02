@@ -34,7 +34,7 @@ namespace WEINCDENTAL.Controllers
                                                  Value = i.t_id.ToString(),
                                                  Text = i.t_adi
                                              }).ToList();
-          
+
             return Json(new { sonuc = itemList, JsonRequestBehavior.AllowGet });
         }
 
@@ -78,7 +78,7 @@ namespace WEINCDENTAL.Controllers
             ViewBag.Ad = ad_soyad;
 
             Ortak._hastayas = new YardimciController().GetYas(id);
-            
+
             return PartialView(hst_hastakarti);
         }
 
@@ -86,35 +86,50 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_hastakarti/Create
         public ActionResult Create()
         {
-            string id = Ortak._hastatc;
-            ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi");
-            ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi");
-            ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi");
-            ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi");
-            List<hst_ulke> ulke = null;
-            ulke = db.hst_ulke.Where(k => k.Aktif == true).ToList();
-            List<SelectListItem> itemList = (from i in ulke
-                                             select new SelectListItem
-                                             {
-                                                 Value = i.CountryID.ToString(),
-                                                 Text = i.CountryName,
-                                                 Selected = i.CountryID == 212
-                                             }).ToList();
+            try
+            {
+                string id = Ortak._hastatc;
+                ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi");
+                ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi");
+                ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi");
+                ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi");
+                List<hst_ulke> ulke = null;
+                ulke = db.hst_ulke.Where(k => k.Aktif == true).ToList();
+                List<SelectListItem> itemList = (from i in ulke
+                                                 select new SelectListItem
+                                                 {
+                                                     Value = i.CountryID.ToString(),
+                                                     Text = i.CountryName,
+                                                     Selected = i.CountryID == 212
+                                                 }).ToList();
 
-            // ViewBag.t_ulkeId = new SelectList(db.hst_ulke, "CountryID", "CountryName");
-            ViewBag.t_ulkeId = itemList;
-            ViewBag.tc = id;
-            return View();
+                // ViewBag.t_ulkeId = new SelectList(db.hst_ulke, "CountryID", "CountryName");
+                ViewBag.t_ulkeId = itemList;
+                ViewBag.tc = id;
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Create", "hst_hastakarti");
+            }
+
         }
 
         public ActionResult Create2()
         {
-            ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi");
-            ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi");
-            ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi");
-            ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi");
-            ViewBag.t_ulkeId = new SelectList(db.hst_ulke, "CountryID", "CountryName");
-            return View();
+            try
+            {
+                ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi");
+                ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi");
+                ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi");
+                ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi");
+                ViewBag.t_ulkeId = new SelectList(db.hst_ulke, "CountryID", "CountryName");
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Create2", "hst_hastakarti");
+            }
         }
 
         // POST: hst_hastakarti/Create
@@ -124,71 +139,86 @@ namespace WEINCDENTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "t_id,t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_ulkeId,t_ilId,t_ilceId,t_adres,t_createuser,t_createdate,t_aktif,yabancimi")] hst_hastakarti hst_hastakarti)
         {
-
-            var yabanci = hst_hastakarti.yabancimi;
-
-            // yabancı uyruklu checkbox işaretli ise..
-            if (yabanci)
+            try
             {
-                hst_hastakarti.t_ilId = null;
-                hst_hastakarti.t_ilceId = null;
+                var yabanci = hst_hastakarti.yabancimi;
 
-            }
-            else
-            {
-                hst_hastakarti.t_ulkeId = 212;
-            }
+                // yabancı uyruklu checkbox işaretli ise..
+                if (yabanci)
+                {
+                    hst_hastakarti.t_ilId = null;
+                    hst_hastakarti.t_ilceId = null;
 
-            // mesaj=0 hiç bir uyarı yok.
-            // mesaj=1 başarılı.
-            // mesaj=2 başarısız.
-            int mesaj = 0;
-            List<hst_ulke> country = null;
-            country = db.hst_ulke.Where(k => k.Aktif == true).ToList();
-            List<SelectListItem> itemList = (from i in country
-                                             select new SelectListItem
-                                             {
-                                                 Value = i.CountryID.ToString(),
-                                                 Text = i.CountryName,
-                                                 Selected = i.CountryID == 212
-                                             }).ToList();
-            ViewBag.t_ulkeId = itemList;
-            if (ModelState.IsValid)
-            {
-                hst_hastakarti.t_createdate = DateTime.Now;
-                hst_hastakarti.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
-                hst_hastakarti.t_aktif = true;
+                }
+                else
+                {
+                    hst_hastakarti.t_ulkeId = 212;
+                }
 
-                db.hst_hastakarti.Add(hst_hastakarti);
-                db.SaveChanges();
-                // return View();
-                mesaj = 1;
+                // mesaj=0 hiç bir uyarı yok.
+                // mesaj=1 başarılı.
+                // mesaj=2 başarısız.
+                int mesaj = 0;
+                List<hst_ulke> country = null;
+                country = db.hst_ulke.Where(k => k.Aktif == true).ToList();
+                List<SelectListItem> itemList = (from i in country
+                                                 select new SelectListItem
+                                                 {
+                                                     Value = i.CountryID.ToString(),
+                                                     Text = i.CountryName,
+                                                     Selected = i.CountryID == 212
+                                                 }).ToList();
+                ViewBag.t_ulkeId = itemList;
+                if (ModelState.IsValid)
+                {
+                    hst_hastakarti.t_createdate = DateTime.Now;
+                    hst_hastakarti.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
+                    hst_hastakarti.t_aktif = true;
 
+                    db.hst_hastakarti.Add(hst_hastakarti);
+                    db.SaveChanges();
+                    // return View();
+                    mesaj = 1;
+
+                    ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi", hst_hastakarti.t_cinsiyet);
+                    ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi", hst_hastakarti.t_ilId);
+                    ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi", hst_hastakarti.t_ilceId);
+                    ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi", hst_hastakarti.t_medenidurum);
+                    ViewBag.Message = mesaj;
+                    Ortak._hastatc = hst_hastakarti.t_tc;
+                    return RedirectToAction("HastaBasvuruCreate", "hst_basvuru", new { id = hst_hastakarti.t_tc });
+                }
+                mesaj = 2;
                 ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi", hst_hastakarti.t_cinsiyet);
                 ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi", hst_hastakarti.t_ilId);
                 ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi", hst_hastakarti.t_ilceId);
                 ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi", hst_hastakarti.t_medenidurum);
                 ViewBag.Message = mesaj;
-                Ortak._hastatc = hst_hastakarti.t_tc;
-                return RedirectToAction("HastaBasvuruCreate","hst_basvuru",new{id=hst_hastakarti.t_tc});
+                return View(hst_hastakarti);
+
             }
-            mesaj = 2;
-            ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi", hst_hastakarti.t_cinsiyet);
-            ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi", hst_hastakarti.t_ilId);
-            ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi", hst_hastakarti.t_ilceId);
-            ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi", hst_hastakarti.t_medenidurum);
-            ViewBag.Message = mesaj;
-            return View(hst_hastakarti);
+            catch (Exception ex)
+            {
+                //return Content("<script language='javascript' type='text/javascript'>console.log('Hasta Kartını KAYDEDEMEDİM MK ');</script>");
+                //ViewBag.DynamicScripts = "console.log('hatalikayit LAA');";
+                //Response.Write("<script>alert('" + Server.HtmlEncode(ex.Message) + "')</script>");
+                //ViewBag.HataMessage = ex.Message;
+                return RedirectToAction("Create", "hst_hastakarti");
+
+
+                //location.href = '@Url.Action("ayarlar", "home")'"
+            }
+
         }
 
         // GET: hst_hastakarti/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string tc)
         {
-            if (id == null)
+            if (tc == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            hst_hastakarti hst_hastakarti = db.hst_hastakarti.Find(id);
+            hst_hastakarti hst_hastakarti = db.hst_hastakarti.Find(tc);
             if (hst_hastakarti == null)
             {
                 return HttpNotFound();
@@ -206,20 +236,37 @@ namespace WEINCDENTAL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "t_id,t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_ulkeId,t_ilId,t_ilceId,t_adres,t_createuser,t_createdate,t_aktif")] hst_hastakarti hst_hastakarti)
+        public ActionResult Edit([Bind(Include = "yabancimi,t_id,t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_ulkeId,t_ilId,t_ilceId,t_adres,t_createuser,t_createdate,t_aktif")] hst_hastakarti hst_hastakarti)
+        //public ActionResult Edit([Bind(Include = "t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_adres")] hst_hastakarti hst_hastakarti)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(hst_hastakarti).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                hst_hastakarti.yabancimi = false;
+                hst_hastakarti.t_id = 4;
+                hst_hastakarti.t_ulkeId = 212;
+                hst_hastakarti.t_ilId = 39;
+                hst_hastakarti.t_ilceId = 440;
+                hst_hastakarti.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
+                hst_hastakarti.t_createdate = DateTime.Now;
+                hst_hastakarti.t_dogumtarihi = DateTime.Now;
+                hst_hastakarti.t_aktif = true;
+                if (ModelState.IsValid)
+                {
+                    db.Entry(hst_hastakarti).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("hastakarti_index");
+                }
+                ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi", hst_hastakarti.t_cinsiyet);
+                ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi", hst_hastakarti.t_ilId);
+                ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi", hst_hastakarti.t_ilceId);
+                ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi", hst_hastakarti.t_medenidurum);
+                ViewBag.t_ulkeId = new SelectList(db.hst_ulke, "CountryID", "BinaryCode", hst_hastakarti.t_ulkeId);
+                return View(hst_hastakarti);
             }
-            ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi", hst_hastakarti.t_cinsiyet);
-            ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi", hst_hastakarti.t_ilId);
-            ViewBag.t_ilceId = new SelectList(db.hst_ilce, "t_id", "t_adi", hst_hastakarti.t_ilceId);
-            ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi", hst_hastakarti.t_medenidurum);
-            ViewBag.t_ulkeId = new SelectList(db.hst_ulke, "CountryID", "BinaryCode", hst_hastakarti.t_ulkeId);
-            return View(hst_hastakarti);
+            catch (Exception ex)
+            {
+                return RedirectToAction("hastakarti_index", "hst_hastakarti");
+            }
         }
 
         // GET: hst_hastakarti/Delete/5

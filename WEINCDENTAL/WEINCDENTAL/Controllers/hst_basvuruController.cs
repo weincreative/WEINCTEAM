@@ -117,35 +117,42 @@ namespace WEINCDENTAL.Controllers
         public ActionResult Create([Bind(Include = "t_id,t_basvuru,t_tc,t_basvurutarihi,t_bolumkodu,t_cagriekraniistem,t_basvurudr,t_taburcu,t_createdate,t_createuser,t_aktif")] hst_basvuru hst_basvuru)
         {
 
-            Ortak o=new Ortak();
-            int son=o.GetSonIndex();
-            hst_basvuru.t_basvuru = (son + 1).ToString();
-            hst_basvuru.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
-            hst_basvuru.t_createdate=DateTime.Now;
-            hst_basvuru.t_basvurutarihi=DateTime.Now;
-            hst_basvuru.t_basvurudr = 0;
-            hst_basvuru.t_cagriekraniistem = 0;
-            hst_basvuru.t_taburcu = false;
-            hst_basvuru.t_aktif = true;
-            
-            // mesaj=0 hiç bir uyarı yok.
-            // mesaj=1 başarılı.
-            // mesaj=2 başarısız.
-            int mesaj = 0;
-            if (ModelState.IsValid)
+            try
             {
+                Ortak o = new Ortak();
+                int son = o.GetSonIndex();
+                hst_basvuru.t_basvuru = (son + 1).ToString();
+                hst_basvuru.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
+                hst_basvuru.t_createdate = DateTime.Now;
+                hst_basvuru.t_basvurutarihi = DateTime.Now;
+                hst_basvuru.t_basvurudr = 0;
+                hst_basvuru.t_cagriekraniistem = 0;
+                hst_basvuru.t_taburcu = false;
+                hst_basvuru.t_aktif = true;
 
-                db.hst_basvuru.Add(hst_basvuru);
-                db.SaveChanges();
-                mesaj = 1;
+                // mesaj=0 hiç bir uyarı yok.
+                // mesaj=1 başarılı.
+                // mesaj=2 başarısız.
+                int mesaj = 0;
+                if (ModelState.IsValid)
+                {
+
+                    db.hst_basvuru.Add(hst_basvuru);
+                    db.SaveChanges();
+                    mesaj = 1;
+                    ViewBag.Message = mesaj;
+                    return RedirectToAction("Hastabasvuru_Index", new { @id = hst_basvuru.t_tc });
+                }
+                mesaj = 2;
+                ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm, "t_id", "t_adi", hst_basvuru.t_bolumkodu);
+                ViewBag.t_tc = new SelectList(db.hst_hastakarti, "t_tc", "t_adi", hst_basvuru.t_tc);
                 ViewBag.Message = mesaj;
-                return RedirectToAction("Hastabasvuru_Index",new{@id=hst_basvuru.t_tc});
+                return RedirectToAction("Hastabasvuru_Index", new { @id = hst_basvuru.t_tc });
             }
-            mesaj = 2;
-            ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm, "t_id", "t_adi", hst_basvuru.t_bolumkodu);
-            ViewBag.t_tc = new SelectList(db.hst_hastakarti, "t_tc", "t_adi", hst_basvuru.t_tc);
-            ViewBag.Message = mesaj;
-            return RedirectToAction("Hastabasvuru_Index", new { @id = hst_basvuru.t_tc });
+            catch (Exception ex)
+            {
+                return RedirectToAction("Hastabasvuru_Index", new { @id = hst_basvuru.t_tc });
+            }
         }
 
         // GET: hst_basvuru/Edit/5
@@ -172,44 +179,52 @@ namespace WEINCDENTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "t_id,t_basvuru,t_tc,t_basvurutarihi,t_bolumkodu,t_cagriekraniistem,t_basvurudr,t_taburcu,t_createdate,t_createuser,t_aktif")] hst_basvuru hst_basvuru)
         {
-            
-            
-            hst_basvuru.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
-            hst_basvuru.t_createdate = DateTime.Now;
-            hst_basvuru.t_basvurutarihi = DateTime.Now;
-            hst_basvuru.t_basvurudr = 0;
-            hst_basvuru.t_cagriekraniistem = 0;
-            hst_basvuru.t_taburcu = false;
-            hst_basvuru.t_aktif = true;
-            // mesaj=0 hiç bir uyarı yok.
-            // mesaj=1 başarılı.
-            // mesaj=2 başarısız.
-            int mesaj = 0;
-            if (ModelState.IsValid)
+
+            try
             {
-                try
+
+                hst_basvuru.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
+                hst_basvuru.t_createdate = DateTime.Now;
+                hst_basvuru.t_basvurutarihi = DateTime.Now;
+                hst_basvuru.t_basvurudr = 0;
+                hst_basvuru.t_cagriekraniistem = 0;
+                hst_basvuru.t_taburcu = false;
+                hst_basvuru.t_aktif = true;
+                // mesaj=0 hiç bir uyarı yok.
+                // mesaj=1 başarılı.
+                // mesaj=2 başarısız.
+                int mesaj = 0;
+                if (ModelState.IsValid)
                 {
-                    db.Entry(hst_basvuru).State = EntityState.Modified;
-                    db.SaveChanges();
-                    mesaj = 1;
-                    ViewBag.Message = mesaj;
-                    return RedirectToAction("Hastabasvuru_Index", new { @id = hst_basvuru.t_tc });
+                    try
+                    {
+                        db.Entry(hst_basvuru).State = EntityState.Modified;
+                        db.SaveChanges();
+                        mesaj = 1;
+                        ViewBag.Message = mesaj;
+                        return RedirectToAction("Hastabasvuru_Index", new { @id = hst_basvuru.t_tc });
+                    }
+                    catch (Exception)
+                    {
+                        mesaj = 2;
+                        ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm, "t_id", "t_adi", hst_basvuru.t_bolumkodu);
+                        ViewBag.t_tc = new SelectList(db.hst_hastakarti, "t_tc", "t_adi", hst_basvuru.t_tc);
+                        ViewBag.Message = mesaj;
+                        return RedirectToAction("Hastabasvuru_Index", new { @id = hst_basvuru.t_tc });
+                    }
+
                 }
-                catch (Exception)
-                {
-                    mesaj = 2;
-                    ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm, "t_id", "t_adi", hst_basvuru.t_bolumkodu);
-                    ViewBag.t_tc = new SelectList(db.hst_hastakarti, "t_tc", "t_adi", hst_basvuru.t_tc);
-                    ViewBag.Message = mesaj;
-                    return RedirectToAction("Hastabasvuru_Index", new { @id = hst_basvuru.t_tc });
-                }
-               
+                mesaj = 2;
+                ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm, "t_id", "t_adi", hst_basvuru.t_bolumkodu);
+                ViewBag.t_tc = new SelectList(db.hst_hastakarti, "t_tc", "t_adi", hst_basvuru.t_tc);
+                ViewBag.Message = mesaj;
+                return RedirectToAction("Hastabasvuru_Index", new { @id = hst_basvuru.t_tc });
             }
-            mesaj = 2;
-            ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm, "t_id", "t_adi", hst_basvuru.t_bolumkodu);
-            ViewBag.t_tc = new SelectList(db.hst_hastakarti, "t_tc", "t_adi", hst_basvuru.t_tc);
-            ViewBag.Message = mesaj;
-            return RedirectToAction("Hastabasvuru_Index", new { @id = hst_basvuru.t_tc });
+            catch (Exception ex)
+            {
+                return RedirectToAction("Hastabasvuru_Index", new { @id = hst_basvuru.t_tc });
+
+            }
         }
 
         

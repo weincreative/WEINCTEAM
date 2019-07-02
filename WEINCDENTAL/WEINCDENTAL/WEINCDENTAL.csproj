@@ -1156,6 +1156,7 @@
     <Content Include="Views\hst_randevu\Randevu_Index.cshtml" />
     <Content Include="Views\Vezne\_Vezne.cshtml" />
     <Content Include="Views\View_HizmetDetay\_VezneHHareket.cshtml" />
+    <Content Include="Views\hst_hastakarti\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

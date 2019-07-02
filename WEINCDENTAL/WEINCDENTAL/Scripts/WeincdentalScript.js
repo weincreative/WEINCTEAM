@@ -235,7 +235,7 @@ function GetDisHareket(bid) {
 }
 
 function GetVezneHareket(bid) {
-   
+
     var result;
     $.ajax({
         type: 'GET',
@@ -349,6 +349,16 @@ function RandTblEkle(RandtblList, RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title,
     tempClassName = null;
     var RandResult = [RandtblList, RandtblNo];
     return RandResult;
+}
+
+function hizmetGirisineGit(btc) {
+    
+    $.ajax({
+        type: 'GET',
+        url: '../../HisHareket/HisHareket',
+        data: { id: btc },
+        async: false
+    });
 }
 
 function RandevuSil(Rrid) {
