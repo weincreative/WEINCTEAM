@@ -271,14 +271,57 @@
             <PropertyRef Name="t_id" />
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="t_hareketid" Type="int" />
+          <Property Name="t_bid" Type="int" Nullable="false" />
+          <Property Name="t_hizid" Type="int" />
           <Property Name="t_odenen" Type="money" Nullable="false" />
           <Property Name="t_kalan" Type="money" Nullable="false" />
+          <Property Name="t_total" Type="money" Nullable="false" />
+          <Property Name="t_indirim" Type="money" Nullable="false" />
+          <Property Name="t_odenecek" Type="money" Nullable="false" />
           <Property Name="t_odemetipi" Type="int" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_odemetarih" Type="datetime" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WEINCDENTAL.dbo.View_BsvrVezne' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_BsvrVezne">
+          <Key>
+            <PropertyRef Name="v_id" />
+            <PropertyRef Name="b_id" />
+            <PropertyRef Name="t_adi" />
+            <PropertyRef Name="t_soyadi" />
+            <PropertyRef Name="t_dogumtarihi" />
+            <PropertyRef Name="t_basvurutarihi" />
+            <PropertyRef Name="t_odenen" />
+            <PropertyRef Name="t_kalan" />
+            <PropertyRef Name="AsilTutar" />
+            <PropertyRef Name="t_indirim" />
+            <PropertyRef Name="OdenecekTutar" />
+            <PropertyRef Name="OdemeTip" />
+            <PropertyRef Name="t_odemetarih" />
+            <PropertyRef Name="BasvuruAktif" />
+            <PropertyRef Name="VezneAktif" />
+            <PropertyRef Name="HastaAktif" />
+          </Key>
+          <Property Name="v_id" Type="int" Nullable="false" />
+          <Property Name="b_id" Type="int" Nullable="false" />
+          <Property Name="t_tc" Type="nvarchar" MaxLength="12" />
+          <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_dogumtarihi" Type="date" Nullable="false" />
+          <Property Name="t_basvurutarihi" Type="datetime" Nullable="false" />
+          <Property Name="t_odenen" Type="money" Nullable="false" />
+          <Property Name="t_kalan" Type="money" Nullable="false" />
+          <Property Name="AsilTutar" Type="money" Nullable="false" />
+          <Property Name="t_indirim" Type="money" Nullable="false" />
+          <Property Name="OdenecekTutar" Type="money" Nullable="false" />
+          <Property Name="OdemeTip" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="t_odemetarih" Type="datetime" Nullable="false" />
+          <Property Name="BasvuruAktif" Type="bit" Nullable="false" />
+          <Property Name="VezneAktif" Type="bit" Nullable="false" />
+          <Property Name="HastaAktif" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_CeneDis' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -338,6 +381,9 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizHareket' does not have a p
             <PropertyRef Name="Odemeyapildimi" />
             <PropertyRef Name="CeneNo" />
             <PropertyRef Name="CeneDurum" />
+            <PropertyRef Name="HHareketAkteif" />
+            <PropertyRef Name="Baktif" />
+            <PropertyRef Name="HastaAktif" />
           </Key>
           <Property Name="basvuruid" Type="int" Nullable="false" />
           <Property Name="t_tc" Type="nvarchar" MaxLength="12" Nullable="false" />
@@ -358,6 +404,9 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizHareket' does not have a p
           <Property Name="Odemeyapildimi" Type="bit" Nullable="false" />
           <Property Name="CeneNo" Type="int" Nullable="false" />
           <Property Name="CeneDurum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HHareketAkteif" Type="bit" Nullable="false" />
+          <Property Name="Baktif" Type="bit" Nullable="false" />
+          <Property Name="HastaAktif" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizmetDetay' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -419,50 +468,60 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizmetDetay' does not have a 
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_Vezne">
           <Key>
-            <PropertyRef Name="VezneId" />
-            <PropertyRef Name="t_tc" />
+            <PropertyRef Name="bid" />
+            <PropertyRef Name="Vezneid" />
+            <PropertyRef Name="hareket_id" />
             <PropertyRef Name="t_adi" />
             <PropertyRef Name="t_soyadi" />
-            <PropertyRef Name="DTarih" />
             <PropertyRef Name="t_basvurutarihi" />
-            <PropertyRef Name="Doktoradi" />
-            <PropertyRef Name="Hareketid" />
-            <PropertyRef Name="t_hizmetkodu" />
-            <PropertyRef Name="Hizmetadi" />
-            <PropertyRef Name="t_fiyat" />
-            <PropertyRef Name="Hizmettarih" />
-            <PropertyRef Name="t_odemevarmi" />
             <PropertyRef Name="t_odenen" />
+            <PropertyRef Name="BirimFiyat" />
             <PropertyRef Name="t_kalan" />
-            <PropertyRef Name="Odemetip" />
-            <PropertyRef Name="Odemetarih" />
+            <PropertyRef Name="t_total" />
+            <PropertyRef Name="t_indirim" />
+            <PropertyRef Name="OdenecekTutar" />
+            <PropertyRef Name="OdemeTipi" />
+            <PropertyRef Name="t_hizmetkodu" />
+            <PropertyRef Name="Hizmet" />
+            <PropertyRef Name="t_islemtarihi" />
+            <PropertyRef Name="t_diskodu" />
+            <PropertyRef Name="CeneDurum" />
+            <PropertyRef Name="t_parca" />
+            <PropertyRef Name="t_cene" />
+            <PropertyRef Name="t_yetiskinmi" />
             <PropertyRef Name="t_borcdurum" />
-            <PropertyRef Name="t_basvuruid" />
             <PropertyRef Name="VezneAktif" />
+            <PropertyRef Name="BasvuruAktif" />
             <PropertyRef Name="HHareketAktif" />
+            <PropertyRef Name="HastaAktif" />
           </Key>
-          <Property Name="VezneId" Type="int" Nullable="false" />
-          <Property Name="t_tc" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="bid" Type="int" Nullable="false" />
+          <Property Name="Vezneid" Type="int" Nullable="false" />
+          <Property Name="hareket_id" Type="int" Nullable="false" />
+          <Property Name="t_tc" Type="nvarchar" MaxLength="12" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DTarih" Type="date" Nullable="false" />
           <Property Name="t_basvurutarihi" Type="datetime" Nullable="false" />
-          <Property Name="Doktoradi" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Hareketid" Type="int" Nullable="false" />
-          <Property Name="t_hizmetkodu" Type="int" Nullable="false" />
-          <Property Name="Hizmetadi" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_fiyat" Type="money" Nullable="false" />
-          <Property Name="ToplamBorc" Type="money" />
-          <Property Name="Hizmettarih" Type="datetime" Nullable="false" />
-          <Property Name="t_odemevarmi" Type="bit" Nullable="false" />
           <Property Name="t_odenen" Type="money" Nullable="false" />
+          <Property Name="BirimFiyat" Type="money" Nullable="false" />
           <Property Name="t_kalan" Type="money" Nullable="false" />
-          <Property Name="Odemetip" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="Odemetarih" Type="datetime" Nullable="false" />
+          <Property Name="t_total" Type="money" Nullable="false" />
+          <Property Name="t_indirim" Type="money" Nullable="false" />
+          <Property Name="OdenecekTutar" Type="money" Nullable="false" />
+          <Property Name="OdemeTipi" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="t_hizmetkodu" Type="int" Nullable="false" />
+          <Property Name="Hizmet" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_islemtarihi" Type="datetime" Nullable="false" />
+          <Property Name="t_diskodu" Type="int" Nullable="false" />
+          <Property Name="CeneDurum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_parca" Type="int" Nullable="false" />
+          <Property Name="t_cene" Type="int" Nullable="false" />
+          <Property Name="t_yetiskinmi" Type="bit" Nullable="false" />
           <Property Name="t_borcdurum" Type="bit" Nullable="false" />
-          <Property Name="t_basvuruid" Type="int" Nullable="false" />
           <Property Name="VezneAktif" Type="bit" Nullable="false" />
+          <Property Name="BasvuruAktif" Type="bit" Nullable="false" />
           <Property Name="HHareketAktif" Type="bit" Nullable="false" />
+          <Property Name="HastaAktif" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_adm_kullanicilar_adm_kullanicigrup1">
           <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
@@ -740,15 +799,15 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_hst_vezne_hst_his_hareket">
-          <End Role="hst_his_hareket" Type="Self.hst_his_hareket" Multiplicity="0..1" />
+        <Association Name="FK_hst_vezne_hst_basvuru">
+          <End Role="hst_basvuru" Type="Self.hst_basvuru" Multiplicity="1" />
           <End Role="hst_vezne" Type="Self.hst_vezne" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="hst_his_hareket">
+            <Principal Role="hst_basvuru">
               <PropertyRef Name="t_id" />
             </Principal>
             <Dependent Role="hst_vezne">
-              <PropertyRef Name="t_hareketid" />
+              <PropertyRef Name="t_bid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -764,6 +823,12 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_UVAktif" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="sp$UVAktif">
+          <Parameter Name="hareketid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertVezne" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hareketid" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="WEINCDENTALModelStoreContainer">
           <EntitySet Name="adm_kullanicigrup" EntityType="Self.adm_kullanicigrup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="adm_kullanicilar" EntityType="Self.adm_kullanicilar" Schema="dbo" store:Type="Tables" />
@@ -789,6 +854,27 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_BsvrVezne" EntityType="Self.View_BsvrVezne" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_BsvrVezne].[v_id] AS [v_id], 
+    [View_BsvrVezne].[b_id] AS [b_id], 
+    [View_BsvrVezne].[t_tc] AS [t_tc], 
+    [View_BsvrVezne].[t_adi] AS [t_adi], 
+    [View_BsvrVezne].[t_soyadi] AS [t_soyadi], 
+    [View_BsvrVezne].[t_dogumtarihi] AS [t_dogumtarihi], 
+    [View_BsvrVezne].[t_basvurutarihi] AS [t_basvurutarihi], 
+    [View_BsvrVezne].[t_odenen] AS [t_odenen], 
+    [View_BsvrVezne].[t_kalan] AS [t_kalan], 
+    [View_BsvrVezne].[AsilTutar] AS [AsilTutar], 
+    [View_BsvrVezne].[t_indirim] AS [t_indirim], 
+    [View_BsvrVezne].[OdenecekTutar] AS [OdenecekTutar], 
+    [View_BsvrVezne].[OdemeTip] AS [OdemeTip], 
+    [View_BsvrVezne].[t_odemetarih] AS [t_odemetarih], 
+    [View_BsvrVezne].[BasvuruAktif] AS [BasvuruAktif], 
+    [View_BsvrVezne].[VezneAktif] AS [VezneAktif], 
+    [View_BsvrVezne].[HastaAktif] AS [HastaAktif]
+    FROM [dbo].[View_BsvrVezne] AS [View_BsvrVezne]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="View_CeneDis" EntityType="Self.View_CeneDis" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [View_CeneDis].[CeneNo] AS [CeneNo], 
@@ -830,7 +916,10 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     [View_HizHareket].[t_islemtarihi] AS [t_islemtarihi], 
     [View_HizHareket].[Odemeyapildimi] AS [Odemeyapildimi], 
     [View_HizHareket].[CeneNo] AS [CeneNo], 
-    [View_HizHareket].[CeneDurum] AS [CeneDurum]
+    [View_HizHareket].[CeneDurum] AS [CeneDurum], 
+    [View_HizHareket].[HHareketAkteif] AS [HHareketAkteif], 
+    [View_HizHareket].[Baktif] AS [Baktif], 
+    [View_HizHareket].[HastaAktif] AS [HastaAktif]
     FROM [dbo].[View_HizHareket] AS [View_HizHareket]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_HizmetDetay" EntityType="Self.View_HizmetDetay" store:Type="Views" store:Schema="dbo">
@@ -865,28 +954,33 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           </EntitySet>
           <EntitySet Name="View_Vezne" EntityType="Self.View_Vezne" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [View_Vezne].[VezneId] AS [VezneId], 
+    [View_Vezne].[bid] AS [bid], 
+    [View_Vezne].[Vezneid] AS [Vezneid], 
+    [View_Vezne].[hareket_id] AS [hareket_id], 
     [View_Vezne].[t_tc] AS [t_tc], 
     [View_Vezne].[t_adi] AS [t_adi], 
     [View_Vezne].[t_soyadi] AS [t_soyadi], 
-    [View_Vezne].[DTarih] AS [DTarih], 
     [View_Vezne].[t_basvurutarihi] AS [t_basvurutarihi], 
-    [View_Vezne].[Doktoradi] AS [Doktoradi], 
-    [View_Vezne].[Hareketid] AS [Hareketid], 
-    [View_Vezne].[t_hizmetkodu] AS [t_hizmetkodu], 
-    [View_Vezne].[Hizmetadi] AS [Hizmetadi], 
-    [View_Vezne].[t_fiyat] AS [t_fiyat], 
-    [View_Vezne].[ToplamBorc] AS [ToplamBorc], 
-    [View_Vezne].[Hizmettarih] AS [Hizmettarih], 
-    [View_Vezne].[t_odemevarmi] AS [t_odemevarmi], 
     [View_Vezne].[t_odenen] AS [t_odenen], 
+    [View_Vezne].[BirimFiyat] AS [BirimFiyat], 
     [View_Vezne].[t_kalan] AS [t_kalan], 
-    [View_Vezne].[Odemetip] AS [Odemetip], 
-    [View_Vezne].[Odemetarih] AS [Odemetarih], 
+    [View_Vezne].[t_total] AS [t_total], 
+    [View_Vezne].[t_indirim] AS [t_indirim], 
+    [View_Vezne].[OdenecekTutar] AS [OdenecekTutar], 
+    [View_Vezne].[OdemeTipi] AS [OdemeTipi], 
+    [View_Vezne].[t_hizmetkodu] AS [t_hizmetkodu], 
+    [View_Vezne].[Hizmet] AS [Hizmet], 
+    [View_Vezne].[t_islemtarihi] AS [t_islemtarihi], 
+    [View_Vezne].[t_diskodu] AS [t_diskodu], 
+    [View_Vezne].[CeneDurum] AS [CeneDurum], 
+    [View_Vezne].[t_parca] AS [t_parca], 
+    [View_Vezne].[t_cene] AS [t_cene], 
+    [View_Vezne].[t_yetiskinmi] AS [t_yetiskinmi], 
     [View_Vezne].[t_borcdurum] AS [t_borcdurum], 
-    [View_Vezne].[t_basvuruid] AS [t_basvuruid], 
     [View_Vezne].[VezneAktif] AS [VezneAktif], 
-    [View_Vezne].[HHareketAktif] AS [HHareketAktif]
+    [View_Vezne].[BasvuruAktif] AS [BasvuruAktif], 
+    [View_Vezne].[HHareketAktif] AS [HHareketAktif], 
+    [View_Vezne].[HastaAktif] AS [HastaAktif]
     FROM [dbo].[View_Vezne] AS [View_Vezne]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_adm_kullanicilar_adm_kullanicigrup1" Association="Self.FK_adm_kullanicilar_adm_kullanicigrup1">
@@ -981,8 +1075,8 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
             <End Role="hst_randevu" EntitySet="hst_randevu" />
           </AssociationSet>
-          <AssociationSet Name="FK_hst_vezne_hst_his_hareket" Association="Self.FK_hst_vezne_hst_his_hareket">
-            <End Role="hst_his_hareket" EntitySet="hst_his_hareket" />
+          <AssociationSet Name="FK_hst_vezne_hst_basvuru" Association="Self.FK_hst_vezne_hst_basvuru">
+            <End Role="hst_basvuru" EntitySet="hst_basvuru" />
             <End Role="hst_vezne" EntitySet="hst_vezne" />
           </AssociationSet>
           <AssociationSet Name="FK_hst_vezne_hst_OdemeTip" Association="Self.FK_hst_vezne_hst_OdemeTip">
@@ -1064,6 +1158,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <NavigationProperty Name="hst_bölüm" Relationship="Self.FK_hst_basvuru_hst_bölüm" FromRole="hst_basvuru" ToRole="hst_bölüm" />
           <NavigationProperty Name="hst_hastakarti" Relationship="Self.FK_hst_basvuru_hst_hastakarti" FromRole="hst_basvuru" ToRole="hst_hastakarti" />
           <NavigationProperty Name="hst_his_hareket" Relationship="Self.FK_hst_his_hareket_hst_basvuru" FromRole="hst_basvuru" ToRole="hst_his_hareket" />
+          <NavigationProperty Name="hst_vezne" Relationship="Self.FK_hst_vezne_hst_basvuru" FromRole="hst_basvuru" ToRole="hst_vezne" />
         </EntityType>
         <EntityType Name="hst_bölüm">
           <Key>
@@ -1193,7 +1288,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <NavigationProperty Name="hst_cene_uygunmu" Relationship="Self.FK_hst_his_hareket_hst_cene_uygunmu" FromRole="hst_his_hareket" ToRole="hst_cene_uygunmu" />
           <NavigationProperty Name="hst_firma" Relationship="Self.FK_hst_his_hareket_hst_firma" FromRole="hst_his_hareket" ToRole="hst_firma" />
           <NavigationProperty Name="hst_hizmet" Relationship="Self.FK_hst_his_hareket_hst_hizmet" FromRole="hst_his_hareket" ToRole="hst_hizmet" />
-          <NavigationProperty Name="hst_vezne" Relationship="Self.FK_hst_vezne_hst_his_hareket" FromRole="hst_his_hareket" ToRole="hst_vezne" />
         </EntityType>
         <EntityType Name="hst_hizmet">
           <Key>
@@ -1309,16 +1403,57 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <PropertyRef Name="t_id" />
           </Key>
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="t_hareketid" Type="Int32" />
+          <Property Name="t_bid" Type="Int32" Nullable="false" />
+          <Property Name="t_hizid" Type="Int32" />
           <Property Name="t_odenen" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="t_kalan" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="t_total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="t_indirim" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="t_odenecek" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="t_odemetipi" Type="Int32" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_odemetarih" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="hst_his_hareket" Relationship="Self.FK_hst_vezne_hst_his_hareket" FromRole="hst_vezne" ToRole="hst_his_hareket" />
+          <NavigationProperty Name="hst_basvuru" Relationship="Self.FK_hst_vezne_hst_basvuru" FromRole="hst_vezne" ToRole="hst_basvuru" />
           <NavigationProperty Name="hst_odemetip" Relationship="Self.FK_hst_vezne_hst_OdemeTip" FromRole="hst_vezne" ToRole="hst_odemetip" />
+        </EntityType>
+        <EntityType Name="View_BsvrVezne">
+          <Key>
+            <PropertyRef Name="v_id" />
+            <PropertyRef Name="b_id" />
+            <PropertyRef Name="t_adi" />
+            <PropertyRef Name="t_soyadi" />
+            <PropertyRef Name="t_dogumtarihi" />
+            <PropertyRef Name="t_basvurutarihi" />
+            <PropertyRef Name="t_odenen" />
+            <PropertyRef Name="t_kalan" />
+            <PropertyRef Name="AsilTutar" />
+            <PropertyRef Name="t_indirim" />
+            <PropertyRef Name="OdenecekTutar" />
+            <PropertyRef Name="OdemeTip" />
+            <PropertyRef Name="t_odemetarih" />
+            <PropertyRef Name="BasvuruAktif" />
+            <PropertyRef Name="VezneAktif" />
+            <PropertyRef Name="HastaAktif" />
+          </Key>
+          <Property Name="v_id" Type="Int32" Nullable="false" />
+          <Property Name="b_id" Type="Int32" Nullable="false" />
+          <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_dogumtarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="t_basvurutarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_odenen" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="t_kalan" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="AsilTutar" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="t_indirim" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="OdenecekTutar" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="OdemeTip" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="t_odemetarih" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BasvuruAktif" Type="Boolean" Nullable="false" />
+          <Property Name="VezneAktif" Type="Boolean" Nullable="false" />
+          <Property Name="HastaAktif" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="View_CeneDis">
           <Key>
@@ -1372,6 +1507,9 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <PropertyRef Name="Odemeyapildimi" />
             <PropertyRef Name="CeneNo" />
             <PropertyRef Name="CeneDurum" />
+            <PropertyRef Name="HHareketAkteif" />
+            <PropertyRef Name="Baktif" />
+            <PropertyRef Name="HastaAktif" />
           </Key>
           <Property Name="basvuruid" Type="Int32" Nullable="false" />
           <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1392,6 +1530,9 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="Odemeyapildimi" Type="Boolean" Nullable="false" />
           <Property Name="CeneNo" Type="Int32" Nullable="false" />
           <Property Name="CeneDurum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HHareketAkteif" Type="Boolean" Nullable="false" />
+          <Property Name="Baktif" Type="Boolean" Nullable="false" />
+          <Property Name="HastaAktif" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="View_HizmetDetay">
           <Key>
@@ -1449,50 +1590,60 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
         </EntityType>
         <EntityType Name="View_Vezne">
           <Key>
-            <PropertyRef Name="VezneId" />
-            <PropertyRef Name="t_tc" />
+            <PropertyRef Name="bid" />
+            <PropertyRef Name="Vezneid" />
+            <PropertyRef Name="hareket_id" />
             <PropertyRef Name="t_adi" />
             <PropertyRef Name="t_soyadi" />
-            <PropertyRef Name="DTarih" />
             <PropertyRef Name="t_basvurutarihi" />
-            <PropertyRef Name="Doktoradi" />
-            <PropertyRef Name="Hareketid" />
-            <PropertyRef Name="t_hizmetkodu" />
-            <PropertyRef Name="Hizmetadi" />
-            <PropertyRef Name="t_fiyat" />
-            <PropertyRef Name="Hizmettarih" />
-            <PropertyRef Name="t_odemevarmi" />
             <PropertyRef Name="t_odenen" />
+            <PropertyRef Name="BirimFiyat" />
             <PropertyRef Name="t_kalan" />
-            <PropertyRef Name="Odemetip" />
-            <PropertyRef Name="Odemetarih" />
+            <PropertyRef Name="t_total" />
+            <PropertyRef Name="t_indirim" />
+            <PropertyRef Name="OdenecekTutar" />
+            <PropertyRef Name="OdemeTipi" />
+            <PropertyRef Name="t_hizmetkodu" />
+            <PropertyRef Name="Hizmet" />
+            <PropertyRef Name="t_islemtarihi" />
+            <PropertyRef Name="t_diskodu" />
+            <PropertyRef Name="CeneDurum" />
+            <PropertyRef Name="t_parca" />
+            <PropertyRef Name="t_cene" />
+            <PropertyRef Name="t_yetiskinmi" />
             <PropertyRef Name="t_borcdurum" />
-            <PropertyRef Name="t_basvuruid" />
             <PropertyRef Name="VezneAktif" />
+            <PropertyRef Name="BasvuruAktif" />
             <PropertyRef Name="HHareketAktif" />
+            <PropertyRef Name="HastaAktif" />
           </Key>
-          <Property Name="VezneId" Type="Int32" Nullable="false" />
-          <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bid" Type="Int32" Nullable="false" />
+          <Property Name="Vezneid" Type="Int32" Nullable="false" />
+          <Property Name="hareket_id" Type="Int32" Nullable="false" />
+          <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
           <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DTarih" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_basvurutarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Doktoradi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Hareketid" Type="Int32" Nullable="false" />
-          <Property Name="t_hizmetkodu" Type="Int32" Nullable="false" />
-          <Property Name="Hizmetadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_fiyat" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="ToplamBorc" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Hizmettarih" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="t_odemevarmi" Type="Boolean" Nullable="false" />
           <Property Name="t_odenen" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="BirimFiyat" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="t_kalan" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Odemetip" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Odemetarih" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="t_indirim" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="OdenecekTutar" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="OdemeTipi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="t_hizmetkodu" Type="Int32" Nullable="false" />
+          <Property Name="Hizmet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_islemtarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_diskodu" Type="Int32" Nullable="false" />
+          <Property Name="CeneDurum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_parca" Type="Int32" Nullable="false" />
+          <Property Name="t_cene" Type="Int32" Nullable="false" />
+          <Property Name="t_yetiskinmi" Type="Boolean" Nullable="false" />
           <Property Name="t_borcdurum" Type="Boolean" Nullable="false" />
-          <Property Name="t_basvuruid" Type="Int32" Nullable="false" />
           <Property Name="VezneAktif" Type="Boolean" Nullable="false" />
+          <Property Name="BasvuruAktif" Type="Boolean" Nullable="false" />
           <Property Name="HHareketAktif" Type="Boolean" Nullable="false" />
+          <Property Name="HastaAktif" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_adm_kullanicilar_adm_kullanicigrup1">
           <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
@@ -1563,6 +1714,18 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             </Principal>
             <Dependent Role="hst_his_hareket">
               <PropertyRef Name="t_basvuruid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hst_vezne_hst_basvuru">
+          <End Role="hst_basvuru" Type="Self.hst_basvuru" Multiplicity="1" />
+          <End Role="hst_vezne" Type="Self.hst_vezne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hst_basvuru">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="hst_vezne">
+              <PropertyRef Name="t_bid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1734,18 +1897,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_hst_vezne_hst_his_hareket">
-          <End Role="hst_his_hareket" Type="Self.hst_his_hareket" Multiplicity="0..1" />
-          <End Role="hst_vezne" Type="Self.hst_vezne" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="hst_his_hareket">
-              <PropertyRef Name="t_id" />
-            </Principal>
-            <Dependent Role="hst_vezne">
-              <PropertyRef Name="t_hareketid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_hst_hizmet_hst_hizmet_parca">
           <End Role="hst_hizmet_parca" Type="Self.hst_hizmet_parca" Multiplicity="1" />
           <End Role="hst_hizmet" Type="Self.hst_hizmet" Multiplicity="*" />
@@ -1819,6 +1970,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" />
+          <EntitySet Name="View_BsvrVezne" EntityType="Self.View_BsvrVezne" />
           <EntitySet Name="View_CeneDis" EntityType="Self.View_CeneDis" />
           <EntitySet Name="View_HastalikDurum" EntityType="Self.View_HastalikDurum" />
           <EntitySet Name="View_HizHareket" EntityType="Self.View_HizHareket" />
@@ -1847,6 +1999,10 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <AssociationSet Name="FK_hst_his_hareket_hst_basvuru" Association="Self.FK_hst_his_hareket_hst_basvuru">
             <End Role="hst_basvuru" EntitySet="hst_basvuru" />
             <End Role="hst_his_hareket" EntitySet="hst_his_hareket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hst_vezne_hst_basvuru" Association="Self.FK_hst_vezne_hst_basvuru">
+            <End Role="hst_basvuru" EntitySet="hst_basvuru" />
+            <End Role="hst_vezne" EntitySet="hst_vezne" />
           </AssociationSet>
           <AssociationSet Name="FK_hst_disno_hst_cene_uygunmu" Association="Self.FK_hst_disno_hst_cene_uygunmu">
             <End Role="hst_cene_uygunmu" EntitySet="hst_cene_uygunmu" />
@@ -1904,10 +2060,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <End Role="hst_hizmet" EntitySet="hst_hizmet" />
             <End Role="hst_his_hareket" EntitySet="hst_his_hareket" />
           </AssociationSet>
-          <AssociationSet Name="FK_hst_vezne_hst_his_hareket" Association="Self.FK_hst_vezne_hst_his_hareket">
-            <End Role="hst_his_hareket" EntitySet="hst_his_hareket" />
-            <End Role="hst_vezne" EntitySet="hst_vezne" />
-          </AssociationSet>
           <AssociationSet Name="FK_hst_hizmet_hst_hizmet_parca" Association="Self.FK_hst_hizmet_hst_hizmet_parca">
             <End Role="hst_hizmet_parca" EntitySet="hst_hizmet_parca" />
             <End Role="hst_hizmet" EntitySet="hst_hizmet" />
@@ -1924,6 +2076,12 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <End Role="hst_odemetip" EntitySet="hst_odemetip" />
             <End Role="hst_vezne" EntitySet="hst_vezne" />
           </AssociationSet>
+          <FunctionImport Name="sp_UVAktif">
+            <Parameter Name="hareketid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertVezne">
+            <Parameter Name="hareketid" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -2219,14 +2377,41 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <EntityTypeMapping TypeName="WEINCDENTALModel.hst_vezne">
               <MappingFragment StoreEntitySet="hst_vezne">
                 <ScalarProperty Name="t_id" ColumnName="t_id" />
-                <ScalarProperty Name="t_hareketid" ColumnName="t_hareketid" />
+                <ScalarProperty Name="t_bid" ColumnName="t_bid" />
+                <ScalarProperty Name="t_hizid" ColumnName="t_hizid" />
                 <ScalarProperty Name="t_odenen" ColumnName="t_odenen" />
                 <ScalarProperty Name="t_kalan" ColumnName="t_kalan" />
+                <ScalarProperty Name="t_total" ColumnName="t_total" />
+                <ScalarProperty Name="t_indirim" ColumnName="t_indirim" />
+                <ScalarProperty Name="t_odenecek" ColumnName="t_odenecek" />
                 <ScalarProperty Name="t_odemetipi" ColumnName="t_odemetipi" />
                 <ScalarProperty Name="t_createuser" ColumnName="t_createuser" />
                 <ScalarProperty Name="t_odemetarih" ColumnName="t_odemetarih" />
                 <ScalarProperty Name="t_createdate" ColumnName="t_createdate" />
                 <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_BsvrVezne">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.View_BsvrVezne">
+              <MappingFragment StoreEntitySet="View_BsvrVezne">
+                <ScalarProperty Name="v_id" ColumnName="v_id" />
+                <ScalarProperty Name="b_id" ColumnName="b_id" />
+                <ScalarProperty Name="t_tc" ColumnName="t_tc" />
+                <ScalarProperty Name="t_adi" ColumnName="t_adi" />
+                <ScalarProperty Name="t_soyadi" ColumnName="t_soyadi" />
+                <ScalarProperty Name="t_dogumtarihi" ColumnName="t_dogumtarihi" />
+                <ScalarProperty Name="t_basvurutarihi" ColumnName="t_basvurutarihi" />
+                <ScalarProperty Name="t_odenen" ColumnName="t_odenen" />
+                <ScalarProperty Name="t_kalan" ColumnName="t_kalan" />
+                <ScalarProperty Name="AsilTutar" ColumnName="AsilTutar" />
+                <ScalarProperty Name="t_indirim" ColumnName="t_indirim" />
+                <ScalarProperty Name="OdenecekTutar" ColumnName="OdenecekTutar" />
+                <ScalarProperty Name="OdemeTip" ColumnName="OdemeTip" />
+                <ScalarProperty Name="t_odemetarih" ColumnName="t_odemetarih" />
+                <ScalarProperty Name="BasvuruAktif" ColumnName="BasvuruAktif" />
+                <ScalarProperty Name="VezneAktif" ColumnName="VezneAktif" />
+                <ScalarProperty Name="HastaAktif" ColumnName="HastaAktif" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2277,6 +2462,9 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="Odemeyapildimi" ColumnName="Odemeyapildimi" />
                 <ScalarProperty Name="CeneNo" ColumnName="CeneNo" />
                 <ScalarProperty Name="CeneDurum" ColumnName="CeneDurum" />
+                <ScalarProperty Name="HHareketAkteif" ColumnName="HHareketAkteif" />
+                <ScalarProperty Name="Baktif" ColumnName="Baktif" />
+                <ScalarProperty Name="HastaAktif" ColumnName="HastaAktif" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2315,31 +2503,38 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <EntitySetMapping Name="View_Vezne">
             <EntityTypeMapping TypeName="WEINCDENTALModel.View_Vezne">
               <MappingFragment StoreEntitySet="View_Vezne">
-                <ScalarProperty Name="VezneId" ColumnName="VezneId" />
+                <ScalarProperty Name="bid" ColumnName="bid" />
+                <ScalarProperty Name="Vezneid" ColumnName="Vezneid" />
+                <ScalarProperty Name="hareket_id" ColumnName="hareket_id" />
                 <ScalarProperty Name="t_tc" ColumnName="t_tc" />
                 <ScalarProperty Name="t_adi" ColumnName="t_adi" />
                 <ScalarProperty Name="t_soyadi" ColumnName="t_soyadi" />
-                <ScalarProperty Name="DTarih" ColumnName="DTarih" />
                 <ScalarProperty Name="t_basvurutarihi" ColumnName="t_basvurutarihi" />
-                <ScalarProperty Name="Doktoradi" ColumnName="Doktoradi" />
-                <ScalarProperty Name="Hareketid" ColumnName="Hareketid" />
-                <ScalarProperty Name="t_hizmetkodu" ColumnName="t_hizmetkodu" />
-                <ScalarProperty Name="Hizmetadi" ColumnName="Hizmetadi" />
-                <ScalarProperty Name="t_fiyat" ColumnName="t_fiyat" />
-                <ScalarProperty Name="ToplamBorc" ColumnName="ToplamBorc" />
-                <ScalarProperty Name="Hizmettarih" ColumnName="Hizmettarih" />
-                <ScalarProperty Name="t_odemevarmi" ColumnName="t_odemevarmi" />
                 <ScalarProperty Name="t_odenen" ColumnName="t_odenen" />
+                <ScalarProperty Name="BirimFiyat" ColumnName="BirimFiyat" />
                 <ScalarProperty Name="t_kalan" ColumnName="t_kalan" />
-                <ScalarProperty Name="Odemetip" ColumnName="Odemetip" />
-                <ScalarProperty Name="Odemetarih" ColumnName="Odemetarih" />
+                <ScalarProperty Name="t_total" ColumnName="t_total" />
+                <ScalarProperty Name="t_indirim" ColumnName="t_indirim" />
+                <ScalarProperty Name="OdenecekTutar" ColumnName="OdenecekTutar" />
+                <ScalarProperty Name="OdemeTipi" ColumnName="OdemeTipi" />
+                <ScalarProperty Name="t_hizmetkodu" ColumnName="t_hizmetkodu" />
+                <ScalarProperty Name="Hizmet" ColumnName="Hizmet" />
+                <ScalarProperty Name="t_islemtarihi" ColumnName="t_islemtarihi" />
+                <ScalarProperty Name="t_diskodu" ColumnName="t_diskodu" />
+                <ScalarProperty Name="CeneDurum" ColumnName="CeneDurum" />
+                <ScalarProperty Name="t_parca" ColumnName="t_parca" />
+                <ScalarProperty Name="t_cene" ColumnName="t_cene" />
+                <ScalarProperty Name="t_yetiskinmi" ColumnName="t_yetiskinmi" />
                 <ScalarProperty Name="t_borcdurum" ColumnName="t_borcdurum" />
-                <ScalarProperty Name="t_basvuruid" ColumnName="t_basvuruid" />
                 <ScalarProperty Name="VezneAktif" ColumnName="VezneAktif" />
+                <ScalarProperty Name="BasvuruAktif" ColumnName="BasvuruAktif" />
                 <ScalarProperty Name="HHareketAktif" ColumnName="HHareketAktif" />
+                <ScalarProperty Name="HastaAktif" ColumnName="HastaAktif" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_UVAktif" FunctionName="WEINCDENTALModel.Store.sp_UVAktif" />
+          <FunctionImportMapping FunctionImportName="sp_InsertVezne" FunctionName="WEINCDENTALModel.Store.sp_InsertVezne" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

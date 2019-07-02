@@ -234,6 +234,20 @@ function GetDisHareket(bid) {
     return result;
 }
 
+function GetVezneHareket(bid) {
+   
+    var result;
+    $.ajax({
+        type: 'GET',
+        url: '../../View_HizmetDetay/_VezneHHareket',
+        data: { id: bid },
+        async: false,
+        success: function (veri) {
+            result = veri;
+        }
+    });
+    return result;
+}
 function GetNewHizmet() {
     var result;
     $.ajax({

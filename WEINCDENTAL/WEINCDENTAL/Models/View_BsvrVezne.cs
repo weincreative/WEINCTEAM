@@ -14,40 +14,29 @@ namespace WEINCDENTAL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class View_Vezne
+    public partial class View_BsvrVezne
     {
-        public int bid { get; set; }
-        public int Vezneid { get; set; }
-        public int hareket_id { get; set; }
+        public int v_id { get; set; }
+        public int b_id { get; set; }
         public string t_tc { get; set; }
         public string t_adi { get; set; }
         public string t_soyadi { get; set; }
+        public System.DateTime t_dogumtarihi { get; set; }
         public System.DateTime t_basvurutarihi { get; set; }
         [DataType(DataType.Currency)]
         public decimal t_odenen { get; set; }
         [DataType(DataType.Currency)]
-        public decimal BirimFiyat { get; set; }
-        [DataType(DataType.Currency)]
         public decimal t_kalan { get; set; }
         [DataType(DataType.Currency)]
-        public decimal t_total { get; set; }
+        public decimal AsilTutar { get; set; }
         [DataType(DataType.Currency)]
         public decimal t_indirim { get; set; }
         [DataType(DataType.Currency)]
         public decimal OdenecekTutar { get; set; }
-        public string OdemeTipi { get; set; }
-        public int t_hizmetkodu { get; set; }
-        public string Hizmet { get; set; }
-        public System.DateTime t_islemtarihi { get; set; }
-        public int t_diskodu { get; set; }
-        public string CeneDurum { get; set; }
-        public int t_parca { get; set; }
-        public int t_cene { get; set; }
-        public bool t_yetiskinmi { get; set; }
-        public bool t_borcdurum { get; set; }
-        public bool VezneAktif { get; set; }
+        public string OdemeTip { get; set; }
+        public System.DateTime t_odemetarih { get; set; }
         public bool BasvuruAktif { get; set; }
-        public bool HHareketAktif { get; set; }
+        public bool VezneAktif { get; set; }
         public bool HastaAktif { get; set; }
     }
 }

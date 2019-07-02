@@ -23,9 +23,17 @@ namespace WEINCDENTAL.Controllers
         [HttpGet]
         public PartialViewResult _DisHHareket(int id)
         {
-            var hizhareket = db.View_HizmetDetay.Where(k => k.BasvuruId == id && k.HHareketAktif==true).ToList();
+            var hizhareket = db.View_HizmetDetay.Where(k => k.BasvuruId == id && k.HHareketAktif==true &&k.BasvuruAktif==true).ToList();
             return PartialView(hizhareket);
         }
+
+        [HttpGet]
+        public PartialViewResult _VezneHHareket(int id)
+        {
+            var hizhareket = db.View_HizmetDetay.Where(k => k.BasvuruId == id && k.HHareketAktif == true && k.BasvuruAktif == true).ToList();
+            return PartialView(hizhareket);
+        }
+
 
         public PartialViewResult _TEKDisHHareket(string tc,int dis)
         {

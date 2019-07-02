@@ -26,12 +26,25 @@
 
 
             <!-- NEW WIDGET START -->
-            <article class="col-lg-offset-2 col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            <article class="col-sm-12 col-md-12 col-lg-7 sortable-grid ui-sortable">
                 <!-- Widget ID (each widget will need unique ID)-->
 
 
                 <div id="loadVezne">
-                    
+                  
+                </div>
+
+
+
+            </article>
+
+
+            <article class="col-sm-12 col-md-12 col-lg-5 sortable-grid ui-sortable">
+                <!-- Widget ID (each widget will need unique ID)-->
+
+
+                <div id="loadVHizmet">
+                    @*@Html.Action("_DisHHareket", "View_HizmetDetay", new { id = 4 })*@
                 </div>
 
 
@@ -52,6 +65,7 @@
 <script src="~/Scripts/Remove.js"></script>
 <script src="~/Scripts/WeincdentalScript.js"></script>
 <script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>
+
 @section pagespecific {
 <script type="text/javascript">
     
@@ -69,10 +83,17 @@
 
         }
 
-        function LoadVezne(vid) {
+    function LoadVezne(vid) {
+       
             var getvezne = GetNewVezne(vid);
             $('#loadVezne').html(getvezne);
+    }
+        function LoadVezneHizmet(b_id) {
+            var gethizmetmodul = GetVezneHareket(b_id);
+            $('#loadVHizmet').html(gethizmetmodul);
         }
+
+
         function OdemeGeriAl(vid,htc) {
 
             $.SmartMessageBox({
@@ -101,7 +122,9 @@
 
                 });
         }
-        $(document).ready(function() {
+    $(document).ready(function () {
+        
+
             LoadVezne(@ViewBag.tc);
             var hata = @Html.Raw(Json.Encode(ViewBag.hata));
             var hmesaj = @Html.Raw(Json.Encode(ViewBag.error));

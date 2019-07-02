@@ -59,7 +59,7 @@ namespace WEINCDENTAL.Controllers
 
         }
 
-       
+
 
         // hastanın özel durum sayısını getirir...
         public int GetOzelDurumCount(string id)
@@ -94,10 +94,10 @@ namespace WEINCDENTAL.Controllers
         public decimal GetTotalOdenen(int id)
         {
             decimal totalOdenen = 0;
-            var vezne = db.View_Vezne.Where(k => k.t_borcdurum == true && k.Hareketid == id && k.VezneAktif==true && k.HHareketAktif==true)
+            var vezne = db.View_Vezne.Where(k => k.t_borcdurum == true && k.hareket_id == id && k.VezneAktif == true && k.HHareketAktif == true && k.BasvuruAktif == true)
                 .ToList();
 
-            if (vezne.Count!=0)
+            if (vezne.Count != 0)
             {
                 totalOdenen = vezne.Sum(d => d.t_odenen);
             }
@@ -109,47 +109,73 @@ namespace WEINCDENTAL.Controllers
             decimal kalan = 0;
             decimal tOdenen = GetTotalOdenen(id);
             var hfiyat =
-                db.View_Vezne.Where(k => k.HHareketAktif == true && k.Hareketid == id && k.VezneAktif==true &&
-                                               k.t_borcdurum == true).Select(d=>d.ToplamBorc).FirstOrDefault();
+                db.View_Vezne.Where(k => k.HHareketAktif == true && k.hareket_id == id && k.VezneAktif == true &&
+                                               k.t_borcdurum == true && k.BasvuruAktif == true).Select(d => d.OdenecekTutar).FirstOrDefault();
             var o = hfiyat - tOdenen;
-            if (o != null) kalan = (decimal) o;
+            if (o != null) kalan = (decimal)o;
 
             return kalan;
         }
         public decimal GetTotalOdenen(string tc)
         {
             decimal totalOdenen = 0;
-            var vezne = db.View_Vezne.Where(k => k.t_borcdurum == true && k.t_tc == tc && k.VezneAktif == true
-            && k.HHareketAktif==true)
-                .ToList();
-
-            if (vezne.Count != 0)
+            if (tc != null)
             {
-                totalOdenen = vezne.Sum(d => d.t_odenen);
+                var vezne = db.View_Vezne.Where(k => k.t_tc == tc && k.VezneAktif == true
+                                                     && k.BasvuruAktif == true && k.HastaAktif == true && k.HHareketAktif == true)
+                    .ToList();
+                if (vezne.Count != 0)
+                {
+                    totalOdenen = vezne.Sum(d => d.t_odenen);
+                }
             }
+
             return totalOdenen;
         }
         public decimal GetKalanBorc(string tc)
         {
             decimal kalan = 0;
-            decimal tOdenen = GetTotalOdenen(tc);
-            decimal? tfiyat = GetTopTutar(tc);
-            var o = tfiyat - tOdenen;
-            if (o != null) kalan = (decimal)o;
+            if (tc != null)
+            {
 
+                decimal tOdenen = GetTotalOdenen(tc);
+                decimal? tfiyat = GetTopTutar(tc);
+                decimal tindirim = GetToplamIndirim(tc);
+                var o = tfiyat - (tOdenen - tindirim);
+                if (o != null) kalan = (decimal)o;
+            }
             return kalan;
         }
 
+
+        public decimal GetToplamIndirim(string tc)
+        {
+            decimal tutar = 0;
+            if (tc != null)
+            {
+                var sum = db.View_Vezne.Where(k => k.HHareketAktif == true && k.t_tc == tc &&
+                                                   k.VezneAktif == true &&
+                                                   k.t_borcdurum == true).Sum(d => d.t_indirim);
+                if (sum != null)
+                    tutar = (decimal)sum;
+            }
+            return tutar;
+        }
+
+        //T.C. ye ait toplam hizmet tutarı
         public decimal GetTopTutar(string tc)
         {
             decimal tutar = 0;
-
-            var sum = db.View_Vezne.Where(k => k.HHareketAktif == true && k.t_tc == tc &&
-                                               k.VezneAktif == true &&
-                                               k.t_borcdurum == true).Sum(d => d.ToplamBorc);
-            if (sum != null)
-                tutar = (decimal) sum;
-
+            if (tc != null)
+            {
+                var sum = db.View_HizmetDetay.Where(k => k.HHareketAktif == true && k.TC == tc &&
+                                                   k.BasvuruAktif == true &&
+                                                   k.t_borcdurum == true)
+                                                   .Sum(d=>d.ToplamBorc);
+                
+                if (sum != null)
+                    tutar = (decimal)sum;
+            }
             return tutar;
         }
 

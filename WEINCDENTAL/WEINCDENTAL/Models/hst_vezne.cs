@@ -17,24 +17,25 @@ namespace WEINCDENTAL.Models
     public partial class hst_vezne
     {
         public int t_id { get; set; }
-        [Required]
-        public Nullable<int> t_hareketid { get; set; }
-        [Required]
+        public int t_bid { get; set; }
+        public Nullable<int> t_hizid { get; set; }
         [DataType(DataType.Currency)]
-        [Range(0, int.MaxValue, ErrorMessage = "Yanlış değer girdiniz...")]
         public decimal t_odenen { get; set; }
         [DataType(DataType.Currency)]
         public decimal t_kalan { get; set; }
-        [Required]
+        [DataType(DataType.Currency)]
+        public decimal t_total { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal t_indirim { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal t_odenecek { get; set; }
         public int t_odemetipi { get; set; }
         public string t_createuser { get; set; }
-        [DataType(DataType.Date)]
         public System.DateTime t_odemetarih { get; set; }
-        [DataType(DataType.Date)]
         public System.DateTime t_createdate { get; set; }
         public bool t_aktif { get; set; }
     
-        public virtual hst_his_hareket hst_his_hareket { get; set; }
+        public virtual hst_basvuru hst_basvuru { get; set; }
         public virtual hst_odemetip hst_odemetip { get; set; }
     }
 }

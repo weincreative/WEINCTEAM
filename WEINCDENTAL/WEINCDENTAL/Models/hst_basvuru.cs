@@ -18,6 +18,7 @@ namespace WEINCDENTAL.Models
         public hst_basvuru()
         {
             this.hst_his_hareket = new HashSet<hst_his_hareket>();
+            this.hst_vezne = new HashSet<hst_vezne>();
         }
     
         public int t_id { get; set; }
@@ -36,5 +37,7 @@ namespace WEINCDENTAL.Models
         public virtual hst_hastakarti hst_hastakarti { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hst_his_hareket> hst_his_hareket { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<hst_vezne> hst_vezne { get; set; }
     }
 }

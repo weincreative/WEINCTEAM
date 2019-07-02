@@ -33,5 +33,8 @@ namespace WEINCDENTAL.Models
         public bool Odemeyapildimi { get; set; }
         public int CeneNo { get; set; }
         public string CeneDurum { get; set; }
+        public bool HHareketAkteif { get; set; }
+        public bool Baktif { get; set; }
+        public bool HastaAktif { get; set; }
     }
 }
