@@ -273,7 +273,7 @@
 
         RandevuHastaListele();
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             "use strict";
 
@@ -289,7 +289,7 @@
                 right: 'prev,today,next'
             };
 
-            var initDrag = function (e) {
+            var initDrag = function(e) {
                 // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                 // it doesn't need to have a start or end
 
@@ -309,14 +309,21 @@
                 });
             };
 
-            var addEvent = function (title, priority, description, icon) {
+            var addEvent = function(title, priority, description, icon) {
                 title = title.length === 0 ? "BOŞ" : title;
                 description = description.length === 0 ? "No Description" : description;
                 icon = icon.length === 0 ? " " : icon;
                 priority = priority.length === 0 ? "label label-default" : priority;
 
-                var html = $('<li><span class="' + priority + '" data-description="' + description + '" data-icon="' +
-                    icon + '">' + title + '</span></li>').prependTo('ul#external-events').hide().fadeIn();
+                var html = $('<li><span class="' +
+                    priority +
+                    '" data-description="' +
+                    description +
+                    '" data-icon="' +
+                    icon +
+                    '">' +
+                    title +
+                    '</span></li>').prependTo('ul#external-events').hide().fadeIn();
 
                 RandIcon = icon;
                 RandClassName = priority;
@@ -331,11 +338,11 @@
             /* initialize the external events
              -----------------------------------------------------------------*/
 
-            $('#external-events > li').each(function () {
+            $('#external-events > li').each(function() {
                 initDrag($(this));
             });
 
-            $('#add-event').click(function () {
+            $('#add-event').click(function() {
                 var title = $('#title').val(),
                     priority = $('input:radio[name=priority]:checked').val(),
                     description = $('#description').val(),
@@ -348,7 +355,6 @@
              -----------------------------------------------------------------*/
 
             $('#calendar').fullCalendar({
-
                 header: hdr,
                 buttonText: {
                     prev: '<i class="fa fa-chevron-left"></i>',
@@ -358,7 +364,7 @@
                 editable: true,
                 droppable: true, // this allows things to be dropped onto the calendar !!!
 
-                drop: function (date, allDay) { // this function is called when something is dropped
+                drop: function(date, allDay) { // this function is called when something is dropped
 
                     // retrieve the dropped element's stored Event Object
                     var originalEventObject = $(this).data('eventObject');
@@ -370,7 +376,22 @@
                     copiedEventObject.start = date;
                     copiedEventObject.allDay = allDay;
                     if (copiedEventObject.title != "BOŞ") {
-                        var RandResult = RandTblEkle(RandtblList, RandtblNo, "", "", "", copiedEventObject.title, copiedEventObject.description, copiedEventObject.start, copiedEventObject.start, RandClassName, RandIcon, true, cuser, "", 0, true);
+                        var RandResult = RandTblEkle(RandtblList,
+                            RandtblNo,
+                            "",
+                            "",
+                            "",
+                            copiedEventObject.title,
+                            copiedEventObject.description,
+                            copiedEventObject.start,
+                            copiedEventObject.start,
+                            RandClassName,
+                            RandIcon,
+                            true,
+                            cuser,
+                            "",
+                            0,
+                            true);
                         RandtblList = RandResult[0];
                         RandtblNo = RandResult[1];
                         RandIcon = null;
@@ -399,14 +420,14 @@
 
                 },
                 // RANDEVU SİLME
-                eventClick: function (event) {
+                eventClick: function(event) {
                     var tempTc = event.title.split(" ");
-                    RanSil(event.id, event.title,tempTc[0]);
+                    RanSil(event.id, event.title, tempTc[0]);
                     $('#calendar').fullCalendar('updateEvent', event);
                 },
 
                 // RANDEVU SÜRÜKLENİNCE CREATE
-                eventDrop: function (info) {
+                eventDrop: function(info) {
                     //Wed Jun 26 2019 02: 00: 00 GMT + 0000
                     //"2019-06-26T00:00:00.000Z"
                     //var RandResult = RandTblEkle(RandtblList,RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title, rt_aciklama, rt_baslangicsaat, rt_bitissaat, rt_classname, rt_icon, rt_allday, rt_createuser, rt_createdate, rt_basvurudr, rt_aktif);
@@ -416,37 +437,96 @@
                     if (info.end != null) {
                         if (info.id != null) {
                             //alert("DROP tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);
-                            var RandResult = RandTblEkle(RandtblList, RandtblNo, info.id, "", "", info.title, info.description, info.start, info.end, info.className, info.icon, info.allDay, cuser, "", 0, true);
+                            var RandResult = RandTblEkle(RandtblList,
+                                RandtblNo,
+                                info.id,
+                                "",
+                                "",
+                                info.title,
+                                info.description,
+                                info.start,
+                                info.end,
+                                info.className,
+                                info.icon,
+                                info.allDay,
+                                cuser,
+                                "",
+                                0,
+                                true);
                             RandtblList = RandResult[0];
                             RandtblNo = RandResult[1];
                             RandevuDuzelt(RandtblList);
                         } else {
                             //alert("DROP tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);
-                            var RandResult = RandTblEkle(RandtblList, RandtblNo, "", "", "", info.title, info.description, info.start, info.end, info.className, info.icon, info.allDay, cuser, "", 0, true);
+                            var RandResult = RandTblEkle(RandtblList,
+                                RandtblNo,
+                                "",
+                                "",
+                                "",
+                                info.title,
+                                info.description,
+                                info.start,
+                                info.end,
+                                info.className,
+                                info.icon,
+                                info.allDay,
+                                cuser,
+                                "",
+                                0,
+                                true);
                             RandtblList = RandResult[0];
                             RandtblNo = RandResult[1];
                             RandevuOlustur(RandtblList);
                         }
-                    }
-                    else if (info.end == null && info.allDay == true) {
+                    } else if (info.end == null && info.allDay == true) {
                         if (info.id != null) {
                             //alert("DROP tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);
-                            var RandResult = RandTblEkle(RandtblList, RandtblNo, info.id, "", "", info.title, info.description, info.start, info.start, info.className, info.icon, info.allDay, cuser, "", 0, true);
+                            var RandResult = RandTblEkle(RandtblList,
+                                RandtblNo,
+                                info.id,
+                                "",
+                                "",
+                                info.title,
+                                info.description,
+                                info.start,
+                                info.start,
+                                info.className,
+                                info.icon,
+                                info.allDay,
+                                cuser,
+                                "",
+                                0,
+                                true);
                             RandtblList = RandResult[0];
                             RandtblNo = RandResult[1];
                             RandevuDuzelt(RandtblList);
                         } else {
                             //alert("DROP tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);
-                            var RandResult = RandTblEkle(RandtblList, RandtblNo, "", "", "", info.title, info.description, info.start, info.start, info.className, info.icon, info.allDay, cuser, "", 0, true);
+                            var RandResult = RandTblEkle(RandtblList,
+                                RandtblNo,
+                                "",
+                                "",
+                                "",
+                                info.title,
+                                info.description,
+                                info.start,
+                                info.start,
+                                info.className,
+                                info.icon,
+                                info.allDay,
+                                cuser,
+                                "",
+                                0,
+                                true);
                             RandtblList = RandResult[0];
                             RandtblNo = RandResult[1];
                             RandevuOlustur(RandtblList);
                         }
-                    }
-                    else {
+                    } else {
                         $.smallBox({
                             title: "DÜZENLE",
-                            content: "<i class='fa fa-clock-o'></i> <i>İşlem yaptığınız randevunun saatini düzenleyiniz..</i>",
+                            content:
+                                "<i class='fa fa-clock-o'></i> <i>İşlem yaptığınız randevunun saatini düzenleyiniz..</i>",
                             color: "#007ACC",
                             iconSmall: "fa fa-times fa-2x fadeInRight animated",
                             timeout: 4000
@@ -456,7 +536,7 @@
                 },
 
                 // RANDEVU SAATİ DEĞİŞİNCE ALLDAY VEYA SAATLİ OLUNCA
-                eventResize: function (info) {
+                eventResize: function(info) {
                     //Wed Jun 26 2019 02: 00: 00 GMT + 0000
                     //"2019-06-26T00:00:00.000Z"
                     //var RandResult = RandTblEkle(RandtblList,RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title, rt_aciklama, rt_baslangicsaat, rt_bitissaat, rt_classname, rt_icon, rt_allday, rt_createuser, rt_createdate, rt_basvurudr, rt_aktif);
@@ -466,59 +546,120 @@
                     if (info.end != null) {
                         if (info.id != null) {
                             //alert("RESIZE tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);
-                            var RandResult = RandTblEkle(RandtblList, RandtblNo, info.id, "", "", info.title, info.description, info.start, info.end, info.className, info.icon, info.allDay, cuser, "", 0, true);
+                            var RandResult = RandTblEkle(RandtblList,
+                                RandtblNo,
+                                info.id,
+                                "",
+                                "",
+                                info.title,
+                                info.description,
+                                info.start,
+                                info.end,
+                                info.className,
+                                info.icon,
+                                info.allDay,
+                                cuser,
+                                "",
+                                0,
+                                true);
                             RandtblList = RandResult[0];
                             RandtblNo = RandResult[1];
                             RandevuDuzelt(RandtblList);
                         } else {
                             //alert("RESIZE tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);
-                            var RandResult = RandTblEkle(RandtblList, RandtblNo, "", "", "", info.title, info.description, info.start, info.end, info.className, info.icon, info.allDay, cuser, "", 0, true);
+                            var RandResult = RandTblEkle(RandtblList,
+                                RandtblNo,
+                                "",
+                                "",
+                                "",
+                                info.title,
+                                info.description,
+                                info.start,
+                                info.end,
+                                info.className,
+                                info.icon,
+                                info.allDay,
+                                cuser,
+                                "",
+                                0,
+                                true);
                             RandtblList = RandResult[0];
                             RandtblNo = RandResult[1];
                             RandevuOlustur(RandtblList);
                         }
-                    }
-                    else if (info.end == null && info.allDay == true) {
+                    } else if (info.end == null && info.allDay == true) {
                         if (info.id != null) {
                             //alert("RESIZE tablo oluşturmaya geçiyorum _id :" + info.id +" " + info.allDay);
-                            var RandResult = RandTblEkle(RandtblList, RandtblNo, info.id, "", "", info.title, info.description, info.start, info.start, info.className, info.icon, info.allDay, cuser, "", 0, true);
+                            var RandResult = RandTblEkle(RandtblList,
+                                RandtblNo,
+                                info.id,
+                                "",
+                                "",
+                                info.title,
+                                info.description,
+                                info.start,
+                                info.start,
+                                info.className,
+                                info.icon,
+                                info.allDay,
+                                cuser,
+                                "",
+                                0,
+                                true);
                             RandtblList = RandResult[0];
                             RandtblNo = RandResult[1];
                             RandevuDuzelt(RandtblList);
                         } else {
                             //alert("RESIZE tablo oluşturmaya geçiyorum _id :" + info.id + " " + info.allDay);
-                            var RandResult = RandTblEkle(RandtblList, RandtblNo, "", "", "", info.title, info.description, info.start, info.start, info.className, info.icon, info.allDay, cuser, "", 0, true);
+                            var RandResult = RandTblEkle(RandtblList,
+                                RandtblNo,
+                                "",
+                                "",
+                                "",
+                                info.title,
+                                info.description,
+                                info.start,
+                                info.start,
+                                info.className,
+                                info.icon,
+                                info.allDay,
+                                cuser,
+                                "",
+                                0,
+                                true);
                             RandtblList = RandResult[0];
                             RandtblNo = RandResult[1];
                             RandevuOlustur(RandtblList);
                         }
+                    } else {
+                        $.smallBox({
+                            title: "DÜZENLE",
+                            content:
+                                "<i class='fa fa-clock-o'></i> <i>İşlem yaptığınız randevunun saatini düzenleyiniz..</i>",
+                            color: "#007ACC",
+                            iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                            timeout: 4000
+                        });
                     }
-                    else {
-                                 $.smallBox({
-                                     title: "DÜZENLE",
-                                    content: "<i class='fa fa-clock-o'></i> <i>İşlem yaptığınız randevunun saatini düzenleyiniz..</i>",
-                                     color: "#007ACC",
-                                    iconSmall: "fa fa-times fa-2x fadeInRight animated",
-                                    timeout: 4000
-                                });
-                            }
                     $('#calendar').fullCalendar('updateEvent', info);
                 },
 
                 events: '/hst_randevu/Randevular',
 
-                eventRender: function (event, element, icon) {
+                eventRender: function(event, element, icon) {
                     if (!event.description == "") {
-                        element.find('.fc-event-title').append("<br/><span class='ultra-light'>" + event.description +
+                        element.find('.fc-event-title').append("<br/><span class='ultra-light'>" +
+                            event.description +
                             "</span>");
                     }
                     if (!event.icon == "") {
-                        element.find('.fc-event-title').append("<i class='air air-top-right fa " + event.icon +
+                        element.find('.fc-event-title').append("<i class='air air-top-right fa " +
+                            event.icon +
                             " '></i>");
                     }
                 },
 
-                windowResize: function (event, ui) {
+                windowResize: function(event, ui) {
                     $('#calendar').fullCalendar('render');
                 }
             });
@@ -526,34 +667,34 @@
             /* hide default buttons */
             $('.fc-header-right, .fc-header-center').hide();
 
-            $('#calendar-buttons #btn-prev').click(function () {
+            $('#calendar-buttons #btn-prev').click(function() {
                 $('.fc-button-prev').click();
                 return false;
             });
 
-            $('#calendar-buttons #btn-next').click(function () {
+            $('#calendar-buttons #btn-next').click(function() {
                 $('.fc-button-next').click();
                 return false;
             });
 
-            $('#calendar-buttons #btn-today').click(function () {
+            $('#calendar-buttons #btn-today').click(function() {
                 $('.fc-button-today').click();
                 return false;
             });
 
-            $('#mt').click(function () {
+            $('#mt').click(function() {
                 $('#calendar').fullCalendar('changeView', 'month');
             });
 
-            $('#ag').click(function () {
+            $('#ag').click(function() {
                 $('#calendar').fullCalendar('changeView', 'agendaWeek');
             });
 
-            $('#td').click(function () {
+            $('#td').click(function() {
                 $('#calendar').fullCalendar('changeView', 'agendaDay');
             });
 
-        })
+        });
 
 
         function RanSil(rid, tit, hastTc) {
@@ -566,9 +707,10 @@
                     if (ButtonPressed === "Yes") {
                         RandevuSil(rid);
                     } else if (ButtonPressed === "Diş Hizmet Girişi") {
-                        alert("diş");
-                        hizmetGirisineGit(hastTc);
-
+                        //alert("diş");
+                        //hizmetGirisineGit(hastTc);
+                        
+                        location.href ='@Url.Action("Hastabasvuru_Index", "hst_basvuru")?id=' + hastTc;
                     }else if (ButtonPressed === "No") {
                         $.smallBox({
                             title: "İPTAL",

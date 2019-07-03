@@ -15,6 +15,8 @@ namespace WEINCDENTAL.Controllers
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
 
+
+        
         public ActionResult HisHareket(int id)
         {
             try

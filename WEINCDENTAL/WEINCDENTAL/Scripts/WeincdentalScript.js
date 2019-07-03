@@ -352,12 +352,12 @@ function RandTblEkle(RandtblList, RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title,
 }
 
 function hizmetGirisineGit(btc) {
-    
+   
     $.ajax({
         type: 'GET',
-        url: '../../HisHareket/HisHareket',
-        data: { id: btc },
-        async: false
+        url: '../../hst_basvuru/Hastabasvuru_Index',
+        data: { id: btc }
+    
     });
 }
 

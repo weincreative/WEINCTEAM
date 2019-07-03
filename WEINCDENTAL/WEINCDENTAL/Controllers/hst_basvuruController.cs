@@ -16,11 +16,13 @@ namespace WEINCDENTAL.Controllers
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
 
         // GET: hst_basvuru
+
         public ActionResult Index()
         {
             var hst_basvuru = db.hst_basvuru.Include(h => h.hst_bölüm).Include(h => h.hst_hastakarti);
             return View(hst_basvuru.ToList());
         }
+        [HttpGet]
         public ActionResult Hastabasvuru_Index(string id)
         {
             
