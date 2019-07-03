@@ -94,7 +94,7 @@ namespace WEINCDENTAL.Controllers
         public decimal GetTotalOdenen(int id)
         {
             decimal totalOdenen = 0;
-            var vezne = db.View_Vezne.Where(k => k.t_borcdurum == true && k.hareket_id == id && k.VezneAktif == true && k.HHareketAktif == true && k.BasvuruAktif == true)
+            var vezne = db.View_BsvrVezne.Where(k => k.b_id== id && k.VezneAktif == true && k.HastaAktif == true && k.BasvuruAktif == true)
                 .ToList();
 
             if (vezne.Count != 0)
@@ -107,23 +107,54 @@ namespace WEINCDENTAL.Controllers
         public decimal GetKalanBorc(int id)
         {
             decimal kalan = 0;
-            decimal tOdenen = GetTotalOdenen(id);
-            var hfiyat =
-                db.View_Vezne.Where(k => k.HHareketAktif == true && k.hareket_id == id && k.VezneAktif == true &&
-                                               k.t_borcdurum == true && k.BasvuruAktif == true).Select(d => d.OdenecekTutar).FirstOrDefault();
-            var o = hfiyat - tOdenen;
-            if (o != null) kalan = (decimal)o;
+            if (id != null && id != 0)
+            {
 
+                decimal tOdenen = GetTotalOdenen(id);
+                decimal? tfiyat = GetTopTutar(id);
+                decimal tindirim = GetToplamIndirim(id);
+                var o = tfiyat - (tOdenen + tindirim);
+                if (o != null) kalan = (decimal)o;
+            }
             return kalan;
+        }
+        public decimal GetTopTutar(int id)
+        {
+            decimal tutar = 0;
+            if (id != null && id!=0)
+            {
+                var sum = db.View_HizmetDetay.Where(k => k.HHareketAktif == true && k.BasvuruId == id &&
+                                                         k.BasvuruAktif == true &&
+                                                         k.t_borcdurum == true)
+                    .Sum(d => d.ToplamBorc);
+
+                if (sum != null)
+                    tutar = (decimal)sum;
+            }
+            return tutar;
+        }
+        public decimal GetToplamIndirim(int id)
+        {
+            decimal tutar = 0;
+            if (id != null && id != 0)
+            {
+                var sum = db.View_BsvrVezne.Where(k => k.b_id == id &&
+                                                       k.VezneAktif == true &&
+                                                       k.HastaAktif == true &&
+                                                       k.BasvuruAktif == true).Sum(d => d.t_indirim);
+                if (sum != null)
+                    tutar = (decimal)sum;
+            }
+            return tutar;
         }
         public decimal GetTotalOdenen(string tc)
         {
             decimal totalOdenen = 0;
             if (tc != null)
             {
-                var vezne = db.View_Vezne.Where(k => k.t_tc == tc && k.VezneAktif == true
-                                                     && k.BasvuruAktif == true && k.HastaAktif == true && k.HHareketAktif == true)
-                    .ToList();
+                var vezne = db.View_BsvrVezne.Where(k => k.t_tc == tc && k.VezneAktif == true
+                                                         && k.BasvuruAktif == true && k.HastaAktif == true).ToList();
+
                 if (vezne.Count != 0)
                 {
                     totalOdenen = vezne.Sum(d => d.t_odenen);
@@ -141,7 +172,7 @@ namespace WEINCDENTAL.Controllers
                 decimal tOdenen = GetTotalOdenen(tc);
                 decimal? tfiyat = GetTopTutar(tc);
                 decimal tindirim = GetToplamIndirim(tc);
-                var o = tfiyat - (tOdenen - tindirim);
+                var o = tfiyat - (tOdenen + tindirim);
                 if (o != null) kalan = (decimal)o;
             }
             return kalan;
@@ -153,9 +184,10 @@ namespace WEINCDENTAL.Controllers
             decimal tutar = 0;
             if (tc != null)
             {
-                var sum = db.View_Vezne.Where(k => k.HHareketAktif == true && k.t_tc == tc &&
+                var sum = db.View_BsvrVezne.Where(k =>k.t_tc == tc &&
                                                    k.VezneAktif == true &&
-                                                   k.t_borcdurum == true).Sum(d => d.t_indirim);
+                                                   k.HastaAktif == true &&
+                                                   k.BasvuruAktif == true).Sum(d => d.t_indirim);
                 if (sum != null)
                     tutar = (decimal)sum;
             }
@@ -183,6 +215,15 @@ namespace WEINCDENTAL.Controllers
         public string HH_GetTC(int? id)
         {
             string tc = db.View_HizmetDetay.Where(k => k.HHareketAktif == true && k.HizHareketId == id)
+                .Select(d => d.TC).FirstOrDefault();
+
+            return tc;
+        }
+
+        
+        public string VH_GetTC(int bid)
+        {
+            string tc = db.View_HizmetDetay.Where(k => k.HHareketAktif == true && k.BasvuruId==bid && k.BasvuruAktif == true)
                 .Select(d => d.TC).FirstOrDefault();
 
             return tc;

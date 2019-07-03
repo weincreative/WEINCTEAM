@@ -17,7 +17,7 @@
             <label class="col-xs-2 col-lg-3 control-label"></label>
             <div class="col-xs-9 col-lg-6 inputGroupContainer">
                 <div class="input-group">
-                    @Html.EditorFor(model => model.t_hareketid, new {htmlAttributes = new {@class = "form-control", @Value = @ViewBag.hhid, @readonly = "readonly" } })
+                    @Html.EditorFor(model => model.t_bid, new {htmlAttributes = new {@class = "form-control", @Value = @ViewBag.bid, @readonly = "readonly" } })
                     <span class="input-group-addon"> <i class="icon-prepend fa fa-tag"></i></span>
                 </div>
             </div>
@@ -40,7 +40,7 @@
             <label class="col-xs-2 col-lg-3 control-label">Önceki Ödenen Tutar</label>
             <div class="col-xs-9 col-lg-6 inputGroupContainer">
                 <div class="input-group">
-                    @Html.Editor("totalodenen", new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    @Html.Editor("totalodenen", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                    
                     <span class="input-group-addon">TL</span>
                 </div>
@@ -48,8 +48,32 @@
 
         </div>
     </fieldset>
-
     <fieldset>
+        <div class="row form-group">
+            <label class="col-xs-2 col-lg-3 control-label">Önceki İndirim Tutar</label>
+            <div class="col-xs-9 col-lg-6 inputGroupContainer">
+                <div class="input-group">
+                    @Html.Editor("totalindirim", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly"} })
+
+                    <span class="input-group-addon">TL</span>
+                </div>
+            </div>
+
+        </div>
+    </fieldset>
+    <fieldset id="DiscountPrc">
+        <div class="row form-group">
+            <label class="col-xs-2 col-lg-3 control-label">Yeni İndirim Tutarı</label>
+            <div class="col-xs-9 col-lg-6 inputGroupContainer">
+                <div class="input-group">
+                    @Html.EditorFor(model => model.t_indirim, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @id = "VIndirim" } })
+                    <span class="input-group-addon">TL</span>
+                </div>
+            </div>
+
+        </div>
+    </fieldset>
+    <fieldset >
         <div class="row form-group">
             <label class="col-xs-2 col-lg-3 control-label">Kalan Tutar</label>
             <div class="col-xs-9 col-lg-6 inputGroupContainer">
@@ -61,14 +85,27 @@
 
         </div>
     </fieldset>
-    <fieldset class="col-lg-push-3 smart-form">
+    <fieldset class="col-lg-push-2 smart-form">
         <div class="row ">
             <div class=" col col-md-3">
-                <label style="padding-top: 0px;" class="radio state-success"><input type="radio" name="radio" value="1"><i></i>Tümünü Öde</label>
+                <label style="padding-top: 0px;" class="radio state-success">
+                    <input type="radio" name="radio" value="1"><i></i>Tümünü Öde
+                </label>
             </div>
-            <div class="col col-md-4">
-                <label style="padding-top: 0px;" class="radio state-success"><input type="radio" name="radio" value="2"><i></i>Tutar Belirle</label>
+            <div class="col col-md-3">
+                <label style="padding-top: 0px;" class="radio state-success">
+                    <input type="radio" name="radio" value="2"><i></i>Tutar Belirle
+                </label>
             </div>
+            @*<div class="col col-md-4">
+            <label style="padding-top: 0px;" class="radio state-success"><input type="radio" name="radio" value="3"><i></i>İndirim Gir</label>
+        </div>*@
+        <div class="col col-md-4">
+            <label style="padding-top: 0px;" class="toggle state-success">
+                <input type="checkbox" name="checkbox-toggle" id="checkbox-toggle" >
+                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>İndirim Belirle
+            </label>
+        </div>
         </div>
     </fieldset>
     <br />
@@ -112,23 +149,39 @@
     $(document).ready(function () {
       
         document.getElementById("AllPrice").style.display = 'none';
+        document.getElementById("DiscountPrc").style.display = 'none';
         $(":radio").change(function () {
             var deger = $(this).val();
-            //1 ise tümü öde; 2 ise belirle
+          
+            //1 ise tümü öde; 2 ise belirle;3 ise indirim gir.
             if (deger == 1) {
+               
                 document.getElementById("AllPrice").style.display = 'block';
-                //document.getElementById("borcGir").style.display = 'none';
-                var price=parseFloat(@ViewBag.kalan);
+                var price = parseFloat(@ViewBag.kalan);
                 $("#VPrice").val(price);
                 $("#VPrice").attr("readonly", "readonly");
-                //$("#VPrice").removeAttr("readonly");
+
             } else if (deger == 2) {
+               
                 document.getElementById("AllPrice").style.display = 'block';
                 $("#VPrice").removeAttr("readonly");
-                //document.getElementById("AllPrice").style.display = 'none';
-                //document.getElementById("borcGir").style.display = 'block';
-            }
+            } 
 
         });
+        $(":checkbox").change(function () {
+
+            var x = document.getElementById("checkbox-toggle").checked;
+            if (x) {
+                document.getElementById("DiscountPrc").style.display = 'block';
+                $("#VIndirim").removeAttr("readonly");
+             
+            } else {
+                $("#VIndirim").attr("readonly", "readonly");
+                document.getElementById("DiscountPrc").style.display = 'none';
+            }
+
+
+        });
+
     });
 </script>

@@ -116,10 +116,10 @@
                                         </td>
 
                                         <td>
-                                            <a @*onclick="GetOdeme(@item.Hareketid,@item.t_odemevarmi)"*@ style="width: 48.58px;" href="javascript:void(0);" class="btn btn-lg btn-labeled btn-success" title="Ödeme Yap">
+                                            <a onclick="GetOdeme(@item.b_id)" style="width: 48.58px;" href="javascript:void(0);" class="btn btn-lg btn-labeled btn-success" title="Ödeme Yap">
                                                 <i class="fa fa-turkish-lira "> </i>
                                             </a>
-                                            <a @*onclick="OdemeGeriAl(@item.VezneId,@item.t_tc)"*@ title="Ödemeyi Geri Al" class="btn btn-lg btn-labeled btn-danger">
+                                            <a onclick="OdemeGeriAl(@item.v_id,@item.t_tc)" title="Ödemeyi Geri Al" class="btn btn-lg btn-labeled btn-danger">
                                                 <i class="fa fa-rotate-left"></i>
                                             </a>
                                             <a onclick="LoadVezneHizmet(@item.b_id)" title="Detaylı Hizmetleri Gör" class="btn btn-circle btn-info">
@@ -133,21 +133,23 @@
 
 
                             </tbody>
-                            @*@if (Model.Count() != 0)
-                                {
+                            @if (Model.Count() != 0)
+                            {
 
 
-                                    <tr style="color: red;">
-                                        <th>TOPLAM</th>
-                                        <th colspan="4"></th>
-                                        <th style="color: green;">@ViewBag.TotalOdenen</th>
-                                        <th>@ViewBag.TotalKalan</th>
-                                        <th>@ViewBag.TotalFiyat</th>
-                                        <th colspan="3"></th>
+                                <tr style="color: red;">
+                                    <th>TOPLAM</th>
+                                    <th></th>
+                                    <th style="color: green;">@ViewBag.TotalOdenen  <i class="fa fa-turkish-lira "> </i></th>
+                                    <th>@ViewBag.TotalKalan  <i class="fa fa-turkish-lira "> </i></th>
+                                    <th>@ViewBag.TotalFiyat  <i class="fa fa-turkish-lira "> </i></th>
+                                    <th style="color: cornflowerblue;">@ViewBag.Totalindirim  <i class="fa fa-turkish-lira "> </i></th>
+                                    <th style="color: crimson;">@ViewBag.AsilOdenecek  <i class="fa fa-turkish-lira "> </i></th>
+                                    <th colspan="3"></th>
 
 
-                                    </tr>
-                                }*@
+                                </tr>
+                            }
                         </table>
                         <!-- start widget footer -->
                         <div class="dt-toolbar-footer no-padding">
@@ -230,10 +232,10 @@
 
 
 
-        function GetOdeme(hhid) {
+        function GetOdeme(bid) {
 
-            @*$('#loadPrice').load("@Url.Action("_CreateVezne", "Vezne")",{ id: hhid});*@
-            //$("#myModalCreateVezne").modal('show');
+            $('#loadPrice').load("@Url.Action("_CreateVezne", "Vezne")",{ id: bid});
+            $("#myModalCreateVezne").modal('show');
         }
 
 
