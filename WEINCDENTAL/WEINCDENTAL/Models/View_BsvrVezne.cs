@@ -35,6 +35,7 @@ namespace WEINCDENTAL.Models
         public decimal OdenecekTutar { get; set; }
         public string OdemeTip { get; set; }
         public System.DateTime t_odemetarih { get; set; }
+        public bool BorcDurum { get; set; }
         public bool BasvuruAktif { get; set; }
         public bool VezneAktif { get; set; }
         public bool HastaAktif { get; set; }

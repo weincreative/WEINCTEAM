@@ -160,7 +160,6 @@
     <Compile Include="Controllers\View_HastalikDurumController.cs" />
     <Compile Include="Controllers\View_HizHareketController.cs" />
     <Compile Include="Controllers\View_HizmetDetayController.cs" />
-    <Compile Include="Controllers\View_VezneController.cs" />
     <Compile Include="Controllers\YardimciController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -177,7 +176,6 @@
     <Compile Include="Models\adm_pacs.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DTO_Vezne.cs" />
     <Compile Include="Models\hst_basvuru.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1130,11 +1128,6 @@
     <Content Include="Views\hst_hastadurum\HastaDPartialCreate.cshtml" />
     <Content Include="Views\hst_hastadurum\HDurumPartialEdit.cshtml" />
     <Content Include="Views\HisHareket\_NewHareket.cshtml" />
-    <Content Include="Views\View_Vezne\Create.cshtml" />
-    <Content Include="Views\View_Vezne\Delete.cshtml" />
-    <Content Include="Views\View_Vezne\Details.cshtml" />
-    <Content Include="Views\View_Vezne\Edit.cshtml" />
-    <Content Include="Views\View_Vezne\ViewVezne_Index.cshtml" />
     <Content Include="Views\View_HizmetDetay\_DisHHareket.cshtml" />
     <Content Include="Views\Vezne\SearchBorc.cshtml" />
     <Content Include="Views\View_HizmetDetay\_TEKDisHHareket.cshtml" />

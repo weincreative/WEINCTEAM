@@ -36,7 +36,10 @@ namespace WEINCDENTAL.Controllers
 
             YardimciController yc = new YardimciController();
             var vezne = db.View_BsvrVezne
-                .Where(k => k.HastaAktif == true && k.BasvuruAktif == true && k.VezneAktif == true)
+                .Where(k => k.HastaAktif == true && k.BasvuruAktif == true 
+                && k.VezneAktif == true
+                && k.BorcDurum == true
+                )
                 .Where(p => p.t_tc == tc).ToList();
             if (vezne.Count != 0)
             {
@@ -83,6 +86,8 @@ namespace WEINCDENTAL.Controllers
 
             decimal topIndirim = oncekiindirim + hst_vezne.t_indirim;
             decimal topodenecek = oncekiodenen + hst_vezne.t_odenen+topIndirim;
+
+
             if (totalhizfiyat < hst_vezne.t_odenen || totalhizfiyat < topodenecek)
             {
                 msg = "Ödenmek istenen değer Toplam değerden fazla olamaz";
@@ -104,6 +109,7 @@ namespace WEINCDENTAL.Controllers
                 try
                 {
                     decimal kalan = totalhizfiyat - topodenecek;
+                    hst_vezne.t_total = totalhizfiyat;
                     hst_vezne.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
                     hst_vezne.t_odemetarih = DateTime.Now;
                     hst_vezne.t_createdate = DateTime.Now;

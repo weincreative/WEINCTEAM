@@ -29,6 +29,7 @@ namespace WEINCDENTAL.Models
         public int t_cagriekraniistem { get; set; }
         public Nullable<int> t_basvurudr { get; set; }
         public bool t_taburcu { get; set; }
+        public bool t_borc { get; set; }
         public System.DateTime t_createdate { get; set; }
         public string t_createuser { get; set; }
         public bool t_aktif { get; set; }
