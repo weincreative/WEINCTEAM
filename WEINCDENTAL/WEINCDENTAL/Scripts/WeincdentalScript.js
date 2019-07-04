@@ -668,3 +668,69 @@ function AjaxCall(url, data, type) {
 
 
 ///////////////////////////////////////
+
+
+function HastaDuzenle(hastaTcsi) {
+    alert(hastaTcsi);
+    //AjaxCall('/CagriEkrani/BolumleriGetir', null).done(function (response) {
+    //    if (response.length > 0) {
+    //        $('#Bolumler').html('');
+    //        var options = '';
+    //        options += '<option id="" value="">Bölüm Seçiniz</option>';
+    //        response.forEach(function (entry) {
+    //            options += '<option id="' + entry.Index + '" value="' + entry.bolumlerID + '">' + entry.bolumlerADI + '</option>';
+    //        });
+    //        $('#Bolumler').append(options);
+    //    }
+    //}).fail(function (error) {
+    //    $.smallBox({
+    //        title: "HATA",
+    //        content: "<i class='fa fa-clock-o'></i> <i>Çağrı Ekranı Bölüm Listelemede hata oluştu...</i>",
+    //        color: "#818F9A",
+    //        iconSmall: "fa fa-times fa-2x fadeInRight animated",
+    //        timeout: 4000
+    //    });
+    //});
+
+    //$('#Bolumler').on("change", function () {
+    //    var listelenecekHValue = $("input[name='hastaSec']:checked").val();
+    //    var seciliBolum = $('#Bolumler').val();
+    //    //setInterval(function () {
+    //    //    // KODLARI BURAYA YAZ
+    //    //}, 10000);
+    //        $.ajax({
+    //            url: '/CagriEkrani/PartialCagriEkrani',
+    //            type: 'GET',
+    //            data: { bsid: parseInt(seciliBolum), hcid: parseInt(listelenecekHValue) },
+    //            async: false,
+    //            success: function (partialView) {
+    //                $("#dt_basic3_3").dataTable().fnDestroy();
+    //                $('#cagriEkraniList').html(partialView);
+    //                $('#cagriEkraniList').show();
+    //            }
+    //        });
+
+
+    //});
+
+    
+        $.ajax({
+            url: '/hst_hastakarti/EditDeneme',
+            type: 'GET',
+            data: { tc: parseInt(hastaTcsi) },
+            async: true,
+            success: function (partialView) {
+                $('#HKEdit').html(partialView);
+                $('#hastaKartiEdit').show();
+            }
+        });
+
+}
+function AjaxCall(url, data, type) {
+    return $.ajax({
+        url: url,
+        type: type ? type : 'GET',
+        data: data,
+        contentType: 'application/json'
+    });
+}

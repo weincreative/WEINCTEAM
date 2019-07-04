@@ -127,7 +127,7 @@
 
                                                 <td>
 
-                                                    <a href="@Url.Action("Edit", "hst_hastakarti",new{ tc = @item.t_tc })" class="btn btn-labeled btn-success">
+                                                    <a onclick="HastaDuzenle(@item.t_tc)" class="btn btn-labeled btn-success" data-toggle="modal" data-target="#hastaKartiEdit">
                                                         <span class="btn-label">
                                                             <i class="glyphicon glyphicon-list"></i>
                                                         </span>Düzenle
@@ -137,9 +137,6 @@
                                                             <i class="glyphicon glyphicon-trash"></i>
                                                         </span>Sil
                                                     </a>
-
-
-                                                    @*@Html.ActionLink("Edit", "Edit", new { tc = @item.t_tc }, new { @class = "btn btn-labeled btn-primary" })*@
 
                                                 </td>
                                             </tr>
@@ -163,6 +160,22 @@
             <!-- WIDGET END -->
         </div>
     </section>
+</div>
+
+<div class="modal fade" id="hastaKartiEdit" tabindex="-1" role="dialog" aria-labelledby="hastaKartiEdit" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="HKEdit">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div>
 
 
@@ -227,7 +240,15 @@
                 });
         }
 
+        //$(document).ready(function () {
+        //    $('#cagriEkrani').click(function () {
+        //        $("#hastaKartiEdit").modal('show');
+        //    });
 
+        //    CagriEkraniBolumListele();
+
+        //});
+        
 
     </script>
 }

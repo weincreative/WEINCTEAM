@@ -3,7 +3,7 @@
 
 @{
 
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
 <!-- MAIN CONTENT -->
@@ -58,7 +58,7 @@
                         <!-- widget content -->
                         <div class="widget-body no-padding">
 
-                            @using (Html.BeginForm("Create", "hst_hastakarti", FormMethod.Post, new { id = "checkout-form", @class = "smart-form" }))
+                            @using (Html.BeginForm("EditDeneme", "hst_hastakarti", FormMethod.Post, new { id = "checkout-form", @class = "smart-form" }))
                             {
                                 @Html.AntiForgeryToken()
                                 <hr />
@@ -213,22 +213,6 @@
 
 
                             }
-                            @*@if (ViewBag.HataMessage != null)
-                                {
-                                    <script type="text/javascript">
-                                        window.onload = function () {
-                                            alert("@ViewBag.HataMessage");
-                                        };
-                                        $.smallBox({
-                                            title: "",
-                                            content: "<i class='fa fa-clock-o'></i> <i> "+ @ViewBag.HataMessage +".</i>",
-                                            //content: "<i class='fa fa-clock-o'></i> <i> HASTA KARTINDA HATA OLUŞTU.</i>",
-                                            color: "#818F9A",
-                                            iconSmall: "fa fa-times fa-2x fadeInRight animated",
-                                            timeout: 4000
-                                        });
-                                    </script>
-                                }*@
                         </div>
                         <!-- end widget content -->
                     </div>
@@ -250,6 +234,7 @@
 
 </div>
 <script src="~/Scripts/WeincdentalScript.js"></script>
+<script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>
 <!-- END MAIN CONTENT -->
 @section pagespecific {
     <script type="text/javascript">

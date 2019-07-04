@@ -701,15 +701,12 @@
             $.SmartMessageBox({
                 title: "UYARI!",
                 content: "Randevu No: " + rid + " Randevu Başlığı: " + tit + " olan randevu silinicektir. Emin misiniz?",
-                buttons: '[No][Yes][Diş Hizmet Girişi]'
+                buttons: '[No][Yes][Başvuru Ekranı]'
             },
                 function (ButtonPressed) {
                     if (ButtonPressed === "Yes") {
                         RandevuSil(rid);
-                    } else if (ButtonPressed === "Diş Hizmet Girişi") {
-                        //alert("diş");
-                        //hizmetGirisineGit(hastTc);
-                        
+                    } else if (ButtonPressed === "Başvuru Ekranı") {
                         location.href ='@Url.Action("Hastabasvuru_Index", "hst_basvuru")?id=' + hastTc;
                     }else if (ButtonPressed === "No") {
                         $.smallBox({

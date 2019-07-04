@@ -13,7 +13,7 @@ namespace WEINCDENTAL.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class View_Vezne
     {
         public int bid { get; set; }

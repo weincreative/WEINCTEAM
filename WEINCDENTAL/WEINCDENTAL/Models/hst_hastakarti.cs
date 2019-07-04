@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System.ComponentModel.DataAnnotations;
-
 namespace WEINCDENTAL.Models
 {
     using System;
     using System.Collections.Generic;
     
+    // [Required]
+
     public partial class hst_hastakarti
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,7 +28,6 @@ namespace WEINCDENTAL.Models
 
         public bool yabancimi { get; set; }
         [Display(Name = "Hasta ID")]
-        [Required]
         public int t_id { get; set; }
         [Display(Name = "Hasta T.C.")]
         [Required]
