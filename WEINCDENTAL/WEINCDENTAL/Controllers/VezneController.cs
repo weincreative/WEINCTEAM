@@ -36,7 +36,7 @@ namespace WEINCDENTAL.Controllers
 
             YardimciController yc = new YardimciController();
             var vezne = db.View_BsvrVezne
-                .Where(k => k.HastaAktif == true && k.BasvuruAktif == true 
+                .Where(k => k.HastaAktif == true && k.BasvuruAktif == true
                 && k.VezneAktif == true
                 && k.BorcDurum == true
                 )
@@ -54,7 +54,11 @@ namespace WEINCDENTAL.Controllers
                 ViewBag.AsilOdenecek = asilodenecek;
                 ViewBag.TotalOdenen = totalOdenen;
             }
-
+            else
+            {
+                if(tc != null)
+                ViewBag.tcYok = "Aramak istediğiniz T.C.'nin vezne kaydı yoktur.";
+            }
 
 
 
@@ -85,14 +89,15 @@ namespace WEINCDENTAL.Controllers
             decimal oncekiodenen = Convert.ToDecimal(Request.Form["totalodenen"]);
 
             decimal topIndirim = oncekiindirim + hst_vezne.t_indirim;
-            decimal topodenecek = oncekiodenen + hst_vezne.t_odenen+topIndirim;
+            decimal topodenecek = oncekiodenen + hst_vezne.t_odenen + topIndirim;
 
 
             if (totalhizfiyat < hst_vezne.t_odenen || totalhizfiyat < topodenecek)
             {
                 msg = "Ödenmek istenen değer Toplam değerden fazla olamaz";
                 drm = 1;
-            }else if (totalhizfiyat<topIndirim)
+            }
+            else if (totalhizfiyat < topIndirim)
             {
                 msg = "İndirim değeri Toplam fiyattan fazla olamaz";
                 drm = 1;

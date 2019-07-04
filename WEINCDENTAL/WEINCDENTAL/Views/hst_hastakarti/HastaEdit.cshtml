@@ -284,7 +284,6 @@
             
             //alttaki kodu silme.      t_ilceId2
             var deger = document.getElementById("t_ilceId2").value;
-            alert(deger);
             $("#t_ilceId").val(deger);
             var kayitdurum = @Html.Raw(Json.Encode(ViewBag.Message));
             if (kayitdurum==1) {

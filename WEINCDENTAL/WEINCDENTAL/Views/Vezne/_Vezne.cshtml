@@ -32,7 +32,13 @@
                                     <i class="fa fa-search"></i> Sorgula
                                 </button>
                             </div>
+
                         </div>
+                        <div id="OlmayanTC">
+                            <label style='color: red'>@ViewBag.tcYok 
+                            </label>
+                        </div>
+
 
                     </div>
 
@@ -49,7 +55,7 @@
                     {<h4 class="col-md-3"><span class="label label-success">T.C.No: @list.t_tc</span></h4>
                     <h4 class="col-md-2"><span class="label label-default ">Ad: @list.t_adi</span></h4>
                     <h4 class="col-md-2"> <span class="label label-default">Soyad: @list.t_soyadi</span></h4>
-                    <h4 class="col-md-3"> <span class="label label-default ">D.Tarihi: @list.t_dogumtarihi.ToString()</span></h4>
+                    <h4 class="col-md-3"> <span class="label label-default ">D.Tarihi: @list.t_dogumtarihi.ToString("dd.MM.yyyy")</span></h4>
 
                 }
 
@@ -155,10 +161,7 @@
                     </div>
                 </fieldset>
 
-
             </div>
-
-
 
         </div>
         <!-- widget edit box -->
@@ -177,7 +180,6 @@
                 <center>   <h4 class="modal-title" id="myModalLabel">Ödeme Yap</h4></center>
             </div>
             <div class="modal-body" id="loadPrice">
-                @*@Html.Action("_CreateVezne", "Vezne", new { id = 73 })*@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info col-lg-offset-3 col-md-6 col-sm-6 col-xs-6 col-lg-6" data-dismiss="modal">

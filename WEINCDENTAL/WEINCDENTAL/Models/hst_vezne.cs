@@ -19,6 +19,8 @@ namespace WEINCDENTAL.Models
         public int t_id { get; set; }
         public int t_bid { get; set; }
         public Nullable<int> t_hizid { get; set; }
+        [Required]
+        [Range(0.1, Double.MaxValue, ErrorMessage = "Tutar 0(SIFIR)'dan büyük olmalýdýr.!")]
         [DataType(DataType.Currency)]
         public decimal t_odenen { get; set; }
         [DataType(DataType.Currency)]

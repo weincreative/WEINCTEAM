@@ -46,6 +46,7 @@
                 <div id="loadVHizmet">
                     @*@Html.Action("_DisHHareket", "View_HizmetDetay", new { id = 4 })*@
                 </div>
+                <label style="color:red"></label>
 
 
 
@@ -73,15 +74,16 @@
             var tc = document.getElementById('Stc').value;
 
             if (tc == null || tc == '') {
-                alert("Lütfen T.C. No giriniz...");
-
+                //alert("Lütfen T.C. No giriniz...");
+                $('#OlmayanTC').html('');
+                $('#OlmayanTC').html("<label style='color: red'>Lütfen T.C. No Giriniz.</label>");
             } else {
                 LoadVezne(tc);
-                @*$('#loadVezne').load("@Url.Action("_Vezne")", { tc: tc });*@
 
             }
 
-        }
+    }
+
 
     function LoadVezne(vid) {
        

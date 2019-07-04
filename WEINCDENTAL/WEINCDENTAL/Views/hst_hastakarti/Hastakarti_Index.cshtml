@@ -132,8 +132,16 @@
                                                             <i class="glyphicon glyphicon-list"></i>
                                                         </span>Düzenle
                                                     </a>
-                                                   
-
+                                                    <a onclick="location.href='@Url.Action("SearchBorc", "Vezne",new{tc=item.t_tc})'" class="btn btn-labeled btn-info">
+                                                        <span class="btn-label">
+                                                            <i class="fa fa-money"></i>
+                                                        </span>Vezne
+                                                    </a>
+                                                    <a onclick="location.href='@Url.Action("Randevu_Index", "hst_randevu",new{tc=item.t_tc})'" class="btn btn-labeled btn-warning">
+                                                        <span class="btn-label">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>Randevu
+                                                    </a>
                                                 </td>
                                             </tr>
                                         }
@@ -221,8 +229,6 @@
 
                 });
         }
-
-
 
     </script>
 }
