@@ -58,22 +58,48 @@ namespace WEINCDENTAL.Models
         public virtual DbSet<View_HizmetDetay> View_HizmetDetay { get; set; }
         public virtual DbSet<View_Vezne> View_Vezne { get; set; }
     
-        public virtual int sp_UVAktif(Nullable<int> hareketid)
+        public virtual int sp_UVAktif(Nullable<int> bid)
         {
-            var hareketidParameter = hareketid.HasValue ?
-                new ObjectParameter("hareketid", hareketid) :
-                new ObjectParameter("hareketid", typeof(int));
+            var bidParameter = bid.HasValue ?
+                new ObjectParameter("bid", bid) :
+                new ObjectParameter("bid", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UVAktif", hareketidParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UVAktif", bidParameter);
         }
     
-        public virtual int sp_InsertVezne(Nullable<int> hareketid)
+        public virtual int sp_DeleteHhareket(Nullable<int> hhid)
+        {
+            var hhidParameter = hhid.HasValue ?
+                new ObjectParameter("hhid", hhid) :
+                new ObjectParameter("hhid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DeleteHhareket", hhidParameter);
+        }
+    
+        public virtual int sp_InsertVezne(Nullable<int> hareketid, Nullable<int> basid)
         {
             var hareketidParameter = hareketid.HasValue ?
                 new ObjectParameter("hareketid", hareketid) :
                 new ObjectParameter("hareketid", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertVezne", hareketidParameter);
+            var basidParameter = basid.HasValue ?
+                new ObjectParameter("basid", basid) :
+                new ObjectParameter("basid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertVezne", hareketidParameter, basidParameter);
+        }
+    
+        public virtual int sp_LastPay(Nullable<int> vid, Nullable<int> b_id)
+        {
+            var vidParameter = vid.HasValue ?
+                new ObjectParameter("vid", vid) :
+                new ObjectParameter("vid", typeof(int));
+    
+            var b_idParameter = b_id.HasValue ?
+                new ObjectParameter("b_id", b_id) :
+                new ObjectParameter("b_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_LastPay", vidParameter, b_idParameter);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -46,18 +47,29 @@ namespace WEINCDENTAL.Controllers
         public JsonResult Delete(int id)
         {
             var sonuc = 0;
+            string msg="";
+            var result = new HataMessage
+            {
+                sonuc = sonuc,
+                message = msg
+            };
             try
             {
-                hst_his_hareket hhareket = db.hst_his_hareket.Find(id);
-                hhareket.t_aktif = false;
-                db.Entry(hhareket).State = EntityState.Modified;
-                db.SaveChanges();
-                sonuc = 1;
-                return Json(sonuc, JsonRequestBehavior.AllowGet);
+               // hst_his_hareket hhareket = db.hst_his_hareket.Find(id);
+                //hhareket.t_aktif = false;
+                //db.Entry(hhareket).State = EntityState.Modified;
+                //db.SaveChanges();
+               db.sp_DeleteHhareket(id);
+                result.sonuc = 1;
+                result.message = "Silme İşlemi Başarılı Oldu.";
+             
+                return Json(result, JsonRequestBehavior.AllowGet);
             }
-            catch (Exception )
+            catch (Exception ex)
             {
-                return Json(sonuc, JsonRequestBehavior.AllowGet);
+                msg = ex.InnerException.Message;
+                result.message = msg;
+                return Json(result, JsonRequestBehavior.AllowGet);
             }
             
         }

@@ -127,16 +127,12 @@
 
                                                 <td>
 
-                                                    <a onclick="HastaDuzenle(@item.t_tc)" class="btn btn-labeled btn-success" data-toggle="modal" data-target="#hastaKartiEdit">
+                                                    <a onclick="location.href='@Url.Action("HastaEdit",new{tc=item.t_tc})'" class="btn btn-labeled btn-success">
                                                         <span class="btn-label">
                                                             <i class="glyphicon glyphicon-list"></i>
                                                         </span>Düzenle
                                                     </a>
-                                                    <a onclick="Remove(@item.t_tc)" class="btn btn-labeled btn-danger">
-                                                        <span class="btn-label">
-                                                            <i class="glyphicon glyphicon-trash"></i>
-                                                        </span>Sil
-                                                    </a>
+                                                   
 
                                                 </td>
                                             </tr>
@@ -162,21 +158,6 @@
     </section>
 </div>
 
-<div class="modal fade" id="hastaKartiEdit" tabindex="-1" role="dialog" aria-labelledby="hastaKartiEdit" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            </div>
-            <div class="modal-body" id="HKEdit">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default col-md-12 col-sm-12 col-xs-12 col-lg-12" data-dismiss="modal">
-                    Kapat
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>
 
 
 <script src="~/Scripts/Remove.js"></script>
@@ -186,7 +167,7 @@
     <script type="text/javascript">
 
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             var responsiveHelper_dt_basic = undefined;
             var responsiveHelper_datatable_fixed_column = undefined;
             var responsiveHelper_datatable_col_reorder = undefined;
@@ -201,20 +182,21 @@
                     "t" +
                     "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
                 "autoWidth": true,
-                "preDrawCallback": function () {
+                "preDrawCallback": function() {
                     // Initialize the responsive datatables helper once.
                     if (!responsiveHelper_dt_basic) {
-                        responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic3'), breakpointDefinition);
+                        responsiveHelper_dt_basic =
+                            new ResponsiveDatatablesHelper($('#dt_basic3'), breakpointDefinition);
                     }
                 },
-                "rowCallback": function (nRow) {
+                "rowCallback": function(nRow) {
                     responsiveHelper_dt_basic.createExpandIcon(nRow);
                 },
-                "drawCallback": function (oSettings) {
+                "drawCallback": function(oSettings) {
                     responsiveHelper_dt_basic.respond();
                 }
             });
-        })
+        });
 
         function Remove(hastaTc) {
             $.SmartMessageBox({
@@ -240,15 +222,7 @@
                 });
         }
 
-        //$(document).ready(function () {
-        //    $('#cagriEkrani').click(function () {
-        //        $("#hastaKartiEdit").modal('show');
-        //    });
 
-        //    CagriEkraniBolumListele();
-
-        //});
-        
 
     </script>
 }

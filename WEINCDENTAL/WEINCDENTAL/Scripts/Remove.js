@@ -125,7 +125,8 @@ function HizmetRemove(hid) {
         dataType: "json",
         async: false,
         success: function (veri) {
-            if (veri == 1) {
+          
+            if (veri.sonuc == 1) {
                 $.smallBox({
                     title: "BAŞARILI",
                     content: "<i class='fa fa-clock-o'></i> <i>Silme işlemi başarılı...</i>",
@@ -138,7 +139,7 @@ function HizmetRemove(hid) {
             } else {
                 $.smallBox({
                     title: "HATA",
-                    content: "<i class='fa fa-clock-o'></i> <i>Silme işleminde hata oluştu...</i>",
+                    content: "<i class='fa fa-clock-o'></i> <i>Silme işleminde hata oluştu...</i>"+"Hata: "+veri.message,
                     color: "#C46A69",
                     iconSmall: "fa fa-times fa-2x fadeInRight animated",
                     timeout: 4000

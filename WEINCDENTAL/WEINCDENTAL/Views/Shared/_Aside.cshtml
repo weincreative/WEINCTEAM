@@ -42,8 +42,8 @@
                             <a href="@Url.Action("Create", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Hasta Kartı</span></a>
                         </li>
                         <li class="@Html.RouteIf("Hastakarti_Index", "active")">
-                            <a href="@Url.Action("Hastakarti_Index", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Hasta Bilgileri</span></a>
-                        </li>
+                            <a href="@Url.Action("Hastakarti_Index", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-info-circle"></i><span class="menu-item-parent">Hasta Bilgileri</span></a>
+                          
                         <li class="@Html.RouteIf("HastaBasvuruCreate", "active")">
                             <a href="@Url.Action("HastaBasvuruCreate", "hst_basvuru")"><i class="fa fa-lg fa-fw  fa-paperclip"></i> <span class="menu-item-parent">Hasta Başvuru</span></a>
                         </li>
@@ -51,14 +51,14 @@
                     </ul>
                 </li>
             }
-           
-            @if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4") )
+
+            @if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4"))
             {
                 <li class="@Html.RouteIf("Randevu_Index", "active")">
                     <a href="@Url.Action("Randevu_Index", "hst_randevu")"><i class="fa fa-lg fa-fw fa-calendar">@*<em>3</em>*@</i> <span class="menu-item-parent">Randevu</span></a>
                 </li>
             }
-            @if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4") )
+            @if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4"))
             {
                 <li class="@Html.RouteIf("Vezne", "active")">
                     <a href="#"><i class="fa fa-lg fa-fw fa-money"></i><span class="menu-item-parent">Vezne</span></a>

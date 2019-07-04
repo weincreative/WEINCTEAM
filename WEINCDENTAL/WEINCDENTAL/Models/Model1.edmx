@@ -827,10 +827,18 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           </ReferentialConstraint>
         </Association>
         <Function Name="sp_UVAktif" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="sp$UVAktif">
-          <Parameter Name="hareketid" Type="int" Mode="In" />
+          <Parameter Name="bid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteHhareket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hhid" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_InsertVezne" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="hareketid" Type="int" Mode="In" />
+          <Parameter Name="basid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_LastPay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vid" Type="int" Mode="In" />
+          <Parameter Name="b_id" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="WEINCDENTALModelStoreContainer">
           <EntitySet Name="adm_kullanicigrup" EntityType="Self.adm_kullanicigrup" Schema="dbo" store:Type="Tables" />
@@ -2084,10 +2092,18 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <End Role="hst_vezne" EntitySet="hst_vezne" />
           </AssociationSet>
           <FunctionImport Name="sp_UVAktif">
-            <Parameter Name="hareketid" Mode="In" Type="Int32" />
+            <Parameter Name="bid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DeleteHhareket">
+            <Parameter Name="hhid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_InsertVezne">
             <Parameter Name="hareketid" Mode="In" Type="Int32" />
+            <Parameter Name="basid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_LastPay">
+            <Parameter Name="vid" Mode="In" Type="Int32" />
+            <Parameter Name="b_id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -2543,7 +2559,9 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_UVAktif" FunctionName="WEINCDENTALModel.Store.sp_UVAktif" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteHhareket" FunctionName="WEINCDENTALModel.Store.sp_DeleteHhareket" />
           <FunctionImportMapping FunctionImportName="sp_InsertVezne" FunctionName="WEINCDENTALModel.Store.sp_InsertVezne" />
+          <FunctionImportMapping FunctionImportName="sp_LastPay" FunctionName="WEINCDENTALModel.Store.sp_LastPay" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
