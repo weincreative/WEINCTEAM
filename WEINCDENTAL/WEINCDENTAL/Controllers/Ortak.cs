@@ -21,14 +21,14 @@ namespace WEINCDENTAL.Controllers
             try
             {
                 donen = db.hst_basvuru.Max(t => t.t_id);
-               
-                
+
+
             }
             catch (Exception e)
             {
                 return donen;
             }
-          
+
 
             return donen;
         }

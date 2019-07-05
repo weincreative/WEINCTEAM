@@ -18,7 +18,7 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_hastakarti
         public ActionResult Hastakarti_Index()
         {
-            var hst_hastakarti = db.hst_hastakarti.Include(h => h.hst_cinsiyet).Include(h => h.hst_il).Include(h => h.hst_ilce).Include(h => h.hst_medenidurum).Include(h => h.hst_ulke).Where(k=>k.t_aktif==true);
+            var hst_hastakarti = db.hst_hastakarti.Include(h => h.hst_cinsiyet).Include(h => h.hst_il).Include(h => h.hst_ilce).Include(h => h.hst_medenidurum).Include(h => h.hst_ulke).Where(k => k.t_aktif == true);
             return View(hst_hastakarti.ToList());
         }
 
