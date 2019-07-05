@@ -9,7 +9,7 @@ namespace WEINCDENTAL.Controllers
     
     public class Ortak
     {
-        public static string _hastatc;
+        public static string _hastatc="";
         public static int _hastayas;
 
 
@@ -17,7 +17,18 @@ namespace WEINCDENTAL.Controllers
         public int GetSonIndex()
         {
             WEINCDENTALEntities db = new WEINCDENTALEntities();
-            var donen=db.hst_basvuru.Max(t=>t.t_id);
+            var donen = 0;
+            try
+            {
+                donen = db.hst_basvuru.Max(t => t.t_id);
+               
+                
+            }
+            catch (Exception e)
+            {
+                return donen;
+            }
+          
 
             return donen;
         }
