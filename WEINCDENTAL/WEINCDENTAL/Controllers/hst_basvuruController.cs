@@ -106,7 +106,7 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_basvuru/Create
         public ActionResult HastaBasvuruCreate(string id)
         {
-            ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm, "t_id", "t_adi");
+            ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm.Where(k=>k.t_aktif==true), "t_id", "t_adi");
             ViewBag.t_tc = id;
             return View();
         }
@@ -116,7 +116,7 @@ namespace WEINCDENTAL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "t_id,t_basvuru,t_tc,t_basvurutarihi,t_bolumkodu,t_cagriekraniistem,t_basvurudr,t_taburcu,t_createdate,t_createuser,t_aktif")] hst_basvuru hst_basvuru)
+        public ActionResult Create([Bind(Include = "t_id,t_basvuru,t_tc,t_basvurutarihi,t_bolumkodu,t_cagriekraniistem,t_basvurudr,t_borc,t_taburcu,t_createdate,t_createuser,t_aktif")] hst_basvuru hst_basvuru)
         {
 
             try
@@ -127,6 +127,7 @@ namespace WEINCDENTAL.Controllers
                 hst_basvuru.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
                 hst_basvuru.t_createdate = DateTime.Now;
                 hst_basvuru.t_basvurutarihi = DateTime.Now;
+                hst_basvuru.t_borc = true;
                 hst_basvuru.t_basvurudr = 0;
                 hst_basvuru.t_cagriekraniistem = 0;
                 hst_basvuru.t_taburcu = false;
