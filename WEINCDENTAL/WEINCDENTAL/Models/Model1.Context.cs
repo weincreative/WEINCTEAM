@@ -101,5 +101,23 @@ namespace WEINCDENTAL.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_LastPay", vidParameter, b_idParameter);
         }
+    
+        public virtual int sp_OdemeBitim(Nullable<int> basid)
+        {
+            var basidParameter = basid.HasValue ?
+                new ObjectParameter("basid", basid) :
+                new ObjectParameter("basid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_OdemeBitim", basidParameter);
+        }
+    
+        public virtual int sp_VezneUpIlkKayit(Nullable<int> bsvid)
+        {
+            var bsvidParameter = bsvid.HasValue ?
+                new ObjectParameter("bsvid", bsvid) :
+                new ObjectParameter("bsvid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_VezneUpIlkKayit", bsvidParameter);
+        }
     }
 }

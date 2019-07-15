@@ -43,8 +43,18 @@ namespace WEINCDENTAL.Security
 
         public override string[] GetRolesForUser(string username)
         {
-            var UserINDBRole = db.adm_kullanicilar.FirstOrDefault(x => x.t_kodu == username);
-            return new string[] { UserINDBRole.t_yetki.ToString() };
+            try
+            {
+                var UserINDBRole = db.adm_kullanicilar.FirstOrDefault(x => x.t_kodu == username);
+                return new string[] { UserINDBRole.t_yetki.ToString() };
+            }
+            catch (Exception ex)
+            {
+                var UserINDBRole = 0;
+                return new string[]{ UserINDBRole.ToString() };
+            }
+            
+            
             //throw new NotImplementedException();
         }
 

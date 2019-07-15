@@ -7,21 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace WEINCDENTAL.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class hst_his_hareket
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public hst_his_hareket()
-        {
-            this.hst_vezne = new HashSet<hst_vezne>();
-        }
-    
         public int t_id { get; set; }
         public int t_basvuruid { get; set; }
         public int t_hizmetkodu { get; set; }
@@ -38,12 +31,11 @@ namespace WEINCDENTAL.Models
         public string t_createuser { get; set; }
         public System.DateTime t_createdate { get; set; }
         public bool t_aktif { get; set; }
+        public Nullable<bool> t_yapildi { get; set; }
     
         public virtual hst_basvuru hst_basvuru { get; set; }
         public virtual hst_cene_uygunmu hst_cene_uygunmu { get; set; }
         public virtual hst_firma hst_firma { get; set; }
         public virtual hst_hizmet hst_hizmet { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<hst_vezne> hst_vezne { get; set; }
     }
 }

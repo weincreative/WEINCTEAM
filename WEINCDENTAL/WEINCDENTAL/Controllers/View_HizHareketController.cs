@@ -27,7 +27,46 @@ namespace WEINCDENTAL.Controllers
             return PartialView(hizhareket);
         }
 
-        
+        [HttpPost]
+        public JsonResult PlanlaYap(int id)
+        {
+            var sonuc = 0;
+            try
+            {
+                 hst_his_hareket hHplanlamaYap = db.hst_his_hareket.Find(id);
+                hHplanlamaYap.t_yapildi = true;
+                db.Entry(hHplanlamaYap).State = EntityState.Modified;
+                db.SaveChanges();
+                sonuc = 1;
+                return Json(sonuc, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(sonuc, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
+        [HttpPost]
+        public JsonResult PlanlaYapma(int id)
+        {
+            var sonuc = 0;
+            try
+            {
+                hst_his_hareket hHplanlamaYapma = db.hst_his_hareket.Find(id);
+                hHplanlamaYapma.t_yapildi = false;
+                db.Entry(hHplanlamaYapma).State = EntityState.Modified;
+                db.SaveChanges();
+                sonuc = 1;
+                return Json(sonuc, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(sonuc, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -640,3 +640,74 @@ function AjaxCall(url, data, type) {
 
 
 ///////////////////////////////////////
+
+
+function PlanlamaYapildi(PHid) {
+    $.ajax({
+        type: "POST",
+        url: "../../View_HizHareket/PlanlaYap",
+        contentType: 'application/json',
+        data: JSON.stringify({ id: PHid }),
+        dataType: "json",
+        async: false,
+        success: function (veri) {
+
+            if (veri == 1) {
+                $.smallBox({
+                    title: "BAŞARILI",
+                    content: "<i class='fa fa-clock-o'></i> <i>Planlama İşlemi Yapıldı Olarak Eklendi Başarılı...</i>",
+                    color: "#659265",
+                    iconSmall: "fa fa-check fa-2x fadeInRight animated",
+                    timeout: 4000
+                });
+                //  location.reload();
+            } else {
+                $.smallBox({
+                    title: "HATA",
+                    content: "<i class='fa fa-clock-o'></i> <i>Planlama Onaylanmasında Hata Oluştu...</i>" + "Hata: " + veri.message,
+                    color: "#C46A69",
+                    iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                    timeout: 4000
+                });
+
+            }
+
+        }
+    });
+}
+
+
+function PlanlamaYapilmadi(PHid) {
+    $.ajax({
+        type: "POST",
+        url: "../../View_HizHareket/PlanlaYapma",
+        contentType: 'application/json',
+        data: JSON.stringify({ id: PHid }),
+        dataType: "json",
+        async: false,
+        success: function (veri) {
+
+            if (veri == 1) {
+                $.smallBox({
+                    title: "BAŞARILI",
+                    content: "<i class='fa fa-clock-o'></i> <i>Planlama Onaylanması Kaldırıldı...</i>",
+                    color: "#659265",
+                    iconSmall: "fa fa-check fa-2x fadeInRight animated",
+                    timeout: 4000
+                });
+                //  location.reload();
+            } else {
+                $.smallBox({
+                    title: "HATA",
+                    content: "<i class='fa fa-clock-o'></i> <i>Planlama Onaylanmasını Kaldıramadım Hata Oluştu...</i>" + "Hata: " + veri.message,
+                    color: "#C46A69",
+                    iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                    timeout: 4000
+                });
+
+            }
+
+        }
+
+    });
+}

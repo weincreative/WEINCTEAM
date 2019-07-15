@@ -58,7 +58,6 @@
 
 }
 
-
 function HastaKartiRemove(htc) {
     $.ajax({
         type: "POST",

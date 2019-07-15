@@ -60,6 +60,7 @@ namespace WEINCDENTAL.Controllers
                 //db.Entry(hhareket).State = EntityState.Modified;
                 //db.SaveChanges();
                db.sp_DeleteHhareket(id);
+                
                 result.sonuc = 1;
                 result.message = "Silme İşlemi Başarılı Oldu.";
              

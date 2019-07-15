@@ -127,20 +127,25 @@
 
                                                 <td>
 
-                                                    <a onclick="location.href='@Url.Action("HastaEdit",new{tc=item.t_tc})'" class="btn btn-labeled btn-success">
-                                                        <span class="btn-label">
+                                                    <a onclick="location.href='@Url.Action("HastaEdit",new{tc=item.t_tc})'" class="btn btn-labeled btn-success" alt="Düzenle">
+                                                        @*<span class="btn-label">*@
                                                             <i class="glyphicon glyphicon-list"></i>
-                                                        </span>Düzenle
+                                                        @*</span>Düzenle*@
                                                     </a>
-                                                    <a onclick="location.href='@Url.Action("SearchBorc", "Vezne",new{tc=item.t_tc})'" class="btn btn-labeled btn-info">
-                                                        <span class="btn-label">
+                                                    <a onclick="location.href='@Url.Action("SearchBorc", "Vezne",new{tc=item.t_tc})'" class="btn btn-labeled btn-info" alt="Vezneye Git">
+                                                        @*<span class="btn-label">*@
                                                             <i class="fa fa-money"></i>
-                                                        </span>Vezne
+                                                        @*</span>Vezne*@
                                                     </a>
-                                                    <a onclick="location.href='@Url.Action("Randevu_Index", "hst_randevu",new{tc=item.t_tc})'" class="btn btn-labeled btn-warning">
-                                                        <span class="btn-label">
+                                                    <a onclick="location.href='@Url.Action("Randevu_Index", "hst_randevu",new{tc=item.t_tc})'" class="btn btn-labeled btn-warning" alt="Randevu Ekranına Git">
+                                                        @*<span class="btn-label">*@
                                                             <i class="fa fa-calendar"></i>
-                                                        </span>Randevu
+                                                        @*</span>Randevu*@
+                                                    </a>
+                                                    <a onclick="location.href='@Url.Action("Hastabasvuru_Index", "hst_basvuru",new{id=item.t_tc})'" class="btn btn-labeled btn-danger" alt="Başvuru Ekranına Git">
+                                                        @*<span class="btn-label">*@
+                                                            <i class="fa fa-leaf"></i>
+                                                        @*</span>Başvuru*@
                                                     </a>
                                                 </td>
                                             </tr>

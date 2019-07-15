@@ -36,5 +36,6 @@ namespace WEINCDENTAL.Models
         public bool HHareketAkteif { get; set; }
         public bool Baktif { get; set; }
         public bool HastaAktif { get; set; }
+        public Nullable<bool> t_yapildi { get; set; }
     }
 }

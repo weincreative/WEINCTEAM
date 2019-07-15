@@ -3,7 +3,7 @@
 
 <div id="dinamikTable">
 
-    
+
     <div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-collapsed="false" data-widget-sortable="false" data-widget-deletebutton="false">
         <!-- widget options:
         usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
@@ -47,8 +47,11 @@
                                 <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3_1" rowspan="1" colspan="1" aria-label="Company: activate to sort column ascending" style="width: 50px;"><i class="fa fa-fw fa-key text-muted hidden-md hidden-sm hidden-xs"></i> T.C.</th>
                                 <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;"><i class="fa fa-fw  fa-stethoscope text-muted hidden-md hidden-sm hidden-xs"></i> Başvuru Yapan Doktor</th>
                                 <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_1" rowspan="1" colspan="1" aria-label=" Name: activate to sort column ascending" style="width: 50px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Başvuru Tarihi</th>
-                                <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_1" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 100px;"><i class="fa fa-hospital-o text-muted hidden-md hidden-sm hidden-xs"></i> Hizmet Adı</th>
+                                <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_1" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 20px;"><i class="fa fa-hospital-o text-muted hidden-md hidden-sm hidden-xs"></i> Diş Kodu</th>
+                                <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_1" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 120px;"><i class="fa fa-hospital-o text-muted hidden-md hidden-sm hidden-xs"></i> Hizmet Adı</th>
+                                <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_1" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 30px;"><i class="fa fa-hospital-o text-muted hidden-md hidden-sm hidden-xs"></i> Çene Durum</th>
                                 <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3_1" rowspan="1" colspan="1" aria-label=" Name: activate to sort column ascending" style="width: 50px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Hizmet Tarihi</th>
+                                <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3_1" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 50px;"><i class="fa fa-edit text-muted hidden-md hidden-sm hidden-xs"></i> İşlem Yap</th>
                                 <!-- HEAD BİTİŞİ -->
                             </tr>
                         </thead>
@@ -59,28 +62,110 @@
 
                                 foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.basvuruid)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.t_tc)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Doktoradi)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.t_basvurutarihi)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Hizmetadi)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.t_islemtarihi)
-                                        </td>
-
-
-                                    </tr>
+                                    if (item.t_yapildi == true)
+                                    {
+                                        <tr class="success">
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.basvuruid)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_tc)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Doktoradi)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_basvurutarihi)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_diskodu)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Hizmetadi)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CeneDurum)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_islemtarihi)
+                                            </td>
+                                            <td>
+                                                <a onclick="Yapma('@item.Hareketid', '@item.Hizmetadi', '@item.t_diskodu','@item.basvuruid')" class="btn btn-labeled btn-danger">
+                                                        <span class="btn-label">
+                                                            <i class="glyphicon glyphicon-trash"></i>
+                                                        </span>Yapılmadı
+                                                    </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                    else if (item.t_yapildi == false)
+                                    {
+                                        <tr class="danger">
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.basvuruid)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_tc)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Doktoradi)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_basvurutarihi)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_diskodu)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Hizmetadi)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CeneDurum)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_islemtarihi)
+                                            </td>
+                                            <td>
+                                                <a onclick="Yaptm('@item.Hareketid', '@item.Hizmetadi', '@item.t_diskodu','@item.basvuruid')" class="btn btn-labeled btn-success">
+                                                        <span class="btn-label">
+                                                            <i class="glyphicon glyphicon-check"></i>
+                                                        </span>Yapıldı
+                                                    </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr class="warning">
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.basvuruid)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_tc)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Doktoradi)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_basvurutarihi)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_diskodu)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Hizmetadi)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CeneDurum)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_islemtarihi)
+                                            </td>
+                                            <td>
+                                                <span class="btn-label"></span>BOS
+                                            </td>
+                                        </tr>
+                                    }
 
                                 }
 

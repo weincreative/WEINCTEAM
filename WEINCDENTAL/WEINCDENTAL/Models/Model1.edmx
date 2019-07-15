@@ -172,6 +172,7 @@
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
+          <Property Name="t_yapildi" Type="bit" />
         </EntityType>
         <EntityType Name="hst_hizmet">
           <Key>
@@ -410,6 +411,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizHareket' does not have a p
           <Property Name="HHareketAkteif" Type="bit" Nullable="false" />
           <Property Name="Baktif" Type="bit" Nullable="false" />
           <Property Name="HastaAktif" Type="bit" Nullable="false" />
+          <Property Name="t_yapildi" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizmetDetay' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -466,6 +468,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizmetDetay' does not have a 
           <Property Name="DoktorAktif" Type="bit" Nullable="false" />
           <Property Name="BasvuruAktif" Type="bit" Nullable="false" />
           <Property Name="HHareketAktif" Type="bit" Nullable="false" />
+          <Property Name="t_yapildi" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -840,6 +843,12 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Parameter Name="vid" Type="int" Mode="In" />
           <Parameter Name="b_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_OdemeBitim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="basid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_VezneUpIlkKayit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bsvid" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="WEINCDENTALModelStoreContainer">
           <EntitySet Name="adm_kullanicigrup" EntityType="Self.adm_kullanicigrup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="adm_kullanicilar" EntityType="Self.adm_kullanicilar" Schema="dbo" store:Type="Tables" />
@@ -931,7 +940,8 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     [View_HizHareket].[CeneDurum] AS [CeneDurum], 
     [View_HizHareket].[HHareketAkteif] AS [HHareketAkteif], 
     [View_HizHareket].[Baktif] AS [Baktif], 
-    [View_HizHareket].[HastaAktif] AS [HastaAktif]
+    [View_HizHareket].[HastaAktif] AS [HastaAktif], 
+    [View_HizHareket].[t_yapildi] AS [t_yapildi]
     FROM [dbo].[View_HizHareket] AS [View_HizHareket]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_HizmetDetay" EntityType="Self.View_HizmetDetay" store:Type="Views" store:Schema="dbo">
@@ -961,7 +971,8 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     [View_HizmetDetay].[BorcDurum] AS [BorcDurum], 
     [View_HizmetDetay].[DoktorAktif] AS [DoktorAktif], 
     [View_HizmetDetay].[BasvuruAktif] AS [BasvuruAktif], 
-    [View_HizmetDetay].[HHareketAktif] AS [HHareketAktif]
+    [View_HizmetDetay].[HHareketAktif] AS [HHareketAktif], 
+    [View_HizmetDetay].[t_yapildi] AS [t_yapildi]
     FROM [dbo].[View_HizmetDetay] AS [View_HizmetDetay]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_Vezne" EntityType="Self.View_Vezne" store:Type="Views" store:Schema="dbo">
@@ -1297,6 +1308,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
+          <Property Name="t_yapildi" Type="Boolean" />
           <NavigationProperty Name="hst_basvuru" Relationship="Self.FK_hst_his_hareket_hst_basvuru" FromRole="hst_his_hareket" ToRole="hst_basvuru" />
           <NavigationProperty Name="hst_cene_uygunmu" Relationship="Self.FK_hst_his_hareket_hst_cene_uygunmu" FromRole="hst_his_hareket" ToRole="hst_cene_uygunmu" />
           <NavigationProperty Name="hst_firma" Relationship="Self.FK_hst_his_hareket_hst_firma" FromRole="hst_his_hareket" ToRole="hst_firma" />
@@ -1548,6 +1560,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="HHareketAkteif" Type="Boolean" Nullable="false" />
           <Property Name="Baktif" Type="Boolean" Nullable="false" />
           <Property Name="HastaAktif" Type="Boolean" Nullable="false" />
+          <Property Name="t_yapildi" Type="Boolean" />
         </EntityType>
         <EntityType Name="View_HizmetDetay">
           <Key>
@@ -1602,6 +1615,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="DoktorAktif" Type="Boolean" Nullable="false" />
           <Property Name="BasvuruAktif" Type="Boolean" Nullable="false" />
           <Property Name="HHareketAktif" Type="Boolean" Nullable="false" />
+          <Property Name="t_yapildi" Type="Boolean" />
         </EntityType>
         <EntityType Name="View_Vezne">
           <Key>
@@ -2105,6 +2119,12 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <Parameter Name="vid" Mode="In" Type="Int32" />
             <Parameter Name="b_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="sp_OdemeBitim">
+            <Parameter Name="basid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_VezneUpIlkKayit">
+            <Parameter Name="bsvid" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -2291,6 +2311,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="t_createuser" ColumnName="t_createuser" />
                 <ScalarProperty Name="t_createdate" ColumnName="t_createdate" />
                 <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
+                <ScalarProperty Name="t_yapildi" ColumnName="t_yapildi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2490,6 +2511,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="HHareketAkteif" ColumnName="HHareketAkteif" />
                 <ScalarProperty Name="Baktif" ColumnName="Baktif" />
                 <ScalarProperty Name="HastaAktif" ColumnName="HastaAktif" />
+                <ScalarProperty Name="t_yapildi" ColumnName="t_yapildi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2522,6 +2544,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="DoktorAktif" ColumnName="DoktorAktif" />
                 <ScalarProperty Name="BasvuruAktif" ColumnName="BasvuruAktif" />
                 <ScalarProperty Name="HHareketAktif" ColumnName="HHareketAktif" />
+                <ScalarProperty Name="t_yapildi" ColumnName="t_yapildi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2562,6 +2585,8 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <FunctionImportMapping FunctionImportName="sp_DeleteHhareket" FunctionName="WEINCDENTALModel.Store.sp_DeleteHhareket" />
           <FunctionImportMapping FunctionImportName="sp_InsertVezne" FunctionName="WEINCDENTALModel.Store.sp_InsertVezne" />
           <FunctionImportMapping FunctionImportName="sp_LastPay" FunctionName="WEINCDENTALModel.Store.sp_LastPay" />
+          <FunctionImportMapping FunctionImportName="sp_OdemeBitim" FunctionName="WEINCDENTALModel.Store.sp_OdemeBitim" />
+          <FunctionImportMapping FunctionImportName="sp_VezneUpIlkKayit" FunctionName="WEINCDENTALModel.Store.sp_VezneUpIlkKayit" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
