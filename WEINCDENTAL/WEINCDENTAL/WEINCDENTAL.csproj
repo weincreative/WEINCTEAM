@@ -365,6 +365,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Pacs\12312312300\2019\07\03\0000000032_seval cetin_Panorama_20190703184840.jpg" />
     <Content Include="Pacs\benches.jpg" />
     <Content Include="Pacs\bridge.jpg" />
     <Content Include="Pacs\coast.jpg" />
