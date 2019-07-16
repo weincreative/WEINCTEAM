@@ -155,6 +155,7 @@
     <Compile Include="Controllers\hst_randevuController.cs" />
     <Compile Include="Controllers\IstatistikController.cs" />
     <Compile Include="Controllers\Ortak.cs" />
+    <Compile Include="Controllers\PacsController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\VezneController.cs" />
     <Compile Include="Controllers\View_HastalikDurumController.cs" />
@@ -269,6 +270,9 @@
     <Compile Include="Models\View_HizmetDetay.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\View_Pacs.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\View_Vezne.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -289,6 +293,8 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\demo.min.css" />
     <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\gallery\baguetteBox.min.css" />
+    <Content Include="Content\css\gallery\gallery-grid.css" />
     <Content Include="Content\css\invoice.min.css" />
     <Content Include="Content\css\lockscreen.min.css" />
     <Content Include="Content\css\smartadmin-production-plugins.min.css" />
@@ -349,6 +355,25 @@
     <Content Include="Content\img\flags\es.png" />
     <Content Include="Content\img\flags\flags.png" />
     <Content Include="Content\img\flags\us.png" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pacs\benches.jpg" />
+    <Content Include="Pacs\bridge.jpg" />
+    <Content Include="Pacs\coast.jpg" />
+    <Content Include="Pacs\park.jpg" />
+    <Content Include="Pacs\rails.jpg" />
+    <Content Include="Pacs\rocks.jpg" />
+    <Content Include="Pacs\sky.jpg" />
+    <Content Include="Pacs\traffic.jpg" />
+    <Content Include="Pacs\tunnel.jpg" />
     <Content Include="Content\img\glass.jpg" />
     <Content Include="Content\img\gradient\login.png" />
     <Content Include="Content\img\hue.png" />
@@ -554,16 +579,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\app.config.js" />
     <Content Include="Scripts\app.min.js" />
     <Content Include="Content\css\your_style.less" />
@@ -581,6 +596,7 @@
     <Content Include="Content\sound\voice_alert.ogg" />
     <Content Include="Content\sound\voice_off.ogg" />
     <Content Include="Content\sound\voice_on.ogg" />
+    <Content Include="Scripts\baguetteBox.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\demo.min.js" />
     <Content Include="Scripts\plugin\jquery-validate\jquery.validate.unobtrusive.js" />
@@ -1152,6 +1168,7 @@
     <Content Include="Views\View_HizmetDetay\_VezneHHareket.cshtml" />
     <Content Include="Views\hst_hastakarti\HastaEdit.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Pacs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

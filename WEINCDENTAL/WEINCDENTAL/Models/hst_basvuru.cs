@@ -11,8 +11,7 @@ namespace WEINCDENTAL.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class hst_basvuru
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,7 +23,6 @@ namespace WEINCDENTAL.Models
     
         public int t_id { get; set; }
         public string t_basvuru { get; set; }
-        [Required]
         public string t_tc { get; set; }
         public System.DateTime t_basvurutarihi { get; set; }
         public int t_bolumkodu { get; set; }

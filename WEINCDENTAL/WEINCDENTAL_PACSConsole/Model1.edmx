@@ -11,6 +11,8 @@
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="t_pacspath" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="t_resimad" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="t_klasorad" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="t_tc" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="t_ip" Type="int" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -31,6 +33,8 @@
           </Key>
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="t_pacspath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_resimad" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="t_klasorad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="t_tc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_ip" Type="Int32" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -51,6 +55,8 @@
               <MappingFragment StoreEntitySet="adm_pacs">
                 <ScalarProperty Name="t_id" ColumnName="t_id" />
                 <ScalarProperty Name="t_pacspath" ColumnName="t_pacspath" />
+                <ScalarProperty Name="t_resimad" ColumnName="t_resimad" />
+                <ScalarProperty Name="t_klasorad" ColumnName="t_klasorad" />
                 <ScalarProperty Name="t_tc" ColumnName="t_tc" />
                 <ScalarProperty Name="t_ip" ColumnName="t_ip" />
                 <ScalarProperty Name="t_createuser" ColumnName="t_createuser" />

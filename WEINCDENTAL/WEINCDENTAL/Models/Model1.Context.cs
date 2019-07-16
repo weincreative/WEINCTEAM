@@ -56,6 +56,7 @@ namespace WEINCDENTAL.Models
         public virtual DbSet<View_HastalikDurum> View_HastalikDurum { get; set; }
         public virtual DbSet<View_HizHareket> View_HizHareket { get; set; }
         public virtual DbSet<View_HizmetDetay> View_HizmetDetay { get; set; }
+        public virtual DbSet<View_Pacs> View_Pacs { get; set; }
         public virtual DbSet<View_Vezne> View_Vezne { get; set; }
     
         public virtual int sp_UVAktif(Nullable<int> bid)

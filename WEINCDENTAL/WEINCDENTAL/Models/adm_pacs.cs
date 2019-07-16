@@ -16,6 +16,8 @@ namespace WEINCDENTAL.Models
     {
         public int t_id { get; set; }
         public string t_pacspath { get; set; }
+        public string t_resimad { get; set; }
+        public string t_klasorad { get; set; }
         public string t_tc { get; set; }
         public int t_ip { get; set; }
         public string t_createuser { get; set; }

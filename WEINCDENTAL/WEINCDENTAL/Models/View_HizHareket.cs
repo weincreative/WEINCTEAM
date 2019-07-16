@@ -11,7 +11,8 @@ namespace WEINCDENTAL.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class View_HizHareket
     {
         public int basvuruid { get; set; }
@@ -28,6 +29,7 @@ namespace WEINCDENTAL.Models
         public string Hizmetadi { get; set; }
         public bool t_yetiskinmi { get; set; }
         public int t_diskodu { get; set; }
+        [DataType(DataType.Currency)]
         public decimal t_fiyat { get; set; }
         public System.DateTime t_islemtarihi { get; set; }
         public bool Odemeyapildimi { get; set; }

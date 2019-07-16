@@ -7,21 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WEINCDENTAL_PACSConsole
+namespace WEINCDENTAL.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class adm_pacs
+    public partial class View_Pacs
     {
         public int t_id { get; set; }
         public string t_pacspath { get; set; }
         public string t_resimad { get; set; }
         public string t_klasorad { get; set; }
         public string t_tc { get; set; }
-        public int t_ip { get; set; }
-        public string t_createuser { get; set; }
+        public string t_adi { get; set; }
+        public string t_soyadi { get; set; }
+        public string Cinsiyet { get; set; }
         public System.DateTime t_createdate { get; set; }
-        public int t_aktif { get; set; }
+        public System.DateTime t_dogumtarihi { get; set; }
+        public int t_ip { get; set; }
+        public bool HastaAktif { get; set; }
+        public int PacsAktif { get; set; }
     }
 }

@@ -63,6 +63,8 @@ namespace WEINCDENTAL_PACSConsole
                             fs.Close();
                             string orjFile = $"D:\\project\\PacsMemory\\{subs}.jpg";
                             string copyFile = $"D:\\project\\Pacs\\{tc}\\{yil}\\{ay}\\{gün}\\{subs}.jpg";
+                            string klasorAd = $"{tc}\\{yil}\\{ay}\\{gün}";
+                          
                             try
                             {
                                 using (WEINCDENTALEntities db = new WEINCDENTALEntities())
@@ -74,7 +76,9 @@ namespace WEINCDENTAL_PACSConsole
                                         t_ip = 0,
                                         t_createdate = nnow,
                                         t_createuser = "W3",
-                                        t_aktif = 1
+                                        t_aktif = 1,
+                                        t_klasorad = klasorAd,
+                                        t_resimad = $"{subs}.jpg"
                                     };
                                     db.adm_pacs.Add(pacsYolla);
                                     db.SaveChanges();

@@ -211,7 +211,8 @@ function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, cen
             "t_aktif": 1,
             "t_islemtarihi": zmn,
             "t_createdate": zmn,
-            't_borcdurum': true
+            't_borcdurum': true,
+            't_yapildi':false
         });
 
     }
