@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace WEINCDENTAL.Models
 {
     using System;
@@ -22,10 +24,12 @@ namespace WEINCDENTAL.Models
         public string t_adi { get; set; }
         public string t_soyadi { get; set; }
         public string Cinsiyet { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public System.DateTime t_createdate { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public System.DateTime t_dogumtarihi { get; set; }
         public int t_ip { get; set; }
         public bool HastaAktif { get; set; }
-        public int PacsAktif { get; set; }
+        public bool PacsAktif { get; set; }
     }
 }

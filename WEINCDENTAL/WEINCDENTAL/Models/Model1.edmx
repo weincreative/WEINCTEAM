@@ -51,7 +51,7 @@
           <Property Name="t_ip" Type="int" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
-          <Property Name="t_aktif" Type="int" Nullable="false" />
+          <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="hst_basvuru">
           <Key>
@@ -502,7 +502,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Pacs' does not have a primary
           <Property Name="t_dogumtarihi" Type="date" Nullable="false" />
           <Property Name="t_ip" Type="int" Nullable="false" />
           <Property Name="HastaAktif" Type="bit" Nullable="false" />
-          <Property Name="PacsAktif" Type="int" Nullable="false" />
+          <Property Name="PacsAktif" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1213,7 +1213,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_ip" Type="Int32" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="t_aktif" Type="Int32" Nullable="false" />
+          <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="hst_hastakarti" Relationship="Self.FK_adm_pacs_hst_hastakarti" FromRole="adm_pacs" ToRole="hst_hastakarti" />
         </EntityType>
         <EntityType Name="hst_basvuru">
@@ -1698,7 +1698,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_dogumtarihi" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_ip" Type="Int32" Nullable="false" />
           <Property Name="HastaAktif" Type="Boolean" Nullable="false" />
-          <Property Name="PacsAktif" Type="Int32" Nullable="false" />
+          <Property Name="PacsAktif" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="View_Vezne">
           <Key>

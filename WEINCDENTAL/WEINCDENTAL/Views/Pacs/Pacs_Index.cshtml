@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Pac Sorgula";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- row -->
+    <div class="row">
+        <!-- col -->
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark">
+                <!-- PAGE HEADER -->
+                <i class="fa-fw fa fa-file-movie-o"></i>
+                Pacs Sorgula
+            </h1>
+        </div>
+
+    </div>
+    <!-- widget grid -->
+    <section id="widget-grid">
+        <!-- row -->
+        <div class="row">
+
+
+            <!-- NEW WIDGET START -->
+            <article class="col-lg-offset-2 col-sm-12 col-md-12 col-lg-8 sortable-grid ui-sortable">
+                <!-- Widget ID (each widget will need unique ID)-->
+
+
+                <div id="loadPacs">
+                    @Html.Action("_PartialPacs")
+                </div>
+
+
+
+            </article>
+            <!-- WIDGET END -->
+
+
+
+            <div class="col-sm-12">
+                <!-- your contents here -->
+            </div>
+        </div>
+        <!-- end row -->
+    </section>
+    <!-- end widget grid -->
+</div>
+
+<script src="~/Scripts/Remove.js"></script>
+<script src="~/Scripts/WeincdentalScript.js"></script>
+<script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>
+
+@section pagespecific {
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+
+
+        $('#startdate').datepicker({
+            dateFormat: 'dd.mm.yy',
+            prevText: '<i class="fa fa-chevron-left"></i>',
+            nextText: '<i class="fa fa-chevron-right"></i>',
+            onSelect: function(selectedDate) {
+                $('#finishdate').datepicker('option', 'minDate', selectedDate);
+            }
+        });
+
+        $('#finishdate').datepicker({
+            dateFormat: 'dd.mm.yy',
+            prevText: '<i class="fa fa-chevron-left"></i>',
+            nextText: '<i class="fa fa-chevron-right"></i>',
+            onSelect: function(selectedDate) {
+                $('#startdate').datepicker('option', 'maxDate', selectedDate);
+            }
+        });
+    });
+        function GetVezne() {
+            var tc = document.getElementById('Stc').value;
+
+            if (tc == null || tc == '') {
+                //alert("Lütfen T.C. No giriniz...");
+                $('#OlmayanTC').html('');
+                $('#OlmayanTC').html("<label style='color: red'>Lütfen T.C. No Giriniz.</label>");
+            } else {
+                LoadVezne(tc);
+
+            }
+
+        }
+        
+        
+    </script>
+}

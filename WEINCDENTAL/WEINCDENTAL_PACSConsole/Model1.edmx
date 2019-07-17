@@ -17,7 +17,7 @@
           <Property Name="t_ip" Type="int" Nullable="false" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
-          <Property Name="t_aktif" Type="int" Nullable="false" />
+          <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityContainer Name="WEINCDENTALModelStoreContainer">
           <EntitySet Name="adm_pacs" EntityType="Self.adm_pacs" Schema="dbo" store:Type="Tables" />
@@ -39,7 +39,7 @@
           <Property Name="t_ip" Type="Int32" Nullable="false" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="t_aktif" Type="Int32" Nullable="false" />
+          <Property Name="t_aktif" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityContainer Name="WEINCDENTALEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="adm_pacs" EntityType="Self.adm_pacs" />

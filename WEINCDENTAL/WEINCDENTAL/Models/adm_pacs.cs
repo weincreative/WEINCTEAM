@@ -22,7 +22,7 @@ namespace WEINCDENTAL.Models
         public int t_ip { get; set; }
         public string t_createuser { get; set; }
         public System.DateTime t_createdate { get; set; }
-        public int t_aktif { get; set; }
+        public bool t_aktif { get; set; }
     
         public virtual hst_hastakarti hst_hastakarti { get; set; }
     }

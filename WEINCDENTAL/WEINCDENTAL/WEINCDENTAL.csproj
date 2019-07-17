@@ -1169,7 +1169,9 @@
     <Content Include="Views\View_HizmetDetay\_VezneHHareket.cshtml" />
     <Content Include="Views\hst_hastakarti\HastaEdit.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
-    <Content Include="Views\Pacs\Index.cshtml" />
+    <Content Include="Views\Pacs\Pacs_Index.cshtml" />
+    <Content Include="Views\Pacs\PacsList.cshtml" />
+    <Content Include="Views\Pacs\_PartialPacs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

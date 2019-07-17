@@ -87,7 +87,7 @@ namespace WEINCDENTAL_PACSConsole
                                         t_ip = 0,
                                         t_createdate = Convert.ToDateTime(getTarih),
                                         t_createuser = "W3",
-                                        t_aktif = 1,
+                                        t_aktif = true,
                                         t_klasorad = klasorAd,
                                         t_resimad = $"{subs}.jpg"
                                     };
@@ -144,7 +144,7 @@ namespace WEINCDENTAL_PACSConsole
                                             t_ip = 0,
                                             t_createdate = Convert.ToDateTime(getTarih),
                                             t_createuser = "W3",
-                                            t_aktif = 1,
+                                            t_aktif = true,
                                             t_klasorad = klasorAd,
                                             t_resimad = $"{subs}.jpg"
                                         };
