@@ -20,12 +20,12 @@ namespace WEINCDENTAL_PACSConsole
         PacsTimer:
             try
             {
-                if (!System.IO.Directory.Exists("D:project/PacsMemory") && !System.IO.Directory.Exists("D:project/Pacs"))
+                if (!System.IO.Directory.Exists("D:\\project\\PacsMemory") && !System.IO.Directory.Exists("D:\\project\\Pacs"))
                 {
                     KlasorControl();
                 }
 
-                string[] goruntuAl = System.IO.Directory.GetFiles("D:project/PacsMemory");
+                string[] goruntuAl = System.IO.Directory.GetFiles("D:\\project\\PacsMemory");
                 if (goruntuAl.Count() != 0)
                 {
                     DateTime nnow = DateTime.Now;
@@ -52,7 +52,7 @@ namespace WEINCDENTAL_PACSConsole
                                 {
                                     string[] tcGeldi = System.Text.RegularExpressions.Regex.Split(yazilar, ":");
                                     tc = tcGeldi[1];
-                                    Directory.CreateDirectory("D:project/Pacs/" + tc);
+                                    Directory.CreateDirectory("D:\\project\\Pacs\\" + tc);
                                 }
                                 if (yazilar.Contains("ExaminDate"))
                                 {
@@ -62,7 +62,7 @@ namespace WEINCDENTAL_PACSConsole
                                     ay = tarihBol[1];
                                     gün = tarihBol[2];
 
-                                    Directory.CreateDirectory("D:project/Pacs/" + tc + "/" + yil + "/" + ay + "/" + gün);
+                                    Directory.CreateDirectory("D:\\project\\Pacs\\" + tc + "\\" + yil + "\\" + ay + "\\" + gün);
                                 }
                                 yazilar = sw.ReadLine();
                             }
@@ -124,7 +124,7 @@ namespace WEINCDENTAL_PACSConsole
                                 yil = morita[1];
                                 ay = morita[2];
                                 gün = morita[3];
-                                Directory.CreateDirectory("D:project/Pacs/" + tc + "/" + yil + "/" + ay + "/" + gün);
+                                Directory.CreateDirectory("D:\\project\\Pacs\\" + tc + "\\" + yil + "\\" + ay + "\\" + gün);
                                 string orjFile = $"D:\\project\\PacsMemory\\{subs}.jpg";
                                 string copyFile = $"D:\\project\\Pacs\\{tc}\\{yil}\\{ay}\\{gün}\\{subs}.jpg";
                                 string klasorAd = $"{tc}\\{yil}\\{ay}\\{gün}";
@@ -194,14 +194,14 @@ namespace WEINCDENTAL_PACSConsole
         static void KlasorControl()
         {
         PacsBasla:
-            if (System.IO.Directory.Exists("D:project/PacsMemory") && System.IO.Directory.Exists("D:project/Pacs"))
+            if (System.IO.Directory.Exists("D:\\project\\PacsMemory") && System.IO.Directory.Exists("D:\\project\\Pacs"))
             {
                 Goruntuler();
             }
             else
             {
-                Directory.CreateDirectory("D:project/PacsMemory");
-                Directory.CreateDirectory("D:project/Pacs");
+                Directory.CreateDirectory("D:\\project\\PacsMemory");
+                Directory.CreateDirectory("D:\\project\\Pacs");
                 goto PacsBasla;
             }
         }
