@@ -367,15 +367,6 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Pacs\12312312300\2019\07\03\0000000032_seval cetin_Panorama_20190703184840.jpg" />
-    <Content Include="Pacs\benches.jpg" />
-    <Content Include="Pacs\bridge.jpg" />
-    <Content Include="Pacs\coast.jpg" />
-    <Content Include="Pacs\park.jpg" />
-    <Content Include="Pacs\rails.jpg" />
-    <Content Include="Pacs\rocks.jpg" />
-    <Content Include="Pacs\sky.jpg" />
-    <Content Include="Pacs\traffic.jpg" />
-    <Content Include="Pacs\tunnel.jpg" />
     <Content Include="Content\img\glass.jpg" />
     <Content Include="Content\img\gradient\login.png" />
     <Content Include="Content\img\hue.png" />
@@ -1047,7 +1038,9 @@
     <Content Include="Scripts\speech\voicecommand.min.js" />
     <Content Include="Scripts\WeincdentalScript.js" />
     <Content Include="Scripts\weincreativejs\custom-date-time.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1173,6 +1166,7 @@
     <Content Include="Views\Pacs\Pacs_Index.cshtml" />
     <Content Include="Views\Pacs\PacsList.cshtml" />
     <Content Include="Views\Pacs\_PartialPacs.cshtml" />
+    <Content Include="Views\Pacs\_PartialPacsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

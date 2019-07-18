@@ -72,7 +72,6 @@
                                             <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label="Company: activate to sort column ascending" style="width: 50px;"><i class="fa fa-fw fa-key text-muted hidden-md hidden-sm hidden-xs"></i> T.C.</th>
                                             <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;"><i class="fa fa-fw  fa-stethoscope text-muted hidden-md hidden-sm hidden-xs"></i> Başvuru Yapan Doktor</th>
                                             <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Name: activate to sort column ascending" style="width: 50px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Başvuru Tarihi</th>
-                                            <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 100px;"><i class="fa fa-times-circle-o text-muted hidden-md hidden-sm hidden-xs"></i> Taburcu Durumu</th>
                                             <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 50px;"><i class="fa fa-edit text-muted hidden-md hidden-sm hidden-xs"></i> İşlem Yap</th>
                                             <!-- HEAD BİTİŞİ -->
                                         </tr>
@@ -84,98 +83,185 @@
 
                                         @foreach (var item in Model)
                                         {
-                                            <tr>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.t_id)
+                                            if (item.t_taburcu)
+                                            {
+                                                <tr class="danger">
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.t_id)
 
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.t_tc)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.hst_bölüm.t_adi)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.t_basvurutarihi)
-                                                </td>
-                                                @if (item.t_taburcu)
-                                                {
-                                                    <td class="danger">
-                                                        @Html.DisplayFor(modelItem => item.t_taburcu)
                                                     </td>
-                                                }
-                                                else
-                                                {
-                                                    <td class="success">
-                                                        @Html.DisplayFor(modelItem => item.t_taburcu)
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.t_tc)
                                                     </td>
-                                                }
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.hst_bölüm.t_adi)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.t_basvurutarihi)
+                                                    </td>
+                                                    <td>
+                                                        @if (item.t_taburcu)
+                                                        {
+                                                            <button class="btn-labeled btn-success btn disabled" data-toggle="modal">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-list"></i>
+                                                                </span>Düzenle
+                                                            </button>
+                                                            <button class="btn btn-labeled btn-warning disabled">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-new-window"></i>
+                                                                </span>Diş Hizmet Gir
+                                                            </button>
+                                                            <a class="btn btn-labeled btn-danger disabled">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                                </span>Sil
+                                                            </a>
+                                                            <a onclick="HTaburcuGeriAl('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-info">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-export"></i>
+                                                                </span>Taburcu Geri Al
+                                                            </a>
+                                                            <a onclick="GetPartialPacs('@item.t_tc')" class="btn btn-labeled btn-primary">
+                                                                <span class="btn-label">
+                                                                    <i class="fa fa-file-movie-o"></i>
+                                                                </span>Pacs
+                                                            </a>
+                                                            <a onclick="GetHizmet('@item.t_id')" class="btn btn-labeled btn-default">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-chevron-right"></i>
+                                                                </span>Hiz.Dökümü
+                                                            </a>
+                                                        }
+                                                        else
+                                                        {
 
-                                                <td>
-                                                    @if (item.t_taburcu)
-                                                    {
-                                                        <button class="btn-labeled btn-success btn disabled" data-toggle="modal">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-list"></i>
-                                                            </span>Düzenle
-                                                        </button>
-                                                        <button class="btn btn-labeled btn-warning disabled">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-new-window"></i>
-                                                            </span>Diş Hizmet Gir
-                                                        </button>
-                                                        <a class="btn btn-labeled btn-danger disabled">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-trash"></i>
-                                                            </span>Sil
-                                                        </a>
-                                                        <a onclick="HTaburcuGeriAl('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-info">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-export"></i>
-                                                            </span>Taburcu Geri Al
-                                                        </a>
-                                                        <a onclick="GetHizmet('@item.t_id')" class="btn btn-labeled btn-default">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-chevron-right"></i>
-                                                            </span>Hiz.Dökümü
-                                                        </a>
-                                                    }
-                                                    else
-                                                    {
+                                                            <button onclick="Doldur(@item.t_id,@item.t_bolumkodu,@item.t_basvuru)" class="btn-labeled btn-success btn" data-toggle="modal" @*data-target="#myModalEdit" data-value="@item.t_id"*@>
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-list"></i>
+                                                                </span>Düzenle
+                                                            </button>
 
-                                                        <button onclick="Doldur(@item.t_id,@item.t_bolumkodu,@item.t_basvuru)" class="btn-labeled btn-success btn" data-toggle="modal" @*data-target="#myModalEdit" data-value="@item.t_id"*@>
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-list"></i>
-                                                            </span>Düzenle
-                                                        </button>
+                                                            <a class="btn btn-labeled btn-warning" href="@Url.Action("HisHareket", "HisHareket", new { @id = @item.t_id })">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-new-window"></i>
+                                                                </span>Diş Hizmet Gir
+                                                            </a>
+                                                            <a onclick="Remove('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-danger">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                                </span>Sil
+                                                            </a>
 
-                                                        <a class="btn btn-labeled btn-warning" href="@Url.Action("HisHareket","HisHareket",new{@id=@item.t_id})">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-new-window"></i>
-                                                            </span>Diş Hizmet Gir
-                                                        </a>
-                                                        <a onclick="Remove('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-danger">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-trash"></i>
-                                                            </span>Sil
-                                                        </a>
+                                                            <a onclick="HTaburcuEt('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-info">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-export"></i>
+                                                                </span>Taburcu Et
+                                                            </a>
+                                                            <a onclick="GetPartialPacs('@item.t_tc')" class="btn btn-labeled btn-primary">
+                                                                <span class="btn-label">
+                                                                    <i class="fa fa-file-movie-o"></i>
+                                                                </span>Pacs
+                                                            </a>
+                                                            <a onclick="GetHizmet('@item.t_id')" class="btn btn-labeled btn-default">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-chevron-right"></i>
+                                                                </span>Hiz.Dökümü
+                                                            </a>
 
-                                                        <a onclick="HTaburcuEt('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-info">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-export"></i>
-                                                            </span>Taburcu Et
-                                                        </a>
-                                                        <a onclick="GetHizmet('@item.t_id')" class="btn btn-labeled btn-default">
-                                                            <span class="btn-label">
-                                                                <i class="glyphicon glyphicon-chevron-right"></i>
-                                                            </span>Hiz.Dökümü
-                                                        </a>
+                                                        }
 
-                                                    }
+                                                    </td>
+                                                </tr>
+                                            }else{
+                                                <tr class="success">
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.t_id)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.t_tc)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.hst_bölüm.t_adi)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.t_basvurutarihi)
+                                                    </td>
+                                                    <td>
+                                                        @if (item.t_taburcu)
+                                                        {
+                                                            <button class="btn-labeled btn-success btn disabled" data-toggle="modal">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-list"></i>
+                                                                </span>Düzenle
+                                                            </button>
+                                                            <button class="btn btn-labeled btn-warning disabled">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-new-window"></i>
+                                                                </span>Diş Hizmet Gir
+                                                            </button>
+                                                            <a class="btn btn-labeled btn-danger disabled">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                                </span>Sil
+                                                            </a>
+                                                            <a onclick="HTaburcuGeriAl('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-info">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-export"></i>
+                                                                </span>Taburcu Geri Al
+                                                            </a>
+                                                            <a onclick="GetPartialPacs('@item.t_tc')" class="btn btn-labeled btn-primary">
+                                                                <span class="btn-label">
+                                                                    <i class="fa fa-file-movie-o"></i>
+                                                                </span>Pacs
+                                                            </a>
+                                                            <a onclick="GetHizmet('@item.t_id')" class="btn btn-labeled btn-default">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-chevron-right"></i>
+                                                                </span>Hiz.Dökümü
+                                                            </a>
+                                                        }
+                                                        else
+                                                        {
 
-                                                </td>
-                                            </tr>
+                                                            <button onclick="Doldur(@item.t_id,@item.t_bolumkodu,@item.t_basvuru)" class="btn-labeled btn-success btn" data-toggle="modal" @*data-target="#myModalEdit" data-value="@item.t_id"*@>
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-list"></i>
+                                                                </span>Düzenle
+                                                            </button>
 
+                                                            <a class="btn btn-labeled btn-warning" href="@Url.Action("HisHareket", "HisHareket", new { @id = @item.t_id })">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-new-window"></i>
+                                                                </span>Diş Hizmet Gir
+                                                            </a>
+                                                            <a onclick="Remove('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-danger">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                                </span>Sil
+                                                            </a>
+
+                                                            <a onclick="HTaburcuEt('@item.t_id', '@item.hst_hastakarti.t_adi', '@item.hst_hastakarti.t_soyadi')" class="btn btn-labeled btn-info">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-export"></i>
+                                                                </span>Taburcu Et
+                                                            </a>
+                                                            <a onclick="GetPartialPacs('@item.t_tc')" class="btn btn-labeled btn-primary">
+                                                                <span class="btn-label">
+                                                                    <i class="fa fa-file-movie-o"></i>
+                                                                </span>Pacs
+                                                            </a>
+                                                            <a onclick="GetHizmet('@item.t_id')" class="btn btn-labeled btn-default">
+                                                                <span class="btn-label">
+                                                                    <i class="glyphicon glyphicon-chevron-right"></i>
+                                                                </span>Hiz.Dökümü
+                                                            </a>
+
+                                                        }
+
+                                                    </td>
+                                                </tr>
+                                            }
 
                                         }
 
@@ -312,12 +398,16 @@
 @section pagespecific {
     <script type="text/javascript">
 
-
         function Doldur(bid,docid,basno) {
             document.getElementById("doktor").value = docid;
             $("#t_id").val(bid);
             $("#t_basvuru").val(basno);
             $("#myModalEdit").modal('show');
+        }
+
+        function GetPartialPacs(ppTc) {
+            $('#pacsGoruntuleList2').load("@Url.Action("_PartialPacsList", "Pacs")", { tc: ppTc });
+            $("#pacsGoruntule2").modal('show');
         }
 
         function Remove(id,ad,soyad) {

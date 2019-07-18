@@ -32,6 +32,7 @@ namespace WEINCDENTAL.Controllers
             {
                 return RedirectToAction("HastaBasvuruCreate");
             }
+            Ortak._hastatc = id;
             ViewBag.tc = id;
             ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm, "t_id", "t_adi");
             return View(hst_basvuru.ToList());

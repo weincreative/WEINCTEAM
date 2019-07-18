@@ -128,25 +128,32 @@
                                                 <td>
 
                                                     <a onclick="location.href='@Url.Action("HastaEdit",new{tc=item.t_tc})'" class="btn btn-labeled btn-success" alt="Düzenle">
-                                                        @*<span class="btn-label">*@
+                                                        <span class="btn-label">
                                                             <i class="glyphicon glyphicon-list"></i>
-                                                        @*</span>Düzenle*@
+                                                        </span>@*Düzenle*@
                                                     </a>
                                                     <a onclick="location.href='@Url.Action("SearchBorc", "Vezne",new{tc=item.t_tc})'" class="btn btn-labeled btn-info" alt="Vezneye Git">
-                                                        @*<span class="btn-label">*@
+                                                        <span class="btn-label">
                                                             <i class="fa fa-money"></i>
-                                                        @*</span>Vezne*@
+                                                        </span>@*Vezne*@
                                                     </a>
                                                     <a onclick="location.href='@Url.Action("Randevu_Index", "hst_randevu",new{tc=item.t_tc})'" class="btn btn-labeled btn-warning" alt="Randevu Ekranına Git">
-                                                        @*<span class="btn-label">*@
+                                                        <span class="btn-label">
                                                             <i class="fa fa-calendar"></i>
-                                                        @*</span>Randevu*@
+                                                        </span>@*Randevu*@
                                                     </a>
                                                     <a onclick="location.href='@Url.Action("Hastabasvuru_Index", "hst_basvuru",new{id=item.t_tc})'" class="btn btn-labeled btn-danger" alt="Başvuru Ekranına Git">
-                                                        @*<span class="btn-label">*@
+                                                        <span class="btn-label">
                                                             <i class="fa fa-leaf"></i>
-                                                        @*</span>Başvuru*@
+                                                        </span>@*Başvuru*@
                                                     </a>
+
+                                                    <a onclick="GetPartialPacs('@item.t_tc')" class="btn btn-labeled btn-primary">
+                                                        <span class="btn-label">
+                                                            <i class="fa fa-file-movie-o"></i>
+                                                        </span>@*Pacs*@
+                                                    </a>
+
                                                 </td>
                                             </tr>
                                         }
@@ -179,6 +186,10 @@
 @section pagespecific {
     <script type="text/javascript">
 
+        function GetPartialPacs(ppTc) {
+            $('#pacsGoruntuleList2').load("@Url.Action("_PartialPacsList", "Pacs")", { tc: ppTc });
+            $("#pacsGoruntule2").modal('show');
+        }
 
         $(document).ready(function() {
             var responsiveHelper_dt_basic = undefined;

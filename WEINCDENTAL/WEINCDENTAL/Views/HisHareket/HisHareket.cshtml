@@ -10,42 +10,53 @@
 <div id="content">
     <!-- row -->
     <div class="row">
-        <!-- col -->
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-
-            <h1 class="page-title txt-color-blueDark">
-                <i class="fa-fw fa fa-bookmark"></i>
-                Diş Hizmet Girişi
-            </h1>
-
-            <fieldset class="col-lg-push-3 padding-bottom-2">
-                <div class="btn-group btn-group-justified" data-toggle="buttons" style="width: 25%;">
-                    <label class="ddisCene-btn1 btn btn-default dCene">
-                        <input type="checkbox" id="chckDis" name="cene" value="1" />
-                    </label>
-                    <label class="ddisCene-btn2 btn btn-default dCene padding-left-5">
-                        <input type="checkbox" id="chckDis" name="cene" value="2" />
-                    </label>
+                <!-- NEW WIDGET START -->
+            <!-- row -->
+            <div class="row">
+                <!-- a blank row to get started -->
+                <div class="col-sm-12">
+                    <!-- your contents here -->
                 </div>
-            </fieldset>
+            </div>
+            <!-- end row -->
 
-            <fieldset class="col-lg-push-3">
-                <div class="btn-group btn-group-justified" data-toggle="buttons" style="width: 25%;">
-                    <label class="ddisCene-btn3 btn btn-default dCene">
-                        <input type="checkbox" id="chckDis" name="cene" value="3">
-                    </label>
-                    <label class="ddisCene-btn4 btn btn-default dCene padding-left-5">
-                        <input type="checkbox" id="chckDis" name="cene" value="4">
-                    </label>
-                </div>
-            </fieldset>
+            <!-- col -->
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+                <h1 class="page-title txt-color-blueDark">
+                    <i class="fa-fw fa fa-bookmark"></i>
+                    Diş Hizmet Girişi
+                </h1>
 
 
-            <br />
+                        <fieldset class="col-lg-push-3 padding-bottom-2">
+                            <div class="btn-group btn-group-justified" data-toggle="buttons" style="width: 25%;">
+                                <label class="ddisCene-btn1 btn btn-default dCene">
+                                    <input type="checkbox" id="chckDis" name="cene" value="1" />
+                                </label>
+                                <label class="ddisCene-btn2 btn btn-default dCene padding-left-5">
+                                    <input type="checkbox" id="chckDis" name="cene" value="2" />
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="col-lg-push-3">
+                            <div class="btn-group btn-group-justified" data-toggle="buttons" style="width: 25%;">
+                                <label class="ddisCene-btn3 btn btn-default dCene">
+                                    <input type="checkbox" id="chckDis" name="cene" value="3">
+                                </label>
+                                <label class="ddisCene-btn4 btn btn-default dCene padding-left-5">
+                                    <input type="checkbox" id="chckDis" name="cene" value="4">
+                                </label>
+                            </div>
+                        </fieldset>
+
+
                 <br />
                 <br />
+                <br />
 
-        </div>
+            </div>
     </div>
 
     <section id="widget-grid">
@@ -243,8 +254,8 @@
 
         $("#pacs").mousedown(function (event) {
             switch (event.which) {
-            case 2:
-                $("#dt_basic3_3").dataTable().fnDestroy();
+                case 2:
+                    $('#pacsGoruntuleList').load("@Url.Action("_PartialPacsList", "Pacs")", { tc: tdhhtc});
                 $("#pacsGoruntule").modal('show');
             }
         });

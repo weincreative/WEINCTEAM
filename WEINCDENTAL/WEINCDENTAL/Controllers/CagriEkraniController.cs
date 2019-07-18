@@ -37,24 +37,27 @@ namespace WEINCDENTAL.Controllers
         [HttpGet]
         public PartialViewResult PartialCagriEkrani(int bsid, int hcid)
         {
+            DateTime nowDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            DateTime sonrakiDate = Convert.ToDateTime(DateTime.Now.ToShortDateString()).AddDays(1);
+
             ViewBag.Cagirildi = 0;
             if (hcid == 2)
             {
                 ViewBag.Cagirildi = 2;
-                var cagrilcakList = db.hst_basvuru.Where(x => x.t_cagriekraniistem == 1).Where(x => x.t_bolumkodu == bsid).Where(x => x.t_basvurudr == hcid);
+                var cagrilcakList = db.hst_basvuru.Where(x => x.t_cagriekraniistem == 1).Where(x => x.t_bolumkodu == bsid).Where(x => x.t_basvurudr == hcid).Where(x => x.t_basvurutarihi >= nowDate && x.t_basvurutarihi <= sonrakiDate);
                 return PartialView(cagrilcakList.ToList());
 
             }
             else if (hcid == 1)
             {
                 ViewBag.Cagirildi = 1;
-                var cagrilcakList = db.hst_basvuru.Where(x => x.t_cagriekraniistem == 0).Where(x => x.t_bolumkodu == bsid).Where(x => x.t_basvurudr == hcid);
+                var cagrilcakList = db.hst_basvuru.Where(x => x.t_cagriekraniistem == 0).Where(x => x.t_bolumkodu == bsid).Where(x => x.t_basvurudr == hcid).Where(x => x.t_basvurutarihi >= nowDate && x.t_basvurutarihi <= sonrakiDate);
                 return PartialView(cagrilcakList.ToList());
             }
             else if (hcid == 0)
             {
                 ViewBag.Cagirildi = 0;
-                var cagrilcakList = db.hst_basvuru.Where(x => x.t_cagriekraniistem == 0).Where(x => x.t_bolumkodu == bsid).Where(x => x.t_basvurudr == hcid);
+                var cagrilcakList = db.hst_basvuru.Where(x => x.t_cagriekraniistem == 0).Where(x => x.t_bolumkodu == bsid).Where(x => x.t_basvurudr == hcid).Where(x=>x.t_basvurutarihi >= nowDate && x.t_basvurutarihi <= sonrakiDate);
                 return PartialView(cagrilcakList.ToList());
             }
             return PartialView();

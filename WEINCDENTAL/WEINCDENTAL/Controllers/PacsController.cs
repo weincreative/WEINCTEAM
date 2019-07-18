@@ -64,8 +64,15 @@ namespace WEINCDENTAL.Controllers
             var pacsList = db.View_Pacs.Where(k => k.HastaAktif == true && k.PacsAktif == true && k.t_tc == tc).OrderByDescending(k=>k.t_createdate)
                 .ToList();
             
-
             return View(pacsList);
+        }
+
+        public PartialViewResult _PartialPacsList(string tc)
+        {
+            var pacsList = db.View_Pacs.Where(k => k.HastaAktif == true && k.PacsAktif == true && k.t_tc == tc).OrderByDescending(k => k.t_createdate)
+                .ToList();
+            
+            return PartialView(pacsList);
         }
     }
 }
