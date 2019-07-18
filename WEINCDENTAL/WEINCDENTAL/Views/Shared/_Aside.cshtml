@@ -59,7 +59,7 @@
                 </li>
             }
             
-            @if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4"))
+            @if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4") || User.IsInRole("5"))
             {
                 <li class="@Html.RouteIf("Pacs_Index", "active")">
                     <a href="@Url.Action("Pacs_Index", "Pacs")"><i class="fa fa-lg fa-fw fa-file-movie-o">@*<em>3</em>*@</i> <span class="menu-item-parent">Pacs</span></a>

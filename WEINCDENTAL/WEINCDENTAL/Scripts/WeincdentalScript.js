@@ -276,6 +276,20 @@ function GetNewVezne(htc) {
     return result;
 }
 
+function GetNewPacs(htc,had,hbasDate,hbitDate) {
+    var result;
+    $.ajax({
+        type: 'GET',
+        url: '_PartialPacs',
+        data: { tc: htc,ad:had,basDate:hbasDate,bitDate:hbitDate },
+        async: false,
+        success: function (veri) {
+            result = veri;
+        }
+    });
+    return result;
+}
+
 ////////////RANDEVU/////////////
 function RandTblEkle(RandtblList, RandtblNo, rt_id, rt_basvuru, rt_tc, rt_title, rt_aciklama, rt_baslangicsaat, rt_bitissaat, rt_classname, rt_icon, rt_allday, rt_createuser, rt_createdate, rt_basvurudr, rt_aktif) {
     RandtblNo++;

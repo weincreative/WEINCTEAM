@@ -1,11 +1,9 @@
-﻿
+﻿@model  IEnumerable<WEINCDENTAL.Models.View_Pacs>
 @{
     ViewBag.Title = "PacsList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">*@
 <link rel="stylesheet" href="~/Content/css/gallery/baguetteBox.min.css">
 <link rel="stylesheet" href="~/Content/css/gallery/gallery-grid.css">
 <br />
@@ -14,53 +12,22 @@
     <h1>PACS GÖRÜNTÜLERİ</h1>
 
     <div class="tz-gallery">
-        <div class="row" style="height: 525px;overflow-x: hidden;overflow-y: scroll;">
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="~/Pacs/park.jpg">
-                    <img src="~/Pacs/park.jpg" alt="Park">
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="~/Pacs/bridge.jpg">
-                    <img src="~/Pacs/bridge.jpg" alt="Bridge">
-                </a>
-            </div>
-            <div class="col-sm-12 col-md-4">
-                <a class="lightbox" href="~/Pacs/tunnel.jpg">
-                    <img src="~/Pacs/tunnel.jpg" alt="Tunnel">
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="~/Pacs/coast.jpg">
-                    <img src="~/Pacs/coast.jpg" alt="Coast">
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="~/Pacs/rails.jpg">
-                    <img src="~/Pacs/rails.jpg" alt="Rails">
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="~/Pacs/traffic.jpg">
-                    <img src="~/Pacs/traffic.jpg" alt="Traffic">
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="~/Pacs/rocks.jpg">
-                    <img src="~/Pacs/rocks.jpg" alt="Rocks">
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="~/Pacs/benches.jpg">
-                    <img src="~/Pacs/benches.jpg" alt="Benches">
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="~/Pacs/sky.jpg">
-                    <img src="~/Pacs/sky.jpg" alt="Sky">
-                </a>
-            </div>
 
+        <div class="row" style="height: 525px; overflow-x: hidden; overflow-y: scroll;">
+            @foreach (var item in Model)
+            {
+                <div class="superbox-list ">
+                    <a class="lightbox" href="~/Pacs/@item.t_klasorad/@item.t_resimad">
+                        <img src="~/Pacs/@item.t_klasorad/@item.t_resimad" alt="Park">
+                    </a>
+                    <div class="desc">
+                        <h5 class="title">@item.t_createdate.ToShortDateString()</h5>
+
+                    </div>
+                </div>
+                
+
+            }
         </div>
     </div>
 </div>
@@ -70,3 +37,14 @@
 <script>
     baguetteBox.run('.tz-gallery');
 </script>
+<style>
+    
+    .superbox-list:hover {
+        border-radius: 20px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.06);
+        background: linear-gradient(45deg, black, transparent);
+        color: white;
+        cursor: pointer;
+    }
+    
+</style>

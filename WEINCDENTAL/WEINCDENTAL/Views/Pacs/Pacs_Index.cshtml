@@ -30,9 +30,8 @@
 
 
                 <div id="loadPacs">
-                    @Html.Action("_PartialPacs")
+                    @*@Html.Action("_PartialPacs")*@
                 </div>
-
 
 
             </article>
@@ -56,41 +55,56 @@
 @section pagespecific {
     <script type="text/javascript">
 
-    $(document).ready(function() {
+        $(document).ready(function () {
 
+            LoadPacs(null, null, null, null);
+            GetScripts();
 
-        $('#startdate').datepicker({
-            dateFormat: 'dd.mm.yy',
-            prevText: '<i class="fa fa-chevron-left"></i>',
-            nextText: '<i class="fa fa-chevron-right"></i>',
-            onSelect: function(selectedDate) {
-                $('#finishdate').datepicker('option', 'minDate', selectedDate);
-            }
         });
-
-        $('#finishdate').datepicker({
-            dateFormat: 'dd.mm.yy',
-            prevText: '<i class="fa fa-chevron-left"></i>',
-            nextText: '<i class="fa fa-chevron-right"></i>',
-            onSelect: function(selectedDate) {
-                $('#startdate').datepicker('option', 'maxDate', selectedDate);
+        function GetPacs() {
+            var tc = document.getElementById('Ptc').value;
+            var ad = document.getElementById('PAd').value;
+            var basDate = document.getElementById('Pstartdate').value;
+            var bitDate = document.getElementById('Pfinishdate').value;
+           
+            if ((tc == null || tc === "") && ad === "" && basDate === "" && bitDate === "") {
+             
+                $('#TxtKontrol').html('');
+                $('#TxtKontrol').html("<label style='color: red'>Lütfen alanlardan birini doldurunuz!</label>");
             }
-        });
-    });
-        function GetVezne() {
-            var tc = document.getElementById('Stc').value;
-
-            if (tc == null || tc == '') {
-                //alert("Lütfen T.C. No giriniz...");
-                $('#OlmayanTC').html('');
-                $('#OlmayanTC').html("<label style='color: red'>Lütfen T.C. No Giriniz.</label>");
-            } else {
-                LoadVezne(tc);
-
+            else {
+               
+                LoadPacs(tc, ad, basDate, bitDate);
             }
 
         }
-        
-        
+        function LoadPacs(tc, ad, sDate, fDate) {
+
+            var getpacs = GetNewPacs(tc, ad, sDate, fDate);
+            $('#loadPacs').html(getpacs);
+            GetScripts();
+        }
+
+        function GetScripts() {
+            $('#Pstartdate').datepicker({
+                dateFormat: 'dd.mm.yy',
+                prevText: '<i class="fa fa-chevron-left"></i>',
+                nextText: '<i class="fa fa-chevron-right"></i>',
+                onSelect: function (selectedDate) {
+                    $('#Pfinishdate').datepicker('option', 'minDate', selectedDate);
+                }
+            });
+
+            $('#Pfinishdate').datepicker({
+                dateFormat: 'dd.mm.yy',
+                prevText: '<i class="fa fa-chevron-left"></i>',
+                nextText: '<i class="fa fa-chevron-right"></i>',
+                onSelect: function (selectedDate) {
+                    $('#Pstartdate').datepicker('option', 'maxDate', selectedDate);
+                }
+            });
+        }
+
+
     </script>
 }

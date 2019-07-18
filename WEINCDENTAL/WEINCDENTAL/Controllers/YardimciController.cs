@@ -184,7 +184,6 @@ namespace WEINCDENTAL.Controllers
             return kalan;
         }
 
-
         public decimal GetToplamIndirim(string tc)
         {
             decimal tutar = 0;

@@ -41,36 +41,43 @@
                             <section class="col col-md-2">
                                 <label class="input">
                                     <i class="icon-append fa fa-calendar"></i>
-                                    <input type="text" placeholder="Başlangıç Tarihi" name="startdate" id="startdate" >
+                                    <input type="text" placeholder="Başlangıç Tarihi" name="Pstartdate" id="Pstartdate" >
                                 </label>
                             </section>
                             <section class="col col-md-2">
                                 <label class="input">
                                     <i class="icon-append fa fa-calendar"></i>
-                                    <input type="text" placeholder="Bitiş Tarihi" name="finishdate" id="finishdate" >
+                                    <input type="text" placeholder="Bitiş Tarihi" name="Pfinishdate" id="Pfinishdate" >
                                 </label>
                             </section>
                             <section class="col col-md-2">
                                 <div class="input-group">
                                     <div class="input-group-btn">
                                         <button class="btn btn-primary" style="padding: 0 22px;font: 300 15px/29px 'Open Sans',Helvetica,Arial,sans-serif;cursor: pointer;"
-                                                type="submit" @*onclick="GetVezne()"*@>
+                                                type="submit" onclick="GetPacs()">
                                             <i class="fa fa-search"></i> Sorgula
                                         </button>
                                     </div>
                                 </div>
                             </section>
-
-
-                            @*<div id="OlmayanTC">
-                                <label style='color: red'>
-                                    @ViewBag.tcYok
-                                </label>
-                            </div>*@
+                            
                             
                         </div>
                     </fieldset>
-
+                    <fieldset>
+                        <center>
+                            <div class="row">
+                                <section class="col col-md-12">
+                                    <div id="TxtKontrol">
+                                        <label style='color: red'>
+                                             @ViewBag.alanKontrol
+                                        </label>
+                                    </div>
+                                </section>
+                            </div>
+                           
+                        </center>
+                    </fieldset>
                    
                 </div>
             <hr />
@@ -111,7 +118,7 @@
                                     </td>
 
                                     <td>
-                                        <a onclick="GetGoruntule(@item.t_tc)" href="javascript:void(0);" class="btn btn-labeled btn-success" title="Görüntüle">
+                                        <a onclick="location.href='@Url.Action("PacsList",new{tc=@item.t_tc})'" href="javascript:void(0);" class="btn btn-labeled btn-success" title="Görüntüle">
                                             <span class="btn-label">
                                                 <i class="glyphicon glyphicon-film"></i>
                                             </span>Görüntüle

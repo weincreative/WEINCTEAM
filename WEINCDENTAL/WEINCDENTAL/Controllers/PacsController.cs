@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Controllers
 {
+    [Authorize(Roles = "1,3,4,5")]
     public class PacsController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
@@ -15,19 +17,55 @@ namespace WEINCDENTAL.Controllers
         }
 
         [HttpGet]
-        public PartialViewResult _PartialPacs()
+        public PartialViewResult _PartialPacs(string tc,string ad,string basDate,string bitDate)
         {
-            string tc = "12312312300";
-            IQueryable<View_Pacs> list = null;
-            list = db.View_Pacs.Where(k => k.HastaAktif == true && k.PacsAktif == true && k.t_tc == tc)
-                .AsQueryable();
-            IEnumerable<View_Pacs> pacses = list.GroupBy(d => d.t_tc).Select(g => g.FirstOrDefault()).ToList();
+           // tc = "12312312300";
+            DateTime? sDate = new DateTime();
+            DateTime? fDate = new DateTime();
+            if (!String.IsNullOrEmpty(basDate))
+            {
+                sDate = Convert.ToDateTime(basDate);
+            }
+            else
+            {
+                sDate = null;
+            }
+            if (!String.IsNullOrEmpty(bitDate))
+            {
+                fDate = Convert.ToDateTime(bitDate);
+            }
+            else
+            {
+                fDate = null;
+            }
+            List<View_Pacs> pacses = null;
+
+            if (String.IsNullOrEmpty(ad) && String.IsNullOrEmpty(tc) && sDate == null && fDate == null)
+            {
+                pacses = db.View_Pacs.Where(k => k.t_tc == tc && k.HastaAktif == true && k.PacsAktif == true).ToList();
+               
+            }
+            else
+            {
+                pacses = new BllPacs().PacsList(tc, ad, sDate, fDate).ToList();
+                if (pacses.Count == 0)
+                {
+                    ViewBag.alanKontrol = "Kayıt bulunamadı!";
+                }
+
+            }
 
             return PartialView(pacses);
         }
-        public ActionResult PacsList()
+
+    
+        public ActionResult PacsList(string tc)
         {
-            return View();
+            var pacsList = db.View_Pacs.Where(k => k.HastaAktif == true && k.PacsAktif == true && k.t_tc == tc).OrderByDescending(k=>k.t_createdate)
+                .ToList();
+            
+
+            return View(pacsList);
         }
     }
 }
