@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEINCDENTAL_CALLINGSCREEN",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEINCDENTAL_PACSConsole", "WEINCDENTAL_PACSConsole\WEINCDENTAL_PACSConsole.csproj", "{9AB51BE1-E7B1-40AC-84B1-381E6320BAD6}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupPacs", "SetupPacs\SetupPacs.vdproj", "{633607A1-F1C6-4BE6-991B-4848EBA396AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,8 @@ Global
 		{9AB51BE1-E7B1-40AC-84B1-381E6320BAD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AB51BE1-E7B1-40AC-84B1-381E6320BAD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AB51BE1-E7B1-40AC-84B1-381E6320BAD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{633607A1-F1C6-4BE6-991B-4848EBA396AC}.Debug|Any CPU.ActiveCfg = Debug
+		{633607A1-F1C6-4BE6-991B-4848EBA396AC}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
