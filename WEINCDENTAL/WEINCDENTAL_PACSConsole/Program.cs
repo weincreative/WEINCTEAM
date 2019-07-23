@@ -28,10 +28,12 @@ namespace WEINCDENTAL_PACSConsole
                 string[] goruntuAl = System.IO.Directory.GetFiles("D:\\project\\PacsMemory");
                 if (goruntuAl.Count() != 0)
                 {
+                    Thread.Sleep(5000);
                     DateTime nnow = DateTime.Now;
                     Console.WriteLine($"PACS :  {nnow}");
                     foreach (var item in goruntuAl)
                     {
+                        Thread.Sleep(5000);
                         string itemName = Path.GetFileName(item);
                         string subs = itemName.Substring(0, itemName.Length - 4);
 
