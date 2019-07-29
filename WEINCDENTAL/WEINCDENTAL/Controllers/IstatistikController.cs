@@ -47,15 +47,57 @@ namespace WEINCDENTAL.Controllers
             return Json(null, JsonRequestBehavior.AllowGet);
         }
 
-        // Başlangıç ve Bitiş tarihli yapılan hizmetlerin toplam parası
-        public decimal GetTotalKazanc(DateTime bas,DateTime bit)
+        //Belirli Yıl'a ait Aylık toplam hizmet parası.
+        public List<TotalKazanc> GetTotalKazanc(int yil)
         {
-            decimal kazanc=0;
+            List<TotalKazanc> list = new List<TotalKazanc>();
+            //var query;
+            try
+            {
+                list = db.hst_his_hareket.Where(k => k.t_aktif == true && k.t_yil == yil).OrderByDescending(k => k.t_yil)
+                    .ThenBy(d => d.t_ay).GroupBy(k => new
+                    {
+                        k.t_ay,
+                        k.t_yil
+                    }).Select(k => new TotalKazanc()
+                    {
+                        Ay = k.Key.t_ay,
+                        Yils = k.Key.t_yil,
+                        Total = k.Sum(p => p.t_totalborc)
+                    }).ToList();
 
-            var sum = db.hst_his_hareket.Where(k => k.t_aktif == true && k.t_islemtarihi >= bas && k.t_islemtarihi<bit)
+                //var list = db.hst_his_hareket.Where(k => k.t_aktif == true && k.t_yil == yil).GroupBy(p => new
+                //{
+                //    p.t_ay,
+                //    p.t_yil
+                //}).Select(group => new
+                //{
+                //    Ay = group.Key.t_ay,
+                //    Total = group.Sum(k => k.t_totalborc),
+                //    Yils = group.Key.t_yil
+                //}).ToList();
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                // throw;
+            }
+
+
+            return list;
+        }
+
+        // Başlangıç ve Bitiş tarihli yapılan hizmetlerin toplam parası
+        public decimal GetTotalKazanc(DateTime bas, DateTime bit)
+        {
+            decimal kazanc = 0;
+
+            var sum = db.hst_his_hareket.Where(k => k.t_aktif == true && k.t_islemtarihi >= bas && k.t_islemtarihi < bit)
                 .Sum(p => p.t_totalborc);
             if (sum != null)
-                kazanc = (decimal) sum;
+                kazanc = (decimal)sum;
 
             return kazanc;
         }
@@ -65,7 +107,7 @@ namespace WEINCDENTAL.Controllers
             int kazanc = 0;
 
             var sum = db.hst_basvuru
-                .Count(k => k.t_aktif == true && k.t_basvurutarihi >= bas && k.t_basvurutarihi< bit);
+                .Count(k => k.t_aktif == true && k.t_basvurutarihi >= bas && k.t_basvurutarihi < bit);
             kazanc = (int)sum;
 
             return kazanc;
@@ -75,7 +117,7 @@ namespace WEINCDENTAL.Controllers
         {
             int kazanc = 0;
             var sum = db.hst_his_hareket
-                .Count(k => k.t_aktif == true && k.t_islemtarihi >= bas && k.t_islemtarihi < bit && k.t_hizmetkodu==id);
+                .Count(k => k.t_aktif == true && k.t_islemtarihi >= bas && k.t_islemtarihi < bit && k.t_hizmetkodu == id);
             kazanc = (int)sum;
 
             return kazanc;
@@ -85,7 +127,7 @@ namespace WEINCDENTAL.Controllers
         {
             int kazanc = 0;
             var sum = db.View_HizmetDetay
-                .Count(k => k.HHareketAktif == true && k.Hizmet_Tarih >= bas && k.Hizmet_Tarih < bit && k.DoktorAd==drad);
+                .Count(k => k.HHareketAktif == true && k.Hizmet_Tarih >= bas && k.Hizmet_Tarih < bit && k.DoktorAd == drad);
             kazanc = (int)sum;
 
             return kazanc;

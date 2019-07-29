@@ -254,6 +254,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\TotalKazanc.cs" />
     <Compile Include="Models\ViewModelAyarlar.cs" />
     <Compile Include="Models\ViewModelHisHareket.cs" />
     <Compile Include="Models\View_BsvrVezne.cs">

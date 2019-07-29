@@ -15,6 +15,17 @@ namespace WEINCDENTAL.Controllers
 
         public ActionResult Index()
         {
+            IstatistikController ic=new IstatistikController();
+
+
+            var query = ic.GetTotalKazanc(2019);
+            decimal[] data = new decimal[12];
+            foreach (var item in query)
+            {
+                var i = (item.Ay)-1;
+                if (i != null) if (item.Total != null) data[(int) i] = (decimal) item.Total;
+            }
+            ViewBag.totalhizmet = data;
             return View();
         }
         public ActionResult Ayarlar()

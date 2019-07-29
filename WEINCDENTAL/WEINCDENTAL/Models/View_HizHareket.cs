@@ -7,12 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace WEINCDENTAL.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class View_HizHareket
     {
         public int basvuruid { get; set; }
@@ -39,5 +40,7 @@ namespace WEINCDENTAL.Models
         public bool Baktif { get; set; }
         public bool HastaAktif { get; set; }
         public Nullable<bool> t_yapildi { get; set; }
+        public Nullable<int> t_ay { get; set; }
+        public Nullable<int> t_yil { get; set; }
     }
 }
