@@ -51,7 +51,7 @@ namespace WEINCDENTAL.Controllers
         public List<TotalKazanc> GetTotalKazanc(int yil)
         {
             List<TotalKazanc> list = new List<TotalKazanc>();
-            //var query;
+            
             try
             {
                 list = db.hst_his_hareket.Where(k => k.t_aktif == true && k.t_yil == yil).OrderByDescending(k => k.t_yil)
@@ -65,26 +65,14 @@ namespace WEINCDENTAL.Controllers
                         Yils = k.Key.t_yil,
                         Total = k.Sum(p => p.t_totalborc)
                     }).ToList();
-
-                //var list = db.hst_his_hareket.Where(k => k.t_aktif == true && k.t_yil == yil).GroupBy(p => new
-                //{
-                //    p.t_ay,
-                //    p.t_yil
-                //}).Select(group => new
-                //{
-                //    Ay = group.Key.t_ay,
-                //    Total = group.Sum(k => k.t_totalborc),
-                //    Yils = group.Key.t_yil
-                //}).ToList();
+              
 
                 return list;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                // throw;
             }
-
 
             return list;
         }

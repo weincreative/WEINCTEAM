@@ -17,8 +17,9 @@ namespace WEINCDENTAL.Controllers
         {
             IstatistikController ic=new IstatistikController();
 
+            DateTime dt=DateTime.Today;
 
-            var query = ic.GetTotalKazanc(2019);
+            var query = ic.GetTotalKazanc(dt.Year);
             decimal[] data = new decimal[12];
             foreach (var item in query)
             {
