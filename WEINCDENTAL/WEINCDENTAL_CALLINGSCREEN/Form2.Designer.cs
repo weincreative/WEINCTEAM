@@ -142,7 +142,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvHastaListesi.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvHastaListesi.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHastaListesi.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dgvHastaListesi.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dgvHastaListesi.Size = new System.Drawing.Size(1436, 411);
             this.dgvHastaListesi.TabIndex = 4;
             // 

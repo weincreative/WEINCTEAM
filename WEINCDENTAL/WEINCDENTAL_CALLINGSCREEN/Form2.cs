@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //using System.Speech;
@@ -41,29 +42,30 @@ namespace WEINCDENTAL_CALLINGSCREEN
             this.Close();
         }
 
-		public void cagriEkraniGetir(int id)
-		{
-			int sayacIndex = 0;
-			cagrilacakList.Clear();
-			try
-				{
-					var _cagrilcakList = db.hst_basvuru.Where(c => c.t_cagriekraniistem == 0 && c.t_bolumkodu == id && c.t_basvurudr == 0 && c.t_aktif == true && c.t_taburcu == false).Where(k => k.t_basvurutarihi >= nowDate && k.t_basvurutarihi < sonrakiDate).ToList();
+        public void cagriEkraniGetir(int id)
+        {
+            int sayacIndex = 0;
+            cagrilacakList.Clear();
+            try
+            {
+                var _cagrilcakList = db.hst_basvuru.Where(c => c.t_cagriekraniistem == 0 && c.t_bolumkodu == id && c.t_basvurudr == 0 && c.t_aktif == true && c.t_taburcu == false).Where(k => k.t_basvurutarihi >= nowDate && k.t_basvurutarihi < sonrakiDate).ToList();
                 if (_cagrilcakList != null)
-					{
-					foreach (var item in _cagrilcakList)
-					{
-					    cagrilacakList.Add(new cagrilacak { SIRA = sayacIndex, BASVURUNO = item.t_id, HASTAADI = item.hst_hastakarti.t_adi, HASTASOYADI = item.hst_hastakarti.t_soyadi });
-					    sayacIndex++;	  
-					}
+                {
+                    foreach (var item in _cagrilcakList)
+                    {
+                        cagrilacakList.Add(new cagrilacak { SIRA = sayacIndex, BASVURUNO = item.t_id, HASTAADI = item.hst_hastakarti.t_adi, HASTASOYADI = item.hst_hastakarti.t_soyadi });
+                        sayacIndex++;
+                    }
+
                     dgvHastaListesi.DataSource = cagrilacakList.ToList();
                 }
                 tmrForm2CagirilcakHasta.Enabled = true;
-				}
-				catch (Exception)
-				{
-					//MessageBox.Show("HATA MESAJI 5: " + x);
-				}
-		}
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show("HATA MESAJI 5: " + x);
+            }
+        }
 
         public void cagrilanHastaGetir(int id)
         {
@@ -73,12 +75,12 @@ namespace WEINCDENTAL_CALLINGSCREEN
 
             try
             {
-                var _cagrilanList = db.hst_basvuru.Where(c => c.t_cagriekraniistem == 0 && c.t_bolumkodu==id && c.t_basvurudr==1 && c.t_aktif==true && c.t_taburcu==false).Where(k=>k.t_basvurutarihi>=nowDate && k.t_basvurutarihi<sonrakiDate).ToList();
+                var _cagrilanList = db.hst_basvuru.Where(c => c.t_cagriekraniistem == 0 && c.t_bolumkodu == id && c.t_basvurudr == 1 && c.t_aktif == true && c.t_taburcu == false).Where(k => k.t_basvurutarihi >= nowDate && k.t_basvurutarihi < sonrakiDate).ToList();
                 if (_cagrilanList.Count != 0)
                 {
                     foreach (var item in _cagrilanList)
                     {
-                        cagrildiList.Add(new cagrildi { CGRLDI_LID = sayacIndex, CGRLDI_ID = item.t_id, CGRLDI_AD = item.hst_hastakarti.t_adi, CGRLDI_SOYAD = item.hst_hastakarti.t_soyadi});
+                        cagrildiList.Add(new cagrildi { CGRLDI_LID = sayacIndex, CGRLDI_ID = item.t_id, CGRLDI_AD = item.hst_hastakarti.t_adi, CGRLDI_SOYAD = item.hst_hastakarti.t_soyadi });
                         sayacIndex++;
                     }
                     lblCagirilanHasta.Text = cagrildiList[0].CGRLDI_AD + " " + cagrildiList[0].CGRLDI_SOYAD;
@@ -133,7 +135,7 @@ namespace WEINCDENTAL_CALLINGSCREEN
         #region TIMERS
         private void tmrForm2CloseValue_Tick(object sender, EventArgs e)
         {
-            if (form2CloseValue !=0)
+            if (form2CloseValue != 0)
             {
                 form2Close();
                 tmrForm2CloseValue.Enabled = false;
@@ -164,9 +166,9 @@ namespace WEINCDENTAL_CALLINGSCREEN
         {
             if (readerSayar < 5)
             {
-               // reader.Dispose();
-               // reader = new SpeechSynthesizer();
-               //reader.SpeakAsync(lblCagirilanHasta.Text + "iceriye lutfen");
+                // reader.Dispose();
+                // reader = new SpeechSynthesizer();
+                //reader.SpeakAsync(lblCagirilanHasta.Text + "iceriye lutfen");
                 readerSayar++;
             }
             else
