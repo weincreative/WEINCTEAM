@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Controllers
 {
+
     public class IstatistikController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
@@ -72,6 +74,76 @@ namespace WEINCDENTAL.Controllers
                 Console.WriteLine(e);
             }
 
+            return list;
+        }
+
+        //Belirli Yıl ve ay'a  ait hizmet listesi...
+        public List<hst_his_hareket> GetListHizmet(int yil, int ay)
+        {
+            List<hst_his_hareket> list = new List<hst_his_hareket>();
+
+            try
+            {
+                list = db.hst_his_hareket.Where(k => k.t_aktif == true && k.t_islemtarihi.Year == yil &&
+                                                     k.t_islemtarihi.Month == ay).ToList();
+                return list;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return list;
+        }
+        // Belirli ay yil ve odeme tipine gore vezne list...
+        public List<hst_vezne> GetListVezne(int yil, int ay, int otip)
+        {
+            List<hst_vezne> vezne = new List<hst_vezne>();
+            try
+            {
+                vezne = db.hst_vezne.Where(k => k.t_aktif == true && k.t_odemetipi == otip &&
+                                                k.t_odemetarih.Year == yil && k.t_odemetarih.Month == ay).ToList();
+                return vezne;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+
+            }
+            return vezne;
+        }
+
+        // Belirli ay ve yil'a ait en çok yapılan belirli sayıda hizmet kayıdı getir...
+        public List<TotalHizmet> GetHizmet(int yil, int ay, int hsay)
+        {
+            List<TotalHizmet> list = new List<TotalHizmet>();
+
+            try
+            {
+             var  query = db.View_HizHareket
+                   .Where(k => k.Baktif == true && k.HHareketAkteif == true && k.HastaAktif == true
+                  // && k.t_islemtarihi.Year == yil && k.t_islemtarihi.Month == ay
+                   )
+                   .GroupBy(k => new
+                   {
+                       k.Hizmetadi,
+                       k.t_hizmetkodu
+                   }).Select(t => new TotalHizmet()
+                   {
+                       HAd = t.Key.Hizmetadi,
+                       HKod = t.Key.t_hizmetkodu,
+                       HSay = t.Count()
+                   }).ToList();
+
+                list = query.OrderByDescending(k => k.HSay).Take(hsay).ToList();
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+
+            }
             return list;
         }
 

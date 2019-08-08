@@ -161,16 +161,7 @@ function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, cen
     $('#newHizmet').closest('tr').after(row);
     $('input[type="button"]', row).removeClass('AddNew').addClass('btn btn-labeled btn-danger RemoveRow').val('Sil')
         .attr('name', tblNo);
-    //$('select', row).attr('disabled', false);
-
-    //row.on('click', '.FirmaDrop', function () {
-    //    //Some code
-
-    //    $(this).change(function () {
-    //        var asd = this.value;
-    //        alert(asd);
-    //    });
-    //});
+    
 
     tblNo++;
 
@@ -195,8 +186,6 @@ function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, cen
             " " + saat +
             ":" + dak;
        
-        var ay = parseInt(month);
-        var yil = parseInt(date.getFullYear());
         tblList.push({
             "t_basvuruid": bid,
             "t_hizmetkodu": hkod,
