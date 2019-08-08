@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace WEINCDENTAL.Models
 {
     using System;
@@ -20,14 +18,11 @@ namespace WEINCDENTAL.Models
         public int t_basvuruid { get; set; }
         public int t_hizmetkodu { get; set; }
         public System.DateTime t_islemtarihi { get; set; }
-        public Nullable<int> t_ay { get; set; }
-        public Nullable<int> t_yil { get; set; }
         public int t_diskodu { get; set; }
         public int t_parca { get; set; }
         public int t_cene { get; set; }
         public bool t_yetiskinmi { get; set; }
         public bool t_odemevarmi { get; set; }
-        [DataType(DataType.Currency)]
         public Nullable<decimal> t_totalborc { get; set; }
         public bool t_borcdurum { get; set; }
         public Nullable<int> t_firmaid { get; set; }

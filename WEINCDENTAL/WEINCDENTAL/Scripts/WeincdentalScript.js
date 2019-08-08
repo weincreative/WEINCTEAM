@@ -194,8 +194,7 @@ function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, cen
             "-" + day +
             " " + saat +
             ":" + dak;
-        // alert(zmn);
-        //alert(ceneid);
+       
         var ay = parseInt(month);
         var yil = parseInt(date.getFullYear());
         tblList.push({
@@ -211,8 +210,6 @@ function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, cen
             "t_totalborc": 0,
             "t_aktif": 1,
             "t_islemtarihi": zmn,
-            "t_ay": ay,
-            "t_yil":yil,
             "t_createdate": zmn,
             't_borcdurum': true,
             't_yapildi':false

@@ -163,8 +163,6 @@
           <Property Name="t_basvuruid" Type="int" Nullable="false" />
           <Property Name="t_hizmetkodu" Type="int" Nullable="false" />
           <Property Name="t_islemtarihi" Type="datetime" Nullable="false" />
-          <Property Name="t_ay" Type="int" />
-          <Property Name="t_yil" Type="int" />
           <Property Name="t_diskodu" Type="int" Nullable="false" />
           <Property Name="t_parca" Type="int" Nullable="false" />
           <Property Name="t_cene" Type="int" Nullable="false" />
@@ -416,8 +414,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizHareket' does not have a p
           <Property Name="Baktif" Type="bit" Nullable="false" />
           <Property Name="HastaAktif" Type="bit" Nullable="false" />
           <Property Name="t_yapildi" Type="bit" />
-          <Property Name="t_ay" Type="int" />
-          <Property Name="t_yil" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizmetDetay' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -475,8 +471,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizmetDetay' does not have a 
           <Property Name="BasvuruAktif" Type="bit" Nullable="false" />
           <Property Name="HHareketAktif" Type="bit" Nullable="false" />
           <Property Name="t_yapildi" Type="bit" />
-          <Property Name="t_ay" Type="int" />
-          <Property Name="t_yil" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_Pacs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -568,8 +562,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="BasvuruAktif" Type="bit" Nullable="false" />
           <Property Name="HHareketAktif" Type="bit" Nullable="false" />
           <Property Name="HastaAktif" Type="bit" Nullable="false" />
-          <Property Name="t_ay" Type="int" />
-          <Property Name="t_yil" Type="int" />
         </EntityType>
         <Association Name="FK_adm_kullanicilar_adm_kullanicigrup1">
           <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
@@ -871,11 +863,36 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_UVAktif" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="sp$UVAktif">
           <Parameter Name="bid" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
         <Function Name="sp_DeleteHhareket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="hhid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_InsertVezne" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="hareketid" Type="int" Mode="In" />
@@ -888,6 +905,12 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
         <Function Name="sp_OdemeBitim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="basid" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_VezneUpIlkKayit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="bsvid" Type="int" Mode="In" />
         </Function>
@@ -983,9 +1006,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     [View_HizHareket].[HHareketAkteif] AS [HHareketAkteif], 
     [View_HizHareket].[Baktif] AS [Baktif], 
     [View_HizHareket].[HastaAktif] AS [HastaAktif], 
-    [View_HizHareket].[t_yapildi] AS [t_yapildi], 
-    [View_HizHareket].[t_ay] AS [t_ay], 
-    [View_HizHareket].[t_yil] AS [t_yil]
+    [View_HizHareket].[t_yapildi] AS [t_yapildi]
     FROM [dbo].[View_HizHareket] AS [View_HizHareket]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_HizmetDetay" EntityType="Self.View_HizmetDetay" store:Type="Views" store:Schema="dbo">
@@ -1016,9 +1037,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     [View_HizmetDetay].[DoktorAktif] AS [DoktorAktif], 
     [View_HizmetDetay].[BasvuruAktif] AS [BasvuruAktif], 
     [View_HizmetDetay].[HHareketAktif] AS [HHareketAktif], 
-    [View_HizmetDetay].[t_yapildi] AS [t_yapildi], 
-    [View_HizmetDetay].[t_ay] AS [t_ay], 
-    [View_HizmetDetay].[t_yil] AS [t_yil]
+    [View_HizmetDetay].[t_yapildi] AS [t_yapildi]
     FROM [dbo].[View_HizmetDetay] AS [View_HizmetDetay]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_Pacs" EntityType="Self.View_Pacs" store:Type="Views" store:Schema="dbo">
@@ -1066,9 +1085,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     [View_Vezne].[VezneAktif] AS [VezneAktif], 
     [View_Vezne].[BasvuruAktif] AS [BasvuruAktif], 
     [View_Vezne].[HHareketAktif] AS [HHareketAktif], 
-    [View_Vezne].[HastaAktif] AS [HastaAktif], 
-    [View_Vezne].[t_ay] AS [t_ay], 
-    [View_Vezne].[t_yil] AS [t_yil]
+    [View_Vezne].[HastaAktif] AS [HastaAktif]
     FROM [dbo].[View_Vezne] AS [View_Vezne]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_adm_kullanicilar_adm_kullanicigrup1" Association="Self.FK_adm_kullanicilar_adm_kullanicigrup1">
@@ -1364,8 +1381,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_basvuruid" Type="Int32" Nullable="false" />
           <Property Name="t_hizmetkodu" Type="Int32" Nullable="false" />
           <Property Name="t_islemtarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="t_ay" Type="Int32" />
-          <Property Name="t_yil" Type="Int32" />
           <Property Name="t_diskodu" Type="Int32" Nullable="false" />
           <Property Name="t_parca" Type="Int32" Nullable="false" />
           <Property Name="t_cene" Type="Int32" Nullable="false" />
@@ -1630,8 +1645,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="Baktif" Type="Boolean" Nullable="false" />
           <Property Name="HastaAktif" Type="Boolean" Nullable="false" />
           <Property Name="t_yapildi" Type="Boolean" />
-          <Property Name="t_ay" Type="Int32" />
-          <Property Name="t_yil" Type="Int32" />
         </EntityType>
         <EntityType Name="View_HizmetDetay">
           <Key>
@@ -1687,8 +1700,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="BasvuruAktif" Type="Boolean" Nullable="false" />
           <Property Name="HHareketAktif" Type="Boolean" Nullable="false" />
           <Property Name="t_yapildi" Type="Boolean" />
-          <Property Name="t_ay" Type="Int32" />
-          <Property Name="t_yil" Type="Int32" />
         </EntityType>
         <EntityType Name="View_Pacs">
           <Key>
@@ -1776,8 +1787,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="BasvuruAktif" Type="Boolean" Nullable="false" />
           <Property Name="HHareketAktif" Type="Boolean" Nullable="false" />
           <Property Name="HastaAktif" Type="Boolean" Nullable="false" />
-          <Property Name="t_ay" Type="Int32" />
-          <Property Name="t_yil" Type="Int32" />
         </EntityType>
         <Association Name="FK_adm_kullanicilar_adm_kullanicigrup1">
           <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
@@ -2214,8 +2223,32 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <FunctionImport Name="sp_UVAktif">
             <Parameter Name="bid" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
           <FunctionImport Name="sp_DeleteHhareket">
             <Parameter Name="hhid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(WEINCDENTALModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(WEINCDENTALModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_InsertVezne">
             <Parameter Name="hareketid" Mode="In" Type="Int32" />
@@ -2228,10 +2261,27 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <FunctionImport Name="sp_OdemeBitim">
             <Parameter Name="basid" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
           <FunctionImport Name="sp_VezneUpIlkKayit">
             <Parameter Name="bsvid" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2408,8 +2458,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="t_basvuruid" ColumnName="t_basvuruid" />
                 <ScalarProperty Name="t_hizmetkodu" ColumnName="t_hizmetkodu" />
                 <ScalarProperty Name="t_islemtarihi" ColumnName="t_islemtarihi" />
-                <ScalarProperty Name="t_ay" ColumnName="t_ay" />
-                <ScalarProperty Name="t_yil" ColumnName="t_yil" />
                 <ScalarProperty Name="t_diskodu" ColumnName="t_diskodu" />
                 <ScalarProperty Name="t_parca" ColumnName="t_parca" />
                 <ScalarProperty Name="t_cene" ColumnName="t_cene" />
@@ -2622,8 +2670,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="Baktif" ColumnName="Baktif" />
                 <ScalarProperty Name="HastaAktif" ColumnName="HastaAktif" />
                 <ScalarProperty Name="t_yapildi" ColumnName="t_yapildi" />
-                <ScalarProperty Name="t_ay" ColumnName="t_ay" />
-                <ScalarProperty Name="t_yil" ColumnName="t_yil" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2657,8 +2703,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="BasvuruAktif" ColumnName="BasvuruAktif" />
                 <ScalarProperty Name="HHareketAktif" ColumnName="HHareketAktif" />
                 <ScalarProperty Name="t_yapildi" ColumnName="t_yapildi" />
-                <ScalarProperty Name="t_ay" ColumnName="t_ay" />
-                <ScalarProperty Name="t_yil" ColumnName="t_yil" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2711,16 +2755,38 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="BasvuruAktif" ColumnName="BasvuruAktif" />
                 <ScalarProperty Name="HHareketAktif" ColumnName="HHareketAktif" />
                 <ScalarProperty Name="HastaAktif" ColumnName="HastaAktif" />
-                <ScalarProperty Name="t_ay" ColumnName="t_ay" />
-                <ScalarProperty Name="t_yil" ColumnName="t_yil" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_UVAktif" FunctionName="WEINCDENTALModel.Store.sp_UVAktif" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="WEINCDENTALModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="WEINCDENTALModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_DeleteHhareket" FunctionName="WEINCDENTALModel.Store.sp_DeleteHhareket" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="WEINCDENTALModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="WEINCDENTALModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WEINCDENTALModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="WEINCDENTALModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WEINCDENTALModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_InsertVezne" FunctionName="WEINCDENTALModel.Store.sp_InsertVezne" />
           <FunctionImportMapping FunctionImportName="sp_LastPay" FunctionName="WEINCDENTALModel.Store.sp_LastPay" />
           <FunctionImportMapping FunctionImportName="sp_OdemeBitim" FunctionName="WEINCDENTALModel.Store.sp_OdemeBitim" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="WEINCDENTALModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="WEINCDENTALModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="sp_VezneUpIlkKayit" FunctionName="WEINCDENTALModel.Store.sp_VezneUpIlkKayit" />
         </EntityContainerMapping>
       </Mapping>
