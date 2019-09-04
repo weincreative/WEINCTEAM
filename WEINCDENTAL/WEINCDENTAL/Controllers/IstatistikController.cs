@@ -122,7 +122,7 @@ namespace WEINCDENTAL.Controllers
             {
              var  query = db.View_HizHareket
                    .Where(k => k.Baktif == true && k.HHareketAkteif == true && k.HastaAktif == true
-                  // && k.t_islemtarihi.Year == yil && k.t_islemtarihi.Month == ay
+                  && k.t_islemtarihi.Year == yil && k.t_islemtarihi.Month == ay
                    )
                    .GroupBy(k => new
                    {
