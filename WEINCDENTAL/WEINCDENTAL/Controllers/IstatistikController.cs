@@ -134,17 +134,17 @@ namespace WEINCDENTAL.Controllers
                        HKod = t.Key.t_hizmetkodu,
                        HSay = t.Count()
                    }).ToList();
-                foreach (var item in query)
-                {
-                    for (int i = 0; i < query.Count; i++)
-                    {
-                        item.color = rgbalist[i];
-                        item.highlight = rgbalist[i];
-                    }
-                   
-                }
+                
                 list = query.OrderByDescending(k => k.HSay).Take(hsay).ToList();
 
+               
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        list[i].color = rgbalist[i];
+                        list[i].highlight = rgbalist[i];
+                    }
+
+                
                 return list;
             }
             catch (Exception e)
