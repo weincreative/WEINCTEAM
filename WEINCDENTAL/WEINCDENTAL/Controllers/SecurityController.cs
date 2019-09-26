@@ -22,10 +22,22 @@ namespace WEINCDENTAL.Controllers
         public ActionResult Login(adm_kullanicilar kullanici)
         {
             var UserINDB = db.adm_kullanicilar.FirstOrDefault(x => x.t_kodu == kullanici.t_kodu && x.t_sifre == kullanici.t_sifre);
-            if(UserINDB!=null)
+          
+            if (UserINDB!=null)
             {
                 FormsAuthentication.SetAuthCookie(kullanici.t_kodu, false);
-                return RedirectToAction("Index","Home");
+                var yetki = db.adm_kullanicilar.Where(k => k.t_aktif == true && k.t_kodu == kullanici.t_kodu)
+                    .Select(k => k.t_grup).FirstOrDefault();
+
+                if (yetki==1 || yetki==3)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return RedirectToAction("SekIndex", "Home");
+                }
+               
             }
             else
             {

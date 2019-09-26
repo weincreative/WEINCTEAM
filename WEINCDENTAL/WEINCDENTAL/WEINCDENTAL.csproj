@@ -1176,7 +1176,7 @@
     <Content Include="Views\Pacs\PacsList.cshtml" />
     <Content Include="Views\Pacs\_PartialPacs.cshtml" />
     <Content Include="Views\Pacs\_PartialPacsList.cshtml" />
-    <Content Include="Views\Home\Istatistik.cshtml" />
+    <Content Include="Views\Home\SekIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -8,12 +8,12 @@ using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,3,4,5")]
+    
     public class HomeController : Controller
     {
         
         IstatistikController ic = new IstatistikController();
-
+        [Authorize(Roles = "1,3")]
         public ActionResult Index()
         {
 
@@ -64,19 +64,9 @@ namespace WEINCDENTAL.Controllers
         {
             return View();
         }
-
-        public ActionResult Istatistik()
+        [Authorize(Roles = "1,3,4")]
+        public ActionResult SekIndex()
         {
-            DateTime dt = DateTime.Today;
-
-            var query = ic.GetTotalKazanc(dt.Year);
-            decimal[] data = new decimal[12];
-            foreach (var item in query)
-            {
-                var i = (item.Ay) - 1;
-                if (i != null) if (item.Total != null) data[(int)i] = (decimal)item.Total;
-            }
-            ViewBag.totalhizmet = data;
             return View();
         }
     }
