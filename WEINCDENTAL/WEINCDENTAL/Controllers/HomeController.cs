@@ -39,7 +39,16 @@ namespace WEINCDENTAL.Controllers
                 totalKKart =tkkart.Sum(t => t.t_odenen);
             }
             var data = ic.GetHizmet(dt.Year, dt.Month,4);
-            
+
+
+            var query = ic.GetTotalKazanc(dt.Year);
+            decimal[] datakazanc = new decimal[12];
+            foreach (var item in query)
+            {
+                var i = (item.Ay) - 1;
+                if (i != null) if (item.Total != null) datakazanc[(int)i] = (decimal)item.Total;
+            }
+            ViewBag.totalhizmet = datakazanc;
 
             ViewBag.hizlist = data;
             ModelIstatistik mis = new ModelIstatistik

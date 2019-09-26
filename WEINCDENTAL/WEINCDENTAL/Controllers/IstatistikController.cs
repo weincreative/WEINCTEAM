@@ -117,7 +117,7 @@ namespace WEINCDENTAL.Controllers
         public List<TotalHizmet> GetHizmet(int yil, int ay, int hsay)
         {
             List<TotalHizmet> list = new List<TotalHizmet>();
-
+            string[] rgbalist = new string[] { "rgba(53, 53, 255, 0.9)", "rgba(151,187,205,1)", "rgba(169, 3, 41, 0.7)", "rgba(144,171,86,1)" };
             try
             {
              var  query = db.View_HizHareket
@@ -134,7 +134,15 @@ namespace WEINCDENTAL.Controllers
                        HKod = t.Key.t_hizmetkodu,
                        HSay = t.Count()
                    }).ToList();
-
+                foreach (var item in query)
+                {
+                    for (int i = 0; i < query.Count; i++)
+                    {
+                        item.color = rgbalist[i];
+                        item.highlight = rgbalist[i];
+                    }
+                   
+                }
                 list = query.OrderByDescending(k => k.HSay).Take(hsay).ToList();
 
                 return list;
