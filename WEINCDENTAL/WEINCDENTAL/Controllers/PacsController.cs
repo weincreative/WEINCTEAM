@@ -6,7 +6,7 @@ using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,3,4,5")]
+    [Authorize(Roles = "1,2,3,4,5")]
     public class PacsController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();

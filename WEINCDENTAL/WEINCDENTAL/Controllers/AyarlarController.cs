@@ -7,9 +7,10 @@ using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1")]
+    [Authorize(Roles = "1,2")]
     public class AyarlarController : Controller
     {
+        
         // GET: Ayarlar
         public PartialViewResult AyarlarKullanicilar()
         {
@@ -18,7 +19,7 @@ namespace WEINCDENTAL.Controllers
             vm._ViewModelKullanicilar = db.adm_kullanicilar.ToList();
             return PartialView(vm);
         }
-
+       
         public PartialViewResult AyarlarModulYetki()
         {
             WEINCDENTALEntities db = new WEINCDENTALEntities();
@@ -26,7 +27,7 @@ namespace WEINCDENTAL.Controllers
             vm._ViewModelModulYetki = db.adm_modulyetki.ToList();
             return PartialView(vm);
         }
-
+       
         public PartialViewResult AyarlarKullaniciGrup()
         {
             WEINCDENTALEntities db = new WEINCDENTALEntities();
@@ -34,7 +35,7 @@ namespace WEINCDENTAL.Controllers
             vm._ViewModelKullaniciGrup = db.adm_kullanicigrup.ToList();
             return PartialView(vm);
         }
-
+      
         public PartialViewResult AyarlarHizmet()
         {
             WEINCDENTALEntities db = new WEINCDENTALEntities();

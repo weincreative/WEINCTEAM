@@ -10,7 +10,7 @@ using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Content
 {
-    [Authorize(Roles = "1")]
+    [Authorize(Roles = "1,2")]
     public class adm_modulyetkiController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();

@@ -89,7 +89,7 @@
 
                 </li>
             }
-            @if (User.IsInRole("1"))
+            @if (User.IsInRole("2")|| User.IsInRole("1"))
             {
                 <li class="@Html.RouteIf("Ayarlar", "active")">
                     <a href="@Url.Action("Ayarlar", "Home")"><i class="fa fa-lg fa-fw fa-empire"></i> <span class="menu-item-parent">Ayarlar</span></a>

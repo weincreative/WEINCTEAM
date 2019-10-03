@@ -60,11 +60,12 @@ namespace WEINCDENTAL.Controllers
             return View(mis);
             
         }
+        [Authorize(Roles = "1,2")]
         public ActionResult Ayarlar()
         {
             return View();
         }
-        [Authorize(Roles = "1,3,4")]
+        [Authorize(Roles = "2,4,5")]
         public ActionResult SekIndex()
         {
             return View();
