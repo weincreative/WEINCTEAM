@@ -18,7 +18,7 @@
         -->
         <ul>
 
-            @if (User.IsInRole("1") || User.IsInRole("3"))
+            @if (User.IsInRole("1") || User.IsInRole("2"))
             {
                 <li class="@Html.RouteIf("Index", "active")">
                     <a href="@Url.Action("Index", "Home")"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ana Sayfa</span></a>

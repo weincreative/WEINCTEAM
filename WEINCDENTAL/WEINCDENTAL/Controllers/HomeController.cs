@@ -13,7 +13,7 @@ namespace WEINCDENTAL.Controllers
     {
         
         IstatistikController ic = new IstatistikController();
-        [Authorize(Roles = "1,3")]
+        [Authorize(Roles = "1,2")]
         public ActionResult Index()
         {
 
@@ -65,7 +65,7 @@ namespace WEINCDENTAL.Controllers
         {
             return View();
         }
-        [Authorize(Roles = "2,4,5")]
+        [Authorize(Roles = "3,4,5")]
         public ActionResult SekIndex()
         {
             return View();

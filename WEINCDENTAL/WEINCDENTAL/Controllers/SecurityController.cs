@@ -29,7 +29,7 @@ namespace WEINCDENTAL.Controllers
                 var yetki = db.adm_kullanicilar.Where(k => k.t_aktif == true && k.t_kodu == kullanici.t_kodu)
                     .Select(k => k.t_grup).FirstOrDefault();
 
-                if (yetki==1 || yetki==3)
+                if (yetki==1 || yetki==2)
                 {
                     return RedirectToAction("Index", "Home");
                 }
