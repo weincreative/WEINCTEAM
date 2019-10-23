@@ -18,6 +18,7 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_hizmet
         public ActionResult Index()
         {
+            
             var hst_hizmet = db.hst_hizmet.Include(h => h.hst_cene_uygunmu).Include(h => h.hst_hizmet_parca);
             return View(hst_hizmet.ToList());
         }
@@ -53,6 +54,7 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_hizmet/Create
         public ActionResult Create()
         {
+            string methodAd = "/hst_hizmet/create";
             ViewBag.t_ceneuygunmu = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi");
             ViewBag.t_parcauygunmu = new SelectList(db.hst_hizmet_parca, "t_id", "t_adi");
             return View();

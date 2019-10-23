@@ -19,6 +19,7 @@ namespace WEINCDENTAL.Controllers
         
         public ActionResult HisHareket(int id)
         {
+            string methodAd = "/hizhareket/hizhareket";
             try
             {
                 var tc = Ortak._hastatc;
@@ -34,6 +35,7 @@ namespace WEINCDENTAL.Controllers
 
         public PartialViewResult DisModul(int id)
         {
+            string methodAd = "/hizhareket/dismodul";
             try
             {
                 ViewModelHisHareket vm = new ViewModelHisHareket();
@@ -51,6 +53,7 @@ namespace WEINCDENTAL.Controllers
         [HttpGet]
        public PartialViewResult _NewHareket()
         {
+            string methodAd = "/hizhareket/_newHareket";
             try
             {
                 //    var hst_firma = db.hst_firma.Include(h => h.hst_marka).ToList();
@@ -67,6 +70,7 @@ namespace WEINCDENTAL.Controllers
 
         public PartialViewResult HisHareketFirma()
         {
+            string methodAd = "/hizhareket/Hishareketfirma";
             try
             {
                 WEINCDENTALEntities db = new WEINCDENTALEntities();
@@ -81,6 +85,7 @@ namespace WEINCDENTAL.Controllers
         }
         public PartialViewResult HisHareketPacs()
         {
+            string methodAd = "/hizhareket/Hishareketpacs";
             try
             {
                 WEINCDENTALEntities db = new WEINCDENTALEntities();

@@ -17,15 +17,10 @@ namespace WEINCDENTAL.Controllers
 
         // GET: hst_basvuru
 
-        public ActionResult Index()
-        {
-            var hst_basvuru = db.hst_basvuru.Include(h => h.hst_bölüm).Include(h => h.hst_hastakarti);
-            return View(hst_basvuru.ToList());
-        }
         [HttpGet]
         public ActionResult Hastabasvuru_Index(string id)
         {
-            
+            string methodAd = "/hastabasvuru/index";
             var hst_basvuru = db.hst_basvuru.Include(h => h.hst_bölüm).Include(h => h.hst_hastakarti).Where(k=>k.t_aktif==true && k.t_tc==id).ToList();
           
             if (id == null ||hst_basvuru == null) //Yeni Başvuru Açsın.
@@ -41,6 +36,7 @@ namespace WEINCDENTAL.Controllers
 
         public PartialViewResult HastaBPartialCreate(string id)
         {
+            string methodAd = "/hastabasvuru/HastaBPartialCreate";
             //if (id==null)
             //{
             //    return RedirectToAction("Create","");
@@ -107,6 +103,7 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_basvuru/Create
         public ActionResult HastaBasvuruCreate(string id)
         {
+            string methodAd = "/hastabasvuru/Create";
             ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm.Where(k=>k.t_aktif==true), "t_id", "t_adi");
             ViewBag.t_tc = id;
             return View();
