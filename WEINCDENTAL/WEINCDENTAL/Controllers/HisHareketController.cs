@@ -35,7 +35,6 @@ namespace WEINCDENTAL.Controllers
 
         public PartialViewResult DisModul(int id)
         {
-            string methodAd = "/hizhareket/dismodul";
             try
             {
                 ViewModelHisHareket vm = new ViewModelHisHareket();
@@ -53,7 +52,6 @@ namespace WEINCDENTAL.Controllers
         [HttpGet]
        public PartialViewResult _NewHareket()
         {
-            string methodAd = "/hizhareket/_newHareket";
             try
             {
                 //    var hst_firma = db.hst_firma.Include(h => h.hst_marka).ToList();

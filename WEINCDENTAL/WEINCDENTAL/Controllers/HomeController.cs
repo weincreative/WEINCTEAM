@@ -16,7 +16,7 @@ namespace WEINCDENTAL.Controllers
         [Authorize(Roles = "1,2")]
         public ActionResult Index()
         {
-
+            string methodAd = "/home/index";
             DateTime dt = DateTime.Today;
             var list = ic.GetListHizmet(dt.Year, dt.Month);
             ViewBag.yil = dt.Year;
@@ -63,11 +63,13 @@ namespace WEINCDENTAL.Controllers
         [Authorize(Roles = "1,2")]
         public ActionResult Ayarlar()
         {
+            string methodAd = "/home/ayarlar";
             return View();
         }
         [Authorize(Roles = "3,4,5")]
         public ActionResult SekIndex()
         {
+            string methodAd = "/home/Sekindex";
             return View();
         }
     }

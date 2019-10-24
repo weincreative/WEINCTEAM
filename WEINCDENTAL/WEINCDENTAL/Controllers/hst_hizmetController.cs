@@ -54,7 +54,7 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_hizmet/Create
         public ActionResult Create()
         {
-            string methodAd = "/hst_hizmet/create";
+            
             ViewBag.t_ceneuygunmu = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi");
             ViewBag.t_parcauygunmu = new SelectList(db.hst_hizmet_parca, "t_id", "t_adi");
             return View();
@@ -67,6 +67,7 @@ namespace WEINCDENTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "t_id,t_adi,t_parcauygunmu,t_ceneuygunmu,t_fiyat,t_createuser,t_createdate,t_aktif")] hst_hizmet hst_hizmet)
         {
+            string methodAd = "/hst_hizmet/create";
             if (ModelState.IsValid)
             {
                 db.hst_hizmet.Add(hst_hizmet);
@@ -103,6 +104,7 @@ namespace WEINCDENTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "t_id,t_adi,t_parcauygunmu,t_ceneuygunmu,t_fiyat,t_createuser,t_createdate,t_aktif")] hst_hizmet hst_hizmet)
         {
+            string methodAd = "/hst_hizmet/edit";
             if (ModelState.IsValid)
             {
                 db.Entry(hst_hizmet).State = EntityState.Modified;

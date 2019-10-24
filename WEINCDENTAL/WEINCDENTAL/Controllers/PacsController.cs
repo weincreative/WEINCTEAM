@@ -13,6 +13,7 @@ namespace WEINCDENTAL.Controllers
         // GET: Pacs
         public ActionResult Pacs_Index()
         {
+            string methodAd = "/Pacs/index";
             return View();
         }
 
@@ -69,6 +70,7 @@ namespace WEINCDENTAL.Controllers
 
         public PartialViewResult _PartialPacsList(string tc)
         {
+            string methodAd = "/Pacs/_PartialPacsList";
             var pacsList = db.View_Pacs.Where(k => k.HastaAktif == true && k.PacsAktif == true && k.t_tc == tc).OrderByDescending(k => k.t_createdate)
                 .ToList();
             

@@ -69,6 +69,7 @@ namespace WEINCDENTAL.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult Create(List<hst_his_hareket> hst_his_hareket)
         {
+            string methodAd = "/hst_his_hareket/create";
             bool durum = false;
             try
             {

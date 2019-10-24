@@ -51,6 +51,7 @@ namespace WEINCDENTAL.Controllers
         [HttpPost]
         public JsonResult Taburcu(int id)
         {
+            string methodAd = "/hastabasvuru/taburcu";
             var sonuc = 0;
             try
             {
@@ -70,6 +71,7 @@ namespace WEINCDENTAL.Controllers
         [HttpPost]
         public JsonResult TaburcuGerial(int id)
         {
+            string methodAd = "/hastabasvuru/taburcuGeriAl";
             var sonuc = 0;
             try
             {
@@ -180,7 +182,7 @@ namespace WEINCDENTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "t_id,t_basvuru,t_tc,t_basvurutarihi,t_bolumkodu,t_cagriekraniistem,t_basvurudr,t_taburcu,t_createdate,t_createuser,t_aktif")] hst_basvuru hst_basvuru)
         {
-
+            string methodAd = "/hastabasvuru/edit";
             try
             {
 
@@ -235,6 +237,7 @@ namespace WEINCDENTAL.Controllers
         [HttpPost]
         public JsonResult Delete(int id)
         {
+            string methodAd = "/hastabasvuru/delete";
             var sonuc = 0;
             try
             {

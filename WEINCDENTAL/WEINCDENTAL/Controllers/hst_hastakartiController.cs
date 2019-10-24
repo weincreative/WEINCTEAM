@@ -18,6 +18,7 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_hastakarti
         public ActionResult Hastakarti_Index()
         {
+            string methodAd = "/hst_hastakarti/index";
             var hst_hastakarti = db.hst_hastakarti.Include(h => h.hst_cinsiyet).Include(h => h.hst_il).Include(h => h.hst_ilce).Include(h => h.hst_medenidurum).Include(h => h.hst_ulke).Where(k => k.t_aktif == true);
             return View(hst_hastakarti.ToList());
         }
@@ -64,6 +65,7 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_hastakarti/Create
         public ActionResult Create()
         {
+            string methodAd = "/hst_hastakarti/create";
             try
             {
                 string id = Ortak._hastatc;
@@ -175,7 +177,7 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_hastakarti/Edit/5
         public ActionResult HastaEdit(string tc)
         {
-
+            string methodAd = "/hst_hastakarti/hastaedit";
             hst_hastakarti hst_hastakarti = db.hst_hastakarti.Find(tc);
             if (hst_hastakarti == null)
             {

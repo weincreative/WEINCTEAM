@@ -46,6 +46,7 @@ namespace WEINCDENTAL.Controllers
         [HttpPost]
         public JsonResult Delete(int id)
         {
+            string methodAd = "/View_HizmetDetay/Delete";
             var sonuc = 0;
             string msg="";
             var result = new HataMessage
