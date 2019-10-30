@@ -36,7 +36,7 @@ namespace WEINCDENTAL.Controllers
 
         public PartialViewResult HastaBPartialCreate(string id)
         {
-            string methodAd = "/hastabasvuru/HastaBPartialCreate";
+            
             //if (id==null)
             //{
             //    return RedirectToAction("Create","");
@@ -105,7 +105,7 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_basvuru/Create
         public ActionResult HastaBasvuruCreate(string id)
         {
-            string methodAd = "/hastabasvuru/Create";
+           
             ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm.Where(k=>k.t_aktif==true), "t_id", "t_adi");
             ViewBag.t_tc = id;
             return View();
@@ -118,7 +118,7 @@ namespace WEINCDENTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "t_id,t_basvuru,t_tc,t_basvurutarihi,t_bolumkodu,t_cagriekraniistem,t_basvurudr,t_borc,t_taburcu,t_createdate,t_createuser,t_aktif")] hst_basvuru hst_basvuru)
         {
-
+            string methodAd = "/hastabasvuru/Create";
             try
             {
                 Ortak o = new Ortak();

@@ -18,7 +18,7 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_randevu
         public ActionResult Randevu_Index(string tc)
         {
-            string methodAd = "/randevu/Index";
+            string methodAd = "/hst_randevu/Index";
             try
             {
                 if (tc == null)
@@ -144,7 +144,7 @@ namespace WEINCDENTAL.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult Create(List<hst_randevu> hst_randevu)
         {
-            string methodAd = "/randevu/create";
+            string methodAd = "/hst_randevu/create";
             bool durum = false;
             try
             {
@@ -185,7 +185,7 @@ namespace WEINCDENTAL.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "t_id,t_basvuru,t_tc,t_title,t_aciklama,t_baslangicsaat,t_bitissaat,t_classname,t_icon,t_allday,t_createuser,t_createdate,t_basvurudr,t_aktif")] List<hst_randevu> hst_randevu)
         {
-            string methodAd = "/randevu/edit";
+            string methodAd = "/hst_randevu/edit";
             bool durum = false;
             try
             {

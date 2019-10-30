@@ -83,7 +83,7 @@ namespace WEINCDENTAL.Controllers
         }
         public PartialViewResult HisHareketPacs()
         {
-            string methodAd = "/hizhareket/Hishareketpacs";
+         
             try
             {
                 WEINCDENTALEntities db = new WEINCDENTALEntities();
