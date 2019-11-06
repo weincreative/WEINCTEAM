@@ -4,10 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8f7870be80b74215b9545d7f9f0e0375" Name="Diagram1">
-        <EntityTypeShape EntityType="WEINCDENTALModel.adm_kullanicigrup" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+      <Diagram DiagramId="49420fa1df4d46f7a5f0150d0f7d3d2f" Name="Diagram1">
+        <EntityTypeShape EntityType="WEINCDENTALModel.adm_kullanicigrup" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="WEINCDENTALModel.adm_kullanicilar" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.adm_modulyetki" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.adm_kullaniciyetki" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.adm_methods" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.adm_modulyetki" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="WEINCDENTALModel.adm_pacs" Width="1.5" PointX="9.75" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="WEINCDENTALModel.hst_basvuru" Width="1.5" PointX="9.75" PointY="18.125" IsExpanded="true" />
         <EntityTypeShape EntityType="WEINCDENTALModel.hst_bölüm" Width="1.5" PointX="7.5" PointY="22.125" IsExpanded="true" />
@@ -29,12 +31,12 @@
         <EntityTypeShape EntityType="WEINCDENTALModel.hst_randevu" Width="1.5" PointX="9.75" PointY="26" IsExpanded="true" />
         <EntityTypeShape EntityType="WEINCDENTALModel.hst_ulke" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WEINCDENTALModel.hst_vezne" Width="1.5" PointX="15" PointY="18.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.View_BsvrVezne" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.View_CeneDis" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.View_HastalikDurum" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.View_HizHareket" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.View_BsvrVezne" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.View_CeneDis" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.View_HastalikDurum" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.View_HizHareket" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WEINCDENTALModel.View_HizmetDetay" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEINCDENTALModel.View_Pacs" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEINCDENTALModel.View_Pacs" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WEINCDENTALModel.View_Vezne" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="WEINCDENTALModel.FK_adm_kullanicilar_adm_kullanicigrup1" ManuallyRouted="false" />
         <AssociationConnector Association="WEINCDENTALModel.FK_adm_kullanicilar_adm_modulyetki1" ManuallyRouted="false" />

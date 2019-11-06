@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace WEINCDENTAL.Models
 {
     using System;
@@ -19,17 +17,10 @@ namespace WEINCDENTAL.Models
         public int t_id { get; set; }
         public int t_bid { get; set; }
         public Nullable<int> t_hizid { get; set; }
-        [Required]
-        [Range(0.1, Double.MaxValue, ErrorMessage = "Tutar 0(SIFIR)'dan büyük olmalýdýr.!")]
-        [DataType(DataType.Currency)]
         public decimal t_odenen { get; set; }
-        [DataType(DataType.Currency)]
         public decimal t_kalan { get; set; }
-        [DataType(DataType.Currency)]
         public decimal t_total { get; set; }
-        [DataType(DataType.Currency)]
         public decimal t_indirim { get; set; }
-        [DataType(DataType.Currency)]
         public decimal t_odenecek { get; set; }
         public int t_odemetipi { get; set; }
         public string t_createuser { get; set; }

@@ -7,14 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
 namespace WEINCDENTAL.Models
 {
     using System;
     using System.Collections.Generic;
     
-    // [Required]
-
     public partial class hst_hastakarti
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,49 +22,25 @@ namespace WEINCDENTAL.Models
             this.hst_hastadurum = new HashSet<hst_hastadurum>();
             this.hst_randevu = new HashSet<hst_randevu>();
         }
-
-        public bool yabancimi { get; set; }
-        [Display(Name = "Hasta ID")]
+    
         public int t_id { get; set; }
-        [Display(Name = "Hasta T.C.")]
-        [Required]
         public string t_tc { get; set; }
-        [Display(Name = "Hasta Adý")]
-        [Required]
         public string t_adi { get; set; }
-        [Display(Name = "Hasta Soyadý")]
-        [Required]
         public string t_soyadi { get; set; }
-        [Display(Name = "Hasta Cinsiyet")]
         public int t_cinsiyet { get; set; }
-        [Display(Name = "Hasta Medeni Durum")]
         public int t_medenidurum { get; set; }
-        [Display(Name = "Hasta Doðum Tarihi")]
-        //[DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public System.DateTime t_dogumtarihi { get; set; }
-        [Display(Name = "Hasta Doðum Yeri")]
         public string t_dogumyeri { get; set; }
-        [Display(Name = "Hasta Telefon")]
-        [Required]
         public string t_tel1 { get; set; }
-        [Display(Name = "Hasta Telefon 2")]
         public string t_tel2 { get; set; }
-        [Display(Name = "Hasta Ülke")]
         public int t_ulkeId { get; set; }
-        [Display(Name = "Hasta Ýl")]
         public Nullable<int> t_ilId { get; set; }
-        [Display(Name = "Hasta Ýlçe")]
         public Nullable<int> t_ilceId { get; set; }
-        [Display(Name = "Hasta Adres")]
         public string t_adres { get; set; }
-        [Display(Name = "Oluþturan Kullanici")]
         public string t_createuser { get; set; }
-        [Display(Name = "Oluþturulma Tarihi")]
         public System.DateTime t_createdate { get; set; }
-        [Display(Name = "Aktif / Pasif")]
         public bool t_aktif { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<adm_pacs> adm_pacs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
