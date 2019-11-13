@@ -10,6 +10,9 @@ using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Content
 {
+
+
+    //alksjşldakjs
     [Authorize(Roles = "1,2")]
     public class adm_modulyetkiController : Controller
     {

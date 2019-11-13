@@ -11,7 +11,8 @@ namespace WEINCDENTAL.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class View_Pacs
     {
         public int t_id { get; set; }
@@ -22,7 +23,9 @@ namespace WEINCDENTAL.Models
         public string t_adi { get; set; }
         public string t_soyadi { get; set; }
         public string Cinsiyet { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public System.DateTime t_createdate { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public System.DateTime t_dogumtarihi { get; set; }
         public int t_ip { get; set; }
         public bool HastaAktif { get; set; }

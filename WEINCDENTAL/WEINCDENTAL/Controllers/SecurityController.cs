@@ -11,8 +11,6 @@ namespace WEINCDENTAL.Controllers
     public class SecurityController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
-
-      
         // GET: Security
         [AllowAnonymous]
         public ActionResult Login()
@@ -32,13 +30,7 @@ namespace WEINCDENTAL.Controllers
                 FormsAuthentication.SetAuthCookie(kullanici.t_kodu, false);
                 var yetki = db.adm_kullanicilar.Where(k => k.t_aktif == true && k.t_kodu == kullanici.t_kodu)
                     .Select(k => k.t_grup).FirstOrDefault();
-                var k_id = db.adm_kullanicilar.Where(k => k.t_aktif == true && k.t_kodu == kullanici.t_kodu)
-                    .Select(k => k.t_kid).FirstOrDefault();
-                Session["grup"] = yetki;
-                Session["kid"] = k_id;
-
                 //yetki=> "/home/index" "/home/Sekindex" var mı diye bak.Hangisine yetki varsa onu aç.
-
                 if (yetki==1 || yetki==2)
                 {
                     return RedirectToAction("Index", "Home");

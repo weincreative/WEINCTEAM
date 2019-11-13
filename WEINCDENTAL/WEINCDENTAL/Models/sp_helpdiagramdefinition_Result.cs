@@ -10,13 +10,10 @@
 namespace WEINCDENTAL.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class adm_kullaniciyetki
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int t_id { get; set; }
-        public int t_kod { get; set; }
-        public int t_mid { get; set; }
-        public bool t_yetki { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

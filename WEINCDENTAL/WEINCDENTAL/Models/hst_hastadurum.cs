@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace WEINCDENTAL.Models
 {
     using System;
@@ -17,6 +19,8 @@ namespace WEINCDENTAL.Models
         public int t_id { get; set; }
         public string t_tc { get; set; }
         public int t_hdurumid { get; set; }
+        [StringLength(100, ErrorMessage = "100 karakter sýnýrýný aþtýnýz.")]
+        [DataType(DataType.MultilineText)]
         public string t_aciklama { get; set; }
         public bool t_aktif { get; set; }
     
