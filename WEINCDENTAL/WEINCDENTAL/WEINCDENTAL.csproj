@@ -55,6 +55,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -154,10 +155,13 @@
     <Compile Include="Controllers\hst_his_hareketController.cs" />
     <Compile Include="Controllers\hst_hizmetController.cs" />
     <Compile Include="Controllers\hst_randevuController.cs" />
+    <Compile Include="Controllers\ICache.cs" />
     <Compile Include="Controllers\IstatistikController.cs" />
     <Compile Include="Controllers\Ortak.cs" />
     <Compile Include="Controllers\PacsController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\MemoryCacheManager.cs" />
+    <Compile Include="Controllers\TokenController.cs" />
     <Compile Include="Controllers\VezneController.cs" />
     <Compile Include="Controllers\View_HastalikDurumController.cs" />
     <Compile Include="Controllers\View_HizHareketController.cs" />

@@ -20,6 +20,7 @@ namespace WEINCDENTAL.Controllers
         [HttpGet]
         public ActionResult Hastabasvuru_Index(string id)
         {
+          
             string methodAd = "/hastabasvuru/index";
             var hst_basvuru = db.hst_basvuru.Include(h => h.hst_bölüm).Include(h => h.hst_hastakarti).Where(k=>k.t_aktif==true && k.t_tc==id).ToList();
           

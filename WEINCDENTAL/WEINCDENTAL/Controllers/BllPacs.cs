@@ -8,10 +8,13 @@ namespace WEINCDENTAL.Controllers
 {
     public class BllPacs
     {
+
+
+
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
         public IEnumerable<View_Pacs> PacsList(string tc, string ad, DateTime? basDate, DateTime? bitDate)
         {
-
+            
             IQueryable<View_Pacs> list = null;
             if (String.IsNullOrEmpty(tc))
             {
