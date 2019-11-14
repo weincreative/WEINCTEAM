@@ -20,6 +20,7 @@
             <PropertyRef Name="t_id" />
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="t_kid" Type="int" StoreGeneratedPattern="Computed" />
           <Property Name="t_kodu" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -28,6 +29,23 @@
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="adm_kullaniciyetki">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="t_kod" Type="int" Nullable="false" />
+          <Property Name="t_mid" Type="int" Nullable="false" />
+          <Property Name="t_yetki" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="adm_methods">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="t_mad" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="t_maciklama" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="adm_modulyetki">
           <Key>
@@ -289,6 +307,19 @@
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6013: The table/view 'WEINCDENTAL.dbo.View_1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="View_1">
+          <Property Name="t_id" Type="int" />
+          <Property Name="t_kod" Type="int" />
+          <Property Name="t_mid" Type="int" />
+          <Property Name="GroupAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="t_mad" Type="varchar" MaxLength="100" />
+          <Property Name="t_maciklama" Type="varchar" MaxLength="100" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="t_kid" Type="int" />
+          <Property Name="t_yetki" Type="bit" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_BsvrVezne' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_BsvrVezne">
           <Key>
@@ -473,6 +504,18 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizmetDetay' does not have a 
           <Property Name="t_yapildi" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6013: The table/view 'WEINCDENTAL.dbo.View_kullaniciYetki' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="View_kullaniciYetki">
+          <Property Name="yetkiId" Type="int" />
+          <Property Name="kullaniciId" Type="int" />
+          <Property Name="methodId" Type="int" />
+          <Property Name="groupAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="methodAd" Type="varchar" MaxLength="100" />
+          <Property Name="methodAciklama" Type="varchar" MaxLength="100" />
+          <Property Name="kullaniciAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="yetki" Type="bit" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_Pacs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_Pacs">
           <Key>
@@ -563,30 +606,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="HHareketAktif" Type="bit" Nullable="false" />
           <Property Name="HastaAktif" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK_adm_kullanicilar_adm_kullanicigrup1">
-          <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
-          <End Role="adm_kullanicilar" Type="Self.adm_kullanicilar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="adm_kullanicigrup">
-              <PropertyRef Name="t_id" />
-            </Principal>
-            <Dependent Role="adm_kullanicilar">
-              <PropertyRef Name="t_grup" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_adm_kullanicilar_adm_modulyetki1">
-          <End Role="adm_modulyetki" Type="Self.adm_modulyetki" Multiplicity="1" />
-          <End Role="adm_kullanicilar" Type="Self.adm_kullanicilar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="adm_modulyetki">
-              <PropertyRef Name="t_id" />
-            </Principal>
-            <Dependent Role="adm_kullanicilar">
-              <PropertyRef Name="t_yetki" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_adm_pacs_hst_hastakarti">
           <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="1" />
           <End Role="adm_pacs" Type="Self.adm_pacs" Multiplicity="*" />
@@ -917,6 +936,8 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
         <EntityContainer Name="WEINCDENTALModelStoreContainer">
           <EntitySet Name="adm_kullanicigrup" EntityType="Self.adm_kullanicigrup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="adm_kullanicilar" EntityType="Self.adm_kullanicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adm_kullaniciyetki" EntityType="Self.adm_kullaniciyetki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adm_methods" EntityType="Self.adm_methods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="adm_modulyetki" EntityType="Self.adm_modulyetki" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="adm_pacs" EntityType="Self.adm_pacs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_basvuru" EntityType="Self.hst_basvuru" Schema="dbo" store:Type="Tables" />
@@ -1088,14 +1109,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     [View_Vezne].[HastaAktif] AS [HastaAktif]
     FROM [dbo].[View_Vezne] AS [View_Vezne]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_adm_kullanicilar_adm_kullanicigrup1" Association="Self.FK_adm_kullanicilar_adm_kullanicigrup1">
-            <End Role="adm_kullanicigrup" EntitySet="adm_kullanicigrup" />
-            <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
-          </AssociationSet>
-          <AssociationSet Name="FK_adm_kullanicilar_adm_modulyetki1" Association="Self.FK_adm_kullanicilar_adm_modulyetki1">
-            <End Role="adm_modulyetki" EntitySet="adm_modulyetki" />
-            <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
-          </AssociationSet>
           <AssociationSet Name="FK_adm_pacs_hst_hastakarti" Association="Self.FK_adm_pacs_hst_hastakarti">
             <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
             <End Role="adm_pacs" EntitySet="adm_pacs" />
@@ -1203,13 +1216,13 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="adm_kullanicilar" Relationship="Self.FK_adm_kullanicilar_adm_kullanicigrup1" FromRole="adm_kullanicigrup" ToRole="adm_kullanicilar" />
         </EntityType>
         <EntityType Name="adm_kullanicilar">
           <Key>
             <PropertyRef Name="t_id" />
           </Key>
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="t_kid" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="t_kodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1218,8 +1231,23 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="adm_kullanicigrup" Relationship="Self.FK_adm_kullanicilar_adm_kullanicigrup1" FromRole="adm_kullanicilar" ToRole="adm_kullanicigrup" />
-          <NavigationProperty Name="adm_modulyetki" Relationship="Self.FK_adm_kullanicilar_adm_modulyetki1" FromRole="adm_kullanicilar" ToRole="adm_modulyetki" />
+        </EntityType>
+        <EntityType Name="adm_kullaniciyetki">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="t_kod" Type="Int32" Nullable="false" />
+          <Property Name="t_mid" Type="Int32" Nullable="false" />
+          <Property Name="t_yetki" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="adm_methods">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="t_mad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="t_maciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="adm_modulyetki">
           <Key>
@@ -1230,7 +1258,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="adm_kullanicilar" Relationship="Self.FK_adm_kullanicilar_adm_modulyetki1" FromRole="adm_modulyetki" ToRole="adm_kullanicilar" />
         </EntityType>
         <EntityType Name="adm_pacs">
           <Key>
@@ -1788,30 +1815,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="HHareketAktif" Type="Boolean" Nullable="false" />
           <Property Name="HastaAktif" Type="Boolean" Nullable="false" />
         </EntityType>
-        <Association Name="FK_adm_kullanicilar_adm_kullanicigrup1">
-          <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
-          <End Role="adm_kullanicilar" Type="Self.adm_kullanicilar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="adm_kullanicigrup">
-              <PropertyRef Name="t_id" />
-            </Principal>
-            <Dependent Role="adm_kullanicilar">
-              <PropertyRef Name="t_grup" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_adm_kullanicilar_adm_modulyetki1">
-          <End Role="adm_modulyetki" Type="Self.adm_modulyetki" Multiplicity="1" />
-          <End Role="adm_kullanicilar" Type="Self.adm_kullanicilar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="adm_modulyetki">
-              <PropertyRef Name="t_id" />
-            </Principal>
-            <Dependent Role="adm_kullanicilar">
-              <PropertyRef Name="t_yetki" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_adm_pacs_hst_hastakarti">
           <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="1" />
           <End Role="adm_pacs" Type="Self.adm_pacs" Multiplicity="*" />
@@ -2091,6 +2094,8 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
         <EntityContainer Name="WEINCDENTALEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="adm_kullanicigrup" EntityType="Self.adm_kullanicigrup" />
           <EntitySet Name="adm_kullanicilar" EntityType="Self.adm_kullanicilar" />
+          <EntitySet Name="adm_kullaniciyetki" EntityType="Self.adm_kullaniciyetki" />
+          <EntitySet Name="adm_methods" EntityType="Self.adm_methods" />
           <EntitySet Name="adm_modulyetki" EntityType="Self.adm_modulyetki" />
           <EntitySet Name="adm_pacs" EntityType="Self.adm_pacs" />
           <EntitySet Name="hst_basvuru" EntityType="Self.hst_basvuru" />
@@ -2120,14 +2125,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <EntitySet Name="View_HizmetDetay" EntityType="Self.View_HizmetDetay" />
           <EntitySet Name="View_Pacs" EntityType="Self.View_Pacs" />
           <EntitySet Name="View_Vezne" EntityType="Self.View_Vezne" />
-          <AssociationSet Name="FK_adm_kullanicilar_adm_kullanicigrup1" Association="Self.FK_adm_kullanicilar_adm_kullanicigrup1">
-            <End Role="adm_kullanicigrup" EntitySet="adm_kullanicigrup" />
-            <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
-          </AssociationSet>
-          <AssociationSet Name="FK_adm_kullanicilar_adm_modulyetki1" Association="Self.FK_adm_kullanicilar_adm_modulyetki1">
-            <End Role="adm_modulyetki" EntitySet="adm_modulyetki" />
-            <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
-          </AssociationSet>
           <AssociationSet Name="FK_adm_pacs_hst_hastakarti" Association="Self.FK_adm_pacs_hst_hastakarti">
             <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
             <End Role="adm_pacs" EntitySet="adm_pacs" />
@@ -2303,6 +2300,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             <EntityTypeMapping TypeName="WEINCDENTALModel.adm_kullanicilar">
               <MappingFragment StoreEntitySet="adm_kullanicilar">
                 <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="t_kid" ColumnName="t_kid" />
                 <ScalarProperty Name="t_kodu" ColumnName="t_kodu" />
                 <ScalarProperty Name="t_adi" ColumnName="t_adi" />
                 <ScalarProperty Name="t_sifre" ColumnName="t_sifre" />
@@ -2311,6 +2309,25 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="t_createuser" ColumnName="t_createuser" />
                 <ScalarProperty Name="t_createdate" ColumnName="t_createdate" />
                 <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adm_kullaniciyetki">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.adm_kullaniciyetki">
+              <MappingFragment StoreEntitySet="adm_kullaniciyetki">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="t_kod" ColumnName="t_kod" />
+                <ScalarProperty Name="t_mid" ColumnName="t_mid" />
+                <ScalarProperty Name="t_yetki" ColumnName="t_yetki" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adm_methods">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.adm_methods">
+              <MappingFragment StoreEntitySet="adm_methods">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="t_mad" ColumnName="t_mad" />
+                <ScalarProperty Name="t_maciklama" ColumnName="t_maciklama" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

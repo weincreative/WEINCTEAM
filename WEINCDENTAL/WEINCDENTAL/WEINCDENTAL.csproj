@@ -172,6 +172,12 @@
     <Compile Include="Models\adm_kullanicilar.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\adm_kullaniciyetki.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\adm_methods.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\adm_modulyetki.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

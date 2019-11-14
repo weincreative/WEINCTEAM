@@ -29,6 +29,8 @@ namespace WEINCDENTAL.Models
     
         public virtual DbSet<adm_kullanicigrup> adm_kullanicigrup { get; set; }
         public virtual DbSet<adm_kullanicilar> adm_kullanicilar { get; set; }
+        public virtual DbSet<adm_kullaniciyetki> adm_kullaniciyetki { get; set; }
+        public virtual DbSet<adm_methods> adm_methods { get; set; }
         public virtual DbSet<adm_modulyetki> adm_modulyetki { get; set; }
         public virtual DbSet<adm_pacs> adm_pacs { get; set; }
         public virtual DbSet<hst_basvuru> hst_basvuru { get; set; }
