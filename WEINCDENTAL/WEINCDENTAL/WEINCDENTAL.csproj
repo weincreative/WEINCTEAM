@@ -286,6 +286,9 @@
     <Compile Include="Models\View_HizmetDetay.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\View_kullaniciYetki.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\View_Pacs.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

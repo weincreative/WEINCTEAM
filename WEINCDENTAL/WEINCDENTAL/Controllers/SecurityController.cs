@@ -24,7 +24,8 @@ namespace WEINCDENTAL.Controllers
         public ActionResult Login(adm_kullanicilar kullanici)
         {
             var UserINDB = db.adm_kullanicilar.FirstOrDefault(x => x.t_kodu == kullanici.t_kodu && x.t_sifre == kullanici.t_sifre);
-          
+       
+
             if (UserINDB!=null)
             {
                 FormsAuthentication.SetAuthCookie(kullanici.t_kodu, false);
