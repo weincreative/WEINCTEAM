@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
+using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
@@ -13,7 +14,8 @@ namespace WEINCDENTAL.Controllers
     {
         
         IstatistikController ic = new IstatistikController();
-        [Authorize(Roles = "1,2")]
+        //[Authorize(Roles = "1,2")]
+       [CustomAutAttributes]
         public ActionResult Index()
         {
             string methodAd = "/home/index";

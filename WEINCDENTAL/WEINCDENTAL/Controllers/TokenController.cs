@@ -8,18 +8,19 @@ using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Controllers
 {
-    public class TokenController : Controller
+    public class TokenController:Controller
     {
         private static WEINCDENTALEntities db = new WEINCDENTALEntities();
         // GET: Token
-        public static List<View_kullaniciYetki> YetkileriGetir(int usrId, int groupId)
+        public  List<View_kullaniciYetki> YetkileriGetir(int usrId, int groupId)
         {
             var memoryCacher = new MemoryCacheManager();
             string cachkey = "yetki";
 
             List<View_kullaniciYetki> list;
             // Memory Cache de veri yoksa
-            if (!memoryCacher.Contains(cachkey))
+            // if (!memoryCacher.Contains(cachkey))
+            if (true)
             {
                 list = db.View_kullaniciYetki.Where(k => k.kullaniciId == usrId || k.kullaniciId == groupId).
                     Where(p => p.yetki == true).ToList();
