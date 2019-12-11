@@ -12,25 +12,27 @@ namespace WEINCDENTAL.Controllers
     {
         private static WEINCDENTALEntities db = new WEINCDENTALEntities();
         // GET: Token
-        public  List<View_kullaniciYetki> YetkileriGetir(int usrId, int groupId)
-        {
-            var memoryCacher = new MemoryCacheManager();
-            string cachkey = "yetki";
+        //public  List<View_kullaniciYetki> YetkileriGetir(int usrId, int groupId)
+        //{
 
-            List<View_kullaniciYetki> list;
-            // Memory Cache de veri yoksa
-            // if (!memoryCacher.Contains(cachkey))
-            if (true)
-            {
-                list = db.View_kullaniciYetki.Where(k => k.kullaniciId == usrId || k.kullaniciId == groupId).
-                    Where(p => p.yetki == true).ToList();
-                memoryCacher.Add(cachkey,list);
-            }
-            else
-            {
-              list = memoryCacher.Get<List<View_kullaniciYetki>>(cachkey);
-            }
-            return list;
-        }
+
+            //var memoryCacher = new MemoryCacheManager();
+            //string cachkey = "yetki";
+
+            //List<View_kullaniciYetki> list;
+            //// Memory Cache de veri yoksa
+            //// if (!memoryCacher.Contains(cachkey))
+            //if (true)
+            //{
+            //    list = db.View_kullaniciYetki.Where(k => k.kullaniciId == usrId || k.kullaniciId == groupId).
+            //        Where(p => p.yetki == true).ToList();
+            //    memoryCacher.Add(cachkey,list);
+            //}
+            //else
+            //{
+            //  list = memoryCacher.Get<List<View_kullaniciYetki>>(cachkey);
+            //}
+            //return list;
+       // }
     }
 }

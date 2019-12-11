@@ -13,7 +13,7 @@ namespace WEINCDENTAL.Security
         public void OnAuthorization(AuthorizationContext filterContext)
         {
             var memoryCacher = new MemoryCacheManager();
-            List<View_kullaniciYetki> yetkiler = memoryCacher.Get<List<View_kullaniciYetki>>("yetki");
+           // List<View_kullaniciYetki> yetkiler = memoryCacher.Get<List<View_kullaniciYetki>>("yetki");
 
 
             //throw new NotImplementedException();
