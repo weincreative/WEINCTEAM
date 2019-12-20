@@ -12,11 +12,14 @@ namespace WEINCDENTAL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class adm_kullaniciyetki
+    public partial class adm_YetkiGroups
     {
-        public int t_id { get; set; }
-        public int t_kod { get; set; }
-        public int t_mid { get; set; }
-        public bool t_yetki { get; set; }
+        public int Id { get; set; }
+        public long YetkiId { get; set; }
+        public int GroupId { get; set; }
+        public bool Aktif { get; set; }
+    
+        public virtual adm_kullanicigrup adm_kullanicigrup { get; set; }
+        public virtual adm_Yetki adm_Yetki { get; set; }
     }
 }

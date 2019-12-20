@@ -12,14 +12,14 @@ namespace WEINCDENTAL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class View_kullaniciYetki
+    public partial class adm_UserYetkis
     {
-        public int yetkiId { get; set; }
-        public int kullaniciId { get; set; }
-        public int methodId { get; set; }
-        public string groupAd { get; set; }
-        public string methodAd { get; set; }
-        public string methodAciklama { get; set; }
-        public bool yetki { get; set; }
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public Nullable<long> YetkiId { get; set; }
+        public int YMethodId { get; set; }
+        public bool Aktif { get; set; }
+    
+        public virtual adm_kullanicilar adm_kullanicilar { get; set; }
     }
 }

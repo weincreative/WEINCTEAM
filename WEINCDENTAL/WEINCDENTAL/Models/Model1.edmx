@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="WEINCDENTALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="adm_ControllerList">
+          <Key>
+            <PropertyRef Name="ControllerId" />
+          </Key>
+          <Property Name="ControllerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ControllerName" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
         <EntityType Name="adm_kullanicigrup">
           <Key>
             <PropertyRef Name="t_id" />
@@ -30,22 +37,14 @@
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="adm_kullaniciyetki">
+        <EntityType Name="adm_MethodList">
           <Key>
-            <PropertyRef Name="t_id" />
+            <PropertyRef Name="MethodId" />
           </Key>
-          <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="t_kod" Type="int" Nullable="false" />
-          <Property Name="t_mid" Type="int" Nullable="false" />
-          <Property Name="t_yetki" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="adm_methods">
-          <Key>
-            <PropertyRef Name="t_id" />
-          </Key>
-          <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="t_mad" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="t_maciklama" Type="varchar" MaxLength="100" />
+          <Property Name="MethodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MethodName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="GorunecekIsim" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ControllerId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="adm_modulyetki">
           <Key>
@@ -70,6 +69,57 @@
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="adm_UserGroups">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="adm_UserYetkis">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="YMethodId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="YetkiId" Type="bigint" />
+          <Property Name="YMethodId" Type="int" Nullable="false" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="adm_Yetki">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YetkiAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="YetkiAciklama" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CreateDate" Type="date" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="adm_YetkiGroups">
+          <Key>
+            <PropertyRef Name="YetkiId" />
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YetkiId" Type="bigint" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="adm_YetkiMethods">
+          <Key>
+            <PropertyRef Name="YetkiId" />
+            <PropertyRef Name="MethodId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YetkiId" Type="bigint" Nullable="false" />
+          <Property Name="MethodId" Type="int" Nullable="false" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="hst_basvuru">
           <Key>
@@ -306,6 +356,16 @@
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_BsvrVezne' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_BsvrVezne">
@@ -364,6 +424,43 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_CeneDis' does not have a prim
           <Property Name="Yetiskin" Type="bit" Nullable="false" />
           <Property Name="DisAktif" Type="bit" Nullable="false" />
           <Property Name="CeneAktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WEINCDENTAL.dbo.View_GroupYetki' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_GroupYetki">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="t_kodu" />
+            <PropertyRef Name="YM_Id" />
+            <PropertyRef Name="YetkiId" />
+            <PropertyRef Name="MethodId" />
+            <PropertyRef Name="GroupId" />
+            <PropertyRef Name="groupAd" />
+            <PropertyRef Name="YetkiAdi" />
+            <PropertyRef Name="YetkiAciklama" />
+            <PropertyRef Name="GorunecekIsim" />
+            <PropertyRef Name="MethodName" />
+            <PropertyRef Name="ControllerName" />
+            <PropertyRef Name="UserGroupAktif" />
+            <PropertyRef Name="YetkiAktif" />
+            <PropertyRef Name="UserAktif" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="t_kid" Type="int" />
+          <Property Name="t_kodu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="YM_Id" Type="bigint" Nullable="false" />
+          <Property Name="YetkiId" Type="bigint" Nullable="false" />
+          <Property Name="MethodId" Type="int" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="groupAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="YetkiAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="YetkiAciklama" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="GorunecekIsim" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="MethodName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ControllerName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="UserGroupAktif" Type="bit" Nullable="false" />
+          <Property Name="YetkiAktif" Type="bit" Nullable="false" />
+          <Property Name="UserAktif" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_HastalikDurum' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -491,24 +588,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_HizmetDetay' does not have a 
           <Property Name="t_yapildi" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'WEINCDENTAL.dbo.View_kullaniciYetki' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="View_kullaniciYetki">
-          <Key>
-            <PropertyRef Name="yetkiId" />
-            <PropertyRef Name="kullaniciId" />
-            <PropertyRef Name="methodId" />
-            <PropertyRef Name="methodAd" />
-            <PropertyRef Name="yetki" />
-          </Key>
-          <Property Name="yetkiId" Type="int" Nullable="false" />
-          <Property Name="kullaniciId" Type="int" Nullable="false" />
-          <Property Name="methodId" Type="int" Nullable="false" />
-          <Property Name="groupAd" Type="nvarchar" MaxLength="50" />
-          <Property Name="methodAd" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="methodAciklama" Type="varchar" MaxLength="100" />
-          <Property Name="yetki" Type="bit" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_Pacs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_Pacs">
           <Key>
@@ -539,6 +618,35 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Pacs' does not have a primary
           <Property Name="t_ip" Type="int" Nullable="false" />
           <Property Name="HastaAktif" Type="bit" Nullable="false" />
           <Property Name="PacsAktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WEINCDENTAL.dbo.View_UserYetkis' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_UserYetkis">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="YetkiId" />
+            <PropertyRef Name="t_kodu" />
+            <PropertyRef Name="t_adi" />
+            <PropertyRef Name="YetkiAdi" />
+            <PropertyRef Name="YetkiAciklama" />
+            <PropertyRef Name="GorunecekIsim" />
+            <PropertyRef Name="MethodName" />
+            <PropertyRef Name="ControllerName" />
+            <PropertyRef Name="YMethodId" />
+            <PropertyRef Name="Aktif" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="t_kid" Type="int" />
+          <Property Name="YetkiId" Type="bigint" Nullable="false" />
+          <Property Name="t_kodu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="YetkiAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="YetkiAciklama" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="GorunecekIsim" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="MethodName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ControllerName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="YMethodId" Type="int" Nullable="false" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -599,6 +707,20 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="HHareketAktif" Type="bit" Nullable="false" />
           <Property Name="HastaAktif" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_adm_MethodList_adm_ControllerList">
+          <End Role="adm_ControllerList" Type="Self.adm_ControllerList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="adm_MethodList" Type="Self.adm_MethodList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_ControllerList">
+              <PropertyRef Name="ControllerId" />
+            </Principal>
+            <Dependent Role="adm_MethodList">
+              <PropertyRef Name="ControllerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_adm_pacs_hst_hastakarti">
           <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="1" />
           <End Role="adm_pacs" Type="Self.adm_pacs" Multiplicity="*" />
@@ -608,6 +730,97 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             </Principal>
             <Dependent Role="adm_pacs">
               <PropertyRef Name="t_tc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_adm_UserGroups_adm_kullanicigrup1">
+          <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
+          <End Role="adm_UserGroups" Type="Self.adm_UserGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_kullanicigrup">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="adm_UserGroups">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_adm_UserGroups_adm_kullanicilar1">
+          <End Role="adm_kullanicilar" Type="Self.adm_kullanicilar" Multiplicity="1" />
+          <End Role="adm_UserGroups" Type="Self.adm_UserGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_kullanicilar">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="adm_UserGroups">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_adm_UserYetkis_adm_YetkiMethods1' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_adm_UserYetkis_adm_YetkiMethods1" />-->
+        <Association Name="FK_adm_YetkiGroups_adm_kullanicigrup">
+          <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
+          <End Role="adm_YetkiGroups" Type="Self.adm_YetkiGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_kullanicigrup">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="adm_YetkiGroups">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_adm_YetkiGroups_adm_Yetki">
+          <End Role="adm_Yetki" Type="Self.adm_Yetki" Multiplicity="1" />
+          <End Role="adm_YetkiGroups" Type="Self.adm_YetkiGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_Yetki">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="adm_YetkiGroups">
+              <PropertyRef Name="YetkiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_adm_Yetkiler_adm_kullanicilar">
+          <End Role="adm_kullanicilar" Type="Self.adm_kullanicilar" Multiplicity="1" />
+          <End Role="adm_UserYetkis" Type="Self.adm_UserYetkis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_kullanicilar">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="adm_UserYetkis">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_adm_YetkiMethods_adm_MethodList">
+          <End Role="adm_MethodList" Type="Self.adm_MethodList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="adm_YetkiMethods" Type="Self.adm_YetkiMethods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_MethodList">
+              <PropertyRef Name="MethodId" />
+            </Principal>
+            <Dependent Role="adm_YetkiMethods">
+              <PropertyRef Name="MethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_adm_YetkiMethods_adm_Yetki">
+          <End Role="adm_Yetki" Type="Self.adm_Yetki" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="adm_YetkiMethods" Type="Self.adm_YetkiMethods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_Yetki">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="adm_YetkiMethods">
+              <PropertyRef Name="YetkiId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -927,12 +1140,17 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Parameter Name="bsvid" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="WEINCDENTALModelStoreContainer">
+          <EntitySet Name="adm_ControllerList" EntityType="Self.adm_ControllerList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="adm_kullanicigrup" EntityType="Self.adm_kullanicigrup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="adm_kullanicilar" EntityType="Self.adm_kullanicilar" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="adm_kullaniciyetki" EntityType="Self.adm_kullaniciyetki" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="adm_methods" EntityType="Self.adm_methods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adm_MethodList" EntityType="Self.adm_MethodList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="adm_modulyetki" EntityType="Self.adm_modulyetki" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="adm_pacs" EntityType="Self.adm_pacs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adm_UserGroups" EntityType="Self.adm_UserGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adm_UserYetkis" EntityType="Self.adm_UserYetkis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adm_Yetki" EntityType="Self.adm_Yetki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adm_YetkiGroups" EntityType="Self.adm_YetkiGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adm_YetkiMethods" EntityType="Self.adm_YetkiMethods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_basvuru" EntityType="Self.hst_basvuru" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_bölüm" EntityType="Self.hst_bölüm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_cene_uygunmu" EntityType="Self.hst_cene_uygunmu" Schema="dbo" store:Type="Tables" />
@@ -953,6 +1171,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="View_BsvrVezne" EntityType="Self.View_BsvrVezne" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [View_BsvrVezne].[v_id] AS [v_id], 
@@ -984,6 +1203,26 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     [View_CeneDis].[DisAktif] AS [DisAktif], 
     [View_CeneDis].[CeneAktif] AS [CeneAktif]
     FROM [dbo].[View_CeneDis] AS [View_CeneDis]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_GroupYetki" EntityType="Self.View_GroupYetki" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_GroupYetki].[UserId] AS [UserId], 
+    [View_GroupYetki].[t_kid] AS [t_kid], 
+    [View_GroupYetki].[t_kodu] AS [t_kodu], 
+    [View_GroupYetki].[YM_Id] AS [YM_Id], 
+    [View_GroupYetki].[YetkiId] AS [YetkiId], 
+    [View_GroupYetki].[MethodId] AS [MethodId], 
+    [View_GroupYetki].[GroupId] AS [GroupId], 
+    [View_GroupYetki].[groupAd] AS [groupAd], 
+    [View_GroupYetki].[YetkiAdi] AS [YetkiAdi], 
+    [View_GroupYetki].[YetkiAciklama] AS [YetkiAciklama], 
+    [View_GroupYetki].[GorunecekIsim] AS [GorunecekIsim], 
+    [View_GroupYetki].[MethodName] AS [MethodName], 
+    [View_GroupYetki].[ControllerName] AS [ControllerName], 
+    [View_GroupYetki].[UserGroupAktif] AS [UserGroupAktif], 
+    [View_GroupYetki].[YetkiAktif] AS [YetkiAktif], 
+    [View_GroupYetki].[UserAktif] AS [UserAktif]
+    FROM [dbo].[View_GroupYetki] AS [View_GroupYetki]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_HastalikDurum" EntityType="Self.View_HastalikDurum" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1054,17 +1293,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     [View_HizmetDetay].[t_yapildi] AS [t_yapildi]
     FROM [dbo].[View_HizmetDetay] AS [View_HizmetDetay]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="View_kullaniciYetki" EntityType="Self.View_kullaniciYetki" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [View_kullaniciYetki].[yetkiId] AS [yetkiId], 
-    [View_kullaniciYetki].[kullaniciId] AS [kullaniciId], 
-    [View_kullaniciYetki].[methodId] AS [methodId], 
-    [View_kullaniciYetki].[groupAd] AS [groupAd], 
-    [View_kullaniciYetki].[methodAd] AS [methodAd], 
-    [View_kullaniciYetki].[methodAciklama] AS [methodAciklama], 
-    [View_kullaniciYetki].[yetki] AS [yetki]
-    FROM [dbo].[View_kullaniciYetki] AS [View_kullaniciYetki]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="View_Pacs" EntityType="Self.View_Pacs" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [View_Pacs].[t_id] AS [t_id], 
@@ -1081,6 +1309,22 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     [View_Pacs].[HastaAktif] AS [HastaAktif], 
     [View_Pacs].[PacsAktif] AS [PacsAktif]
     FROM [dbo].[View_Pacs] AS [View_Pacs]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_UserYetkis" EntityType="Self.View_UserYetkis" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_UserYetkis].[UserId] AS [UserId], 
+    [View_UserYetkis].[t_kid] AS [t_kid], 
+    [View_UserYetkis].[YetkiId] AS [YetkiId], 
+    [View_UserYetkis].[t_kodu] AS [t_kodu], 
+    [View_UserYetkis].[t_adi] AS [t_adi], 
+    [View_UserYetkis].[YetkiAdi] AS [YetkiAdi], 
+    [View_UserYetkis].[YetkiAciklama] AS [YetkiAciklama], 
+    [View_UserYetkis].[GorunecekIsim] AS [GorunecekIsim], 
+    [View_UserYetkis].[MethodName] AS [MethodName], 
+    [View_UserYetkis].[ControllerName] AS [ControllerName], 
+    [View_UserYetkis].[YMethodId] AS [YMethodId], 
+    [View_UserYetkis].[Aktif] AS [Aktif]
+    FROM [dbo].[View_UserYetkis] AS [View_UserYetkis]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_Vezne" EntityType="Self.View_Vezne" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1113,9 +1357,41 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     [View_Vezne].[HastaAktif] AS [HastaAktif]
     FROM [dbo].[View_Vezne] AS [View_Vezne]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_adm_MethodList_adm_ControllerList" Association="Self.FK_adm_MethodList_adm_ControllerList">
+            <End Role="adm_ControllerList" EntitySet="adm_ControllerList" />
+            <End Role="adm_MethodList" EntitySet="adm_MethodList" />
+          </AssociationSet>
           <AssociationSet Name="FK_adm_pacs_hst_hastakarti" Association="Self.FK_adm_pacs_hst_hastakarti">
             <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
             <End Role="adm_pacs" EntitySet="adm_pacs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adm_UserGroups_adm_kullanicigrup1" Association="Self.FK_adm_UserGroups_adm_kullanicigrup1">
+            <End Role="adm_kullanicigrup" EntitySet="adm_kullanicigrup" />
+            <End Role="adm_UserGroups" EntitySet="adm_UserGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adm_UserGroups_adm_kullanicilar1" Association="Self.FK_adm_UserGroups_adm_kullanicilar1">
+            <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
+            <End Role="adm_UserGroups" EntitySet="adm_UserGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adm_YetkiGroups_adm_kullanicigrup" Association="Self.FK_adm_YetkiGroups_adm_kullanicigrup">
+            <End Role="adm_kullanicigrup" EntitySet="adm_kullanicigrup" />
+            <End Role="adm_YetkiGroups" EntitySet="adm_YetkiGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adm_YetkiGroups_adm_Yetki" Association="Self.FK_adm_YetkiGroups_adm_Yetki">
+            <End Role="adm_Yetki" EntitySet="adm_Yetki" />
+            <End Role="adm_YetkiGroups" EntitySet="adm_YetkiGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adm_Yetkiler_adm_kullanicilar" Association="Self.FK_adm_Yetkiler_adm_kullanicilar">
+            <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
+            <End Role="adm_UserYetkis" EntitySet="adm_UserYetkis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adm_YetkiMethods_adm_MethodList" Association="Self.FK_adm_YetkiMethods_adm_MethodList">
+            <End Role="adm_MethodList" EntitySet="adm_MethodList" />
+            <End Role="adm_YetkiMethods" EntitySet="adm_YetkiMethods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adm_YetkiMethods_adm_Yetki" Association="Self.FK_adm_YetkiMethods_adm_Yetki">
+            <End Role="adm_Yetki" EntitySet="adm_Yetki" />
+            <End Role="adm_YetkiMethods" EntitySet="adm_YetkiMethods" />
           </AssociationSet>
           <AssociationSet Name="FK_hst_basvuru_hst_bölüm" Association="Self.FK_hst_basvuru_hst_bölüm">
             <End Role="hst_bölüm" EntitySet="hst_bölüm" />
@@ -1211,6 +1487,14 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WEINCDENTALModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="adm_ControllerList">
+          <Key>
+            <PropertyRef Name="ControllerId" />
+          </Key>
+          <Property Name="ControllerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ControllerName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="adm_MethodList" Relationship="Self.FK_adm_MethodList_adm_ControllerList" FromRole="adm_ControllerList" ToRole="adm_MethodList" />
+        </EntityType>
         <EntityType Name="adm_kullanicigrup">
           <Key>
             <PropertyRef Name="t_id" />
@@ -1220,6 +1504,8 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="adm_UserGroups" Relationship="Self.FK_adm_UserGroups_adm_kullanicigrup1" FromRole="adm_kullanicigrup" ToRole="adm_UserGroups" />
+          <NavigationProperty Name="adm_YetkiGroups" Relationship="Self.FK_adm_YetkiGroups_adm_kullanicigrup" FromRole="adm_kullanicigrup" ToRole="adm_YetkiGroups" />
         </EntityType>
         <EntityType Name="adm_kullanicilar">
           <Key>
@@ -1235,23 +1521,19 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="adm_UserGroups" Relationship="Self.FK_adm_UserGroups_adm_kullanicilar1" FromRole="adm_kullanicilar" ToRole="adm_UserGroups" />
+          <NavigationProperty Name="adm_UserYetkis" Relationship="Self.FK_adm_Yetkiler_adm_kullanicilar" FromRole="adm_kullanicilar" ToRole="adm_UserYetkis" />
         </EntityType>
-        <EntityType Name="adm_kullaniciyetki">
+        <EntityType Name="adm_MethodList">
           <Key>
-            <PropertyRef Name="t_id" />
+            <PropertyRef Name="MethodId" />
           </Key>
-          <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="t_kod" Type="Int32" Nullable="false" />
-          <Property Name="t_mid" Type="Int32" Nullable="false" />
-          <Property Name="t_yetki" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="adm_methods">
-          <Key>
-            <PropertyRef Name="t_id" />
-          </Key>
-          <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="t_mad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="t_maciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MethodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MethodName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GorunecekIsim" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ControllerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="adm_ControllerList" Relationship="Self.FK_adm_MethodList_adm_ControllerList" FromRole="adm_MethodList" ToRole="adm_ControllerList" />
+          <NavigationProperty Name="adm_YetkiMethods" Relationship="Self.FK_adm_YetkiMethods_adm_MethodList" FromRole="adm_MethodList" ToRole="adm_YetkiMethods" />
         </EntityType>
         <EntityType Name="adm_modulyetki">
           <Key>
@@ -1277,6 +1559,66 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="hst_hastakarti" Relationship="Self.FK_adm_pacs_hst_hastakarti" FromRole="adm_pacs" ToRole="hst_hastakarti" />
+        </EntityType>
+        <EntityType Name="adm_UserGroups">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="adm_kullanicigrup" Relationship="Self.FK_adm_UserGroups_adm_kullanicigrup1" FromRole="adm_UserGroups" ToRole="adm_kullanicigrup" />
+          <NavigationProperty Name="adm_kullanicilar" Relationship="Self.FK_adm_UserGroups_adm_kullanicilar1" FromRole="adm_UserGroups" ToRole="adm_kullanicilar" />
+        </EntityType>
+        <EntityType Name="adm_UserYetkis">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="YMethodId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="YetkiId" Type="Int64" />
+          <Property Name="YMethodId" Type="Int32" Nullable="false" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="adm_kullanicilar" Relationship="Self.FK_adm_Yetkiler_adm_kullanicilar" FromRole="adm_UserYetkis" ToRole="adm_kullanicilar" />
+        </EntityType>
+        <EntityType Name="adm_Yetki">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YetkiAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="YetkiAciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="adm_YetkiGroups" Relationship="Self.FK_adm_YetkiGroups_adm_Yetki" FromRole="adm_Yetki" ToRole="adm_YetkiGroups" />
+          <NavigationProperty Name="adm_YetkiMethods" Relationship="Self.FK_adm_YetkiMethods_adm_Yetki" FromRole="adm_Yetki" ToRole="adm_YetkiMethods" />
+        </EntityType>
+        <EntityType Name="adm_YetkiGroups">
+          <Key>
+            <PropertyRef Name="YetkiId" />
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YetkiId" Type="Int64" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="adm_kullanicigrup" Relationship="Self.FK_adm_YetkiGroups_adm_kullanicigrup" FromRole="adm_YetkiGroups" ToRole="adm_kullanicigrup" />
+          <NavigationProperty Name="adm_Yetki" Relationship="Self.FK_adm_YetkiGroups_adm_Yetki" FromRole="adm_YetkiGroups" ToRole="adm_Yetki" />
+        </EntityType>
+        <EntityType Name="adm_YetkiMethods">
+          <Key>
+            <PropertyRef Name="YetkiId" />
+            <PropertyRef Name="MethodId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YetkiId" Type="Int64" Nullable="false" />
+          <Property Name="MethodId" Type="Int32" Nullable="false" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="adm_MethodList" Relationship="Self.FK_adm_YetkiMethods_adm_MethodList" FromRole="adm_YetkiMethods" ToRole="adm_MethodList" />
+          <NavigationProperty Name="adm_Yetki" Relationship="Self.FK_adm_YetkiMethods_adm_Yetki" FromRole="adm_YetkiMethods" ToRole="adm_Yetki" />
         </EntityType>
         <EntityType Name="hst_basvuru">
           <Key>
@@ -1558,6 +1900,16 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <NavigationProperty Name="hst_basvuru" Relationship="Self.FK_hst_vezne_hst_basvuru" FromRole="hst_vezne" ToRole="hst_basvuru" />
           <NavigationProperty Name="hst_odemetip" Relationship="Self.FK_hst_vezne_hst_OdemeTip" FromRole="hst_vezne" ToRole="hst_odemetip" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="View_BsvrVezne">
           <Key>
             <PropertyRef Name="v_id" />
@@ -1612,6 +1964,41 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="Yetiskin" Type="Boolean" Nullable="false" />
           <Property Name="DisAktif" Type="Boolean" Nullable="false" />
           <Property Name="CeneAktif" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_GroupYetki">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="t_kodu" />
+            <PropertyRef Name="YM_Id" />
+            <PropertyRef Name="YetkiId" />
+            <PropertyRef Name="MethodId" />
+            <PropertyRef Name="GroupId" />
+            <PropertyRef Name="groupAd" />
+            <PropertyRef Name="YetkiAdi" />
+            <PropertyRef Name="YetkiAciklama" />
+            <PropertyRef Name="GorunecekIsim" />
+            <PropertyRef Name="MethodName" />
+            <PropertyRef Name="ControllerName" />
+            <PropertyRef Name="UserGroupAktif" />
+            <PropertyRef Name="YetkiAktif" />
+            <PropertyRef Name="UserAktif" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="t_kid" Type="Int32" />
+          <Property Name="t_kodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="YM_Id" Type="Int64" Nullable="false" />
+          <Property Name="YetkiId" Type="Int64" Nullable="false" />
+          <Property Name="MethodId" Type="Int32" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="groupAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="YetkiAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="YetkiAciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GorunecekIsim" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MethodName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ControllerName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserGroupAktif" Type="Boolean" Nullable="false" />
+          <Property Name="YetkiAktif" Type="Boolean" Nullable="false" />
+          <Property Name="UserAktif" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="View_HastalikDurum">
           <Key>
@@ -1732,22 +2119,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="HHareketAktif" Type="Boolean" Nullable="false" />
           <Property Name="t_yapildi" Type="Boolean" />
         </EntityType>
-        <EntityType Name="View_kullaniciYetki">
-          <Key>
-            <PropertyRef Name="yetkiId" />
-            <PropertyRef Name="kullaniciId" />
-            <PropertyRef Name="methodId" />
-            <PropertyRef Name="methodAd" />
-            <PropertyRef Name="yetki" />
-          </Key>
-          <Property Name="yetkiId" Type="Int32" Nullable="false" />
-          <Property Name="kullaniciId" Type="Int32" Nullable="false" />
-          <Property Name="methodId" Type="Int32" Nullable="false" />
-          <Property Name="groupAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="methodAd" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="methodAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="yetki" Type="Boolean" Nullable="false" />
-        </EntityType>
         <EntityType Name="View_Pacs">
           <Key>
             <PropertyRef Name="t_id" />
@@ -1777,6 +2148,33 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="t_ip" Type="Int32" Nullable="false" />
           <Property Name="HastaAktif" Type="Boolean" Nullable="false" />
           <Property Name="PacsAktif" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_UserYetkis">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="YetkiId" />
+            <PropertyRef Name="t_kodu" />
+            <PropertyRef Name="t_adi" />
+            <PropertyRef Name="YetkiAdi" />
+            <PropertyRef Name="YetkiAciklama" />
+            <PropertyRef Name="GorunecekIsim" />
+            <PropertyRef Name="MethodName" />
+            <PropertyRef Name="ControllerName" />
+            <PropertyRef Name="YMethodId" />
+            <PropertyRef Name="Aktif" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="t_kid" Type="Int32" />
+          <Property Name="YetkiId" Type="Int64" Nullable="false" />
+          <Property Name="t_kodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="YetkiAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="YetkiAciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GorunecekIsim" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MethodName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ControllerName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="YMethodId" Type="Int32" Nullable="false" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="View_Vezne">
           <Key>
@@ -1835,6 +2233,82 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <Property Name="HHareketAktif" Type="Boolean" Nullable="false" />
           <Property Name="HastaAktif" Type="Boolean" Nullable="false" />
         </EntityType>
+        <Association Name="FK_adm_MethodList_adm_ControllerList">
+          <End Role="adm_ControllerList" Type="Self.adm_ControllerList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="adm_MethodList" Type="Self.adm_MethodList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_ControllerList">
+              <PropertyRef Name="ControllerId" />
+            </Principal>
+            <Dependent Role="adm_MethodList">
+              <PropertyRef Name="ControllerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_adm_UserGroups_adm_kullanicigrup1">
+          <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
+          <End Role="adm_UserGroups" Type="Self.adm_UserGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_kullanicigrup">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="adm_UserGroups">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_adm_YetkiGroups_adm_kullanicigrup">
+          <End Role="adm_kullanicigrup" Type="Self.adm_kullanicigrup" Multiplicity="1" />
+          <End Role="adm_YetkiGroups" Type="Self.adm_YetkiGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_kullanicigrup">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="adm_YetkiGroups">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_adm_UserGroups_adm_kullanicilar1">
+          <End Role="adm_kullanicilar" Type="Self.adm_kullanicilar" Multiplicity="1" />
+          <End Role="adm_UserGroups" Type="Self.adm_UserGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_kullanicilar">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="adm_UserGroups">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_adm_Yetkiler_adm_kullanicilar">
+          <End Role="adm_kullanicilar" Type="Self.adm_kullanicilar" Multiplicity="1" />
+          <End Role="adm_UserYetkis" Type="Self.adm_UserYetkis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_kullanicilar">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="adm_UserYetkis">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_adm_YetkiMethods_adm_MethodList">
+          <End Role="adm_MethodList" Type="Self.adm_MethodList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="adm_YetkiMethods" Type="Self.adm_YetkiMethods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_MethodList">
+              <PropertyRef Name="MethodId" />
+            </Principal>
+            <Dependent Role="adm_YetkiMethods">
+              <PropertyRef Name="MethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_adm_pacs_hst_hastakarti">
           <End Role="hst_hastakarti" Type="Self.hst_hastakarti" Multiplicity="1" />
           <End Role="adm_pacs" Type="Self.adm_pacs" Multiplicity="*" />
@@ -1844,6 +2318,32 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
             </Principal>
             <Dependent Role="adm_pacs">
               <PropertyRef Name="t_tc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_adm_YetkiGroups_adm_Yetki">
+          <End Role="adm_Yetki" Type="Self.adm_Yetki" Multiplicity="1" />
+          <End Role="adm_YetkiGroups" Type="Self.adm_YetkiGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_Yetki">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="adm_YetkiGroups">
+              <PropertyRef Name="YetkiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_adm_YetkiMethods_adm_Yetki">
+          <End Role="adm_Yetki" Type="Self.adm_Yetki" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="adm_YetkiMethods" Type="Self.adm_YetkiMethods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_Yetki">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="adm_YetkiMethods">
+              <PropertyRef Name="YetkiId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2112,12 +2612,17 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="WEINCDENTALEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="adm_ControllerList" EntityType="Self.adm_ControllerList" />
           <EntitySet Name="adm_kullanicigrup" EntityType="Self.adm_kullanicigrup" />
           <EntitySet Name="adm_kullanicilar" EntityType="Self.adm_kullanicilar" />
-          <EntitySet Name="adm_kullaniciyetki" EntityType="Self.adm_kullaniciyetki" />
-          <EntitySet Name="adm_methods" EntityType="Self.adm_methods" />
+          <EntitySet Name="adm_MethodList" EntityType="Self.adm_MethodList" />
           <EntitySet Name="adm_modulyetki" EntityType="Self.adm_modulyetki" />
           <EntitySet Name="adm_pacs" EntityType="Self.adm_pacs" />
+          <EntitySet Name="adm_UserGroups" EntityType="Self.adm_UserGroups" />
+          <EntitySet Name="adm_UserYetkis" EntityType="Self.adm_UserYetkis" />
+          <EntitySet Name="adm_Yetki" EntityType="Self.adm_Yetki" />
+          <EntitySet Name="adm_YetkiGroups" EntityType="Self.adm_YetkiGroups" />
+          <EntitySet Name="adm_YetkiMethods" EntityType="Self.adm_YetkiMethods" />
           <EntitySet Name="hst_basvuru" EntityType="Self.hst_basvuru" />
           <EntitySet Name="hst_bölüm" EntityType="Self.hst_bölüm" />
           <EntitySet Name="hst_cene_uygunmu" EntityType="Self.hst_cene_uygunmu" />
@@ -2138,17 +2643,51 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="View_BsvrVezne" EntityType="Self.View_BsvrVezne" />
           <EntitySet Name="View_CeneDis" EntityType="Self.View_CeneDis" />
+          <EntitySet Name="View_GroupYetki" EntityType="Self.View_GroupYetki" />
           <EntitySet Name="View_HastalikDurum" EntityType="Self.View_HastalikDurum" />
           <EntitySet Name="View_HizHareket" EntityType="Self.View_HizHareket" />
           <EntitySet Name="View_HizmetDetay" EntityType="Self.View_HizmetDetay" />
-          <EntitySet Name="View_kullaniciYetki" EntityType="Self.View_kullaniciYetki" />
           <EntitySet Name="View_Pacs" EntityType="Self.View_Pacs" />
+          <EntitySet Name="View_UserYetkis" EntityType="Self.View_UserYetkis" />
           <EntitySet Name="View_Vezne" EntityType="Self.View_Vezne" />
+          <AssociationSet Name="FK_adm_MethodList_adm_ControllerList" Association="Self.FK_adm_MethodList_adm_ControllerList">
+            <End Role="adm_ControllerList" EntitySet="adm_ControllerList" />
+            <End Role="adm_MethodList" EntitySet="adm_MethodList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adm_UserGroups_adm_kullanicigrup1" Association="Self.FK_adm_UserGroups_adm_kullanicigrup1">
+            <End Role="adm_kullanicigrup" EntitySet="adm_kullanicigrup" />
+            <End Role="adm_UserGroups" EntitySet="adm_UserGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adm_YetkiGroups_adm_kullanicigrup" Association="Self.FK_adm_YetkiGroups_adm_kullanicigrup">
+            <End Role="adm_kullanicigrup" EntitySet="adm_kullanicigrup" />
+            <End Role="adm_YetkiGroups" EntitySet="adm_YetkiGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adm_UserGroups_adm_kullanicilar1" Association="Self.FK_adm_UserGroups_adm_kullanicilar1">
+            <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
+            <End Role="adm_UserGroups" EntitySet="adm_UserGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adm_Yetkiler_adm_kullanicilar" Association="Self.FK_adm_Yetkiler_adm_kullanicilar">
+            <End Role="adm_kullanicilar" EntitySet="adm_kullanicilar" />
+            <End Role="adm_UserYetkis" EntitySet="adm_UserYetkis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adm_YetkiMethods_adm_MethodList" Association="Self.FK_adm_YetkiMethods_adm_MethodList">
+            <End Role="adm_MethodList" EntitySet="adm_MethodList" />
+            <End Role="adm_YetkiMethods" EntitySet="adm_YetkiMethods" />
+          </AssociationSet>
           <AssociationSet Name="FK_adm_pacs_hst_hastakarti" Association="Self.FK_adm_pacs_hst_hastakarti">
             <End Role="hst_hastakarti" EntitySet="hst_hastakarti" />
             <End Role="adm_pacs" EntitySet="adm_pacs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adm_YetkiGroups_adm_Yetki" Association="Self.FK_adm_YetkiGroups_adm_Yetki">
+            <End Role="adm_Yetki" EntitySet="adm_Yetki" />
+            <End Role="adm_YetkiGroups" EntitySet="adm_YetkiGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adm_YetkiMethods_adm_Yetki" Association="Self.FK_adm_YetkiMethods_adm_Yetki">
+            <End Role="adm_Yetki" EntitySet="adm_Yetki" />
+            <End Role="adm_YetkiMethods" EntitySet="adm_YetkiMethods" />
           </AssociationSet>
           <AssociationSet Name="FK_hst_basvuru_hst_bölüm" Association="Self.FK_hst_basvuru_hst_bölüm">
             <End Role="hst_bölüm" EntitySet="hst_bölüm" />
@@ -2306,6 +2845,14 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="WEINCDENTALModelStoreContainer" CdmEntityContainer="WEINCDENTALEntities">
+          <EntitySetMapping Name="adm_ControllerList">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.adm_ControllerList">
+              <MappingFragment StoreEntitySet="adm_ControllerList">
+                <ScalarProperty Name="ControllerId" ColumnName="ControllerId" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="adm_kullanicigrup">
             <EntityTypeMapping TypeName="WEINCDENTALModel.adm_kullanicigrup">
               <MappingFragment StoreEntitySet="adm_kullanicigrup">
@@ -2333,22 +2880,13 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="adm_kullaniciyetki">
-            <EntityTypeMapping TypeName="WEINCDENTALModel.adm_kullaniciyetki">
-              <MappingFragment StoreEntitySet="adm_kullaniciyetki">
-                <ScalarProperty Name="t_id" ColumnName="t_id" />
-                <ScalarProperty Name="t_kod" ColumnName="t_kod" />
-                <ScalarProperty Name="t_mid" ColumnName="t_mid" />
-                <ScalarProperty Name="t_yetki" ColumnName="t_yetki" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="adm_methods">
-            <EntityTypeMapping TypeName="WEINCDENTALModel.adm_methods">
-              <MappingFragment StoreEntitySet="adm_methods">
-                <ScalarProperty Name="t_id" ColumnName="t_id" />
-                <ScalarProperty Name="t_mad" ColumnName="t_mad" />
-                <ScalarProperty Name="t_maciklama" ColumnName="t_maciklama" />
+          <EntitySetMapping Name="adm_MethodList">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.adm_MethodList">
+              <MappingFragment StoreEntitySet="adm_MethodList">
+                <ScalarProperty Name="MethodId" ColumnName="MethodId" />
+                <ScalarProperty Name="MethodName" ColumnName="MethodName" />
+                <ScalarProperty Name="GorunecekIsim" ColumnName="GorunecekIsim" />
+                <ScalarProperty Name="ControllerId" ColumnName="ControllerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2375,6 +2913,58 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="t_createuser" ColumnName="t_createuser" />
                 <ScalarProperty Name="t_createdate" ColumnName="t_createdate" />
                 <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adm_UserGroups">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.adm_UserGroups">
+              <MappingFragment StoreEntitySet="adm_UserGroups">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adm_UserYetkis">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.adm_UserYetkis">
+              <MappingFragment StoreEntitySet="adm_UserYetkis">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="YetkiId" ColumnName="YetkiId" />
+                <ScalarProperty Name="YMethodId" ColumnName="YMethodId" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adm_Yetki">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.adm_Yetki">
+              <MappingFragment StoreEntitySet="adm_Yetki">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="YetkiAdi" ColumnName="YetkiAdi" />
+                <ScalarProperty Name="YetkiAciklama" ColumnName="YetkiAciklama" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adm_YetkiGroups">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.adm_YetkiGroups">
+              <MappingFragment StoreEntitySet="adm_YetkiGroups">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="YetkiId" ColumnName="YetkiId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adm_YetkiMethods">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.adm_YetkiMethods">
+              <MappingFragment StoreEntitySet="adm_YetkiMethods">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="YetkiId" ColumnName="YetkiId" />
+                <ScalarProperty Name="MethodId" ColumnName="MethodId" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2633,6 +3223,17 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="View_BsvrVezne">
             <EntityTypeMapping TypeName="WEINCDENTALModel.View_BsvrVezne">
               <MappingFragment StoreEntitySet="View_BsvrVezne">
@@ -2666,6 +3267,28 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="Yetiskin" ColumnName="Yetiskin" />
                 <ScalarProperty Name="DisAktif" ColumnName="DisAktif" />
                 <ScalarProperty Name="CeneAktif" ColumnName="CeneAktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_GroupYetki">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.View_GroupYetki">
+              <MappingFragment StoreEntitySet="View_GroupYetki">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="t_kid" ColumnName="t_kid" />
+                <ScalarProperty Name="t_kodu" ColumnName="t_kodu" />
+                <ScalarProperty Name="YM_Id" ColumnName="YM_Id" />
+                <ScalarProperty Name="YetkiId" ColumnName="YetkiId" />
+                <ScalarProperty Name="MethodId" ColumnName="MethodId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="groupAd" ColumnName="groupAd" />
+                <ScalarProperty Name="YetkiAdi" ColumnName="YetkiAdi" />
+                <ScalarProperty Name="YetkiAciklama" ColumnName="YetkiAciklama" />
+                <ScalarProperty Name="GorunecekIsim" ColumnName="GorunecekIsim" />
+                <ScalarProperty Name="MethodName" ColumnName="MethodName" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="UserGroupAktif" ColumnName="UserGroupAktif" />
+                <ScalarProperty Name="YetkiAktif" ColumnName="YetkiAktif" />
+                <ScalarProperty Name="UserAktif" ColumnName="UserAktif" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2744,19 +3367,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="View_kullaniciYetki">
-            <EntityTypeMapping TypeName="WEINCDENTALModel.View_kullaniciYetki">
-              <MappingFragment StoreEntitySet="View_kullaniciYetki">
-                <ScalarProperty Name="yetkiId" ColumnName="yetkiId" />
-                <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
-                <ScalarProperty Name="methodId" ColumnName="methodId" />
-                <ScalarProperty Name="groupAd" ColumnName="groupAd" />
-                <ScalarProperty Name="methodAd" ColumnName="methodAd" />
-                <ScalarProperty Name="methodAciklama" ColumnName="methodAciklama" />
-                <ScalarProperty Name="yetki" ColumnName="yetki" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="View_Pacs">
             <EntityTypeMapping TypeName="WEINCDENTALModel.View_Pacs">
               <MappingFragment StoreEntitySet="View_Pacs">
@@ -2773,6 +3383,24 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Vezne' does not have a primar
                 <ScalarProperty Name="t_ip" ColumnName="t_ip" />
                 <ScalarProperty Name="HastaAktif" ColumnName="HastaAktif" />
                 <ScalarProperty Name="PacsAktif" ColumnName="PacsAktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_UserYetkis">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.View_UserYetkis">
+              <MappingFragment StoreEntitySet="View_UserYetkis">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="t_kid" ColumnName="t_kid" />
+                <ScalarProperty Name="YetkiId" ColumnName="YetkiId" />
+                <ScalarProperty Name="t_kodu" ColumnName="t_kodu" />
+                <ScalarProperty Name="t_adi" ColumnName="t_adi" />
+                <ScalarProperty Name="YetkiAdi" ColumnName="YetkiAdi" />
+                <ScalarProperty Name="YetkiAciklama" ColumnName="YetkiAciklama" />
+                <ScalarProperty Name="GorunecekIsim" ColumnName="GorunecekIsim" />
+                <ScalarProperty Name="MethodName" ColumnName="MethodName" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="YMethodId" ColumnName="YMethodId" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

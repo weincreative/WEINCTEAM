@@ -20,20 +20,20 @@ namespace WEINCDENTAL.Controllers
             
             this.Cache = cacheProvider;
         }
-        public List<View_kullaniciYetki> YetkileriGetir(int usrId, int groupId)
-        {
-            string cachkey = "yetki";
-            List<View_kullaniciYetki> currencyData = Cache.Get<List<View_kullaniciYetki>>(cachkey);
-            if (currencyData == null)
-            {
-                currencyData = db.View_kullaniciYetki.Where(k => k.kullaniciId == usrId || k.kullaniciId == groupId).
-                    Where(p => p.yetki == true).ToList();
-                if (currencyData.Any())
-                {
-                    Cache.Add(cachkey, currencyData);
-                }
-            }
-            return currencyData;
-        }
+        //public List<View_kullaniciYetki> YetkileriGetir(int usrId, int groupId)
+        //{
+        //    string cachkey = "yetki";
+        //    List<View_kullaniciYetki> currencyData = Cache.Get<List<View_kullaniciYetki>>(cachkey);
+        //    if (currencyData == null)
+        //    {
+        //        currencyData = db.View_kullaniciYetki.Where(k => k.kullaniciId == usrId || k.kullaniciId == groupId).
+        //            Where(p => p.yetki == true).ToList();
+        //        if (currencyData.Any())
+        //        {
+        //            Cache.Add(cachkey, currencyData);
+        //        }
+        //    }
+        //    return currencyData;
+        //}
     }
 }
