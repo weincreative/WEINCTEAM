@@ -20,20 +20,39 @@ namespace WEINCDENTAL.Controllers
             
             this.Cache = cacheProvider;
         }
-        //public List<View_kullaniciYetki> YetkileriGetir(int usrId, int groupId)
-        //{
-        //    string cachkey = "yetki";
-        //    List<View_kullaniciYetki> currencyData = Cache.Get<List<View_kullaniciYetki>>(cachkey);
-        //    if (currencyData == null)
-        //    {
-        //        currencyData = db.View_kullaniciYetki.Where(k => k.kullaniciId == usrId || k.kullaniciId == groupId).
-        //            Where(p => p.yetki == true).ToList();
-        //        if (currencyData.Any())
-        //        {
-        //            Cache.Add(cachkey, currencyData);
-        //        }
-        //    }
-        //    return currencyData;
-        //}
+
+        // kullanıcının grubuna göre yetkilerini getirir...
+        public List<View_GroupYetki> GetGroupYetkis(int usrId)
+        {
+            string cachkey = "groupyetki";
+            List<View_GroupYetki> currencyData = Cache.Get<List<View_GroupYetki>>(cachkey);
+            if (currencyData == null)
+            {
+                currencyData = db.View_GroupYetki.Where(k => k.UserId == usrId).
+                    Where(p => p.UserGroupAktif == true && p.YetkiAktif==true && p.UserAktif==true).ToList();
+                if (currencyData.Any())
+                {
+                    Cache.Add(cachkey, currencyData);
+                }
+            }
+            return currencyData;
+        }
+
+        // Kullanıcının grubu dışında extradan verilen yetkileri getirir...
+        public List<View_UserYetkis> GetUserYetkis(int usrId)
+        {
+            string cachkey = "useryetki";
+            List<View_UserYetkis> currencyData = Cache.Get<List<View_UserYetkis>>(cachkey);
+            if (currencyData == null)
+            {
+                currencyData = db.View_UserYetkis.Where(k => k.UserId == usrId).
+                    Where(p => p.Aktif == true).ToList();
+                if (currencyData.Any())
+                {
+                    Cache.Add(cachkey, currencyData);
+                }
+            }
+            return currencyData;
+        }
     }
 }

@@ -12,12 +12,15 @@ namespace WEINCDENTAL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class View_Users
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int t_id { get; set; }
+        public string t_kodu { get; set; }
+        public string t_adi { get; set; }
+        public string t_sifre { get; set; }
+        public string t_createuser { get; set; }
+        public System.DateTime t_createdate { get; set; }
+        public bool t_aktif { get; set; }
+        public string GroupAd { get; set; }
     }
 }

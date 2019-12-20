@@ -31,8 +31,8 @@
           <Property Name="t_kodu" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_grup" Type="int" Nullable="false" />
-          <Property Name="t_yetki" Type="int" Nullable="false" />
+          <Property Name="t_grup" Type="int" />
+          <Property Name="t_yetki" Type="int" />
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
@@ -356,16 +356,6 @@
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_BsvrVezne' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_BsvrVezne">
@@ -618,6 +608,28 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_Pacs' does not have a primary
           <Property Name="t_ip" Type="int" Nullable="false" />
           <Property Name="HastaAktif" Type="bit" Nullable="false" />
           <Property Name="PacsAktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WEINCDENTAL.dbo.View_Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Users">
+          <Key>
+            <PropertyRef Name="t_id" />
+            <PropertyRef Name="t_kodu" />
+            <PropertyRef Name="t_adi" />
+            <PropertyRef Name="t_sifre" />
+            <PropertyRef Name="t_createuser" />
+            <PropertyRef Name="t_createdate" />
+            <PropertyRef Name="t_aktif" />
+            <PropertyRef Name="GroupAd" />
+          </Key>
+          <Property Name="t_id" Type="int" Nullable="false" />
+          <Property Name="t_kodu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_createdate" Type="date" Nullable="false" />
+          <Property Name="t_aktif" Type="bit" Nullable="false" />
+          <Property Name="GroupAd" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_UserYetkis' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1171,7 +1183,6 @@ warning 6035: The relationship 'FK_adm_UserYetkis_adm_YetkiMethods1' has columns
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="View_BsvrVezne" EntityType="Self.View_BsvrVezne" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [View_BsvrVezne].[v_id] AS [v_id], 
@@ -1309,6 +1320,18 @@ warning 6035: The relationship 'FK_adm_UserYetkis_adm_YetkiMethods1' has columns
     [View_Pacs].[HastaAktif] AS [HastaAktif], 
     [View_Pacs].[PacsAktif] AS [PacsAktif]
     FROM [dbo].[View_Pacs] AS [View_Pacs]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Users" EntityType="Self.View_Users" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Users].[t_id] AS [t_id], 
+    [View_Users].[t_kodu] AS [t_kodu], 
+    [View_Users].[t_adi] AS [t_adi], 
+    [View_Users].[t_sifre] AS [t_sifre], 
+    [View_Users].[t_createuser] AS [t_createuser], 
+    [View_Users].[t_createdate] AS [t_createdate], 
+    [View_Users].[t_aktif] AS [t_aktif], 
+    [View_Users].[GroupAd] AS [GroupAd]
+    FROM [dbo].[View_Users] AS [View_Users]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_UserYetkis" EntityType="Self.View_UserYetkis" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1516,8 +1539,8 @@ warning 6035: The relationship 'FK_adm_UserYetkis_adm_YetkiMethods1' has columns
           <Property Name="t_kodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_grup" Type="Int32" Nullable="false" />
-          <Property Name="t_yetki" Type="Int32" Nullable="false" />
+          <Property Name="t_grup" Type="Int32" />
+          <Property Name="t_yetki" Type="Int32" />
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
@@ -1900,16 +1923,6 @@ warning 6035: The relationship 'FK_adm_UserYetkis_adm_YetkiMethods1' has columns
           <NavigationProperty Name="hst_basvuru" Relationship="Self.FK_hst_vezne_hst_basvuru" FromRole="hst_vezne" ToRole="hst_basvuru" />
           <NavigationProperty Name="hst_odemetip" Relationship="Self.FK_hst_vezne_hst_OdemeTip" FromRole="hst_vezne" ToRole="hst_odemetip" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="View_BsvrVezne">
           <Key>
             <PropertyRef Name="v_id" />
@@ -2148,6 +2161,26 @@ warning 6035: The relationship 'FK_adm_UserYetkis_adm_YetkiMethods1' has columns
           <Property Name="t_ip" Type="Int32" Nullable="false" />
           <Property Name="HastaAktif" Type="Boolean" Nullable="false" />
           <Property Name="PacsAktif" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Users">
+          <Key>
+            <PropertyRef Name="t_id" />
+            <PropertyRef Name="t_kodu" />
+            <PropertyRef Name="t_adi" />
+            <PropertyRef Name="t_sifre" />
+            <PropertyRef Name="t_createuser" />
+            <PropertyRef Name="t_createdate" />
+            <PropertyRef Name="t_aktif" />
+            <PropertyRef Name="GroupAd" />
+          </Key>
+          <Property Name="t_id" Type="Int32" Nullable="false" />
+          <Property Name="t_kodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="t_aktif" Type="Boolean" Nullable="false" />
+          <Property Name="GroupAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="View_UserYetkis">
           <Key>
@@ -2643,7 +2676,6 @@ warning 6035: The relationship 'FK_adm_UserYetkis_adm_YetkiMethods1' has columns
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="View_BsvrVezne" EntityType="Self.View_BsvrVezne" />
           <EntitySet Name="View_CeneDis" EntityType="Self.View_CeneDis" />
           <EntitySet Name="View_GroupYetki" EntityType="Self.View_GroupYetki" />
@@ -2651,6 +2683,7 @@ warning 6035: The relationship 'FK_adm_UserYetkis_adm_YetkiMethods1' has columns
           <EntitySet Name="View_HizHareket" EntityType="Self.View_HizHareket" />
           <EntitySet Name="View_HizmetDetay" EntityType="Self.View_HizmetDetay" />
           <EntitySet Name="View_Pacs" EntityType="Self.View_Pacs" />
+          <EntitySet Name="View_Users" EntityType="Self.View_Users" />
           <EntitySet Name="View_UserYetkis" EntityType="Self.View_UserYetkis" />
           <EntitySet Name="View_Vezne" EntityType="Self.View_Vezne" />
           <AssociationSet Name="FK_adm_MethodList_adm_ControllerList" Association="Self.FK_adm_MethodList_adm_ControllerList">
@@ -3223,17 +3256,6 @@ warning 6035: The relationship 'FK_adm_UserYetkis_adm_YetkiMethods1' has columns
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="WEINCDENTALModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="View_BsvrVezne">
             <EntityTypeMapping TypeName="WEINCDENTALModel.View_BsvrVezne">
               <MappingFragment StoreEntitySet="View_BsvrVezne">
@@ -3383,6 +3405,20 @@ warning 6035: The relationship 'FK_adm_UserYetkis_adm_YetkiMethods1' has columns
                 <ScalarProperty Name="t_ip" ColumnName="t_ip" />
                 <ScalarProperty Name="HastaAktif" ColumnName="HastaAktif" />
                 <ScalarProperty Name="PacsAktif" ColumnName="PacsAktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Users">
+            <EntityTypeMapping TypeName="WEINCDENTALModel.View_Users">
+              <MappingFragment StoreEntitySet="View_Users">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="t_kodu" ColumnName="t_kodu" />
+                <ScalarProperty Name="t_adi" ColumnName="t_adi" />
+                <ScalarProperty Name="t_sifre" ColumnName="t_sifre" />
+                <ScalarProperty Name="t_createuser" ColumnName="t_createuser" />
+                <ScalarProperty Name="t_createdate" ColumnName="t_createdate" />
+                <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
+                <ScalarProperty Name="GroupAd" ColumnName="GroupAd" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

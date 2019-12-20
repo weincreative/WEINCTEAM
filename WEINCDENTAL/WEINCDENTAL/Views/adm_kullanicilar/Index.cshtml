@@ -110,8 +110,7 @@
                                             <th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Company: activate to sort column ascending" style="width: 302px;"> @Html.DisplayNameFor(model => model.t_createuser)</th>
                                             <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label=" Zip: activate to sort column ascending" style="width: 79px;"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> @Html.DisplayNameFor(model => model.t_createdate)</th>
                                             <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="City: activate to sort column ascending" style="width: 168px;">@Html.DisplayNameFor(model => model.t_aktif)</th>
-                                            <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> @Html.DisplayNameFor(model => model.adm_kullanicigrup.t_adi)</th>
-                                            <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> @Html.DisplayNameFor(model => model.adm_modulyetki.t_adi)</th>
+                                            <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Kullanıcı Grup
                                             <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> </th>
                                             <!-- HEAD BİTİŞİ -->
                                         </tr>
@@ -123,37 +122,37 @@
 
                                         @foreach (var item in Model)
                                         {
-                                            <tr>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.t_kodu)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.t_adi)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.t_sifre)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.t_createuser)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.t_createdate)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.t_aktif)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.adm_kullanicigrup.t_adi)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.adm_modulyetki.t_adi)
-                                                </td>
-                                                <td>
-                                                    @Html.ActionLink("Edit", "Edit", new { id = item.t_id }) |
-                                                    @Html.ActionLink("Details", "Details", new { id = item.t_id }) |
-                                                    @Html.ActionLink("Delete", "Delete", new { id = item.t_id })
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_kodu)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_adi)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_sifre)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_createuser)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_createdate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.t_aktif)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.adm_UserGroups)
+                                            </td>
+                                            <td>
+                                                @Html.DropDownList("t_grup", null, htmlAttributes: new { @class = "form-control" })
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.t_id }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.t_id }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.t_id })
+                                            </td>
+                                        </tr>
                                         }
 
 

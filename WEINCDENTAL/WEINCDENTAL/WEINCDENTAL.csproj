@@ -149,6 +149,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\adm_kullanicilar1Controller.cs" />
     <Compile Include="Controllers\adm_modulyetkiController.cs" />
     <Compile Include="Controllers\adm_kullanicigrupController.cs" />
     <Compile Include="Controllers\adm_kullanicilarController.cs" />
@@ -296,9 +297,6 @@
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TotalHizmet.cs" />
     <Compile Include="Models\TotalKazanc.cs" />
     <Compile Include="Models\ViewModelAyarlar.cs" />
@@ -322,6 +320,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\View_Pacs.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\View_UserYetkis.cs">
@@ -1222,6 +1223,7 @@
     <Content Include="Views\Pacs\_PartialPacs.cshtml" />
     <Content Include="Views\Pacs\_PartialPacsList.cshtml" />
     <Content Include="Views\Home\SekIndex.cshtml" />
+    <Content Include="Views\adm_kullanicilar1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

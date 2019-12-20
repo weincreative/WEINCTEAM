@@ -7,13 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace WEINCDENTAL.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class hst_hastadurum
     {
         public int t_id { get; set; }
@@ -23,7 +22,7 @@ namespace WEINCDENTAL.Models
         [DataType(DataType.MultilineText)]
         public string t_aciklama { get; set; }
         public bool t_aktif { get; set; }
-    
+
         public virtual hst_hastakarti hst_hastakarti { get; set; }
         public virtual hst_hastalik hst_hastalik { get; set; }
     }

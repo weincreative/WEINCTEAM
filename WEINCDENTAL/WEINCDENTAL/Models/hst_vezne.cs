@@ -13,7 +13,7 @@ namespace WEINCDENTAL.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class hst_vezne
     {
         public int t_id { get; set; }
@@ -36,7 +36,7 @@ namespace WEINCDENTAL.Models
         public System.DateTime t_odemetarih { get; set; }
         public System.DateTime t_createdate { get; set; }
         public bool t_aktif { get; set; }
-    
+
         public virtual hst_basvuru hst_basvuru { get; set; }
         public virtual hst_odemetip hst_odemetip { get; set; }
     }

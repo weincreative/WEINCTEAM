@@ -15,6 +15,12 @@ namespace WEINCDENTAL.Models
 
     public partial class adm_kullanicilar
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public adm_kullanicilar()
+        {
+            this.adm_UserGroups = new HashSet<adm_UserGroups>();
+            this.adm_UserYetkis = new HashSet<adm_UserYetkis>();
+        }
         [Display(Name = "Kullanýcý ID")]
         [Required]
         public int t_id { get; set; }
@@ -41,9 +47,9 @@ namespace WEINCDENTAL.Models
         [Display(Name = "Aktif / Pasif")]
         public bool t_aktif { get; set; }
 
-        [Display(Name = "Kullanýcý Grup")]
-        public virtual adm_kullanicigrup adm_kullanicigrup { get; set; }
-        [Display(Name = "Kullanýcý Yetki")]
-        public virtual adm_modulyetki adm_modulyetki { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<adm_UserGroups> adm_UserGroups { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<adm_UserYetkis> adm_UserYetkis { get; set; }
     }
 }

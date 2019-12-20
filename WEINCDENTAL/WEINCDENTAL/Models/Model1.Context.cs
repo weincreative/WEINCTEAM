@@ -58,7 +58,6 @@ namespace WEINCDENTAL.Models
         public virtual DbSet<hst_randevu> hst_randevu { get; set; }
         public virtual DbSet<hst_ulke> hst_ulke { get; set; }
         public virtual DbSet<hst_vezne> hst_vezne { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<View_BsvrVezne> View_BsvrVezne { get; set; }
         public virtual DbSet<View_CeneDis> View_CeneDis { get; set; }
         public virtual DbSet<View_GroupYetki> View_GroupYetki { get; set; }
@@ -66,6 +65,7 @@ namespace WEINCDENTAL.Models
         public virtual DbSet<View_HizHareket> View_HizHareket { get; set; }
         public virtual DbSet<View_HizmetDetay> View_HizmetDetay { get; set; }
         public virtual DbSet<View_Pacs> View_Pacs { get; set; }
+        public virtual DbSet<View_Users> View_Users { get; set; }
         public virtual DbSet<View_UserYetkis> View_UserYetkis { get; set; }
         public virtual DbSet<View_Vezne> View_Vezne { get; set; }
     

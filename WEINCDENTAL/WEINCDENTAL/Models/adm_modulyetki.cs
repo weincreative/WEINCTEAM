@@ -7,20 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace WEINCDENTAL.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class adm_modulyetki
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public adm_modulyetki()
-        {
-            this.adm_kullanicilar = new HashSet<adm_kullanicilar>();
-        }
 
         [Display(Name = "Yetki ID")]
         [Required]
@@ -36,8 +30,5 @@ namespace WEINCDENTAL.Models
         public System.DateTime t_createdate { get; set; }
         [Display(Name = "Aktif / Pasif")]
         public bool t_aktif { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<adm_kullanicilar> adm_kullanicilar { get; set; }
     }
 }
