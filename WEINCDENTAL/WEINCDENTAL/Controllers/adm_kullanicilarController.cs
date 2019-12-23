@@ -42,7 +42,6 @@ namespace WEINCDENTAL.Controllers
         public ActionResult Create()
         {
             ViewBag.t_grup = new SelectList(db.adm_kullanicigrup, "t_id", "t_adi");
-            ViewBag.t_yetki = new SelectList(db.adm_modulyetki, "t_id", "t_adi");
             return View("Create", new adm_kullanicilar());
         }
 
@@ -51,7 +50,7 @@ namespace WEINCDENTAL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "t_id,t_kodu,t_adi,t_sifre,t_grup,t_yetki,t_createuser,t_createdate,t_aktif")] adm_kullanicilar adm_kullanicilar)
+        public ActionResult Create([Bind(Include = "t_id,t_kodu,t_adi,t_sifre,t_grup,t_createuser,t_createdate,t_aktif")] adm_kullanicilar adm_kullanicilar)
         {
             string methodAd = "/adm_kullanicilar/create";
             adm_kullanicilar.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
@@ -67,7 +66,6 @@ namespace WEINCDENTAL.Controllers
             }
 
             ViewBag.t_grup = new SelectList(db.adm_kullanicigrup, "t_id", "t_adi", adm_kullanicilar.t_grup);
-            ViewBag.t_yetki = new SelectList(db.adm_modulyetki, "t_id", "t_adi", adm_kullanicilar.t_yetki);
             return View(adm_kullanicilar);
         }
 
@@ -84,7 +82,6 @@ namespace WEINCDENTAL.Controllers
                 return HttpNotFound();
             }
             ViewBag.t_grup = new SelectList(db.adm_kullanicigrup, "t_id", "t_adi", adm_kullanicilar.t_grup);
-            ViewBag.t_yetki = new SelectList(db.adm_modulyetki, "t_id", "t_adi", adm_kullanicilar.t_yetki);
             return View(adm_kullanicilar);
         }
 

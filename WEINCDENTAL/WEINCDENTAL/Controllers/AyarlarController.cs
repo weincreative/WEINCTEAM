@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
+using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,2")]
+    //[Authorize(Roles = "1,2")]
+    [CustomAutAttributes]
     public class AyarlarController : Controller
     {
         
@@ -17,7 +19,7 @@ namespace WEINCDENTAL.Controllers
             string methodAd = "/Ayarlar/AKullanici";
             WEINCDENTALEntities db = new WEINCDENTALEntities();
             ViewModelAyarlar vm = new ViewModelAyarlar();
-            vm._ViewModelKullanicilar = db.adm_kullanicilar.ToList();
+            vm._ViewModelKullanicilar = db.View_Users.Where(k=>k.t_aktif==true).ToList();
             return PartialView(vm);
         }
        

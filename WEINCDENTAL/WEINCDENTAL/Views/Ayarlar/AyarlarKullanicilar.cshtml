@@ -60,7 +60,6 @@
                                     <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Zip: activate to sort column ascending" style="width: 100px;"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> Kullanıcı Oluşturulma Tarihi</th>
                                     <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label="City: activate to sort column ascending" style="width: 30px;"> <i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Aktif/Pasif</th>
                                     <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i>Grup Adı</th>
-                                    <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 68px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Modul Yetki Adı</th>
                                     <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 50px;"> İşlem Yap</th>
                                     <!-- HEAD BİTİŞİ -->
                                 </tr>
@@ -95,10 +94,7 @@
                                             @Html.DisplayFor(modelItem => item.t_aktif)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.adm_kullanicigrup.t_adi)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.adm_modulyetki.t_adi)
+                                            @Html.DisplayFor(modelItem => item.GroupAd)
                                         </td>
                                         <td>
                                             @Html.ActionLink("Düzenle", "../adm_kullanicilar/Edit", new { id = item.t_id }) |

@@ -62,13 +62,15 @@ namespace WEINCDENTAL.Controllers
             return View(mis);
             
         }
-        [Authorize(Roles = "1,2")]
+        //[Authorize(Roles = "1,2")]
+        [CustomAutAttributes]
         public ActionResult Ayarlar()
         {
             string methodAd = "/home/ayarlar";
             return View();
         }
-        [Authorize(Roles = "3,4,5")]
+        // [Authorize(Roles = "3,4,5")]
+        [CustomAutAttributes]
         public ActionResult SekIndex()
         {
             string methodAd = "/home/Sekindex";

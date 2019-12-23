@@ -23,22 +23,27 @@ namespace WEINCDENTAL.Controllers
         [AllowAnonymous]
         public ActionResult Login(adm_kullanicilar kullanici)
         {
-            var UserINDB = db.adm_kullanicilar.FirstOrDefault(x => x.t_kodu == kullanici.t_kodu && x.t_sifre == kullanici.t_sifre);
-         //   var deneme=new CachedModelsRepository().YetkileriGetir(1,1);
-
+            var UserINDB = db.adm_kullanicilar.Where(k=>k.t_aktif==true).FirstOrDefault(x => x.t_kodu == kullanici.t_kodu && x.t_sifre == kullanici.t_sifre);
+            
             if (UserINDB!=null)
             {
                 FormsAuthentication.SetAuthCookie(kullanici.t_kodu, false);
+                Session["userId"] = UserINDB.t_id;
+
+                var deneme = new CachedModelsRepository().GetGroupYetkis(UserINDB.t_id);
+                var deneme2 = new CachedModelsRepository().GetUserYetkis(UserINDB.t_id);
                 var yetki = db.adm_kullanicilar.Where(k => k.t_aktif == true && k.t_kodu == kullanici.t_kodu)
                     .Select(k => k.t_grup).FirstOrDefault();
+
                 //yetki=> "/home/index" "/home/Sekindex" var mı diye bak.Hangisine yetki varsa onu aç.
-                if (yetki==1 || yetki==2)
+
+                if (yetki == 1 || yetki == 2)
                 {
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    return RedirectToAction("SekIndex", "Home");
+                return RedirectToAction("SekIndex", "Home");
                 }
                
             }

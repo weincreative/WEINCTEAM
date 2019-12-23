@@ -18,5 +18,14 @@ namespace WEINCDENTAL
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        //protected void Application_Error(object sender, EventArgs e)
+        //{
+        //    Exception ex = Server.GetLastError();
+        //    if (ex is HttpException && ((HttpException) ex).GetHttpCode() == 403)
+        //    {
+        //        Response.Redirect("Views/Shared/Error.cshtml");
+        //    }
+        //}
     }
 }
