@@ -9,16 +9,15 @@ using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
-    
+
     public class HomeController : Controller
     {
-        
+
         IstatistikController ic = new IstatistikController();
-        //[Authorize(Roles = "1,2")]
-       [CustomAutAttributes]
+
+        [CustomAutAttributes]
         public ActionResult Index()
         {
-            string methodAd = "/home/index";
             DateTime dt = DateTime.Today;
             var list = ic.GetListHizmet(dt.Year, dt.Month);
             ViewBag.yil = dt.Year;
@@ -31,16 +30,16 @@ namespace WEINCDENTAL.Controllers
                 totalKazanc = list.Sum(t => t.t_totalborc);
             }
             var tnakit = ic.GetListVezne(dt.Year, dt.Month, 1);
-            if (tnakit!=null)
+            if (tnakit != null)
             {
                 totalNakit = tnakit.Sum(t => t.t_odenen);
             }
-            var tkkart= ic.GetListVezne(dt.Year, dt.Month, 2);
-            if (tkkart!=null)
+            var tkkart = ic.GetListVezne(dt.Year, dt.Month, 2);
+            if (tkkart != null)
             {
-                totalKKart =tkkart.Sum(t => t.t_odenen);
+                totalKKart = tkkart.Sum(t => t.t_odenen);
             }
-            var data = ic.GetHizmet(dt.Year, dt.Month,4);
+            var data = ic.GetHizmet(dt.Year, dt.Month, 4);
 
 
             var query = ic.GetTotalKazanc(dt.Year);
@@ -60,16 +59,16 @@ namespace WEINCDENTAL.Controllers
                 TotalKKart = totalKKart
             };
             return View(mis);
-            
+
         }
-        //[Authorize(Roles = "1,2")]
+
         [CustomAutAttributes]
         public ActionResult Ayarlar()
         {
-            string methodAd = "/home/ayarlar";
+
             return View();
         }
-        // [Authorize(Roles = "3,4,5")]
+
         [CustomAutAttributes]
         public ActionResult SekIndex()
         {

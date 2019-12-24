@@ -7,15 +7,17 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
+using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,2")]
+    [CustomAutAttributes]
     public class adm_kullanicilarController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
 
         // GET: adm_kullanicilar
+
         public ActionResult Index()
         {
             var adm_kullanicilar = db.adm_kullanicilar.Include(k=>k.adm_UserGroups);
@@ -50,6 +52,7 @@ namespace WEINCDENTAL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [CustomAutAttributes]
         public ActionResult Create([Bind(Include = "t_id,t_kodu,t_adi,t_sifre,t_grup,t_createuser,t_createdate,t_aktif")] adm_kullanicilar adm_kullanicilar)
         {
             string methodAd = "/adm_kullanicilar/create";
@@ -90,6 +93,7 @@ namespace WEINCDENTAL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [CustomAutAttributes]
         public ActionResult Edit([Bind(Include = "t_id,t_kodu,t_adi,t_sifre,t_grup,t_yetki,t_createuser,t_createdate,t_aktif")] adm_kullanicilar adm_kullanicilar)
         {
             string methodAd = "/adm_kullanicilar/edit";

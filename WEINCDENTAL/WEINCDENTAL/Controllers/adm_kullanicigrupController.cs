@@ -7,10 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
+using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,2")]
+   
     public class adm_kullanicigrupController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
@@ -45,6 +46,7 @@ namespace WEINCDENTAL.Controllers
         // POST: adm_kullanicigrup/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [CustomAutAttributes]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "t_id,t_adi,t_createuser,t_createdate,t_aktif")] adm_kullanicigrup adm_kullanicigrup)
@@ -84,6 +86,7 @@ namespace WEINCDENTAL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [CustomAutAttributes]
         public ActionResult Edit([Bind(Include = "t_id,t_adi,t_createuser,t_createdate,t_aktif")] adm_kullanicigrup adm_kullanicigrup)
         {
             string methodAd = "/adm_kullanicgrup/edit";
