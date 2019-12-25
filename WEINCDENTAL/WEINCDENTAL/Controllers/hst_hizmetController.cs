@@ -7,10 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
+using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,2,3,4,5")]
+    //[Authorize(Roles = "1,2,3,4,5")]
+    [CustomAutAttributes]
     public class hst_hizmetController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();

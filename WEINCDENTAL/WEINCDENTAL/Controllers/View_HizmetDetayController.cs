@@ -8,10 +8,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
+using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,3,4,5")]
+  //  [Authorize(Roles = "1,3,4,5")]
     public class View_HizmetDetayController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
@@ -44,6 +45,7 @@ namespace WEINCDENTAL.Controllers
         }
 
         [HttpPost]
+        [CustomAutAttributes]
         public JsonResult Delete(int id)
         {
             string methodAd = "/View_HizmetDetay/Delete";

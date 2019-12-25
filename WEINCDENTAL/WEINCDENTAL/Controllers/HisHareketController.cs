@@ -7,19 +7,20 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
+using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,3,4,5")]
+    // [Authorize(Roles = "1,3,4,5")]
+    [CustomAutAttributes]
     public class HisHareketController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
 
 
-        
+       
         public ActionResult HisHareket(int id)
         {
-            string methodAd = "/hizhareket/hizhareket";
             try
             {
                 var tc = Ortak._hastatc;
@@ -65,10 +66,9 @@ namespace WEINCDENTAL.Controllers
             }
         }
 
-
+     //   [CustomAutAttributes]
         public PartialViewResult HisHareketFirma()
         {
-            string methodAd = "/hizhareket/Hishareketfirma";
             try
             {
                 WEINCDENTALEntities db = new WEINCDENTALEntities();
@@ -83,7 +83,6 @@ namespace WEINCDENTAL.Controllers
         }
         public PartialViewResult HisHareketPacs()
         {
-         
             try
             {
                 WEINCDENTALEntities db = new WEINCDENTALEntities();
@@ -96,12 +95,6 @@ namespace WEINCDENTAL.Controllers
                 return PartialView();
             }
         }
-        //public PartialViewResult HisHareketView_HastalikDurum()
-        //{
-        //    WEINCDENTALEntities db = new WEINCDENTALEntities();
-        //    ViewModelHisHareket vm = new ViewModelHisHareket();
-        //    vm._ViewModelView_HastalikDurum = db.View_HastalikDurum.ToList();
-        //    return PartialView(vm);
-        //}
+       
     }
 }

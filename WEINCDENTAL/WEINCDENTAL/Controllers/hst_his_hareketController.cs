@@ -8,10 +8,12 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
+using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,3,4,5")]
+   // [Authorize(Roles = "1,3,4,5")]
+    [CustomAutAttributes]
     public class hst_his_hareketController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();

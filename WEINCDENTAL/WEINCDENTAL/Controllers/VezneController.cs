@@ -7,16 +7,18 @@ using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using WEINCDENTAL.Models;
+using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,3,4")]
+   // [Authorize(Roles = "1,3,4")]
     public class VezneController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
 
 
         // GET: Vezne
+        [CustomAutAttributes]
         public ActionResult SearchBorc(string tc, string emsg, int? durum)
         {
             string methodAd = "/Vezne/SearchBorch";

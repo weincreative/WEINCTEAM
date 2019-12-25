@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
+using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,2,3,4,5")]
+   // [Authorize(Roles = "1,2,3,4,5")]
     public class PacsController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
         // GET: Pacs
+        [CustomAutAttributes]
         public ActionResult Pacs_Index()
         {
             string methodAd = "/Pacs/index";
@@ -67,7 +69,7 @@ namespace WEINCDENTAL.Controllers
             
             return View(pacsList);
         }
-
+        [CustomAutAttributes]
         public PartialViewResult _PartialPacsList(string tc)
         {
             string methodAd = "/Pacs/_PartialPacsList";

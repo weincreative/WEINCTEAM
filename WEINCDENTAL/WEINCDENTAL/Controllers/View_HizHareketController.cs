@@ -7,10 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
+using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,3,4,5")]
+    //[Authorize(Roles = "1,3,4,5")]
+
     public class View_HizHareketController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
@@ -20,7 +22,7 @@ namespace WEINCDENTAL.Controllers
         {
             return View(db.View_HizHareket.ToList());
         }
-
+        [CustomAutAttributes]
         public PartialViewResult PartialHizHareket(int id)
         {
             string methodAd = "/View_HizHareket/PHizHareket";

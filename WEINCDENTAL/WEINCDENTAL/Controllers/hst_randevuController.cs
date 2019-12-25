@@ -7,15 +7,17 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
+using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,3,4,5")]
+   // [Authorize(Roles = "1,3,4,5")]
     public class hst_randevuController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
 
         // GET: hst_randevu
+        [CustomAutAttributes]
         public ActionResult Randevu_Index(string tc)
         {
             string methodAd = "/hst_randevu/Index";
@@ -69,7 +71,7 @@ namespace WEINCDENTAL.Controllers
             }
 
         }
-
+        [CustomAutAttributes]
         public ActionResult Randevular()
         {
             string methodAd = "Randevu Listele";
@@ -130,6 +132,7 @@ namespace WEINCDENTAL.Controllers
         }
 
         // GET: hst_randevu/Create
+        [CustomAutAttributes]
         public ActionResult Create()
         {
           
@@ -142,6 +145,7 @@ namespace WEINCDENTAL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         //[ValidateAntiForgeryToken]
+        [CustomAutAttributes]
         public ActionResult Create(List<hst_randevu> hst_randevu)
         {
             string methodAd = "/hst_randevu/create";
@@ -163,6 +167,7 @@ namespace WEINCDENTAL.Controllers
         }
 
         // GET: hst_randevu/Edit/5
+        [CustomAutAttributes]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -183,6 +188,7 @@ namespace WEINCDENTAL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         //[ValidateAntiForgeryToken]
+        [CustomAutAttributes]
         public ActionResult Edit([Bind(Include = "t_id,t_basvuru,t_tc,t_title,t_aciklama,t_baslangicsaat,t_bitissaat,t_classname,t_icon,t_allday,t_createuser,t_createdate,t_basvurudr,t_aktif")] List<hst_randevu> hst_randevu)
         {
             string methodAd = "/hst_randevu/edit";

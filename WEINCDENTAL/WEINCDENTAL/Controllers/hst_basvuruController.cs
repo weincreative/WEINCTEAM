@@ -7,10 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
+using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
-    [Authorize(Roles = "1,3,4,5")]
+    //[Authorize(Roles = "1,3,4,5")]
+    [CustomAutAttributes]
     public class hst_basvuruController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
@@ -37,14 +39,8 @@ namespace WEINCDENTAL.Controllers
 
         public PartialViewResult HastaBPartialCreate(string id)
         {
-            
-            //if (id==null)
-            //{
-            //    return RedirectToAction("Create","");
-            //}
             ViewBag.t_bolumkodu = new SelectList(db.hst_bölüm, "t_id", "t_adi");
             ViewBag.t_tc = id;
-            //ViewBag.t_tc = new SelectList(db.hst_hastakarti, "t_tc", "t_adi");
             return PartialView();
         }
 
@@ -89,19 +85,7 @@ namespace WEINCDENTAL.Controllers
             }
         }
         // GET: hst_basvuru/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            hst_basvuru hst_basvuru = db.hst_basvuru.Find(id);
-            if (hst_basvuru == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hst_basvuru);
-        }
+       
 
         // GET: hst_basvuru/Create
         public ActionResult HastaBasvuruCreate(string id)
