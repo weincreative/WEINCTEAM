@@ -1,4 +1,6 @@
-﻿    <!-- Left panel : Navigation area -->
+﻿@using WEINCDENTAL.Controllers
+@using WEINCDENTAL.Models
+<!-- Left panel : Navigation area -->
 <!-- Note: This width of the aside area can be adjusted through LESS variables -->
 <aside id="left-panel">
 
@@ -10,14 +12,13 @@
     To make this navigation dynamic please make sure to link the node
     (the reference to the nav > ul) after page load. Or the navigation
     will not initialize.
-    -->
+    --> 
     <nav>
         <!-- NOTE: Notice the gaps after each icon usage <i></i>..
         Please note that these links work a bit different than
         traditional href="" links. See documentation for details.
         -->
         <ul>
-
             @if (User.IsInRole("1") || User.IsInRole("2"))
             {
                 <li class="@Html.RouteIf("Index", "active")">
@@ -30,18 +31,6 @@
                     <a href="@Url.Action("SekIndex", "Home")"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ana Sayfa</span></a>
                 </li>
             }
-            @*<li class="@Html.RouteIf("adm_kullanicilar", "active")">
-                    <a href="@Url.Action("Index", "adm_kullanicilar")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Kullanıcılar</span></a>
-                </li>
-                <li class="@Html.RouteIf("adm_kullanicigrup", "active")">
-                    <a href="@Url.Action("Index", "adm_kullanicigrup")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Kullanıcı Grup</span></a>
-                </li>
-                    <li class="@Html.RouteIf("adm_modulyetki", "active")">
-                        <a href="@Url.Action("Index", "adm_modulyetki")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Modül Yetki</span></a>
-                    </li>
-                    <li class="@Html.RouteIf("hst_hizmet", "active")">
-                        <a href="@Url.Action("Index", "hst_hizmet")"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Hizmetler</span></a>
-                    </li>*@
             @if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4") || User.IsInRole("5"))
             {
                 <li class="@Html.RouteIf("hst_hastakarti", "active")">
@@ -52,7 +41,7 @@
                             <a href="@Url.Action("Create", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Hasta Kartı</span></a>
                         </li>
                         <li class="@Html.RouteIf("Hastakarti_Index", "active")">
-                            <a href="@Url.Action("Hastakarti_Index", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-info-circle"></i><span class="menu-item-parent">Hasta Bilgileri</span></a>
+                        <a href="@Url.Action("Hastakarti_Index", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-info-circle"></i><span class="menu-item-parent">Hasta Bilgileri</span></a>
 
                         <li class="@Html.RouteIf("HastaBasvuruCreate", "active")">
                             <a href="@Url.Action("HastaBasvuruCreate", "hst_basvuru")"><i class="fa fa-lg fa-fw  fa-paperclip"></i> <span class="menu-item-parent">Hasta Başvuru</span></a>

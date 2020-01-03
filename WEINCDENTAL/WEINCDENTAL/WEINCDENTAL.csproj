@@ -154,7 +154,6 @@
     <Compile Include="Controllers\adm_kullanicilarController.cs" />
     <Compile Include="Controllers\AyarlarController.cs" />
     <Compile Include="Controllers\BllPacs.cs" />
-    <Compile Include="Controllers\CachedModelsRepository.cs" />
     <Compile Include="Controllers\CagriEkraniController.cs" />
     <Compile Include="Controllers\HisHareketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

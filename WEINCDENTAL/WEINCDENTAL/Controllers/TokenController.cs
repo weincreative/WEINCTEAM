@@ -56,28 +56,54 @@ namespace WEINCDENTAL.Controllers
             }
             return currencyData;
         }
+       
         // GET: Token
-        //public  List<View_kullaniciYetki> YetkileriGetir(int usrId, int groupId)
-        //{
+        public  bool GetYetkis(int userId,string controllerName,string actionName)
+        {
+            var memoryCacher = new MemoryCacheManager();
+            List<View_GroupYetki> glist = null;
+            List<View_UserYetkis> ulist = null;
+            bool yetkiVarMi = false;
+           
+                // Memory Cache de veri yoksa
+                if (!memoryCacher.Contains("groupyetki"))
+                {
+                    new TokenController().GetGroupYetkis(userId);
+                }
+                if (!memoryCacher.Contains("useryetki"))
+                {
+                    new TokenController().GetUserYetkis(userId);
+                }
+                glist = memoryCacher.Get<List<View_GroupYetki>>("groupyetki");
+                ulist = memoryCacher.Get<List<View_UserYetkis>>("useryetki");
+
+                if (glist != null || ulist != null)
+                {
+                    if (glist != null)  //grup yetkileri
+                    {
+                        // grup içinde yetki bakıyor.
+                        yetkiVarMi = glist.Any(x => x.ControllerName == controllerName &&
+                                                    x.MethodName == actionName);
+                        if (!yetkiVarMi) //Grup içinde yetki yoksa...
+                        {
+                            if (ulist != null)
+                            {
+                                yetkiVarMi = ulist.Any(x => x.ControllerName == controllerName &&
+                                                            x.MethodName == actionName);
+                            }
+                        }
+                    }
+                    if (ulist != null)
+                    {
+                        yetkiVarMi = ulist.Any(x => x.ControllerName == controllerName && x.MethodName == actionName);
+                    }
+
+                }
+                
+
+            return yetkiVarMi;
+        }
 
 
-        //var memoryCacher = new MemoryCacheManager();
-        //string cachkey = "yetki";
-
-        //List<View_kullaniciYetki> list;
-        //// Memory Cache de veri yoksa
-        //// if (!memoryCacher.Contains(cachkey))
-        //if (true)
-        //{
-        //    list = db.View_kullaniciYetki.Where(k => k.kullaniciId == usrId || k.kullaniciId == groupId).
-        //        Where(p => p.yetki == true).ToList();
-        //    memoryCacher.Add(cachkey,list);
-        //}
-        //else
-        //{
-        //  list = memoryCacher.Get<List<View_kullaniciYetki>>(cachkey);
-        //}
-        //return list;
-        // }
     }
 }

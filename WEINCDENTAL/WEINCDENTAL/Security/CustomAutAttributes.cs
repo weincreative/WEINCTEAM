@@ -15,55 +15,18 @@ namespace WEINCDENTAL.Security
 
         public void OnAuthorization(AuthorizationContext filterContext)
         {
-          //  var user=filterContext.HttpContext.User as System.Security.Claims.ClaimsPrincipal;
-
-            var memoryCacher = new MemoryCacheManager();
-            var controllerInfo = filterContext.ActionDescriptor as System.Web.Mvc.ReflectedActionDescriptor; ;
-            List<View_GroupYetki> glist = null;
-            List<View_UserYetkis> ulist = null;
+            var controllerInfo = filterContext.ActionDescriptor as System.Web.Mvc.ReflectedActionDescriptor;
+            string controllerName = controllerInfo.ControllerDescriptor.ControllerName;
+            string actionName = controllerInfo.MethodInfo.Name;
             var userId = Convert.ToInt32(HttpContext.Current.Session["userId"]);
-
-            // Memory Cache de veri yoksa
-            if (!memoryCacher.Contains("groupyetki"))
+            if (userId == 0)
             {
-                new TokenController().GetGroupYetkis(userId);
+                filterContext.Result=new RedirectResult("Security/Logout");
+                
             }
-            if (!memoryCacher.Contains("useryetki"))
+            else
             {
-               new TokenController().GetUserYetkis(userId);
-            }
-
-
-            glist = memoryCacher.Get<List<View_GroupYetki>>("groupyetki");
-            ulist = memoryCacher.Get<List<View_UserYetkis>>("useryetki");
-
-
-            if (filterContext != null && (glist != null || ulist != null))
-            {
-            //    string controllerName = controllerInfo.ControllerDescriptor.ControllerName;
-                string controllerName = controllerInfo.ControllerDescriptor.ControllerName;
-                string actionName = controllerInfo.MethodInfo.Name;
-                bool yetkiVarMi = false;
-
-                if (glist != null)  //grup yetkileri
-                {
-                    // grup içinde yetki bakıyor.
-                    yetkiVarMi = glist.Any(x => x.ControllerName==controllerName &&
-                                                x.MethodName==actionName);
-                    if (!yetkiVarMi) //Grup içinde yetki yoksa...
-                    {
-                        if (ulist != null)
-                        {
-                            yetkiVarMi = ulist.Any(x => x.ControllerName == controllerName &&
-                                                        x.MethodName == actionName);
-                        }
-                    }
-                }
-                if (ulist != null)
-                {
-                    yetkiVarMi = ulist.Any(x => x.ControllerName == controllerName && x.MethodName == actionName);
-                }
-
+                bool yetkiVarMi = new TokenController().GetYetkis(userId, controllerName, actionName);
                 if (!yetkiVarMi)       // Yetki Yoksa
                 {
                     //  filterContext.Result=new JsonResult(new {HttpStatusCode.Forbidden});
@@ -72,7 +35,7 @@ namespace WEINCDENTAL.Security
                     filterContext.HttpContext.Response.StatusCode = 404;
                 }
             }
-
+            
         }
     }
 }
