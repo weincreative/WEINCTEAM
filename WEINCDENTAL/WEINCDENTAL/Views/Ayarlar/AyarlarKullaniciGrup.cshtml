@@ -24,8 +24,8 @@
 
     -->
             <header>
-                <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
-                <h2>Kullanıcı Grup </h2>
+                <span class="widget-icon"> <i class="fa fa-group"></i> </span>
+                <h2>Gruplar</h2>
                 <div class="widget-toolbar" role="menu">
                     <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalCreateGRUP">
                         Yeni Oluştur
@@ -84,7 +84,7 @@
                                             @Html.DisplayFor(modelItem => item.t_aktif)
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Düzenle", "../adm_kullanicigrup/Edit", new { id = item.t_id }) |
+                                            @Html.ActionLink("Düzenle", "../adm_kullanicigrup/Edit", new { id = item.t_id }) 
                                           
                                         </td>
                                     </tr>

@@ -93,10 +93,10 @@ namespace WEINCDENTAL.Controllers
                             }
                         }
                     }
-                    if (ulist != null)
-                    {
-                        yetkiVarMi = ulist.Any(x => x.ControllerName == controllerName && x.MethodName == actionName);
-                    }
+                    //if (ulist != null)
+                    //{
+                    //    yetkiVarMi = ulist.Any(x => x.ControllerName == controllerName && x.MethodName == actionName);
+                    //}
 
                 }
                 

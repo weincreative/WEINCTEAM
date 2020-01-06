@@ -1,11 +1,11 @@
 ﻿@model WEINCDENTAL.Models.ViewModelAyarlar
 
-@* deneme *@
+
 <div class="row">
     <!-- NEW WIDGET START -->
     <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <!-- Widget ID (each widget will need unique ID)-->
-        <div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-collapsed="true" data-widget-sortable="false" data-widget-deletebutton="false">
+        <div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-collapsed="false" data-widget-sortable="false" data-widget-deletebutton="false">
             <!-- widget options:
                 usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
@@ -20,7 +20,7 @@
 
             -->
             <header>
-                <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+                <span class="widget-icon"> <i class="fa fa-archive"></i> </span>
                 <h2>Hizmetler </h2>
                 <div class="widget-toolbar" role="menu">
                     <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalCreateHIZMET">
@@ -63,36 +63,36 @@
                                 <!-- BODY BAŞLANGICI -->
                                 @foreach (var item in Model._ViewModelHizmet)
                                 {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.t_id)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.t_adi)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.t_fiyat)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.hst_cene_uygunmu.t_adi)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.hst_hizmet_parca.t_adi)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.t_createuser)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.t_createdate)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.t_aktif)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Düzenle", "../hst_hizmet/Edit", new { id = item.t_id }) |
-                                       
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_adi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_fiyat)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.hst_cene_uygunmu.t_adi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.hst_hizmet_parca.t_adi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_createuser)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_createdate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_aktif)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Düzenle", "../hst_hizmet/Edit", new { id = item.t_id })
+
+                                        </td>
+                                    </tr>
                                 }
 
 

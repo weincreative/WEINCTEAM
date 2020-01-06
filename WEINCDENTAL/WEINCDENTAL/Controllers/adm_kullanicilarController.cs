@@ -57,19 +57,25 @@ namespace WEINCDENTAL.Controllers
         {
             string methodAd = "/adm_kullanicilar/create";
             adm_kullanicilar.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
-            //adm_kullanicilar.t_createuser = "W3";
             adm_kullanicilar.t_createdate = DateTime.Now;
             adm_kullanicilar.t_aktif = true;
 
+            // mesaj=0 hiç bir uyarı yok.
+            // mesaj=1 başarılı.
+            // mesaj=2 başarısız.
+            int mesaj = 0;
             if (ModelState.IsValid)
             {
                 db.adm_kullanicilar.Add(adm_kullanicilar);
                 db.SaveChanges();
-                return RedirectToAction("Ayarlar","Home");
+                mesaj = 1;
+
+                //  ViewBag.Message = mesaj;
+                return RedirectToAction("KullaniciAyarlar", "Home", new { msjNo = mesaj });
             }
 
             ViewBag.t_grup = new SelectList(db.adm_kullanicigrup, "t_id", "t_adi", adm_kullanicilar.t_grup);
-            return View(adm_kullanicilar);
+            return RedirectToAction("KullaniciAyarlar", "Home", new { msjNo = mesaj });
         }
 
         // GET: adm_kullanicilar/Edit/5
@@ -102,7 +108,7 @@ namespace WEINCDENTAL.Controllers
                 db.Entry(adm_kullanicilar).State = EntityState.Modified;
                 db.SaveChanges();
                 //return RedirectToAction("Index");
-                return RedirectToAction("Ayarlar", "Home");
+                return RedirectToAction("KullaniciAyarlar", "Home");
             }
             ViewBag.t_grup = new SelectList(db.adm_kullanicigrup, "t_id", "t_adi", adm_kullanicilar.t_grup);
             ViewBag.t_yetki = new SelectList(db.adm_modulyetki, "t_id", "t_adi", adm_kullanicilar.t_yetki);
@@ -132,7 +138,7 @@ namespace WEINCDENTAL.Controllers
             adm_kullanicilar adm_kullanicilar = db.adm_kullanicilar.Find(id);
             db.adm_kullanicilar.Remove(adm_kullanicilar);
             db.SaveChanges();
-            return RedirectToAction("Ayarlar", "Home");
+            return RedirectToAction("KullaniciAyarlar", "Home");
         }
 
         protected override void Dispose(bool disposing)

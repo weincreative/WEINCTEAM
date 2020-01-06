@@ -63,9 +63,22 @@ namespace WEINCDENTAL.Controllers
         }
 
         [CustomAutAttributes]
-        public ActionResult Ayarlar()
+        public ActionResult KullaniciAyarlar(int? msjNo)
         {
+            ViewBag.Message = msjNo;
+            return View();
+        }
+        [CustomAutAttributes]
+        public ActionResult HizmetAyarlar(int? mssgNo)
+        {
+            ViewBag.Message = mssgNo;
+            return View();
+        }
 
+        [CustomAutAttributes]
+        public ActionResult YetkiAyarlar(int? mssgNo)
+        {
+            ViewBag.Message = mssgNo;
             return View();
         }
 

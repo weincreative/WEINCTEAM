@@ -56,7 +56,7 @@ namespace WEINCDENTAL.Controllers
         // GET: hst_hizmet/Create
         public ActionResult Create()
         {
-            
+            ViewBag.Cuser= System.Web.HttpContext.Current.User.Identity.Name;
             ViewBag.t_ceneuygunmu = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi");
             ViewBag.t_parcauygunmu = new SelectList(db.hst_hizmet_parca, "t_id", "t_adi");
             return View();
@@ -69,17 +69,29 @@ namespace WEINCDENTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "t_id,t_adi,t_parcauygunmu,t_ceneuygunmu,t_fiyat,t_createuser,t_createdate,t_aktif")] hst_hizmet hst_hizmet)
         {
-            string methodAd = "/hst_hizmet/create";
+            hst_hizmet.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
+            hst_hizmet.t_createdate = DateTime.Now;
+            hst_hizmet.t_aktif = true;
+           
+            // mesaj=0 hiç bir uyarı yok.
+            // mesaj=1 başarılı.
+            // mesaj=2 başarısız.
+            int mesaj = 0;
             if (ModelState.IsValid)
             {
                 db.hst_hizmet.Add(hst_hizmet);
                 db.SaveChanges();
-                return RedirectToAction("Ayarlar", "Home");
-            }
+                mesaj = 1;
 
+                //  ViewBag.Message = mesaj;
+                return RedirectToAction("HizmetAyarlar", "Home", new { msjNo = mesaj });
+            }
+            mesaj = 2;
+            //ViewBag.Message = mesaj;
             ViewBag.t_ceneuygunmu = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi", hst_hizmet.t_ceneuygunmu);
             ViewBag.t_parcauygunmu = new SelectList(db.hst_hizmet_parca, "t_id", "t_adi", hst_hizmet.t_parcauygunmu);
-            return View(hst_hizmet);
+           
+            return RedirectToAction("HizmetAyarlar", "Home",new {msjNo = mesaj});
         }
 
         // GET: hst_hizmet/Edit/5
@@ -111,7 +123,7 @@ namespace WEINCDENTAL.Controllers
             {
                 db.Entry(hst_hizmet).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Ayarlar", "Home");
+                return RedirectToAction("HizmetAyarlar", "Home");
             }
             ViewBag.t_ceneuygunmu = new SelectList(db.hst_cene_uygunmu, "t_id", "t_adi", hst_hizmet.t_ceneuygunmu);
             ViewBag.t_parcauygunmu = new SelectList(db.hst_hizmet_parca, "t_id", "t_adi", hst_hizmet.t_parcauygunmu);
@@ -141,7 +153,7 @@ namespace WEINCDENTAL.Controllers
             hst_hizmet hst_hizmet = db.hst_hizmet.Find(id);
             db.hst_hizmet.Remove(hst_hizmet);
             db.SaveChanges();
-            return RedirectToAction("Ayarlar", "Home");
+            return RedirectToAction("HizmetAyarlar", "Home");
         }
 
         protected override void Dispose(bool disposing)

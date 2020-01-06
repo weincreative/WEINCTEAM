@@ -81,7 +81,19 @@
             @if (User.IsInRole("2")|| User.IsInRole("1"))
             {
                 <li class="@Html.RouteIf("Ayarlar", "active")">
-                    <a href="@Url.Action("Ayarlar", "Home")"><i class="fa fa-lg fa-fw fa-empire"></i> <span class="menu-item-parent">Ayarlar</span></a>
+                    <a href="#"><i class="fa fa-lg fa-fw fa-empire"></i> <span class="menu-item-parent">Ayarlar</span></a>
+                    
+                    <ul>
+                        <li class="@Html.RouteIf("KullaniciAyarlar", "active")">
+                            <a href="@Url.Action("KullaniciAyarlar", "Home")"><i class="fa fa-lg fa-fw  fa-user-md"></i> <span class="menu-item-parent">Kullanıcı Ayarları</span></a>
+                        </li>
+                        <li class="@Html.RouteIf("HizmetAyarlar", "active")">
+                            <a href="@Url.Action("HizmetAyarlar", "Home")"><i class="fa fa-lg fa-fw  fa-cubes"></i> <span class="menu-item-parent">Hizmet Ayarları</span></a>
+                        </li>
+                        <li class="@Html.RouteIf("YetkiAyarlar", "active")">
+                            <a href="@Url.Action("YetkiAyarlar", "Home")"><i class="fa fa-lg fa-fw  fa-check"></i> <span class="menu-item-parent">Yetki Ayarları</span></a>
+                        </li>
+                    </ul>
                 </li>
             }
         </ul>
