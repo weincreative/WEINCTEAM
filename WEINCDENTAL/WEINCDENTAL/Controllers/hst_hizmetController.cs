@@ -118,7 +118,7 @@ namespace WEINCDENTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "t_id,t_adi,t_parcauygunmu,t_ceneuygunmu,t_fiyat,t_createuser,t_createdate,t_aktif")] hst_hizmet hst_hizmet)
         {
-            string methodAd = "/hst_hizmet/edit";
+           
             if (ModelState.IsValid)
             {
                 db.Entry(hst_hizmet).State = EntityState.Modified;

@@ -15,7 +15,6 @@ namespace WEINCDENTAL.Models
 
     public partial class adm_modulyetki
     {
-
         [Display(Name = "Yetki ID")]
         [Required]
         public int t_id { get; set; }

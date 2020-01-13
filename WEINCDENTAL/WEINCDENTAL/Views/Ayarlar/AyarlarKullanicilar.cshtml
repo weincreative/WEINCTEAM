@@ -52,7 +52,7 @@
                             <thead>
                                 <tr role="row">
                                     <!-- HEAD BAŞLANGICI -->
-                                    <th data-hide="phone,tablet" class="sorting_asc" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;">Kullanıcı ID</th>
+                                    
                                     <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;">Kullanıcı Kodu</th>
                                     <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Name: activate to sort column ascending" style="width: 50px;"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Kullanıcı Adı</th>
                                     <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Phone: activate to sort column ascending" style="width: 100px;"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> Kullanıcı Şifre</th>
@@ -72,9 +72,7 @@
                                 @foreach (var item in Model._ViewModelKullanicilar)
                                 {
                                     <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.t_id)
-                                        </td>
+                                       
                                         <td>
                                             @Html.DisplayFor(modelItem => item.t_kodu)
                                         </td>

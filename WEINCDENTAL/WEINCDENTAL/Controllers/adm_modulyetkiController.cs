@@ -52,7 +52,7 @@ namespace WEINCDENTAL.Content
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "t_id,t_adi,t_createuser,t_createdate,t_aktif")] adm_modulyetki adm_modulyetki)
         {
-            string methodAd = "/adm_modulyetki/create";
+            
             adm_modulyetki.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
             adm_modulyetki.t_createdate = DateTime.Now;
             adm_modulyetki.t_aktif = true;
@@ -89,7 +89,7 @@ namespace WEINCDENTAL.Content
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "t_id,t_adi,t_createuser,t_createdate,t_aktif")] adm_modulyetki adm_modulyetki)
         {
-            string methodAd = "/adm_modulyetki/edit";
+     
             if (ModelState.IsValid)
             {
                 db.Entry(adm_modulyetki).State = EntityState.Modified;

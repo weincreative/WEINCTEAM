@@ -43,7 +43,7 @@ namespace WEINCDENTAL.Controllers
         // GET: adm_kullanicilar/Create
         public ActionResult Create()
         {
-            ViewBag.t_grup = new SelectList(db.adm_kullanicigrup, "t_id", "t_adi");
+            ViewBag.t_grup = new SelectList(db.adm_kullanicigrup.Where(k=>k.t_id!=1), "t_id", "t_adi");
             return View("Create", new adm_kullanicilar());
         }
 
@@ -55,7 +55,7 @@ namespace WEINCDENTAL.Controllers
         [CustomAutAttributes]
         public ActionResult Create([Bind(Include = "t_id,t_kodu,t_adi,t_sifre,t_grup,t_createuser,t_createdate,t_aktif")] adm_kullanicilar adm_kullanicilar)
         {
-            string methodAd = "/adm_kullanicilar/create";
+        
             adm_kullanicilar.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
             adm_kullanicilar.t_createdate = DateTime.Now;
             adm_kullanicilar.t_aktif = true;
@@ -102,7 +102,7 @@ namespace WEINCDENTAL.Controllers
         [CustomAutAttributes]
         public ActionResult Edit([Bind(Include = "t_id,t_kodu,t_adi,t_sifre,t_grup,t_yetki,t_createuser,t_createdate,t_aktif")] adm_kullanicilar adm_kullanicilar)
         {
-            string methodAd = "/adm_kullanicilar/edit";
+           
             if (ModelState.IsValid)
             {
                 db.Entry(adm_kullanicilar).State = EntityState.Modified;

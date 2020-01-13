@@ -51,7 +51,7 @@ namespace WEINCDENTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "t_id,t_adi,t_createuser,t_createdate,t_aktif")] adm_kullanicigrup adm_kullanicigrup)
         {
-            string methodAd = "/adm_kullanicgrup/create";
+           
             adm_kullanicigrup.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
             adm_kullanicigrup.t_createdate = DateTime.Now;
             adm_kullanicigrup.t_aktif = true;
@@ -89,7 +89,7 @@ namespace WEINCDENTAL.Controllers
         [CustomAutAttributes]
         public ActionResult Edit([Bind(Include = "t_id,t_adi,t_createuser,t_createdate,t_aktif")] adm_kullanicigrup adm_kullanicigrup)
         {
-            string methodAd = "/adm_kullanicgrup/edit";
+           
             if (ModelState.IsValid)
             {
                 db.Entry(adm_kullanicigrup).State = EntityState.Modified;

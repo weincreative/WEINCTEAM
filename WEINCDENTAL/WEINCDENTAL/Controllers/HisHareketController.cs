@@ -81,20 +81,20 @@ namespace WEINCDENTAL.Controllers
                 return PartialView();
             }
         }
-        public PartialViewResult HisHareketPacs()
-        {
-            try
-            {
-                WEINCDENTALEntities db = new WEINCDENTALEntities();
-                ViewModelHisHareket vm = new ViewModelHisHareket();
-                vm._ViewModelPacs = db.adm_pacs.ToList();
-                return PartialView(vm);
-            }
-            catch (Exception ex)
-            {
-                return PartialView();
-            }
-        }
+        //public PartialViewResult HisHareketPacs()
+        //{
+        //    try
+        //    {
+        //        WEINCDENTALEntities db = new WEINCDENTALEntities();
+        //        ViewModelHisHareket vm = new ViewModelHisHareket();
+        //        vm._ViewModelPacs = db.adm_pacs.ToList();
+        //        return PartialView(vm);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return PartialView();
+        //    }
+        //}
        
     }
 }

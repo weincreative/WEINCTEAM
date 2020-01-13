@@ -16,16 +16,16 @@ namespace WEINCDENTAL.Controllers
         // GET: Ayarlar
         public PartialViewResult AyarlarKullanicilar()
         {
-            string methodAd = "/Ayarlar/AKullanici";
+            
             WEINCDENTALEntities db = new WEINCDENTALEntities();
             ViewModelAyarlar vm = new ViewModelAyarlar();
-            vm._ViewModelKullanicilar = db.View_Users.Where(k=>k.t_aktif==true).ToList();
+            vm._ViewModelKullanicilar = db.View_Users.Where(k=>k.t_aktif==true && k.t_grup!=1).ToList();
             return PartialView(vm);
         }
        
         public PartialViewResult AyarlarModulYetki()
         {
-            string methodAd = "/Ayarlar/AModulYetki";
+            
             WEINCDENTALEntities db = new WEINCDENTALEntities();
             ViewModelAyarlar vm = new ViewModelAyarlar();
             vm._ViewModelModulYetki = db.adm_modulyetki.ToList();
@@ -34,16 +34,16 @@ namespace WEINCDENTAL.Controllers
        
         public PartialViewResult AyarlarKullaniciGrup()
         {
-            string methodAd = "/Ayarlar/AKullaniciGrup";
+            
             WEINCDENTALEntities db = new WEINCDENTALEntities();
             ViewModelAyarlar vm = new ViewModelAyarlar();
-            vm._ViewModelKullaniciGrup = db.adm_kullanicigrup.ToList();
+            vm._ViewModelKullaniciGrup = db.adm_kullanicigrup.Where(k=>k.t_id!=1).ToList();
             return PartialView(vm);
         }
       
         public PartialViewResult AyarlarHizmet()
         {
-            string methodAd = "/Ayarlar/AHizmetler";
+            
             WEINCDENTALEntities db = new WEINCDENTALEntities();
             ViewModelAyarlar vm = new ViewModelAyarlar();
             vm._ViewModelHizmet = db.hst_hizmet.ToList();

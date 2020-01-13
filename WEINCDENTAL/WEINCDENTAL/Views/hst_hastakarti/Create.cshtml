@@ -213,22 +213,7 @@
 
 
                             }
-                            @*@if (ViewBag.HataMessage != null)
-                                {
-                                    <script type="text/javascript">
-                                        window.onload = function () {
-                                            alert("@ViewBag.HataMessage");
-                                        };
-                                        $.smallBox({
-                                            title: "",
-                                            content: "<i class='fa fa-clock-o'></i> <i> "+ @ViewBag.HataMessage +".</i>",
-                                            //content: "<i class='fa fa-clock-o'></i> <i> HASTA KARTINDA HATA OLUŞTU.</i>",
-                                            color: "#818F9A",
-                                            iconSmall: "fa fa-times fa-2x fadeInRight animated",
-                                            timeout: 4000
-                                        });
-                                    </script>
-                                }*@
+                          
                         </div>
                         <!-- end widget content -->
                     </div>
@@ -307,86 +292,7 @@
 
 
             });
-            //var $checkoutForm = $('#checkout-form').validate({
-            //    // Rules for form validation
-            //    rules: {
-            //        fname: {
-            //            required: true
-            //        },
-            //        tcname: {
-            //            required: true
-            //        },
-            //        startdate: {
-            //            required: true
-            //        },
-            //        lname: {
-            //            required: true
-            //        },
-            //        phone: {
-            //            required: true
-            //        },
-            //        dyeriname: {
-            //            required: true
-            //        },
-            //        address: {
-            //            required: true
-            //        },
-            //        gender: {
-            //            required: true
-            //        },
-            //        medeni: {
-            //            required: true
-            //        },
-            //        name: {
-            //            required: true
-            //        }
-            //    },
-
-            //    // Messages for form validation
-            //    messages: {
-            //        fname: {
-            //            required: 'Lütfen Hastanın Adını Giriniz'
-
-            //        },
-            //        lname: {
-            //            required: 'Lütfen Hastanın Soyadını Giriniz'
-            //        },
-            //        dyeriname: {
-            //            required: 'Lütfen Hastanın Doğum Yerini Giriniz'
-            //        },
-            //        tcname: {
-            //            required: 'Lütfen T.C.No /Yabancı Uyruk No giriniz'
-            //        },
-            //        startdate: {
-            //            required: 'Lütfen Doğum tarihini  giriniz'
-            //        },
-            //        phone: {
-            //            required: 'Lütfen Hastanın Telefon No Giriniz'
-            //        },
-            //        address: {
-            //            required: 'Lütfen Hastanın Adresini Giriniz'
-            //        },
-            //        gender: {
-            //            required: 'Lütfen Cinsiyet Seçiniz'
-            //        },
-            //        medeni: {
-            //            required: 'Lütfen Medeni Durum Seçiniz'
-            //        }
-            //    },
-
-            //    // Do not change code below
-            //    errorPlacement: function (error, element) {
-            //        error.insertAfter(element.parent());
-            //    }//,
-            //    //success: function (element) {
-            //    //   // alert("burda");
-            //    //  //  $(element).closest('.checkout-form').find('.help-block').html('');
-
-            //    //}
-            //});
-
-
-            @*@if (ViewBag.IsOptPropSet && ViewBag.OptProp != null)*@
+            
 
             // DO NOT REMOVE : GLOBAL FUNCTIONS!
             $('#startdate').datepicker({

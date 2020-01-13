@@ -12,6 +12,7 @@ namespace WEINCDENTAL.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
     public partial class View_BsvrVezne
     {
         public int v_id { get; set; }

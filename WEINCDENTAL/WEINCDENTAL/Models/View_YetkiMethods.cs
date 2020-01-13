@@ -12,14 +12,18 @@ namespace WEINCDENTAL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class adm_UserYetkis
+    public partial class View_YetkiMethods
     {
-        public int Id { get; set; }
-        public int UserId { get; set; }
         public long YetkiId { get; set; }
-        public bool Aktif { get; set; }
-    
-        public virtual adm_kullanicilar adm_kullanicilar { get; set; }
-        public virtual adm_Yetki adm_Yetki { get; set; }
+        public int YMId { get; set; }
+        public string YetkiAdi { get; set; }
+        public string YetkiAciklama { get; set; }
+        public int MethodId { get; set; }
+        public string MethodName { get; set; }
+        public string GorunecekIsim { get; set; }
+        public int ControllerId { get; set; }
+        public string ControllerName { get; set; }
+        public bool YetkiAktif { get; set; }
+        public bool YMAktif { get; set; }
     }
 }

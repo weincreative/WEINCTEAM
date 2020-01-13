@@ -21,7 +21,7 @@ namespace WEINCDENTAL.Controllers
         [CustomAutAttributes]
         public ActionResult SearchBorc(string tc, string emsg, int? durum)
         {
-            string methodAd = "/Vezne/SearchBorch";
+           
             ViewBag.tc = tc;
 
             if (emsg != null)

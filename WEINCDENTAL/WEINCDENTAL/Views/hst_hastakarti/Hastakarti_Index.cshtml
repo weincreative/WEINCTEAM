@@ -147,12 +147,15 @@
                                                             <i class="fa fa-leaf"></i>
                                                         </span>@*Başvuru*@
                                                     </a>
+                                                    @if (ViewBag.Pacs)
+                                                    {
+                                                        <a title="Pacs Görüntüle" onclick="GetPartialPacs('@item.t_tc')" class="btn btn-labeled btn-primary">
+                                                            <span class="btn-label">
+                                                                <i class="fa fa-file-movie-o"></i>
+                                                            </span>@*Pacs*@
+                                                        </a>
+                                                    }
 
-                                                    <a title="Pacs Görüntüle" onclick="GetPartialPacs('@item.t_tc')" class="btn btn-labeled btn-primary">
-                                                        <span class="btn-label">
-                                                            <i class="fa fa-file-movie-o"></i>
-                                                        </span>@*Pacs*@
-                                                    </a>
 
                                                 </td>
                                             </tr>

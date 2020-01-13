@@ -296,6 +296,9 @@
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TotalHizmet.cs" />
     <Compile Include="Models\TotalKazanc.cs" />
     <Compile Include="Models\ViewModelAyarlar.cs" />
@@ -328,6 +331,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\View_Vezne.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_YetkiMethods.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1187,7 +1193,6 @@
     <Content Include="Views\View_HizHareket\PartialHizHareket.cshtml" />
     <Content Include="Views\HisHareket\DisModul.cshtml" />
     <Content Include="Views\HisHareket\HisHareketFirma.cshtml" />
-    <Content Include="Views\HisHareket\HisHareketPacs.cshtml" />
     <Content Include="Views\HisHareket\HisHareket.cshtml" />
     <Content Include="Views\hst_hizmet\ListHizmet.cshtml" />
     <Content Include="Views\View_HastalikDurum\OzelDurumList.cshtml" />

@@ -22,5 +22,6 @@ namespace WEINCDENTAL.Models
         public System.DateTime t_createdate { get; set; }
         public bool t_aktif { get; set; }
         public string GroupAd { get; set; }
+        public Nullable<int> t_grup { get; set; }
     }
 }

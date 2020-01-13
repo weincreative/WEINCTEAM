@@ -11,15 +11,20 @@ using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
-    [CustomAutAttributes]
+    //[CustomAutAttributes]
     public class hst_hastakartiController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
 
+        [CustomAutAttributes]
         // GET: hst_hastakarti
         public ActionResult Hastakarti_Index()
         {
-            string methodAd = "/hst_hastakarti/index";
+            var uid = Convert.ToInt32(Session["userId"]);
+            TokenController tokenController = new TokenController();
+            var PacsYetki = tokenController.GetYetkis(uid, "Pacs", "_PartialPacsList");
+            ViewBag.Pacs = PacsYetki;
+
             var hst_hastakarti = db.hst_hastakarti.Include(h => h.hst_cinsiyet).Include(h => h.hst_il).Include(h => h.hst_ilce).Include(h => h.hst_medenidurum).Include(h => h.hst_ulke).Where(k => k.t_aktif == true);
             return View(hst_hastakarti.ToList());
         }
@@ -62,11 +67,11 @@ namespace WEINCDENTAL.Controllers
             return PartialView(hst_hastakarti);
         }
 
-
+        [CustomAutAttributes]
         // GET: hst_hastakarti/Create
         public ActionResult Create()
         {
-            string methodAd = "/hst_hastakarti/create";
+         
             try
             {
                 string id = Ortak._hastatc;
@@ -101,6 +106,7 @@ namespace WEINCDENTAL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [CustomAutAttributes]
         public ActionResult Create([Bind(Include = "t_id,t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_ulkeId,t_ilId,t_ilceId,t_adres,t_createuser,t_createdate,t_aktif,yabancimi")] hst_hastakarti hst_hastakarti)
         {
             try
@@ -176,9 +182,10 @@ namespace WEINCDENTAL.Controllers
         }
 
         // GET: hst_hastakarti/Edit/5
+        [CustomAutAttributes]
         public ActionResult HastaEdit(string tc)
         {
-            string methodAd = "/hst_hastakarti/hastaedit";
+            
             hst_hastakarti hst_hastakarti = db.hst_hastakarti.Find(tc);
             if (hst_hastakarti == null)
             {
@@ -203,6 +210,7 @@ namespace WEINCDENTAL.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [CustomAutAttributes]
         public ActionResult HastaEdit([Bind(Include = "yabancimi,t_id,t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_ulkeId,t_ilId,t_ilceId,t_adres,t_createuser,t_createdate,t_aktif")] hst_hastakarti hst_hastakarti)
         {
             try
@@ -233,12 +241,12 @@ namespace WEINCDENTAL.Controllers
                 ViewBag.t_cinsiyet = new SelectList(db.hst_cinsiyet, "t_id", "t_adi", hst_hastakarti.t_cinsiyet);
                 ViewBag.t_ilId = new SelectList(db.hst_il, "t_id", "t_adi", hst_hastakarti.t_ilId);
                 List<SelectListItem> itemList = (from i in db.hst_ilce.Where(k => k.t_aktif == true).ToList()
-                    select new SelectListItem
-                    {
-                        Value = i.t_id.ToString(),
-                        Text = i.t_adi,
-                        Selected = i.t_id == hst_hastakarti.t_ilceId
-                    }).ToList();
+                                                 select new SelectListItem
+                                                 {
+                                                     Value = i.t_id.ToString(),
+                                                     Text = i.t_adi,
+                                                     Selected = i.t_id == hst_hastakarti.t_ilceId
+                                                 }).ToList();
 
                 ViewBag.t_ilceId2 = itemList;
                 ViewBag.t_medenidurum = new SelectList(db.hst_medenidurum, "t_id", "t_adi", hst_hastakarti.t_medenidurum);
@@ -251,7 +259,7 @@ namespace WEINCDENTAL.Controllers
             }
         }
 
-      
+
         // POST: hst_hastakarti/Delete/5
         [HttpPost]
         public JsonResult Delete(string tc)

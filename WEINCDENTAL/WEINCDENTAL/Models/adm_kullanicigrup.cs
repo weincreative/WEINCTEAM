@@ -21,6 +21,7 @@ namespace WEINCDENTAL.Models
             this.adm_UserGroups = new HashSet<adm_UserGroups>();
             this.adm_YetkiGroups = new HashSet<adm_YetkiGroups>();
         }
+
         [Display(Name = "Grup ID")]
         [Required]
         public int t_id { get; set; }

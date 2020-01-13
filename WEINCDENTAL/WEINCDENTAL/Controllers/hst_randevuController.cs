@@ -20,7 +20,7 @@ namespace WEINCDENTAL.Controllers
         [CustomAutAttributes]
         public ActionResult Randevu_Index(string tc)
         {
-            string methodAd = "/hst_randevu/Index";
+     
             try
             {
                 if (tc == null)
@@ -74,7 +74,7 @@ namespace WEINCDENTAL.Controllers
         [CustomAutAttributes]
         public ActionResult Randevular()
         {
-            string methodAd = "Randevu Listele";
+       
             try
             {
                 var list = db.hst_randevu.Where(k => k.t_aktif == true).AsEnumerable().Select(e => new
@@ -148,7 +148,7 @@ namespace WEINCDENTAL.Controllers
         [CustomAutAttributes]
         public ActionResult Create(List<hst_randevu> hst_randevu)
         {
-            string methodAd = "/hst_randevu/create";
+            
             bool durum = false;
             try
             {
@@ -191,7 +191,7 @@ namespace WEINCDENTAL.Controllers
         [CustomAutAttributes]
         public ActionResult Edit([Bind(Include = "t_id,t_basvuru,t_tc,t_title,t_aciklama,t_baslangicsaat,t_bitissaat,t_classname,t_icon,t_allday,t_createuser,t_createdate,t_basvurudr,t_aktif")] List<hst_randevu> hst_randevu)
         {
-            string methodAd = "/hst_randevu/edit";
+          
             bool durum = false;
             try
             {

@@ -17,6 +17,7 @@ namespace WEINCDENTAL.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public adm_Yetki()
         {
+            this.adm_UserYetkis = new HashSet<adm_UserYetkis>();
             this.adm_YetkiGroups = new HashSet<adm_YetkiGroups>();
             this.adm_YetkiMethods = new HashSet<adm_YetkiMethods>();
         }
@@ -27,6 +28,8 @@ namespace WEINCDENTAL.Models
         public Nullable<System.DateTime> CreateDate { get; set; }
         public bool Aktif { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<adm_UserYetkis> adm_UserYetkis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<adm_YetkiGroups> adm_YetkiGroups { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

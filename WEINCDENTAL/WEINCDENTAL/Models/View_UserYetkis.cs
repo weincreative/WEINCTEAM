@@ -15,8 +15,9 @@ namespace WEINCDENTAL.Models
     public partial class View_UserYetkis
     {
         public int UserId { get; set; }
-        public Nullable<int> t_kid { get; set; }
         public long YetkiId { get; set; }
+        public int YMId { get; set; }
+        public Nullable<int> t_kid { get; set; }
         public string t_kodu { get; set; }
         public string t_adi { get; set; }
         public string YetkiAdi { get; set; }
@@ -24,7 +25,6 @@ namespace WEINCDENTAL.Models
         public string GorunecekIsim { get; set; }
         public string MethodName { get; set; }
         public string ControllerName { get; set; }
-        public int YMethodId { get; set; }
         public bool Aktif { get; set; }
     }
 }

@@ -12,14 +12,12 @@ namespace WEINCDENTAL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class adm_UserYetkis
+    public partial class sysdiagrams
     {
-        public int Id { get; set; }
-        public int UserId { get; set; }
-        public long YetkiId { get; set; }
-        public bool Aktif { get; set; }
-    
-        public virtual adm_kullanicilar adm_kullanicilar { get; set; }
-        public virtual adm_Yetki adm_Yetki { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

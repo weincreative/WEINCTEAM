@@ -22,8 +22,12 @@ namespace WEINCDENTAL.Controllers
         [HttpGet]
         public ActionResult Hastabasvuru_Index(string id)
         {
-          
-            string methodAd = "/hastabasvuru/index";
+
+            var uid = Convert.ToInt32(Session["userId"]);
+            TokenController tokenController = new TokenController();
+            var hizYetkis = tokenController.GetYetkis(uid, "View_HizHareket", "PartialHizHareket");
+            ViewBag.hizYetkis = hizYetkis;
+
             var hst_basvuru = db.hst_basvuru.Include(h => h.hst_bölüm).Include(h => h.hst_hastakarti).Where(k=>k.t_aktif==true && k.t_tc==id).ToList();
           
             if (id == null ||hst_basvuru == null) //Yeni Başvuru Açsın.
@@ -48,7 +52,7 @@ namespace WEINCDENTAL.Controllers
         [HttpPost]
         public JsonResult Taburcu(int id)
         {
-            string methodAd = "/hastabasvuru/taburcu";
+           
             var sonuc = 0;
             try
             {
@@ -68,7 +72,7 @@ namespace WEINCDENTAL.Controllers
         [HttpPost]
         public JsonResult TaburcuGerial(int id)
         {
-            string methodAd = "/hastabasvuru/taburcuGeriAl";
+          
             var sonuc = 0;
             try
             {
@@ -103,7 +107,7 @@ namespace WEINCDENTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "t_id,t_basvuru,t_tc,t_basvurutarihi,t_bolumkodu,t_cagriekraniistem,t_basvurudr,t_borc,t_taburcu,t_createdate,t_createuser,t_aktif")] hst_basvuru hst_basvuru)
         {
-            string methodAd = "/hastabasvuru/Create";
+          
             try
             {
                 Ortak o = new Ortak();
@@ -167,7 +171,7 @@ namespace WEINCDENTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "t_id,t_basvuru,t_tc,t_basvurutarihi,t_bolumkodu,t_cagriekraniistem,t_basvurudr,t_taburcu,t_createdate,t_createuser,t_aktif")] hst_basvuru hst_basvuru)
         {
-            string methodAd = "/hastabasvuru/edit";
+          
             try
             {
 
@@ -222,7 +226,7 @@ namespace WEINCDENTAL.Controllers
         [HttpPost]
         public JsonResult Delete(int id)
         {
-            string methodAd = "/hastabasvuru/delete";
+          
             var sonuc = 0;
             try
             {

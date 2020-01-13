@@ -25,7 +25,7 @@ namespace WEINCDENTAL.Controllers
         [CustomAutAttributes]
         public PartialViewResult PartialHizHareket(int id)
         {
-            string methodAd = "/View_HizHareket/PHizHareket";
+            
             var hizhareket = db.View_HizHareket.Where(k => k.basvuruid == id &&k.HHareketAkteif==true && k.Baktif==true).ToList();
             return PartialView(hizhareket);
         }

@@ -85,7 +85,7 @@ namespace WEINCDENTAL.Controllers
         [CustomAutAttributes]
         public ActionResult SekIndex()
         {
-            string methodAd = "/home/Sekindex";
+           
             return View();
         }
     }
