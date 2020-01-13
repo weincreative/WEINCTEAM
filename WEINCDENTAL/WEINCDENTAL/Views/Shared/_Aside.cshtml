@@ -13,6 +13,12 @@
     (the reference to the nav > ul) after page load. Or the navigation
     will not initialize.
     --> 
+    @{
+        var userId = Convert.ToInt32(Session["userId"]);
+        var yetkis=new TokenController().MenuYetkiList(userId);
+
+    }
+
     <nav>
         <!-- NOTE: Notice the gaps after each icon usage <i></i>..
         Please note that these links work a bit different than
@@ -31,6 +37,25 @@
                     <a href="@Url.Action("SekIndex", "Home")"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ana Sayfa</span></a>
                 </li>
             }
+            
+            @*@foreach (var yetki in yetkis)
+            {
+                if (yetki.Item1=="Home" && yetki.Item2=="Index")
+                {
+                    <li class="@Html.RouteIf("Index", "active")">
+                        <a href="@Url.Action("Index", "Home")"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ana Sayfa2</span></a>
+                    </li>
+                }
+
+            }*@
+            
+            
+            
+            
+            
+            
+            
+
             @if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4") || User.IsInRole("5"))
             {
                 <li class="@Html.RouteIf("hst_hastakarti", "active")">

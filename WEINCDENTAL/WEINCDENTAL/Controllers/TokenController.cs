@@ -8,9 +8,10 @@ using WEINCDENTAL.Models;
 
 namespace WEINCDENTAL.Controllers
 {
-    public class TokenController:Controller
+    public class TokenController : Controller
     {
         private static WEINCDENTALEntities db = new WEINCDENTALEntities();
+        MemoryCacheManager memoryCacher = new MemoryCacheManager();
         public ICache Cache { get; set; }
         public TokenController()
             : this(new MemoryCacheManager())
@@ -56,15 +57,63 @@ namespace WEINCDENTAL.Controllers
             }
             return currencyData;
         }
-       
+
         // GET: Token
-        public  bool GetYetkis(int userId,string controllerName,string actionName)
+        public bool GetYetkis(int userId, string controllerName, string actionName)
         {
-            var memoryCacher = new MemoryCacheManager();
             List<View_GroupYetki> glist = null;
             List<View_UserYetkis> ulist = null;
             bool yetkiVarMi = false;
-           
+
+            // Memory Cache de veri yoksa
+            if (!memoryCacher.Contains("groupyetki"))
+            {
+                new TokenController().GetGroupYetkis(userId);
+            }
+            if (!memoryCacher.Contains("useryetki"))
+            {
+                new TokenController().GetUserYetkis(userId);
+            }
+            glist = memoryCacher.Get<List<View_GroupYetki>>("groupyetki");
+            ulist = memoryCacher.Get<List<View_UserYetkis>>("useryetki");
+
+            if (glist != null || ulist != null)
+            {
+                if (glist != null)  //grup yetkileri
+                {
+                    // grup içinde yetki bakıyor.
+                    yetkiVarMi = glist.Any(x => x.ControllerName == controllerName &&
+                                                x.MethodName == actionName);
+                    if (!yetkiVarMi) //Grup içinde yetki yoksa...
+                    {
+                        if (ulist != null)
+                        {
+                            yetkiVarMi = ulist.Any(x => x.ControllerName == controllerName &&
+                                                        x.MethodName == actionName);
+                        }
+                    }
+                }
+            }
+
+            return yetkiVarMi;
+        }
+
+        public List<Tuple<string, string>> MenuYetkiList(int userId)
+        {
+            string cachkey = "menuyetki";
+
+            List<Tuple<string, string>> currentData = new List<Tuple<string, string>>();
+          // var currentData= System.Web.HttpContext.Current.Cache["menuyetki"];
+
+                currentData = Cache.Get<List<Tuple<string, string>>>(cachkey) as List<Tuple<string, string>>;
+
+
+            if (currentData == null)
+            {
+                List<Tuple<string, string>> tupleGlist = new List<Tuple<string, string>>();
+                List<Tuple<string, string>> tupleUList = new List<Tuple<string, string>>();
+                List<View_GroupYetki> glist = null;
+                List<View_UserYetkis> ulist = null;
                 // Memory Cache de veri yoksa
                 if (!memoryCacher.Contains("groupyetki"))
                 {
@@ -77,33 +126,23 @@ namespace WEINCDENTAL.Controllers
                 glist = memoryCacher.Get<List<View_GroupYetki>>("groupyetki");
                 ulist = memoryCacher.Get<List<View_UserYetkis>>("useryetki");
 
-                if (glist != null || ulist != null)
+                if (glist != null)
                 {
-                    if (glist != null)  //grup yetkileri
-                    {
-                        // grup içinde yetki bakıyor.
-                        yetkiVarMi = glist.Any(x => x.ControllerName == controllerName &&
-                                                    x.MethodName == actionName);
-                        if (!yetkiVarMi) //Grup içinde yetki yoksa...
-                        {
-                            if (ulist != null)
-                            {
-                                yetkiVarMi = ulist.Any(x => x.ControllerName == controllerName &&
-                                                            x.MethodName == actionName);
-                            }
-                        }
-                    }
-                    //if (ulist != null)
-                    //{
-                    //    yetkiVarMi = ulist.Any(x => x.ControllerName == controllerName && x.MethodName == actionName);
-                    //}
-
+                    tupleGlist.AddRange(glist.Select(item => new Tuple<string, string>(item.ControllerName, item.MethodName)));
                 }
+                if (ulist != null)
+                {
+                    tupleUList.AddRange(ulist.Select(useritem => new Tuple<string, string>(useritem.ControllerName, useritem.MethodName)));
+                }
+                //  List<Tuple<string, string>> yetkiList = new List<Tuple<string, string>>();
+                currentData.AddRange(tupleGlist.Select(item => new Tuple<string, string>(item.Item1, item.Item2)));
+                currentData.AddRange(tupleUList.Select(item => new Tuple<string, string>(item.Item1, item.Item2)));
+                //currentData = yetkiList;
                 
+            }
 
-            return yetkiVarMi;
+            return currentData;
+
         }
-
-
     }
 }

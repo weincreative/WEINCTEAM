@@ -29,7 +29,7 @@ namespace WEINCDENTAL.Controllers
             {
                 FormsAuthentication.SetAuthCookie(kullanici.t_kodu, false);
                 Session["userId"] = UserINDB.t_id;
-
+              
                 return RedirectToAction("SekIndex", "Home");
              
             }
@@ -47,6 +47,7 @@ namespace WEINCDENTAL.Controllers
             Ortak._hastatc = "";
             new MemoryCacheManager().Remove("groupyetki");
             new MemoryCacheManager().Remove("useryetki");
+            new MemoryCacheManager().Remove("menuyetki");
             return RedirectToAction("Login");
         }
     }
