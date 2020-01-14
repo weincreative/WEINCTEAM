@@ -48,8 +48,7 @@ namespace WEINCDENTAL.Controllers
             List<View_UserYetkis> currencyData = Cache.Get<List<View_UserYetkis>>(cachkey);
             if (currencyData == null)
             {
-                currencyData = db.View_UserYetkis.Where(k => k.UserId == usrId).
-                    Where(p => p.Aktif == true).ToList();
+                currencyData = db.View_UserYetkis.Where(k => k.UserId == usrId).Where(k=>k.Aktif==true).ToList();
                 if (currencyData.Any())
                 {
                     Cache.Add(cachkey, currencyData);
@@ -89,7 +88,8 @@ namespace WEINCDENTAL.Controllers
                         if (ulist != null)
                         {
                             yetkiVarMi = ulist.Any(x => x.ControllerName == controllerName &&
-                                                        x.MethodName == actionName);
+                                                         x.MethodName == actionName);
+
                         }
                     }
                 }
@@ -103,10 +103,7 @@ namespace WEINCDENTAL.Controllers
             string cachkey = "menuyetki";
 
             List<Tuple<string, string>> currentData = new List<Tuple<string, string>>();
-          // var currentData= System.Web.HttpContext.Current.Cache["menuyetki"];
-
-                currentData = Cache.Get<List<Tuple<string, string>>>(cachkey) as List<Tuple<string, string>>;
-
+            currentData = Cache.Get<List<Tuple<string, string>>>(cachkey);
 
             if (currentData == null)
             {
@@ -134,11 +131,15 @@ namespace WEINCDENTAL.Controllers
                 {
                     tupleUList.AddRange(ulist.Select(useritem => new Tuple<string, string>(useritem.ControllerName, useritem.MethodName)));
                 }
-                //  List<Tuple<string, string>> yetkiList = new List<Tuple<string, string>>();
-                currentData.AddRange(tupleGlist.Select(item => new Tuple<string, string>(item.Item1, item.Item2)));
-                currentData.AddRange(tupleUList.Select(item => new Tuple<string, string>(item.Item1, item.Item2)));
-                //currentData = yetkiList;
-                
+                List<Tuple<string, string>> yetkiList = new List<Tuple<string, string>>();
+                yetkiList.AddRange(tupleGlist.Select(item => new Tuple<string, string>(item.Item1, item.Item2)));
+                yetkiList.AddRange(tupleUList.Select(item => new Tuple<string, string>(item.Item1, item.Item2)));
+                currentData = yetkiList;
+                if (currentData.Any())
+                {
+                    Cache.Add(cachkey, currentData);
+                }
+
             }
 
             return currentData;

@@ -12,11 +12,10 @@
     To make this navigation dynamic please make sure to link the node
     (the reference to the nav > ul) after page load. Or the navigation
     will not initialize.
-    --> 
+    -->
     @{
         var userId = Convert.ToInt32(Session["userId"]);
-        var yetkis=new TokenController().MenuYetkiList(userId);
-
+        var yetkis = new TokenController().MenuYetkiList(userId);
     }
 
     <nav>
@@ -25,65 +24,55 @@
         traditional href="" links. See documentation for details.
         -->
         <ul>
-            @if (User.IsInRole("1") || User.IsInRole("2"))
+
+
+            @if (yetkis.Any(k => k.Item1 == "Home" && k.Item2 == "Index"))
             {
                 <li class="@Html.RouteIf("Index", "active")">
                     <a href="@Url.Action("Index", "Home")"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ana Sayfa</span></a>
                 </li>
             }
-            else
+            else if(yetkis.Any(k => k.Item1 == "Home" && k.Item2 == "SekIndex"))
             {
                 <li class="@Html.RouteIf("Index", "active")">
                     <a href="@Url.Action("SekIndex", "Home")"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ana Sayfa</span></a>
                 </li>
             }
-            
-            @*@foreach (var yetki in yetkis)
-            {
-                if (yetki.Item1=="Home" && yetki.Item2=="Index")
-                {
-                    <li class="@Html.RouteIf("Index", "active")">
-                        <a href="@Url.Action("Index", "Home")"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ana Sayfa2</span></a>
-                    </li>
-                }
 
-            }*@
-            
-            
-            
-            
-            
-            
-            
-
-            @if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4") || User.IsInRole("5"))
+            @if (yetkis.Any(k => k.Item1 == "hst_hastakarti"))
             {
                 <li class="@Html.RouteIf("hst_hastakarti", "active")">
                     <a href="#"><i class="fa fa-lg fa-fw fa-user"></i><span class="menu-item-parent">Hasta İşlemleri</span></a>
                     <ul>
-
-                        <li class="@Html.RouteIf("Create", "active")">
-                            <a href="@Url.Action("Create", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Hasta Kartı</span></a>
-                        </li>
-                        <li class="@Html.RouteIf("Hastakarti_Index", "active")">
-                        <a href="@Url.Action("Hastakarti_Index", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-info-circle"></i><span class="menu-item-parent">Hasta Bilgileri</span></a>
-
-                        <li class="@Html.RouteIf("HastaBasvuruCreate", "active")">
-                            <a href="@Url.Action("HastaBasvuruCreate", "hst_basvuru")"><i class="fa fa-lg fa-fw  fa-paperclip"></i> <span class="menu-item-parent">Hasta Başvuru</span></a>
-                        </li>
-
+                        @if (yetkis.Any(k => k.Item1 == "hst_hastakarti" && k.Item2 == "Create"))
+                        {
+                            <li class="@Html.RouteIf("Create", "active")">
+                                <a href="@Url.Action("Create", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Hasta Kartı</span></a>
+                            </li>
+                        }
+                        @if (yetkis.Any(k => k.Item1 == "hst_hastakarti" && k.Item2 == "Hastakarti_Index"))
+                        {
+                            <li class="@Html.RouteIf("Hastakarti_Index", "active")">
+                                <a href="@Url.Action("Hastakarti_Index", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-info-circle"></i><span class="menu-item-parent">Hasta Bilgileri</span></a>
+                            </li>
+                        }
+                        @if (yetkis.Any(k => k.Item1 == "hst_basvuru" && k.Item2 == "HastaBasvuruCreate"))
+                        {
+                            <li class="@Html.RouteIf("HastaBasvuruCreate", "active")">
+                                <a href="@Url.Action("HastaBasvuruCreate", "hst_basvuru")"><i class="fa fa-lg fa-fw  fa-paperclip"></i> <span class="menu-item-parent">Hasta Başvuru</span></a>
+                            </li>
+                        }
                     </ul>
                 </li>
             }
 
-            @if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4"))
+            @if (yetkis.Any(k => k.Item1 == "hst_randevu" && k.Item2 == "Randevu_Index"))
             {
                 <li class="@Html.RouteIf("Randevu_Index", "active")">
-                    <a href="@Url.Action("Randevu_Index", "hst_randevu")"><i class="fa fa-lg fa-fw fa-calendar">@*<em>3</em>*@</i> <span class="menu-item-parent">Randevu</span></a>
+                    <a href="@Url.Action("Randevu_Index", "hst_randevu")"><i class="fa fa-lg fa-fw fa-calendar"></i> <span class="menu-item-parent">Randevu</span></a>
                 </li>
             }
-
-            @if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4") || User.IsInRole("5"))
+            @if (yetkis.Any(k => k.Item1 == "Pacs_Index" && k.Item2 == "Pacs"))
             {
                 <li class="@Html.RouteIf("Pacs_Index", "active")">
                     <a href="@Url.Action("Pacs_Index", "Pacs")"><i class="fa fa-lg fa-fw fa-file-movie-o">@*<em>3</em>*@</i> <span class="menu-item-parent">Pacs</span></a>
@@ -91,36 +80,135 @@
             }
 
 
-            @if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4"))
+
+            @if (yetkis.Any(k => k.Item1 == "Vezne"))
             {
                 <li class="@Html.RouteIf("Vezne", "active")">
                     <a href="#"><i class="fa fa-lg fa-fw fa-money"></i><span class="menu-item-parent">Vezne</span></a>
                     <ul>
-                        <li class="@Html.RouteIf("SearchBorc", "active")">
-                            <a href="@Url.Action("SearchBorc", "Vezne")"><i class="fa fa-lg fa-fw  fa-money">@*<em>3</em>*@</i> <span class="menu-item-parent">Borç Sorgula</span></a>
-                        </li>
+                        @if (yetkis.Any(k => k.Item1 == "Vezne" && k.Item2 == "SearchBorc"))
+                        {
+                            <li class="@Html.RouteIf("SearchBorc", "active")">
+                                <a href="@Url.Action("SearchBorc", "Vezne")"><i class="fa fa-lg fa-fw  fa-money"></i> <span class="menu-item-parent">Borç Sorgula</span></a>
+                            </li>
+                        }
                     </ul>
 
                 </li>
             }
-            @if (User.IsInRole("2")|| User.IsInRole("1"))
+
+
+            @if (yetkis.Any(k => k.Item1 == "Ayarlar"))
             {
                 <li class="@Html.RouteIf("Ayarlar", "active")">
                     <a href="#"><i class="fa fa-lg fa-fw fa-empire"></i> <span class="menu-item-parent">Ayarlar</span></a>
-                    
+
                     <ul>
-                        <li class="@Html.RouteIf("KullaniciAyarlar", "active")">
-                            <a href="@Url.Action("KullaniciAyarlar", "Home")"><i class="fa fa-lg fa-fw  fa-user-md"></i> <span class="menu-item-parent">Kullanıcı Ayarları</span></a>
-                        </li>
-                        <li class="@Html.RouteIf("HizmetAyarlar", "active")">
-                            <a href="@Url.Action("HizmetAyarlar", "Home")"><i class="fa fa-lg fa-fw  fa-cubes"></i> <span class="menu-item-parent">Hizmet Ayarları</span></a>
-                        </li>
-                        <li class="@Html.RouteIf("YetkiAyarlar", "active")">
-                            <a href="@Url.Action("YetkiAyarlar", "Home")"><i class="fa fa-lg fa-fw  fa-check"></i> <span class="menu-item-parent">Yetki Ayarları</span></a>
-                        </li>
+                        @if (yetkis.Any(k => k.Item1 == "Home" && k.Item2 == "KullaniciAyarlar"))
+                        {
+                            <li class="@Html.RouteIf("KullaniciAyarlar", "active")">
+                                <a href="@Url.Action("KullaniciAyarlar", "Home")"><i class="fa fa-lg fa-fw  fa-user-md"></i> <span class="menu-item-parent">Kullanıcı Ayarları</span></a>
+                            </li>
+                        }
+                        @if (yetkis.Any(k => k.Item1 == "Home" && k.Item2 == "HizmetAyarlar"))
+                        {
+                            <li class="@Html.RouteIf("HizmetAyarlar", "active")">
+                                <a href="@Url.Action("HizmetAyarlar", "Home")"><i class="fa fa-lg fa-fw  fa-cubes"></i> <span class="menu-item-parent">Hizmet Ayarları</span></a>
+                            </li>
+                        }
+                        @if (yetkis.Any(k => k.Item1 == "Home" && k.Item2 == "YetkiAyarlar"))
+                        {
+                            <li class="@Html.RouteIf("YetkiAyarlar", "active")">
+                                <a href="@Url.Action("YetkiAyarlar", "Home")"><i class="fa fa-lg fa-fw  fa-check"></i> <span class="menu-item-parent">Yetki Ayarları</span></a>
+                            </li>
+                        }
+
+
                     </ul>
                 </li>
             }
+
+            @*@if (User.IsInRole("1") || User.IsInRole("2"))
+                {
+                    <li class="@Html.RouteIf("Index", "active")">
+                        <a href="@Url.Action("Index", "Home")"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ana Sayfa</span></a>
+                    </li>
+                }
+                else
+                {
+                    <li class="@Html.RouteIf("Index", "active")">
+                        <a href="@Url.Action("SekIndex", "Home")"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ana Sayfa</span></a>
+                    </li>
+                }*@
+
+            @*@if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4") || User.IsInRole("5"))
+                {
+                    <li class="@Html.RouteIf("hst_hastakarti", "active")">
+                        <a href="#"><i class="fa fa-lg fa-fw fa-user"></i><span class="menu-item-parent">Hasta İşlemleri</span></a>
+                        <ul>
+
+                            <li class="@Html.RouteIf("Create", "active")">
+                                <a href="@Url.Action("Create", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Hasta Kartı</span></a>
+                            </li>
+                            <li class="@Html.RouteIf("Hastakarti_Index", "active")">
+                                <a href="@Url.Action("Hastakarti_Index", "hst_hastakarti")"><i class="fa fa-lg fa-fw fa-info-circle"></i><span class="menu-item-parent">Hasta Bilgileri</span></a>
+                            </li>
+                            <li class="@Html.RouteIf("HastaBasvuruCreate", "active")">
+                                <a href="@Url.Action("HastaBasvuruCreate", "hst_basvuru")"><i class="fa fa-lg fa-fw  fa-paperclip"></i> <span class="menu-item-parent">Hasta Başvuru</span></a>
+                            </li>
+
+                        </ul>
+                    </li>
+                }*@
+
+            @*@if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4"))
+                {
+                    <li class="@Html.RouteIf("Randevu_Index", "active")">
+                        <a href="@Url.Action("Randevu_Index", "hst_randevu")"><i class="fa fa-lg fa-fw fa-calendar"></i> <span class="menu-item-parent">Randevu</span></a>
+                    </li>
+                }
+
+                @if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4") || User.IsInRole("5"))
+                {
+                    <li class="@Html.RouteIf("Pacs_Index", "active")">
+                        <a href="@Url.Action("Pacs_Index", "Pacs")"><i class="fa fa-lg fa-fw fa-file-movie-o"></i> <span class="menu-item-parent">Pacs</span></a>
+                    </li>
+                }
+            *@
+
+            @*@if (User.IsInRole("1") || User.IsInRole("3") || User.IsInRole("4"))
+                {
+                    <li class="@Html.RouteIf("Vezne", "active")">
+                        <a href="#"><i class="fa fa-lg fa-fw fa-money"></i><span class="menu-item-parent">Vezne</span></a>
+                        <ul>
+                            <li class="@Html.RouteIf("SearchBorc", "active")">
+                                <a href="@Url.Action("SearchBorc", "Vezne")"><i class="fa fa-lg fa-fw  fa-money"></i> <span class="menu-item-parent">Borç Sorgula</span></a>
+                            </li>
+                        </ul>
+
+                    </li>
+                }*@
+
+
+
+            @*@if (User.IsInRole("2") || User.IsInRole("1"))
+                {
+                    <li class="@Html.RouteIf("Ayarlar", "active")">
+                        <a href="#"><i class="fa fa-lg fa-fw fa-empire"></i> <span class="menu-item-parent">Ayarlar</span></a>
+
+                        <ul>
+                            <li class="@Html.RouteIf("KullaniciAyarlar", "active")">
+                                <a href="@Url.Action("KullaniciAyarlar", "Home")"><i class="fa fa-lg fa-fw  fa-user-md"></i> <span class="menu-item-parent">Kullanıcı Ayarları</span></a>
+                            </li>
+                            <li class="@Html.RouteIf("HizmetAyarlar", "active")">
+                                <a href="@Url.Action("HizmetAyarlar", "Home")"><i class="fa fa-lg fa-fw  fa-cubes"></i> <span class="menu-item-parent">Hizmet Ayarları</span></a>
+                            </li>
+                            <li class="@Html.RouteIf("YetkiAyarlar", "active")">
+                                <a href="@Url.Action("YetkiAyarlar", "Home")"><i class="fa fa-lg fa-fw  fa-check"></i> <span class="menu-item-parent">Yetki Ayarları</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                }*@
         </ul>
     </nav>
     <span class="minifyme" data-action="minifyMenu">
