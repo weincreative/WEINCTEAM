@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WEINCDENTAL.Models;
+using WEINCDENTAL.Security;
 
 namespace WEINCDENTAL.Controllers
 {
+    [CustomAutAttributes]
     public class UserYetkiController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
