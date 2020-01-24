@@ -7,19 +7,7 @@
     <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <!-- Widget ID (each widget will need unique ID)-->
         <div class="jarviswidget" id="wid-id-3" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-collapsed="true" data-widget-sortable="false" data-widget-deletebutton="false">
-            <!-- widget options:
-                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-                data-widget-colorbutton="false"
-                data-widget-editbutton="false"
-                data-widget-togglebutton="false"
-                data-widget-deletebutton="false"
-                data-widget-fullscreenbutton="false"
-                data-widget-custombutton="false"
-                data-widget-collapsed="true"
-                data-widget-sortable="false"
-
-            -->
+            
             <header>
                 <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
                 <h2>Modül Yetki </h2>
@@ -66,27 +54,27 @@
 
                                 @foreach (var item in Model._ViewModelModulYetki)
                                 {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.t_id)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.t_adi)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.t_createuser)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.t_createdate)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.t_aktif)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Düzenle", "../adm_modulyetki/Edit", new { id = item.t_id }) |
-                                      
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_adi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_createuser)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_createdate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.t_aktif)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Düzenle", "../adm_modulyetki/Edit", new { id = item.t_id }) |
+
+                                        </td>
+                                    </tr>
                                 }
 
 
@@ -127,8 +115,8 @@
                     Kapat
                 </button>
                 @*<button value="Submit" class="btn btn-primary" id="SubmitBTN">
-                    Post Article
-                </button>*@
+                        Post Article
+                    </button>*@
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

@@ -161,7 +161,7 @@ function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, cen
     $('#newHizmet').closest('tr').after(row);
     $('input[type="button"]', row).removeClass('AddNew').addClass('btn btn-labeled btn-danger RemoveRow').val('Sil')
         .attr('name', tblNo);
-    
+
 
     tblNo++;
 
@@ -185,7 +185,7 @@ function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, cen
             "-" + day +
             " " + saat +
             ":" + dak;
-       
+
         tblList.push({
             "t_basvuruid": bid,
             "t_hizmetkodu": hkod,
@@ -201,7 +201,7 @@ function TblEkle(tblList, tblNo, dkod, hkod, had, hfiyat, user, bid, ceneid, cen
             "t_islemtarihi": zmn,
             "t_createdate": zmn,
             't_borcdurum': true,
-            't_yapildi':false
+            't_yapildi': false
         });
 
     }
@@ -265,12 +265,12 @@ function GetNewVezne(htc) {
     return result;
 }
 
-function GetNewPacs(htc,had,hbasDate,hbitDate) {
+function GetNewPacs(htc, had, hbasDate, hbitDate) {
     var result;
     $.ajax({
         type: 'GET',
         url: '_PartialPacs',
-        data: { tc: htc,ad:had,basDate:hbasDate,bitDate:hbitDate },
+        data: { tc: htc, ad: had, basDate: hbasDate, bitDate: hbitDate },
         async: false,
         success: function (veri) {
             result = veri;
@@ -541,7 +541,7 @@ function RandevuDuzelt(_RandtblList) {
 
 //hst_randevu/HastaListele
 function RandevuHastaListele() {
-  
+
 
     var e = document.getElementById("Hastalar");
     var seciliHasta = e.options[e.selectedIndex].innerHTML;
@@ -716,4 +716,74 @@ function PlanlamaYapilmadi(PHid) {
     });
 }
 
+//Yetkilendirme Wizard
+function WizardValidations() {
+    var initializeDuallistbox = $('#initializeDuallistbox').bootstrapDualListbox({
+        nonSelectedListLabel: 'Yetki Listesi',
+        selectedListLabel: 'Seçilen Yetkiler',
+        preserveSelectionOnMove: 'moved',
+        moveOnSelect: false,
+        infoTextEmpty: 'Empty list'
 
+
+        //nonSelectedFilter: 'ion ([7-9]|[1][0-2])'
+    });
+}
+// Home/YetkiAyarlar Yetkilendirme Wizard
+function Yetkiler(uid) {
+    var usid = uid;
+    $.ajax({
+        type: "POST",
+        url: '../Yetki/GetYetkis',
+        contentType: 'application/json',
+        data: JSON.stringify({ userId: usid }),
+        dataType: "json",
+        success: function (veri) {
+            $("#initializeDuallistbox option").remove();
+            $("#bootstrap-duallistbox-nonselected-list_duallistbox_demo2 option").remove();
+            // $("#initializeDuallistbox").prop("disabled", false);
+
+            $.each(veri.sonuc, function (index, item) {
+
+                var optionhtml = '<option value="' + item.Value + '"> ' + item.Text + '</option>';
+                $("#bootstrap-duallistbox-nonselected-list_duallistbox_demo2").append(optionhtml);
+                $("#initializeDuallistbox").append(optionhtml);
+                var demo1 = $('select[name="duallistbox_demo2"]').bootstrapDualListbox('refresh', true);
+
+            });
+        },
+        error: function () {
+            // bu kısımda eğer ajax işlemi başarısız ise
+            // hata mesajı verebiliriz.
+            alert("Yetkiler getirilirken  bir hata meydana geldi.!");
+        },
+        beforeSend: function () {
+
+            // bu kısımda form postalanmadan önce yapılacak
+            // işler belirlenebilir. mesela postalama başladığı
+            // anda loading resmi görüntüleyebiliriz.
+        },
+        complete: function () {
+
+            // bu kısımda form postalandıktan sonra yapılacak
+            // işler belirlenebilir. mesela postalama bittiği
+            // anda loading resmi gizleyebiliriz.
+        }
+    });
+
+}
+
+function YetkiCreate(userid, yetkilist) {
+    var result;
+    $.ajax({
+        type: 'POST',
+        url: '../UserYetki/YetkisCreate',
+        data: { userId: userid, yetkiIdList: yetkilist },
+        async: false,
+        success: function (veri) {
+            result = veri;
+        }
+    });
+    return result;
+
+}

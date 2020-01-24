@@ -171,12 +171,14 @@
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\MemoryCacheManager.cs" />
     <Compile Include="Controllers\TokenController.cs" />
+    <Compile Include="Controllers\UserYetkiController.cs" />
     <Compile Include="Controllers\VezneController.cs" />
     <Compile Include="Controllers\View_GroupYetkiController.cs" />
     <Compile Include="Controllers\View_HastalikDurumController.cs" />
     <Compile Include="Controllers\View_HizHareketController.cs" />
     <Compile Include="Controllers\View_HizmetDetayController.cs" />
     <Compile Include="Controllers\YardimciController.cs" />
+    <Compile Include="Controllers\YetkiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1135,6 +1137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Istatistik\" />
+    <Folder Include="Views\UserYetki\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -1234,6 +1237,7 @@
     <Content Include="Views\View_GroupYetki\Details.cshtml" />
     <Content Include="Views\View_GroupYetki\Edit.cshtml" />
     <Content Include="Views\View_GroupYetki\Index.cshtml" />
+    <Content Include="Views\Yetki\Yetki_Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

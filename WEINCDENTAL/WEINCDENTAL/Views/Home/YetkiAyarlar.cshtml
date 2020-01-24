@@ -53,9 +53,8 @@
     <!-- widget grid -->
     <section id="widget-grid">
         <!-- row -->
-
-        @Html.Action("Index", "View_GroupYetki")
-
+        @*@Html.Action("Index", "View_GroupYetki")*@
+        @Html.Action("Yetki_Index", "Yetki")
         <!-- end row -->
         <!-- row -->
         <div class="row">
@@ -71,12 +70,178 @@
 
 
 @section pagespecific {
+    <script src="/scripts/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script src="/scripts/plugin/fuelux/wizard/wizard.min.js"></script>
+    <script src="/scripts/plugin/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+    <script src="~/Scripts/WeincdentalScript.js"></script>
     <script type="text/javascript">
-
+        var userid;
+        var yetkiList=[];
         $(document).ready(function () {
-            var kayitdurum = @Html.Raw(Json.Encode(ViewBag.Message));
-            // alert(kayitdurum);
-            if (kayitdurum === 1) {
+
+            //var userid;
+            var username;
+          //  var yetkiList=[];
+            var values=[];
+            //Bootstrap Wizard Validations
+                WizardValidations();
+
+
+            $('#initializeDuallistbox').on('change',
+                function (e) {
+                    var demo1 = $('select[name="duallistbox_demo2"]').bootstrapDualListbox();
+                    demo1.bootstrapDualListbox('refresh', true);
+                    yetkiList = demo1.val();
+                    var yetkiname = $('select[name="duallistbox_demo2_helper2"]');
+                    yetkiname.bootstrapDualListbox('refresh', true);
+                    values = yetkiname.text();
+                  });
+
+
+            var $validator = $("#wizard-1").validate({
+                rules: {
+                    users: {
+                        required: true
+                    },
+                    duallistbox_demo2_helper: {
+                        required: true
+                    },
+                    duallistbox_demo2: {
+                        required: true
+                    },
+                    postal: {
+                        required: true,
+                        minlength: 4
+                    }
+                },
+
+                messages: {
+                    users: {
+                        required: "Lütfen bir kullanıcı seçiniz!!"
+
+                    }
+                },
+
+                highlight: function(element) {
+                    $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                },
+                unhighlight: function(element) {
+                    $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+                },
+                errorElement: 'span',
+                errorClass: 'help-block',
+                errorPlacement: function(error, element) {
+                    if (element.parent('.input-group').length) {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
+
+            $('#bootstrap-wizard-1').bootstrapWizard({
+                'tabClass': 'form-wizard',
+                'onNext': function(tab, navigation, index) {
+                    var $valid = $("#wizard-1").valid();
+                    var demo1 = $('select[name="duallistbox_demo2"]').bootstrapDualListbox();
+                    var listcount = demo1.val();
+                    if (!$valid) {
+                        $validator.focusInvalid();
+                        return false;
+                    } else if (index === 2 && listcount==null) {
+                        ErrorValidate();
+                        return false;
+                    }
+                    else {
+                        if (index === 2) {
+                            // Özet bölümündeki listeye at..
+
+                            $('#Puser').text(username);
+                            $('#Pyetkis').text(values);
+
+                        }
+
+
+                        $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
+                            'complete');
+                         $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
+                            .html('<i class="fa fa-check"></i>');
+                       
+                    }
+                } , /*Tablara tıklamayı engelliyor*/
+                'onTabClick': function(tab, navigation, index) {
+                    return false;
+                }
+
+            });
+
+
+            // Kullanıcı Seçimi yapılınca...
+            $('#t_kullanicis').change(function () {
+
+                var usid = $(this).val();
+                //Seçilen kullanıcı
+                userid = usid;
+                username = $("#t_kullanicis option:selected").text();
+                Yetkiler(usid);
+                var url = "../../Scripts/WeincdentalScript.js";
+                $.getScript(url,function() {
+                        WizardValidations();
+                });
+                var demo1 = $('select[name="duallistbox_demo2"]').bootstrapDualListbox('refresh',true);
+            });
+
+
+        });
+        $(document).ready(function() {
+            var register = @Html.Raw(Json.Encode(ViewBag.Message));
+
+            SuccessPopup(register);
+
+        });
+
+        // Yetki Listesi Validation Hata Mesajı
+        function ErrorValidate() {
+            $.smallBox({
+                title: "Dikkat! Lütfen Yetki Seçiniz!",
+                content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+                color: "#cc1818",
+                iconSmall: "fa fa-check bounce animated",
+                timeout: 4000
+            });
+        }
+
+        function YetkiKaydet() {
+            
+            $.SmartMessageBox({
+                    title: "UYARI!",
+                    content:"<div> Yetkiler Kaydedilecektir. </div> <div><br></div><div>EMİN MİSİNİZ?</div>",
+                    buttons: '[No][Yes]'
+                },
+                function (ButtonPressed) {
+                    if (ButtonPressed === "Yes") {
+
+                        var durum = YetkiCreate(userid, yetkiList);
+
+                        // Kayıt Durumu Popup...
+                        SuccessPopup(durum);
+
+                    }
+                    if (ButtonPressed === "No") {
+                        $.smallBox({
+                            title: "İPTAL",
+                            content: "<i class='fa fa-clock-o'></i> <i>Kayıt işleminden vazgeçildi...</i>",
+                            color: "#C46A69",
+                            iconSmall: "fa fa-times fa-2x fadeInRight animated",
+                            timeout: 4000
+                        });
+                    }
+
+                });
+        }
+
+        function SuccessPopup(kayitdurum) {
+            if (kayitdurum === 1 || kayitdurum===true ) {
 
                 $.smallBox({
                     title: "Kayıt İşlemi Başarılı oldu.",
@@ -85,7 +250,7 @@
                     iconSmall: "fa fa-thumbs-up bounce animated",
                     timeout: 4000
                 });
-            } else if (kayitdurum === 2) {
+            } else if (kayitdurum === 2 || kayitdurum===false) {
 
                 $.smallBox({
                     title: "Kayıt İşlemi Başarısız oldu.",
@@ -95,195 +260,7 @@
                     timeout: 4000
                 });
             }
-        });
-
-        $(document).ready(function() {
-            var responsiveHelper_dt_basic = undefined;
-            var responsiveHelper_datatable_fixed_column = undefined;
-            var responsiveHelper_datatable_col_reorder = undefined;
-            var responsiveHelper_datatable_tabletools = undefined;
-            var breakpointDefinition = {
-                tablet: 1024,
-                phone: 480
-            };
-
-            $('#dt_basic1').dataTable({
-                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-                    "t" +
-                    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-                "autoWidth": true,
-                "preDrawCallback": function() {
-                    // Initialize the responsive datatables helper once.
-                    if (!responsiveHelper_dt_basic) {
-                        responsiveHelper_dt_basic =
-                            new ResponsiveDatatablesHelper($('#dt_basic1'), breakpointDefinition);
-                    }
-                },
-                "rowCallback": function(nRow) {
-                    responsiveHelper_dt_basic.createExpandIcon(nRow);
-                },
-                "drawCallback": function(oSettings) {
-                    responsiveHelper_dt_basic.respond();
-                }
-            });
-
-        });
-
-        $(document).ready(function() {
-            var responsiveHelper_dt_basic = undefined;
-            var responsiveHelper_datatable_fixed_column = undefined;
-            var responsiveHelper_datatable_col_reorder = undefined;
-            var responsiveHelper_datatable_tabletools = undefined;
-            var breakpointDefinition = {
-                tablet: 1024,
-                phone: 480
-            };
-
-            $('#dt_basic2').dataTable({
-                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-                    "t" +
-                    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-                "autoWidth": true,
-                "preDrawCallback": function() {
-                    // Initialize the responsive datatables helper once.
-                    if (!responsiveHelper_dt_basic) {
-                        responsiveHelper_dt_basic =
-                            new ResponsiveDatatablesHelper($('#dt_basic2'), breakpointDefinition);
-                    }
-                },
-                "rowCallback": function(nRow) {
-                    responsiveHelper_dt_basic.createExpandIcon(nRow);
-                },
-                "drawCallback": function(oSettings) {
-                    responsiveHelper_dt_basic.respond();
-                }
-            });
-
-        });
-
-        $(document).ready(function() {
-            var responsiveHelper_dt_basic = undefined;
-            var responsiveHelper_datatable_fixed_column = undefined;
-            var responsiveHelper_datatable_col_reorder = undefined;
-            var responsiveHelper_datatable_tabletools = undefined;
-            var breakpointDefinition = {
-                tablet: 1024,
-                phone: 480
-            };
-
-            $('#dt_basic3').dataTable({
-                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-                    "t" +
-                    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-                "autoWidth": true,
-                "preDrawCallback": function() {
-                    // Initialize the responsive datatables helper once.
-                    if (!responsiveHelper_dt_basic) {
-                        responsiveHelper_dt_basic =
-                            new ResponsiveDatatablesHelper($('#dt_basic3'), breakpointDefinition);
-                    }
-                },
-                "rowCallback": function(nRow) {
-                    responsiveHelper_dt_basic.createExpandIcon(nRow);
-                },
-                "drawCallback": function(oSettings) {
-                    responsiveHelper_dt_basic.respond();
-                }
-            });
-        });
-
-        $(document).ready(function() {
-            var responsiveHelper_dt_basic = undefined;
-            var responsiveHelper_datatable_fixed_column = undefined;
-            var responsiveHelper_datatable_col_reorder = undefined;
-            var responsiveHelper_datatable_tabletools = undefined;
-            var breakpointDefinition = {
-                tablet: 1024,
-                phone: 480
-            };
-
-            $('#dt_basic4').dataTable({
-                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-                    "t" +
-                    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-                "autoWidth": true,
-                "preDrawCallback": function() {
-                    // Initialize the responsive datatables helper once.
-                    if (!responsiveHelper_dt_basic) {
-                        responsiveHelper_dt_basic =
-                            new ResponsiveDatatablesHelper($('#dt_basic4'), breakpointDefinition);
-                    }
-                },
-                "rowCallback": function(nRow) {
-                    responsiveHelper_dt_basic.createExpandIcon(nRow);
-                },
-                "drawCallback": function(oSettings) {
-                    responsiveHelper_dt_basic.respond();
-                }
-            });
-        });
-
-        $(document).ready(function() {
-            var responsiveHelper_dt_basic = undefined;
-            var responsiveHelper_datatable_fixed_column = undefined;
-            var responsiveHelper_datatable_col_reorder = undefined;
-            var responsiveHelper_datatable_tabletools = undefined;
-            var breakpointDefinition = {
-                tablet: 1024,
-                phone: 480
-            };
-
-            $('#dt_basic5').dataTable({
-                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-                    "t" +
-                    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-                "autoWidth": true,
-                "preDrawCallback": function() {
-                    // Initialize the responsive datatables helper once.
-                    if (!responsiveHelper_dt_basic) {
-                        responsiveHelper_dt_basic =
-                            new ResponsiveDatatablesHelper($('#dt_basic5'), breakpointDefinition);
-                    }
-                },
-                "rowCallback": function(nRow) {
-                    responsiveHelper_dt_basic.createExpandIcon(nRow);
-                },
-                "drawCallback": function(oSettings) {
-                    responsiveHelper_dt_basic.respond();
-                }
-            });
-        });
-
-        $(document).ready(function() {
-            var responsiveHelper_dt_basic = undefined;
-            var responsiveHelper_datatable_fixed_column = undefined;
-            var responsiveHelper_datatable_col_reorder = undefined;
-            var responsiveHelper_datatable_tabletools = undefined;
-            var breakpointDefinition = {
-                tablet: 1024,
-                phone: 480
-            };
-
-            $('#dt_basic6').dataTable({
-                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-                    "t" +
-                    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-                "autoWidth": true,
-                "preDrawCallback": function() {
-                    // Initialize the responsive datatables helper once.
-                    if (!responsiveHelper_dt_basic) {
-                        responsiveHelper_dt_basic =
-                            new ResponsiveDatatablesHelper($('#dt_basic6'), breakpointDefinition);
-                    }
-                },
-                "rowCallback": function(nRow) {
-                    responsiveHelper_dt_basic.createExpandIcon(nRow);
-                },
-                "drawCallback": function(oSettings) {
-                    responsiveHelper_dt_basic.respond();
-                }
-            });
-        });
+        }
 
     </script>
 }
