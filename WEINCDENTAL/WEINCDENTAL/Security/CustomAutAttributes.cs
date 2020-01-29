@@ -19,9 +19,10 @@ namespace WEINCDENTAL.Security
             string controllerName = controllerInfo.ControllerDescriptor.ControllerName;
             string actionName = controllerInfo.MethodInfo.Name;
             var userId = Convert.ToInt32(HttpContext.Current.Session["userId"]);
+          
             if (userId == 0)
             {
-                filterContext.Result=new RedirectResult("Security/Logout");
+                filterContext.Result=new RedirectResult("../Security/Logout");
                 
             }
             else
