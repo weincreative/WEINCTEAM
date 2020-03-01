@@ -94,7 +94,7 @@ namespace WEINCDENTAL.Controllers
         public decimal GetTotalOdenen(int id)
         {
             decimal totalOdenen = 0;
-            var vezne = db.View_BsvrVezne.Where(k => k.b_id== id && k.VezneAktif == true && 
+            var vezne = db.View_BsvrVezne.Where(k => k.b_id== id && k.VezneAktif == true && k.HizmetYapildi == true &&
             k.HastaAktif == true &&
             k.BorcDurum == true &&
             k.BasvuruAktif == true)
@@ -126,7 +126,7 @@ namespace WEINCDENTAL.Controllers
             decimal tutar = 0;
             if (id != null && id!=0)
             {
-                var sum = db.View_HizmetDetay.Where(k => k.HHareketAktif == true && k.BasvuruId == id &&
+                var sum = db.View_HizmetDetay.Where(k => k.HHareketAktif == true && k.BasvuruId == id && k.t_yapildi == true &&
                                                          k.BasvuruAktif == true &&
                                                          k.BorcDurum == true)
                     .Sum(d => d.ToplamBorc);
@@ -145,7 +145,8 @@ namespace WEINCDENTAL.Controllers
                                                        k.VezneAktif == true &&
                                                        k.HastaAktif == true &&
                                                        k.BorcDurum == true &&
-                                                       k.BasvuruAktif == true).Sum(d => d.t_indirim);
+                                                       k.BasvuruAktif == true &&
+                                                       k.HizmetYapildi == true).Sum(d => d.t_indirim);
                 if (sum != null)
                     tutar = (decimal)sum;
             }
@@ -159,7 +160,8 @@ namespace WEINCDENTAL.Controllers
                 var vezne = db.View_BsvrVezne.Where(k => k.t_tc == tc && k.VezneAktif == true
                                                          && k.BasvuruAktif == true
                                                          && k.BorcDurum == true
-                                                         && k.HastaAktif == true).ToList();
+                                                         && k.HastaAktif == true 
+                                                         && k.HizmetYapildi == true).ToList();
 
                 if (vezne.Count != 0)
                 {
@@ -193,7 +195,8 @@ namespace WEINCDENTAL.Controllers
                                                    k.VezneAktif == true &&
                                                    k.HastaAktif == true &&
                                                    k.BorcDurum == true &&
-                                                   k.BasvuruAktif == true).Sum(d => d.t_indirim);
+                                                   k.BasvuruAktif == true &&
+                                                   k.HizmetYapildi==true).Sum(d => d.t_indirim);
                 if (sum != null)
                     tutar = (decimal)sum;
             }
@@ -206,7 +209,7 @@ namespace WEINCDENTAL.Controllers
             decimal tutar = 0;
             if (tc != null)
             {
-                var sum = db.View_HizmetDetay.Where(k => k.HHareketAktif == true && k.TC == tc &&
+                var sum = db.View_HizmetDetay.Where(k => k.HHareketAktif == true && k.TC == tc && k.t_yapildi == true &&
                                                    k.BasvuruAktif == true &&
                                                    k.BorcDurum == true)
                                                    .Sum(d=>d.ToplamBorc);

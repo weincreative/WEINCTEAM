@@ -107,7 +107,7 @@ namespace WEINCDENTAL.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CustomAutAttributes]
-        public ActionResult Create([Bind(Include = "t_id,t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_ulkeId,t_ilId,t_ilceId,t_adres,t_createuser,t_createdate,t_aktif,yabancimi")] hst_hastakarti hst_hastakarti)
+        public ActionResult Create([Bind(Include = "t_id,t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_ulkeId,t_ilId,t_ilceId,t_adres,t_createuser,t_createdate,t_aktif,yabancimi,t_dosyano")] hst_hastakarti hst_hastakarti)
         {
             try
             {
@@ -211,7 +211,7 @@ namespace WEINCDENTAL.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CustomAutAttributes]
-        public ActionResult HastaEdit([Bind(Include = "yabancimi,t_id,t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_ulkeId,t_ilId,t_ilceId,t_adres,t_createuser,t_createdate,t_aktif")] hst_hastakarti hst_hastakarti)
+        public ActionResult HastaEdit([Bind(Include = "yabancimi,t_id,t_tc,t_adi,t_soyadi,t_cinsiyet,t_medenidurum,t_dogumtarihi,t_dogumyeri,t_tel1,t_tel2,t_ulkeId,t_ilId,t_ilceId,t_adres,t_createuser,t_createdate,t_aktif,t_dosyano")] hst_hastakarti hst_hastakarti)
         {
             try
             {

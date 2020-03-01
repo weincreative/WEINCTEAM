@@ -213,6 +213,7 @@
           <Property Name="t_createuser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
+          <Property Name="t_dosyano" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="hst_hastalik">
           <Key>
@@ -355,16 +356,6 @@
           <Property Name="t_createdate" Type="date" Nullable="false" />
           <Property Name="t_aktif" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_BsvrVezne' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_BsvrVezne">
@@ -405,6 +396,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_BsvrVezne' does not have a pr
           <Property Name="BasvuruAktif" Type="bit" Nullable="false" />
           <Property Name="VezneAktif" Type="bit" Nullable="false" />
           <Property Name="HastaAktif" Type="bit" Nullable="false" />
+          <Property Name="HizmetYapildi" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_CeneDis' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1147,36 +1139,11 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_UVAktif" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="sp$UVAktif">
           <Parameter Name="bid" Type="int" Mode="In" />
         </Function>
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
         <Function Name="sp_DeleteHhareket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="hhid" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_InsertVezne" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="hareketid" Type="int" Mode="In" />
@@ -1189,12 +1156,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
         <Function Name="sp_OdemeBitim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="basid" Type="int" Mode="In" />
         </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_VezneUpIlkKayit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="bsvid" Type="int" Mode="In" />
         </Function>
@@ -1230,7 +1191,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="View_BsvrVezne" EntityType="Self.View_BsvrVezne" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [View_BsvrVezne].[v_id] AS [v_id], 
@@ -1250,7 +1210,8 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
     [View_BsvrVezne].[BorcDurum] AS [BorcDurum], 
     [View_BsvrVezne].[BasvuruAktif] AS [BasvuruAktif], 
     [View_BsvrVezne].[VezneAktif] AS [VezneAktif], 
-    [View_BsvrVezne].[HastaAktif] AS [HastaAktif]
+    [View_BsvrVezne].[HastaAktif] AS [HastaAktif], 
+    [View_BsvrVezne].[HizmetYapildi] AS [HizmetYapildi]
     FROM [dbo].[View_BsvrVezne] AS [View_BsvrVezne]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_CeneDis" EntityType="Self.View_CeneDis" store:Type="Views" store:Schema="dbo">
@@ -1819,6 +1780,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
           <Property Name="t_createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="t_createdate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="t_aktif" Type="Boolean" Nullable="false" />
+          <Property Name="t_dosyano" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="adm_pacs" Relationship="Self.FK_adm_pacs_hst_hastakarti" FromRole="hst_hastakarti" ToRole="adm_pacs" />
           <NavigationProperty Name="hst_basvuru" Relationship="Self.FK_hst_basvuru_hst_hastakarti" FromRole="hst_hastakarti" ToRole="hst_basvuru" />
           <NavigationProperty Name="hst_cinsiyet" Relationship="Self.FK_hst_hastakarti_hst_cinsiyet" FromRole="hst_hastakarti" ToRole="hst_cinsiyet" />
@@ -1992,16 +1954,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
           <NavigationProperty Name="hst_basvuru" Relationship="Self.FK_hst_vezne_hst_basvuru" FromRole="hst_vezne" ToRole="hst_basvuru" />
           <NavigationProperty Name="hst_odemetip" Relationship="Self.FK_hst_vezne_hst_OdemeTip" FromRole="hst_vezne" ToRole="hst_odemetip" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="View_BsvrVezne">
           <Key>
             <PropertyRef Name="v_id" />
@@ -2040,6 +1992,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
           <Property Name="BasvuruAktif" Type="Boolean" Nullable="false" />
           <Property Name="VezneAktif" Type="Boolean" Nullable="false" />
           <Property Name="HastaAktif" Type="Boolean" Nullable="false" />
+          <Property Name="HizmetYapildi" Type="Boolean" />
         </EntityType>
         <EntityType Name="View_CeneDis">
           <Key>
@@ -2794,7 +2747,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
           <EntitySet Name="hst_randevu" EntityType="Self.hst_randevu" />
           <EntitySet Name="hst_ulke" EntityType="Self.hst_ulke" />
           <EntitySet Name="hst_vezne" EntityType="Self.hst_vezne" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="View_BsvrVezne" EntityType="Self.View_BsvrVezne" />
           <EntitySet Name="View_CeneDis" EntityType="Self.View_CeneDis" />
           <EntitySet Name="View_GroupYetki" EntityType="Self.View_GroupYetki" />
@@ -2937,32 +2889,8 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
           <FunctionImport Name="sp_UVAktif">
             <Parameter Name="bid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
           <FunctionImport Name="sp_DeleteHhareket">
             <Parameter Name="hhid" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(WEINCDENTALModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(WEINCDENTALModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_InsertVezne">
             <Parameter Name="hareketid" Mode="In" Type="Int32" />
@@ -2975,27 +2903,10 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
           <FunctionImport Name="sp_OdemeBitim">
             <Parameter Name="basid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
           <FunctionImport Name="sp_VezneUpIlkKayit">
             <Parameter Name="bsvid" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3223,6 +3134,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
                 <ScalarProperty Name="t_createuser" ColumnName="t_createuser" />
                 <ScalarProperty Name="t_createdate" ColumnName="t_createdate" />
                 <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
+                <ScalarProperty Name="t_dosyano" ColumnName="t_dosyano" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3379,17 +3291,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="WEINCDENTALModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="View_BsvrVezne">
             <EntityTypeMapping TypeName="WEINCDENTALModel.View_BsvrVezne">
               <MappingFragment StoreEntitySet="View_BsvrVezne">
@@ -3411,6 +3312,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
                 <ScalarProperty Name="BasvuruAktif" ColumnName="BasvuruAktif" />
                 <ScalarProperty Name="VezneAktif" ColumnName="VezneAktif" />
                 <ScalarProperty Name="HastaAktif" ColumnName="HastaAktif" />
+                <ScalarProperty Name="HizmetYapildi" ColumnName="HizmetYapildi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3626,34 +3528,10 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_UVAktif" FunctionName="WEINCDENTALModel.Store.sp_UVAktif" />
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="WEINCDENTALModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="WEINCDENTALModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_DeleteHhareket" FunctionName="WEINCDENTALModel.Store.sp_DeleteHhareket" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="WEINCDENTALModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="WEINCDENTALModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="WEINCDENTALModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="WEINCDENTALModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="WEINCDENTALModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_InsertVezne" FunctionName="WEINCDENTALModel.Store.sp_InsertVezne" />
           <FunctionImportMapping FunctionImportName="sp_LastPay" FunctionName="WEINCDENTALModel.Store.sp_LastPay" />
           <FunctionImportMapping FunctionImportName="sp_OdemeBitim" FunctionName="WEINCDENTALModel.Store.sp_OdemeBitim" />
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="WEINCDENTALModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="WEINCDENTALModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="sp_VezneUpIlkKayit" FunctionName="WEINCDENTALModel.Store.sp_VezneUpIlkKayit" />
         </EntityContainerMapping>
       </Mapping>

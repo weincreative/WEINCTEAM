@@ -11,8 +11,7 @@ namespace WEINCDENTAL.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class View_BsvrVezne
     {
         public int v_id { get; set; }
@@ -22,15 +21,10 @@ namespace WEINCDENTAL.Models
         public string t_soyadi { get; set; }
         public System.DateTime t_dogumtarihi { get; set; }
         public System.DateTime t_basvurutarihi { get; set; }
-        [DataType(DataType.Currency)]
         public decimal t_odenen { get; set; }
-        [DataType(DataType.Currency)]
         public decimal t_kalan { get; set; }
-        [DataType(DataType.Currency)]
         public decimal AsilTutar { get; set; }
-        [DataType(DataType.Currency)]
         public decimal t_indirim { get; set; }
-        [DataType(DataType.Currency)]
         public decimal OdenecekTutar { get; set; }
         public string OdemeTip { get; set; }
         public System.DateTime t_odemetarih { get; set; }
@@ -38,5 +32,6 @@ namespace WEINCDENTAL.Models
         public bool BasvuruAktif { get; set; }
         public bool VezneAktif { get; set; }
         public bool HastaAktif { get; set; }
+        public Nullable<bool> HizmetYapildi { get; set; }
     }
 }
