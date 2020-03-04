@@ -32,5 +32,6 @@ namespace WEINCDENTAL.Models
         public bool BasvuruAktif { get; set; }
         public bool VezneAktif { get; set; }
         public bool HastaAktif { get; set; }
+        public Nullable<bool> HizmetYapildi { get; set; }
     }
 }

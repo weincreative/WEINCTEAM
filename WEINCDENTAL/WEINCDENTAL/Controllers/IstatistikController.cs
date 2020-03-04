@@ -198,5 +198,6 @@ namespace WEINCDENTAL.Controllers
 
             return kazanc;
         }
+        
     }
 }

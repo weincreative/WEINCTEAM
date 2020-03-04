@@ -94,7 +94,7 @@ namespace WEINCDENTAL.Controllers
         public decimal GetTotalOdenen(int id)
         {
             decimal totalOdenen = 0;
-            var vezne = db.View_BsvrVezne.Where(k => k.b_id== id && k.VezneAktif == true && k.HizmetYapildi == true &&
+            var vezne = db.View_BsvrVezne.Where(k => k.b_id== id && k.VezneAktif == true &&
             k.HastaAktif == true &&
             k.BorcDurum == true &&
             k.BasvuruAktif == true)
@@ -145,8 +145,7 @@ namespace WEINCDENTAL.Controllers
                                                        k.VezneAktif == true &&
                                                        k.HastaAktif == true &&
                                                        k.BorcDurum == true &&
-                                                       k.BasvuruAktif == true &&
-                                                       k.HizmetYapildi == true).Sum(d => d.t_indirim);
+                                                       k.BasvuruAktif == true ).Sum(d => d.t_indirim);
                 if (sum != null)
                     tutar = (decimal)sum;
             }
@@ -160,8 +159,7 @@ namespace WEINCDENTAL.Controllers
                 var vezne = db.View_BsvrVezne.Where(k => k.t_tc == tc && k.VezneAktif == true
                                                          && k.BasvuruAktif == true
                                                          && k.BorcDurum == true
-                                                         && k.HastaAktif == true 
-                                                         && k.HizmetYapildi == true).ToList();
+                                                         && k.HastaAktif == true ).ToList();
 
                 if (vezne.Count != 0)
                 {
@@ -195,8 +193,7 @@ namespace WEINCDENTAL.Controllers
                                                    k.VezneAktif == true &&
                                                    k.HastaAktif == true &&
                                                    k.BorcDurum == true &&
-                                                   k.BasvuruAktif == true &&
-                                                   k.HizmetYapildi==true).Sum(d => d.t_indirim);
+                                                   k.BasvuruAktif == true).Sum(d => d.t_indirim);
                 if (sum != null)
                     tutar = (decimal)sum;
             }

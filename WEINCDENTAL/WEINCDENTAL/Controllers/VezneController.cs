@@ -39,7 +39,7 @@ namespace WEINCDENTAL.Controllers
 
             YardimciController yc = new YardimciController();
             var vezne = db.View_BsvrVezne
-                .Where(k => k.HastaAktif == true && k.BasvuruAktif == true && k.HizmetYapildi == true
+                .Where(k => k.HastaAktif == true && k.BasvuruAktif == true
                 && k.VezneAktif == true
                 && k.BorcDurum == true
                 )

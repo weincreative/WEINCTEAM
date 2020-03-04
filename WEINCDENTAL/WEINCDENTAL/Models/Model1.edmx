@@ -396,7 +396,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_BsvrVezne' does not have a pr
           <Property Name="BasvuruAktif" Type="bit" Nullable="false" />
           <Property Name="VezneAktif" Type="bit" Nullable="false" />
           <Property Name="HastaAktif" Type="bit" Nullable="false" />
-          <Property Name="HizmetYapildi" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WEINCDENTAL.dbo.View_CeneDis' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1210,8 +1209,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
     [View_BsvrVezne].[BorcDurum] AS [BorcDurum], 
     [View_BsvrVezne].[BasvuruAktif] AS [BasvuruAktif], 
     [View_BsvrVezne].[VezneAktif] AS [VezneAktif], 
-    [View_BsvrVezne].[HastaAktif] AS [HastaAktif], 
-    [View_BsvrVezne].[HizmetYapildi] AS [HizmetYapildi]
+    [View_BsvrVezne].[HastaAktif] AS [HastaAktif]
     FROM [dbo].[View_BsvrVezne] AS [View_BsvrVezne]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_CeneDis" EntityType="Self.View_CeneDis" store:Type="Views" store:Schema="dbo">
@@ -1992,7 +1990,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
           <Property Name="BasvuruAktif" Type="Boolean" Nullable="false" />
           <Property Name="VezneAktif" Type="Boolean" Nullable="false" />
           <Property Name="HastaAktif" Type="Boolean" Nullable="false" />
-          <Property Name="HizmetYapildi" Type="Boolean" />
         </EntityType>
         <EntityType Name="View_CeneDis">
           <Key>
@@ -3312,7 +3309,6 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
                 <ScalarProperty Name="BasvuruAktif" ColumnName="BasvuruAktif" />
                 <ScalarProperty Name="VezneAktif" ColumnName="VezneAktif" />
                 <ScalarProperty Name="HastaAktif" ColumnName="HastaAktif" />
-                <ScalarProperty Name="HizmetYapildi" ColumnName="HizmetYapildi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
