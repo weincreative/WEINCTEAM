@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 #region USING
 using System;
 using System.Collections.Generic;
@@ -7,6 +7,10 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 using System.Threading.Tasks;
+using System.Threading;
+using System.Text;
+using System.Diagnostics;
+using System.Linq;
 
 #endregion
 
@@ -22,6 +26,7 @@ namespace WEINCDENTALSTARTER
         public Boolean pAuthorizationCheck = false;
         public string pNotLogin = "WEINCLAUNCHER programından giriş yapmanız gerekiyor..";
         public string pNotActive = "Giriş Yaptığınız kullanıcı aktif kullanıcı değildir // Lütfen yönetici ile görüşünüz [WEINCREATIVE]";
+        DateTime toDay = DateTime.Today;
 
         #endregion
 
@@ -30,6 +35,45 @@ namespace WEINCDENTALSTARTER
             InitializeComponent();
         }
 
+        void serialOptionsOpen()
+        {
+            using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
+            {
+                var result = options.hst_weincoptions.Where(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword).First();
+                if (result != null)
+                {
+                    result.t_serial = "987987987";
+                    options.SaveChanges();
+                }
+            }
+        }
+        void serialOptionsClose()
+        {
+            using (var options = new WEINCOPTIONSEntities())
+            {
+                var result = options.hst_weincoptions.SingleOrDefault(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword);
+                if (result != null)
+                {
+                    result.t_serial = "";
+                    options.SaveChanges();
+                }
+            }
+        }
+        void thisDayPACS()
+        {
+            using (WEINCDENTALEntities db = new WEINCDENTALEntities())
+            {
+                var result = db.adm_pacs.Where(b => b.t_createdate == toDay).ToList();
+                if (result != null)
+                {
+                    listBox1.Items.Clear();
+                    foreach (var item in result)
+                    {
+                        listBox1.Items.Add(item.t_resimad);
+                    }
+                }
+            }
+        }
         public void readTXT(string filePath, List<string> list)
         {
             if (File.Exists(filePath))
@@ -64,7 +108,6 @@ namespace WEINCDENTALSTARTER
                             pAuthorizationCheck = false;
                             memoryUsername = savedUser[0];
                             memoryPassword = savedUser[1];
-                            MessageBox.Show("GİRİŞ BAŞARILIDIR");
                         }
                         else
                         {
@@ -83,6 +126,55 @@ namespace WEINCDENTALSTARTER
         private void Form1_Load(object sender, EventArgs e)
         {
             Scheduler();
+            timer2.Start();
         }
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            serialOptionsClose();
+            timer2.Stop();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (button1.Text == "BAŞLAT")
+            {
+                button1.Text = "DURDUR";
+                timer1.Start();
+                Process.Start("D:\\WEINCTEAM\\APPS\\WEINCConsole.exe");
+            }
+            else if (button1.Text == "DURDUR")
+            {
+                //timer1.Stop();
+                //button1.Text = "BAŞLAT";
+                foreach (var process in Process.GetProcessesByName("WEINCConsole"))
+                {
+                    timer1.Stop();
+                    process.Kill();
+                    button1.Text = "BAŞLAT";
+                }
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (button2.Text == "BAŞLAT")
+            {
+                button2.Text = "DURDUR";
+                serialOptionsOpen();
+            }
+            else if (button2.Text == "DURDUR")
+            {
+                button2.Text = "BAŞLAT";
+                serialOptionsClose();
+            }
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            thisDayPACS();
+        }
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            Scheduler();
+        }
+
+
     }
 }
