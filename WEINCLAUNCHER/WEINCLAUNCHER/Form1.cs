@@ -6,6 +6,7 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 #endregion
 
@@ -101,7 +102,7 @@ namespace WEINCLAUNCHER
             button2.Enabled = false;
             if (checkBox1.Checked == true)
             {
-                if (pNotActivetedUser==false)
+                if (pNotActivetedUser == false)
                 {
                     textBox1.Text = "";
                     textBox2.Text = "";
@@ -222,18 +223,24 @@ namespace WEINCLAUNCHER
                 if (userAuthority.Contains("ADMIN"))
                 {
                     isADMIN = true;
-                    yetkiModulList.Add("1");
-                    yetkiModulList.Add("2");
-                    yetkiModulList.Add("3");
+                    //yetkiModulList.Add("DENTALSTARTER");
+                    //yetkiModulList.Add("INSTAGRAM");
                     LoginPos();
                     adminLogin();
                     SchedulerLogin(userItem);
                     pNotActivetedUser = true;
                     memoryUsername = textBox1.Text;
                     memoryPassword = textBox2.Text;
-
                     pListMemory.Clear();
                     File.Delete(pAuthentication);
+                    foreach (var item in auth)
+                    {
+                        isADMIN = false;
+                        if (item != "ADMIN")
+                        {
+                            yetkiModulList.Add(item);
+                        }
+                    }
                 }
                 else
                 {
@@ -251,7 +258,7 @@ namespace WEINCLAUNCHER
                         isADMIN = false;
                         if (item != "ADMIN")
                         {
-                            yetkiModulList.Add(item + ".exe");
+                            yetkiModulList.Add(item);
                         }
                     }
                 }
@@ -415,13 +422,13 @@ namespace WEINCLAUNCHER
                 Button appsBtn = new Button()
                 {
                     Height = 80,
-                    Width = 80,
+                    Width = 150,
                     Text = appsList[i].ToString(),
                     Name = "appsButton" + i.ToString(),
                 };
                 panel3.Controls.Add(appsBtn);
                 Soldan = (appsBtn.Width * (EklenenButonlar_Width / appsBtn.Width));
-                EklenenButonlar_Width += appsBtn.Height;
+                EklenenButonlar_Width += appsBtn.Width;
                 switch (EklenenButonlar_Width > panel3.Width)
                 {
                     case true:
@@ -437,13 +444,14 @@ namespace WEINCLAUNCHER
         private void appsBtn_Click(object sender, EventArgs e)
         {
             Button appsBtn = sender as Button;
-            if (File.Exists("APPS/" + appsBtn.Text + ".exe"))
+            if (File.Exists(@"D:\WEINCTEAM\APPS\WEINC" + appsBtn.Text + ".exe"))
             {
-                MessageBox.Show("Text: " + appsBtn.Text + " - Name: " + appsBtn.Name);
+                Process.Start(@"D:\WEINCTEAM\APPS\WEINC" + appsBtn.Text + ".exe");
+                //MessageBox.Show("Text: " + appsBtn.Text + " - Name: " + appsBtn.Name);
             }
         }
 
-        
+
         private void Form1_Load(object sender, EventArgs e)
         {
             StartingPos();
@@ -500,7 +508,9 @@ namespace WEINCLAUNCHER
 
         }
 
-
-
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            userLogout();
+        }
     }
 }
