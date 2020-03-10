@@ -51,7 +51,7 @@ namespace WEINCDENTALSTARTER
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hata Kodu:" + ex.Message);
+                MessageBox.Show("Hata Kodu:" + ex);
             }
             //using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
             //{
@@ -79,7 +79,7 @@ namespace WEINCDENTALSTARTER
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hata Kodu:" + ex.Message);
+                MessageBox.Show("Hata Kodu:" + ex);
             }
             //using (var options = new WEINCOPTIONSEntities())
             //{
