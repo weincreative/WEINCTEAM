@@ -226,20 +226,41 @@ namespace WEINCConsole
         }
         static void readTXT(string filePath, List<string> list)
         {
-            if (File.Exists(filePath))
+            try
             {
-                list.Clear();
-                FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-                StreamReader sw = new StreamReader(fs);
-                string getLine = sw.ReadLine();
-                while (getLine != null && getLine != "")
+                if (File.Exists(filePath))
                 {
-                    list.Add(getLine);
-                    getLine = sw.ReadLine();
+                    list.Clear();
+                    FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+                    StreamReader sw = new StreamReader(fs);
+                    string getLine = sw.ReadLine();
+                    while (getLine != null && getLine != "")
+                    {
+                        list.Add(getLine);
+                        getLine = sw.ReadLine();
+                    }
+                    sw.Close();
+                    fs.Close();
                 }
-                sw.Close();
-                fs.Close();
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(Environment.NewLine + Environment.NewLine + Environment.NewLine + "Hata Mesajı : " + ex.Message);
+            }
+            //if (File.Exists(filePath))
+            //{
+            //    list.Clear();
+            //    FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            //    StreamReader sw = new StreamReader(fs);
+            //    string getLine = sw.ReadLine();
+            //    while (getLine != null && getLine != "")
+            //    {
+            //        list.Add(getLine);
+            //        getLine = sw.ReadLine();
+            //    }
+            //    sw.Close();
+            //    fs.Close();
+            //}
         }
         static void Scheduler()
         {
