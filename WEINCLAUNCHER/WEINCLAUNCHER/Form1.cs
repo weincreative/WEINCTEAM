@@ -223,8 +223,8 @@ namespace WEINCLAUNCHER
                 if (userAuthority.Contains("ADMIN"))
                 {
                     isADMIN = true;
-                    //yetkiModulList.Add("DENTALSTARTER");
-                    //yetkiModulList.Add("INSTAGRAM");
+                    yetkiModulList.Add("DENTALSTARTER");
+                    yetkiModulList.Add("INSTAGRAM");
                     LoginPos();
                     adminLogin();
                     SchedulerLogin(userItem);
@@ -233,14 +233,14 @@ namespace WEINCLAUNCHER
                     memoryPassword = textBox2.Text;
                     pListMemory.Clear();
                     File.Delete(pAuthentication);
-                    foreach (var item in auth)
-                    {
-                        isADMIN = false;
-                        if (item != "ADMIN")
-                        {
-                            yetkiModulList.Add(item);
-                        }
-                    }
+                    //foreach (var item in auth)
+                    //{
+                    //    isADMIN = false;
+                    //    if (item != "ADMIN")
+                    //    {
+                    //        yetkiModulList.Add(item);
+                    //    }
+                    //}
                 }
                 else
                 {
@@ -250,7 +250,6 @@ namespace WEINCLAUNCHER
                     pNotActivetedUser = true;
                     memoryUsername = textBox1.Text;
                     memoryPassword = textBox2.Text;
-
                     pListMemory.Clear();
                     File.Delete(pAuthentication);
                     foreach (var item in auth)
@@ -444,9 +443,10 @@ namespace WEINCLAUNCHER
         private void appsBtn_Click(object sender, EventArgs e)
         {
             Button appsBtn = sender as Button;
-            if (File.Exists(@"D:\WEINCTEAM\APPS\WEINC" + appsBtn.Text + ".exe"))
+            //if (File.Exists(@"D:\WEINCTEAM\APPS\" + appsBtn.Text + @"\WEINC" + appsBtn.Text + ".exe"))            
+            if (File.Exists($@"D:\WEINCTEAM\APPS\{appsBtn.Text}\WEINC{appsBtn.Text}.exe"))
             {
-                Process.Start(@"D:\WEINCTEAM\APPS\WEINC" + appsBtn.Text + ".exe");
+                Process.Start($@"D:\WEINCTEAM\APPS\{appsBtn.Text}\WEINC{appsBtn.Text}.exe");
                 //MessageBox.Show("Text: " + appsBtn.Text + " - Name: " + appsBtn.Name);
             }
         }
