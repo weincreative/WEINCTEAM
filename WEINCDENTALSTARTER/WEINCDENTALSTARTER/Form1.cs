@@ -37,27 +37,59 @@ namespace WEINCDENTALSTARTER
 
         void serialOptionsOpen()
         {
-            using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
+            try
             {
-                var result = options.hst_weincoptions.Where(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword).First();
-                if (result != null)
+                using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
                 {
-                    result.t_serial = "987987987";
-                    options.SaveChanges();
+                    var result = options.hst_weincoptions.Where(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword).First();
+                    if (result != null)
+                    {
+                        result.t_serial = "987987987";
+                        options.SaveChanges();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata Kodu:" + ex.Message);
+            }
+            //using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
+            //{
+            //    var result = options.hst_weincoptions.Where(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword).First();
+            //    if (result != null)
+            //    {
+            //        result.t_serial = "987987987";
+            //        options.SaveChanges();
+            //    }
+            //}
         }
         void serialOptionsClose()
         {
-            using (var options = new WEINCOPTIONSEntities())
+            try
             {
-                var result = options.hst_weincoptions.SingleOrDefault(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword);
-                if (result != null)
+                using (var options = new WEINCOPTIONSEntities())
                 {
-                    result.t_serial = "";
-                    options.SaveChanges();
+                    var result = options.hst_weincoptions.SingleOrDefault(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword);
+                    if (result != null)
+                    {
+                        result.t_serial = "";
+                        options.SaveChanges();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata Kodu:" + ex.Message);
+            }
+            //using (var options = new WEINCOPTIONSEntities())
+            //{
+            //    var result = options.hst_weincoptions.SingleOrDefault(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword);
+            //    if (result != null)
+            //    {
+            //        result.t_serial = "";
+            //        options.SaveChanges();
+            //    }
+            //}
         }
         void thisDayPACS()
         {
@@ -139,7 +171,7 @@ namespace WEINCDENTALSTARTER
             {
                 button1.Text = "DURDUR";
                 timer1.Start();
-                Process.Start("D:\\WEINCTEAM\\APPS\\WEINCConsole.exe");
+                Process.Start(@"D:\WEINCTEAM\APPS\Console\WEINCConsole.exe");
             }
             else if (button1.Text == "DURDUR")
             {
