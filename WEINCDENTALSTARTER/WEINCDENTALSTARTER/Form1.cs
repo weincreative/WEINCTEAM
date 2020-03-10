@@ -37,8 +37,8 @@ namespace WEINCDENTALSTARTER
 
         void serialOptionsOpen()
         {
-            try
-            {
+            //try
+            //{
                 using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
                 {
                     var result = options.hst_weincoptions.Where(b => b.t_id == 1).FirstOrDefault();
@@ -49,18 +49,25 @@ namespace WEINCDENTALSTARTER
                         if (result.t_kullanici == memoryUsername && result.t_sifre == memoryPassword)
                         {
                             result.t_serial = "987987987";
-                            //change other properties ..
                             options.Entry(result).State = EntityState.Modified;
                             options.SaveChanges();
                         }
 
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hata Kodu:" + ex);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Hata Kodu:" + ex);
+            //}
+
+
+
+
+
+
+
+
 
             //try
             //{
