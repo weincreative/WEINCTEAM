@@ -11,7 +11,7 @@ using System.Threading;
 using System.Text;
 using System.Diagnostics;
 using System.Linq;
-
+using System.Data.Entity;
 #endregion
 
 namespace WEINCDENTALSTARTER
@@ -41,11 +41,19 @@ namespace WEINCDENTALSTARTER
             {
                 using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
                 {
-                    var result = options.hst_weincoptions.Where(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword).First();
+                    var result = options.hst_weincoptions.Where(b => b.t_id == 1).FirstOrDefault();
+                    //var result = options.hst_weincoptions.FirstOrDefault(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword);
+                    //var result = options.hst_weincoptions.SingleOrDefault(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword);
                     if (result != null)
                     {
-                        result.t_serial = "987987987";
-                        options.SaveChanges();
+                        if (result.t_kullanici == memoryUsername && result.t_sifre == memoryPassword)
+                        {
+                            result.t_serial = "987987987";
+                            //change other properties ..
+                            options.Entry(result).State = EntityState.Modified;
+                            options.SaveChanges();
+                        }
+
                     }
                 }
             }
@@ -53,6 +61,38 @@ namespace WEINCDENTALSTARTER
             {
                 MessageBox.Show("Hata Kodu:" + ex);
             }
+
+            //try
+            //{
+            //    if (cmbBolumSec.Text == "Bölüm Seçiniz.." && cmbKullaniciSec.Text == "Kullanıcı Seçiniz..")
+            //    {
+            //        var _bolumList = db.hst_bölüm.Where(x => x.t_aktif == true).ToList();
+            //        var _kullanıcıList = db.adm_kullanicilar.Where(x => x.t_aktif == true).ToList();
+            //        int bolumIndexControl = 0;
+            //        int kullaniciIndexControl = 0;
+            //        secilenBolumVAL = 0;
+            //        secilenKullaniciVAL = 0;
+            //        foreach (var item in _bolumList)
+            //        {
+            //            _BIDGetirList.Add(new secilenBIDbul { BLID = bolumIndexControl, BID = item.t_id, BAD = item.t_adi });
+            //            cmbBolumSec.Items.Add(item.t_adi);
+            //            bolumIndexControl++;
+            //        }
+            //        foreach (var item in _kullanıcıList)
+            //        {
+            //            _KIDGetirList.Add(new secilenKIDbul { KLID = kullaniciIndexControl, KID = item.t_id, KAD = item.t_adi });
+            //            cmbKullaniciSec.Items.Add(item.t_adi);
+            //            kullaniciIndexControl++;
+            //        }
+            //    }
+            //}
+            //catch (Exception)
+            //{
+            //    //MessageBox.Show("HATA MESAJI : " + x);
+            //}
+
+
+
             //using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
             //{
             //    var result = options.hst_weincoptions.Where(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword).First();
@@ -67,13 +107,21 @@ namespace WEINCDENTALSTARTER
         {
             try
             {
-                using (var options = new WEINCOPTIONSEntities())
+                using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
                 {
-                    var result = options.hst_weincoptions.SingleOrDefault(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword);
+                    var result = options.hst_weincoptions.Where(b => b.t_id == 1).FirstOrDefault();
+                    //var result = options.hst_weincoptions.FirstOrDefault(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword);
+                    //var result = options.hst_weincoptions.SingleOrDefault(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword);
                     if (result != null)
                     {
-                        result.t_serial = "";
-                        options.SaveChanges();
+                        if (result.t_kullanici == memoryUsername && result.t_sifre == memoryPassword)
+                        {
+                            result.t_serial = "1";
+                            //change other properties ..
+                            options.Entry(result).State = EntityState.Modified;
+                            options.SaveChanges();
+                        }
+
                     }
                 }
             }
