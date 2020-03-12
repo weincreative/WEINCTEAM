@@ -37,8 +37,8 @@ namespace WEINCDENTALSTARTER
 
         void serialOptionsOpen()
         {
-            try
-            {
+            //try
+            //{
                 using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
                 {
                     var result = options.hst_weincoptions.Where(b => b.t_id == 1).FirstOrDefault();
@@ -54,16 +54,16 @@ namespace WEINCDENTALSTARTER
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hata Kodu:" + ex);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Hata Kodu:" + ex);
+            //}
         }
         void serialOptionsClose()
         {
-            try
-            {
+            //try
+            //{
                 using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
                 {
                     var result = options.hst_weincoptions.Where(b => b.t_id == 1).FirstOrDefault();
@@ -80,11 +80,11 @@ namespace WEINCDENTALSTARTER
 
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hata Kodu:" + ex);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Hata Kodu:" + ex);
+            //}
         }
         void thisDayPACS()
         {
