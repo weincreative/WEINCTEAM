@@ -6,8 +6,11 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 using System.Threading.Tasks;
+using System.Threading;
+using System.Text;
 using System.Diagnostics;
-
+using System.Linq;
+using System.Data.Entity;
 #endregion
 
 namespace WEINCLAUNCHER
@@ -23,14 +26,13 @@ namespace WEINCLAUNCHER
         public Boolean isADMIN = false;
         public string pAdress = "ftp://ftp.weincreative.com/_AUTHENTICATION/";
         public string pAuthentication = "AUTHENTICATION.weinc";
-        public string pScheduler = "Scheduler.weinc";
         public string pUsername = "dcoweinc";
         public string pPassword = "85[dWiC6";
         public string pVersion = "";
         public string pUserAuth = "";
         public static List<string> pListMemory = new List<string>();
         public static List<string> pListAuthModules = new List<string>();
-        public static List<string> pListScheduler = new List<string>();
+        public static List<string> pListAuthority = new List<string>();
         public Boolean pAdminPanel = false;
         public string pAuthorization = "";
         public Boolean pAuthorizationCheck = false;
@@ -40,6 +42,7 @@ namespace WEINCLAUNCHER
         public string memoryPassword = "";
 
         #endregion
+
         #region ERRORS
         public string pErrorDownload = "Dosya İndirilirken Servere Ulaşılamadı..";
         public string pErrorUpload = "Dosya Yüklenirken Servere Ulaşılamadı..";
@@ -59,6 +62,7 @@ namespace WEINCLAUNCHER
         {
             InitializeComponent();
         }
+
         void buttonADMIN()
         {
             //button4.Width = 320;
@@ -108,15 +112,15 @@ namespace WEINCLAUNCHER
                     textBox2.Text = "";
                     memoryUsername = "";
                     memoryPassword = "";
-                    pListScheduler.Clear();
-                    File.Delete(pScheduler);
+                    pListAuthority.Clear();
                 }
                 else
                 {
                     textBox1.Text = memoryUsername;
                     textBox2.Text = "";
                     textBox2.Focus();
-                    SchedulerLogout(memoryUsername);
+                    serialOptionsNotCheckClose(pListAuthority);
+                    pListAuthority.Clear();
                 }
             }
             else
@@ -125,8 +129,8 @@ namespace WEINCLAUNCHER
                 textBox2.Text = "";
                 memoryUsername = "";
                 memoryPassword = "";
-                pListScheduler.Clear();
-                File.Delete(pScheduler);
+                serialOptionsNotCheckClose(pListAuthority);
+                pListAuthority.Clear();
             }
         }
         void CenterForm()
@@ -138,6 +142,7 @@ namespace WEINCLAUNCHER
         {
             try
             {
+                List<string> sonuc = new List<string>();
                 String result = String.Empty;
                 FtpWebRequest request = (FtpWebRequest)WebRequest.Create(Address + filePath);
                 request.Method = WebRequestMethods.Ftp.DownloadFile;
@@ -186,7 +191,6 @@ namespace WEINCLAUNCHER
             {
                 MessageBox.Show(" Hata Mesajı: " + ex);
             }
-
         }
         public void readTXT(string filePath, List<string> list)
         {
@@ -209,47 +213,125 @@ namespace WEINCLAUNCHER
         {
             if (File.Exists(filePath))
             {
-                list.Add(username + "|" + password + "|" + "0" + "|" + "0");
+                list.Add(username + "|" + password + "|" + "0" + "|" + "0" + "|" + "0" + "|" + "0" + "|" + "0");
                 File.WriteAllLines(filePath, list);
                 File.Move(filePath, Path.ChangeExtension(filePath, ".weinc"));
             }
         }
-        public void Authority(string userName, string userPassword, string userAuthority, string userActivated, string userItem, List<string> yetkiModulList)
+        void serialOptionsOpen(List<string> list)
         {
+            using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
+            {
+                var result = options.hst_weincoptions.Where(b => b.t_id == 1).FirstOrDefault();
+                if (result != null)
+                {
+                    result.t_kullanici = list[0];
+                    result.t_sifre = list[1];
+                    result.t_yetki = list[2];
+                    result.t_aktif = list[3];
+                    result.t_kayittarihi = list[4];
+                    result.t_sure = list[5];
+                    result.t_serial = list[6];
+                    options.Entry(result).State = EntityState.Modified;
+                    options.SaveChanges();
+                }
+            }
+        }
+        void serialOptionsClose(List<string> list)
+        {
+            using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
+            {
+                var result = options.hst_weincoptions.Where(b => b.t_id == 1).FirstOrDefault();
+                if (result != null)
+                {
+                    result.t_kullanici = list[0];
+                    result.t_sifre = list[1];
+                    result.t_yetki = "";
+                    result.t_aktif = "";
+                    result.t_kayittarihi = list[4];
+                    result.t_sure = list[5];
+                    result.t_serial = "";
+                    options.Entry(result).State = EntityState.Modified;
+                    options.SaveChanges();
+                }
+            }
+        }
+        void serialOptionsNotCheckClose(List<string> list)
+        {
+            try
+            {
+                using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
+                {
+                    var result = options.hst_weincoptions.Where(b => b.t_id == 1).FirstOrDefault();
+                    if (result != null)
+                    {
+                        result.t_kullanici = list[0];
+                        result.t_sifre = "";
+                        result.t_yetki = "";
+                        result.t_aktif = "";
+                        result.t_kayittarihi = list[4];
+                        result.t_sure = list[5];
+                        result.t_serial = "";
+                        options.Entry(result).State = EntityState.Modified;
+                        options.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+        void serialOptionsCheck()
+        {
+            using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
+            {
+                var result = options.hst_weincoptions.Where(b => b.t_id == 1).FirstOrDefault();
+                if (result != null)
+                {
+                    textBox1.Text = result.t_kullanici;
+                }
+            }
+        }
+        public void Authority(string userName, string userPassword, string userAuthority, string userActivated, string userStartDate, string userTopDay, string userSerial, List<string> yetkiModulList)
+        {
+            pListAuthority.Add(userName);
+            pListAuthority.Add(userPassword);
+            pListAuthority.Add(userAuthority);
+            pListAuthority.Add(userActivated);
+            pListAuthority.Add(userStartDate);
+            pListAuthority.Add(userTopDay);
+            pListAuthority.Add(userSerial);
             yetkiModulList.Clear();
-            if (userActivated != "0" && userActivated != "9999")
+            if (userActivated != "0" && userAuthority != "0")
             {
                 string[] auth = userAuthority.Split(',');
                 if (userAuthority.Contains("ADMIN"))
                 {
                     isADMIN = true;
-                    yetkiModulList.Add("DENTALSTARTER");
-                    yetkiModulList.Add("INSTAGRAM");
                     LoginPos();
                     adminLogin();
-                    SchedulerLogin(userItem);
                     pNotActivetedUser = true;
                     memoryUsername = textBox1.Text;
                     memoryPassword = textBox2.Text;
+                    serialOptionsOpen(pListAuthority);
                     pListMemory.Clear();
                     File.Delete(pAuthentication);
-                    //foreach (var item in auth)
-                    //{
-                    //    isADMIN = false;
-                    //    if (item != "ADMIN")
-                    //    {
-                    //        yetkiModulList.Add(item);
-                    //    }
-                    //}
+                    foreach (var item in auth)
+                    {
+                        if (item != "ADMIN")
+                        {
+                            yetkiModulList.Add(item);
+                        }
+                    }
                 }
                 else
                 {
                     LoginPos();
                     normalLogin();
-                    SchedulerLogin(userItem);
                     pNotActivetedUser = true;
                     memoryUsername = textBox1.Text;
                     memoryPassword = textBox2.Text;
+                    serialOptionsOpen(pListAuthority);
                     pListMemory.Clear();
                     File.Delete(pAuthentication);
                     foreach (var item in auth)
@@ -275,18 +357,9 @@ namespace WEINCLAUNCHER
                 memoryPassword = "";
                 pListMemory.Clear();
                 File.Delete(pAuthentication);
-                pListScheduler.Clear();
-                File.Delete(pScheduler);
                 MessageBox.Show(pErrorIsNotActive);
             }
         }
-        //public Tuple<int, int> LoginPos1()
-        //{
-        //    int posX = 386;
-        //    int posY = 735;
-        //    var loginPOS = new Tuple<int, int>(posX, posY);
-        //    return loginPOS;
-        //}
         void StartingPos()
         {
             this.Width = 386;
@@ -307,55 +380,6 @@ namespace WEINCLAUNCHER
         {
             getDownload(pAdress, filePath, pUsername, pPassword);
         }
-        public void Scheduler()
-        {
-            readTXT(pScheduler, pListScheduler);
-            if (pListScheduler.Count != 0)
-            {
-                foreach (var item in pListScheduler)
-                {
-                    string[] savedUser = item.Split('|');
-                    if (savedUser != null)
-                    {
-                        memoryUsername = "";
-                        memoryPassword = "";
-                        pAuthorizationCheck = false;
-                        memoryUsername = savedUser[0];
-                        memoryPassword = savedUser[1];
-                    }
-                }
-            }
-        }
-        public void SchedulerLogout(string username)
-        {
-            try
-            {
-                pListScheduler.Clear();
-                File.Delete(pScheduler);
-                pListScheduler.Add(username + "|" + "" + "|" + "9999" + "|" + "9999");
-                File.WriteAllLines(pScheduler, pListScheduler);
-                File.Move(pScheduler, Path.ChangeExtension(pScheduler, ".weinc"));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(pWriteLogoutTrueUser + Environment.NewLine + ex);
-            }
-        }
-        public void SchedulerLogin(string userItem)
-        {
-            try
-            {
-                pListScheduler.Clear();
-                File.Delete(pScheduler);
-                pListScheduler.Add(userItem);
-                File.WriteAllLines(pScheduler, pListScheduler);
-                File.Move(pScheduler, Path.ChangeExtension(pScheduler, ".weinc"));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(pWriteLogoinTrueUser + Environment.NewLine + ex);
-            }
-        }
         public void SingUp(string usernameTextbox, string passwordTextbox)
         {
             Download(pAuthentication);
@@ -370,7 +394,6 @@ namespace WEINCLAUNCHER
             {
                 MessageBox.Show(pSingUpFalse + Environment.NewLine + ex.Message);
             }
-
         }
         public void SingIn(string usernameTextbox, string passwordTextbox)
         {
@@ -383,7 +406,7 @@ namespace WEINCLAUNCHER
                     string[] correctUser = item.Split('|');
                     if (correctUser[0] == usernameTextbox && correctUser[1] == passwordTextbox)
                     {
-                        Authority(correctUser[0], correctUser[1], correctUser[2], correctUser[3], item, pListAuthModules);
+                        Authority(correctUser[0], correctUser[1], correctUser[2], correctUser[3], correctUser[4], correctUser[5], correctUser[6], pListAuthModules);
                         pLoginFalse = true;
                         break;
                     }
@@ -400,12 +423,9 @@ namespace WEINCLAUNCHER
                     memoryPassword = "";
                     pListMemory.Clear();
                     File.Delete(pAuthentication);
-                    pListScheduler.Clear();
-                    File.Delete(pScheduler);
                     MessageBox.Show(pLogInFalse);
                 }
             }
-
         }
         public void SingOut()
         {
@@ -443,21 +463,19 @@ namespace WEINCLAUNCHER
         private void appsBtn_Click(object sender, EventArgs e)
         {
             Button appsBtn = sender as Button;
-            //if (File.Exists(@"D:\WEINCTEAM\APPS\" + appsBtn.Text + @"\WEINC" + appsBtn.Text + ".exe"))            
-            if (File.Exists($@"D:\WEINCTEAM\APPS\{appsBtn.Text}\WEINC{appsBtn.Text}.exe"))
+            //MessageBox.Show($@"{Environment.GetFolderPath(Environment.SpecialFolder.Programs)}\WEINC{appsBtn.Text}\WEINC{appsBtn.Text}.exe");       
+            if (File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.Programs)}\WEINC{appsBtn.Text}\WEINC{appsBtn.Text}.appref-ms"))
             {
-                Process.Start($@"D:\WEINCTEAM\APPS\{appsBtn.Text}\WEINC{appsBtn.Text}.exe");
-                //MessageBox.Show("Text: " + appsBtn.Text + " - Name: " + appsBtn.Name);
+                Process.Start($@"{Environment.GetFolderPath(Environment.SpecialFolder.Programs)}\WEINC{appsBtn.Text}\WEINC{appsBtn.Text}.appref-ms");
             }
         }
-
 
         private void Form1_Load(object sender, EventArgs e)
         {
             StartingPos();
             pVersion = "";
             pVersion = textBox3.Text;
-            Scheduler();
+            serialOptionsCheck();
             if (memoryUsername != "" && memoryPassword != "")
             {
                 textBox1.Text = memoryUsername;
@@ -468,9 +486,13 @@ namespace WEINCLAUNCHER
         {
             userLogout();
         }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            userLogout();
+        }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            if (textBox2.Text.Length > 4)
+            if (textBox2.Text.Length > 3)
             {
                 button2.Enabled = true;
             }
@@ -508,9 +530,6 @@ namespace WEINCLAUNCHER
 
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            userLogout();
-        }
+
     }
 }
