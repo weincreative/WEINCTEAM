@@ -6,26 +6,20 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Threading;
 using System.Runtime.InteropServices;
+using System.Data.Entity;
 
 namespace WEINCConsole
 {
     class Program
     {
         #region PUBLIC's
-        public static string pScheduler = "D:WEINCTEAM/Scheduler.weinc";
-        public static List<string> pListScheduler = new List<string>();
-        public static string memoryUsername = "";
-        public static string memoryPassword = "";
         public static Boolean pAuthorizationCheck = false;
 
         #endregion
         #region Pacs JPG Alıcı
         static void Goruntuler()
         {
-            Console.WriteLine("Pacs Alıcı Kontrolü Başladı.! ");
-            Console.WriteLine(Environment.NewLine);
         PacsTimer:
-            
             try
             {
                 if (!System.IO.Directory.Exists("D:\\WEINCTEAM\\project\\PacsMemory") && !System.IO.Directory.Exists("D:\\WEINCTEAM\\project\\Pacs"))
@@ -169,7 +163,7 @@ namespace WEINCConsole
                                     goto PacsTimer;
                                 }
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                                 //Console.Write(Environment.NewLine);
                                 //Thread.Sleep(5000);
@@ -181,26 +175,29 @@ namespace WEINCConsole
                     }
                     Console.Write(Environment.NewLine);
                     Thread.Sleep(5000);
-                    goto PacsTimer;
+                    //goto PacsTimer;
+                    serialOptions();
                 }
                 else
                 {
                     Thread.Sleep(5000);
-                    goto PacsTimer;
+                    //goto PacsTimer;
+                    serialOptions();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine($"HATA OLUŞTU _Veriler İşlenirken Hata Oluştu");
                 Thread.Sleep(5000);
-                goto PacsTimer;
+                //goto PacsTimer;
+                serialOptions();
             }
         }
 
         static void KlasorControl()
         {
         PacsBasla:
-            if (System.IO.Directory.Exists("D:\\WEINCTEAM\\project\\PacsMemory") && System.IO.Directory.Exists("D:\\project\\Pacs"))
+            if (System.IO.Directory.Exists("D:\\WEINCTEAM\\project\\PacsMemory") && System.IO.Directory.Exists(@"D:\\project\\Pacs"))
             {
                 Goruntuler();
             }
@@ -212,7 +209,21 @@ namespace WEINCConsole
             }
         }
         #endregion
-
+        static void serialOptions()
+        {
+            using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
+            {
+                var result = options.hst_weincoptions.Where(b => b.t_id == 1).FirstOrDefault();
+                if (result.t_serial == "99999999999999999999")
+                {
+                    KlasorControl();
+                }
+                else
+                {
+                    Environment.Exit(2);
+                }
+            }
+        }
         const Int32 SW_MINIMIZE = 6;
         [DllImport("Kernel32.dll", CallingConvention = CallingConvention.StdCall, SetLastError = true)]
         private static extern IntPtr GetConsoleWindow();
@@ -224,86 +235,14 @@ namespace WEINCConsole
             IntPtr hWndConsole = GetConsoleWindow();
             ShowWindow(hWndConsole, SW_MINIMIZE);
         }
-        static void readTXT(string filePath, List<string> list)
-        {
-            try
-            {
-                if (File.Exists(filePath))
-                {
-                    list.Clear();
-                    FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-                    StreamReader sw = new StreamReader(fs);
-                    string getLine = sw.ReadLine();
-                    while (getLine != null && getLine != "")
-                    {
-                        list.Add(getLine);
-                        getLine = sw.ReadLine();
-                    }
-                    sw.Close();
-                    fs.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(Environment.NewLine + Environment.NewLine + Environment.NewLine + "Hata Mesajı : " + ex.Message);
-            }
-            //if (File.Exists(filePath))
-            //{
-            //    list.Clear();
-            //    FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-            //    StreamReader sw = new StreamReader(fs);
-            //    string getLine = sw.ReadLine();
-            //    while (getLine != null && getLine != "")
-            //    {
-            //        list.Add(getLine);
-            //        getLine = sw.ReadLine();
-            //    }
-            //    sw.Close();
-            //    fs.Close();
-            //}
-        }
-        static void Scheduler()
-        {
-            readTXT(pScheduler, pListScheduler);
-            if (pListScheduler.Count != 0)
-            {
-                foreach (var item in pListScheduler)
-                {
-                    string[] savedUser = item.Split('|');
-                    if (savedUser[2] != "0" && savedUser[3] != "0")
-                    {
-                        if (savedUser[2] != "9999" && savedUser[3] != "9999")
-                        {
-                            memoryUsername = "";
-                            memoryPassword = "";
-                            pAuthorizationCheck = false;
-                            memoryUsername = savedUser[0];
-                            memoryPassword = savedUser[1];
-                        }
-                        else
-                        {
-                            //MessageBox.Show(pNotLogin);
-                            Environment.Exit(0);
-                        }
-                    }
-                    else
-                    {
-                        //MessageBox.Show(pNotActive);
-                        Environment.Exit(0);
-                    }
-                }
-            }
-            else
-            {
-                Environment.Exit(0);
-            }
-        }
         static void Main(string[] args)
         {
+            Console.WriteLine("Pacs Alıcı Kontrolü Başladı.! ");
+            Console.WriteLine(Environment.NewLine);
             MinimizeConsoleWindow();
             Console.Title = "WEINCConsole";
-            Scheduler();
-            KlasorControl();
+            serialOptions();
+            //KlasorControl();
         }
     }
 }

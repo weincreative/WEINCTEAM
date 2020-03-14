@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="80ffb56d4afd4001800f5d011e049fff" Name="Diagram1">
-        <EntityTypeShape EntityType="WEINCDENTALModel.adm_pacs" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="9290bacf2e3d44d8a4e150fa5edf1d65" Name="Diagram1">
+        <EntityTypeShape EntityType="WEINCOPTIONSModel.hst_weincoptions" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
