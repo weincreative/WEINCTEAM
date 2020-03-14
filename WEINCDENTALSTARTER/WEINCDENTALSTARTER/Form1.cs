@@ -77,9 +77,10 @@ namespace WEINCDENTALSTARTER
             using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
             {
                 var result = options.hst_weincoptions.Where(b => b.t_id == 1).FirstOrDefault();
-                if (result.t_yetki == null && result.t_aktif == null)
+                if (result.t_yetki == null || result.t_yetki == "" || result.t_yetki == " ")
                 {
                     MessageBox.Show("Hata :" + Environment.NewLine + "Kullanıcı girişi yapmadınız // WEINCLAUNCHER 'dan giriş yapınız");
+                    Application.Exit();
                 }
             }
         }
