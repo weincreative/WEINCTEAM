@@ -10,12 +10,14 @@
             <PropertyRef Name="t_id" />
           </Key>
           <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="t_sure" Type="int" />
+          <Property Name="t_sure" Type="nvarchar" MaxLength="50" />
           <Property Name="t_kayittarihi" Type="nvarchar" MaxLength="10" />
-          <Property Name="t_kullanici" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="t_sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="t_kullanici" Type="nvarchar" MaxLength="50" />
+          <Property Name="t_sifre" Type="nvarchar" MaxLength="50" />
           <Property Name="t_serial" Type="nvarchar" MaxLength="100" />
+          <Property Name="t_yetki" Type="nvarchar" MaxLength="100" />
           <Property Name="t_createdate" Type="date" />
+          <Property Name="t_aktif" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="WEINCOPTIONSModelStoreContainer">
           <EntitySet Name="hst_weincoptions" EntityType="Self.hst_weincoptions" Schema="dbo" store:Type="Tables" />
@@ -30,12 +32,14 @@
             <PropertyRef Name="t_id" />
           </Key>
           <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="t_sure" Type="Int32" />
+          <Property Name="t_sure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="t_kayittarihi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="t_kullanici" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="t_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="t_kullanici" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="t_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="t_serial" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="t_yetki" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="t_createdate" Type="DateTime" Precision="0" />
+          <Property Name="t_aktif" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="WEINCOPTIONSEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="hst_weincoptions" EntityType="Self.hst_weincoptions" />
@@ -55,7 +59,9 @@
                 <ScalarProperty Name="t_kullanici" ColumnName="t_kullanici" />
                 <ScalarProperty Name="t_sifre" ColumnName="t_sifre" />
                 <ScalarProperty Name="t_serial" ColumnName="t_serial" />
+                <ScalarProperty Name="t_yetki" ColumnName="t_yetki" />
                 <ScalarProperty Name="t_createdate" ColumnName="t_createdate" />
+                <ScalarProperty Name="t_aktif" ColumnName="t_aktif" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

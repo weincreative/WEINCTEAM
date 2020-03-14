@@ -19,8 +19,6 @@ namespace WEINCDENTALSTARTER
     public partial class Form1 : Form
     {
         #region PUBLIC's
-        public string pScheduler = "D:WEINCTEAM/Scheduler.weinc";
-        public static List<string> pListScheduler = new List<string>();
         public string memoryUsername = "";
         public string memoryPassword = "";
         public Boolean pAuthorizationCheck = false;
@@ -37,54 +35,53 @@ namespace WEINCDENTALSTARTER
 
         void serialOptionsOpen()
         {
-            //try
-            //{
+            try
+            {
                 using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
                 {
                     var result = options.hst_weincoptions.Where(b => b.t_id == 1).FirstOrDefault();
-                    //var result = options.hst_weincoptions.FirstOrDefault(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword);
-                    //var result = options.hst_weincoptions.SingleOrDefault(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword);
-                    if (result != null)
+                    if (result.t_yetki != null && result.t_aktif != null)
                     {
-                        if (result.t_kullanici == memoryUsername && result.t_sifre == memoryPassword)
-                        {
-                            result.t_serial = "987987987";
-                            options.Entry(result).State = EntityState.Modified;
-                            options.SaveChanges();
-                        }
+                        result.t_serial = "99999999999999999999";
+                        options.Entry(result).State = EntityState.Modified;
+                        options.SaveChanges();
                     }
                 }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Hata Kodu:" + ex);
-            //}
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Hata :" + Environment.NewLine + "Kullanıcı girişi yapmadınız // WEINCLAUNCHER 'dan giriş yapınız");
+            }
         }
         void serialOptionsClose()
         {
-            //try
-            //{
+            try
+            {
                 using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
                 {
                     var result = options.hst_weincoptions.Where(b => b.t_id == 1).FirstOrDefault();
-                    //var result = options.hst_weincoptions.FirstOrDefault(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword);
-                    //var result = options.hst_weincoptions.SingleOrDefault(b => b.t_kullanici == memoryUsername && b.t_sifre == memoryPassword);
-                    if (result != null)
+                    if (result.t_yetki != null && result.t_aktif != null)
                     {
-                        if (result.t_kullanici == memoryUsername && result.t_sifre == memoryPassword)
-                        {
-                            result.t_serial = "";
-                            options.Entry(result).State = EntityState.Modified;
-                            options.SaveChanges();
-                        }
-
+                        result.t_serial = "";
+                        options.Entry(result).State = EntityState.Modified;
+                        options.SaveChanges();
                     }
                 }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Hata Kodu:" + ex);
-            //}
+            }
+            catch (Exception)
+            {
+            }
+        }
+        void optionsAktive()
+        {
+            using (WEINCOPTIONSEntities options = new WEINCOPTIONSEntities())
+            {
+                var result = options.hst_weincoptions.Where(b => b.t_id == 1).FirstOrDefault();
+                if (result.t_yetki == null && result.t_aktif == null)
+                {
+                    MessageBox.Show("Hata :" + Environment.NewLine + "Kullanıcı girişi yapmadınız // WEINCLAUNCHER 'dan giriş yapınız");
+                }
+            }
         }
         void thisDayPACS()
         {
@@ -101,58 +98,9 @@ namespace WEINCDENTALSTARTER
                 }
             }
         }
-        public void readTXT(string filePath, List<string> list)
-        {
-            if (File.Exists(filePath))
-            {
-                list.Clear();
-                FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-                StreamReader sw = new StreamReader(fs);
-                string getLine = sw.ReadLine();
-                while (getLine != null && getLine != "")
-                {
-                    list.Add(getLine);
-                    getLine = sw.ReadLine();
-                }
-                sw.Close();
-                fs.Close();
-            }
-        }
-        public void Scheduler()
-        {
-            readTXT(pScheduler, pListScheduler);
-            if (pListScheduler.Count != 0)
-            {
-                foreach (var item in pListScheduler)
-                {
-                    string[] savedUser = item.Split('|');
-                    if (savedUser[2] != "0" && savedUser[3] != "0")
-                    {
-                        if (savedUser[2] != "9999" && savedUser[3] != "9999")
-                        {
-                            memoryUsername = "";
-                            memoryPassword = "";
-                            pAuthorizationCheck = false;
-                            memoryUsername = savedUser[0];
-                            memoryPassword = savedUser[1];
-                        }
-                        else
-                        {
-                            MessageBox.Show(pNotLogin);
-                            Application.Exit();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show(pNotActive);
-                        Application.Exit();
-                    }
-                }
-            }
-        }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Scheduler();
+            optionsAktive();
             timer2.Start();
         }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -166,7 +114,7 @@ namespace WEINCDENTALSTARTER
             {
                 button1.Text = "DURDUR";
                 timer1.Start();
-                Process.Start(@"D:\WEINCTEAM\APPS\Console\WEINCConsole.exe");
+                Process.Start(@"D:\WEINCTEAM\Console\WEINCConsole.exe");
             }
             else if (button1.Text == "DURDUR")
             {
@@ -199,7 +147,7 @@ namespace WEINCDENTALSTARTER
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
-            Scheduler();
+            optionsAktive();
         }
 
 
