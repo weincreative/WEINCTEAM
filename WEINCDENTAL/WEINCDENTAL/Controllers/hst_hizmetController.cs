@@ -116,9 +116,10 @@ namespace WEINCDENTAL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "t_id,t_adi,t_parcauygunmu,t_ceneuygunmu,t_fiyat,t_createuser,t_createdate,t_aktif")] hst_hizmet hst_hizmet)
+        public ActionResult Edit([Bind(Include = "t_id,t_adi,t_parcauygunmu,t_ceneuygunmu,t_fiyat,t_aktif")] hst_hizmet hst_hizmet)
         {
-           
+            hst_hizmet.t_createuser = System.Web.HttpContext.Current.User.Identity.Name;
+            hst_hizmet.t_createdate = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Entry(hst_hizmet).State = EntityState.Modified;

@@ -11,6 +11,7 @@ namespace WEINCDENTAL.Controllers
     public class SecurityController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
+        private WEINCOPTIONSEntities optionsDB = new WEINCOPTIONSEntities();
         // GET: Security
         [AllowAnonymous]
         public ActionResult Login()
@@ -23,19 +24,27 @@ namespace WEINCDENTAL.Controllers
         [AllowAnonymous]
         public ActionResult Login(adm_kullanicilar kullanici)
         {
+            var control = optionsDB.hst_weincoptions.FirstOrDefault(x=>x.t_serial!=null);
             var UserINDB = db.adm_kullanicilar.Where(k=>k.t_aktif==true).FirstOrDefault(x => x.t_kodu == kullanici.t_kodu && x.t_sifre == kullanici.t_sifre);
-            
-            if (UserINDB!=null)
+            if (control.t_serial != null || control.t_serial == "WEINCADMIN")
             {
-                FormsAuthentication.SetAuthCookie(kullanici.t_kodu, false);
-                Session["userId"] = UserINDB.t_id;
-              
-                return RedirectToAction("SekIndex", "Home");
-             
+                if (UserINDB != null)
+                {
+                    FormsAuthentication.SetAuthCookie(kullanici.t_kodu, false);
+                    Session["userId"] = UserINDB.t_id;
+
+                    return RedirectToAction("SekIndex", "Home");
+
+                }
+                else
+                {
+                    ViewBag.ErrorMsg = "Geçersiz Kullanıcı Adı veya Şifre";
+                    return View();
+                }
             }
             else
             {
-                ViewBag.ErrorMsg = "Geçersiz Kullanıcı Adı veya Şifre";
+                ViewBag.ErrorMsg = "Kullanıcınız Aktif Edilmemiş veya Sistemimize Kayıtlı Değildir // Yönetici İle Görüşünüz [WEINCREATIVE SECURITY]";
                 return View();
             }
         }

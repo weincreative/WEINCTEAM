@@ -62,6 +62,7 @@ namespace WEINCDENTAL.Controllers
 
         }
 
+
         [CustomAutAttributes]
         public ActionResult KullaniciAyarlar(int? msjNo)
         {
