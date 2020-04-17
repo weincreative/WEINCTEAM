@@ -15,11 +15,13 @@ namespace WEINCDENTAL.Models
     public partial class hst_weincoptions
     {
         public int t_id { get; set; }
-        public Nullable<int> t_sure { get; set; }
+        public string t_sure { get; set; }
         public string t_kayittarihi { get; set; }
         public string t_kullanici { get; set; }
         public string t_sifre { get; set; }
         public string t_serial { get; set; }
+        public string t_yetki { get; set; }
         public Nullable<System.DateTime> t_createdate { get; set; }
+        public string t_aktif { get; set; }
     }
 }
