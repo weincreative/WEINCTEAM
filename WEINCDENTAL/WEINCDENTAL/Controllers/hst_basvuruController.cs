@@ -28,7 +28,7 @@ namespace WEINCDENTAL.Controllers
             var hizYetkis = tokenController.GetYetkis(uid, "View_HizHareket", "PartialHizHareket");
             ViewBag.hizYetkis = hizYetkis;
 
-            var hst_basvuru = db.hst_basvuru.Include(h => h.hst_bölüm).Include(h => h.hst_hastakarti).Where(k=>k.t_aktif==true && k.t_tc==id).ToList();
+            var hst_basvuru = db.hst_basvuru.Include(h => h.hst_bölüm).Include(h => h.hst_hastakarti).Where(k=>k.t_aktif==true && k.t_tc==id).OrderByDescending(k=>k.t_id).ToList();
           
             if (id == null ||hst_basvuru == null) //Yeni Başvuru Açsın.
             {

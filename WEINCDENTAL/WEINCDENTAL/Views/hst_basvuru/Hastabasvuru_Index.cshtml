@@ -68,7 +68,7 @@
                                             <th data-hide="phone,tablet" class="sorting_asc" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;"><i class="fa fa-fw fa-key text-muted hidden-md hidden-sm hidden-xs"></i> Başvuru Numarası</th>
                                             <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label="Company: activate to sort column ascending" style="width: 50px;"><i class="fa fa-fw fa-key text-muted hidden-md hidden-sm hidden-xs"></i> T.C.</th>
                                             <th data-class="expand" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column ascending" style="width: 30px;"><i class="fa fa-fw  fa-stethoscope text-muted hidden-md hidden-sm hidden-xs"></i> Başvuru Yapan Doktor</th>
-                                            <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Name: activate to sort column ascending" style="width: 50px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Başvuru Tarihi</th>
+                                            <th data-hide="phone,tablet" class="sorting_desc" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Name: activate to sort column ascending" style="width: 50px;"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Başvuru Tarihi</th>
                                             <th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="dt_basic3" rowspan="1" colspan="1" aria-label=" Date: activate to sort column ascending" style="width: 50px;"><i class="fa fa-edit text-muted hidden-md hidden-sm hidden-xs"></i> İşlem Yap</th>
                                             <!-- HEAD BİTİŞİ -->
                                         </tr>
@@ -81,6 +81,7 @@
                                         @foreach (var item in Model)
                                         {
                                             if (item.t_taburcu)
+
                                             {
                                                 <tr class="danger">
                                                     <td>
@@ -554,7 +555,8 @@
                 },
                 "drawCallback": function(oSettings) {
                     responsiveHelper_dt_basic.respond();
-                }
+                },
+                "order": [[0, "desc"]]
             });
 
 
