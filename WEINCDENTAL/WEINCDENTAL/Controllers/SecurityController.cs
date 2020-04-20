@@ -12,6 +12,7 @@ namespace WEINCDENTAL.Controllers
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
         private WEINCOPTIONSEntities optionsDB = new WEINCOPTIONSEntities();
+       
         // GET: Security
         [AllowAnonymous]
         public ActionResult Login()
@@ -24,8 +25,19 @@ namespace WEINCDENTAL.Controllers
         [AllowAnonymous]
         public ActionResult Login(adm_kullanicilar kullanici)
         {
-            var control = optionsDB.hst_weincoptions.FirstOrDefault(x=>x.t_serial!=null);
+            hst_weincoptions control;
+            try
+            {
+              control= optionsDB.hst_weincoptions.FirstOrDefault(x => x.t_serial != null);
+            }
+            catch (Exception)
+            {
+                ViewBag.ErrorMsg = "Kullanıcınız Aktif Edilmemiş veya Sistemimize Kayıtlı Değildir // Yönetici İle Görüşünüz [WEINCREATIVE SECURITY]";
+                return View();
+            }            
+            
             var UserINDB = db.adm_kullanicilar.Where(k=>k.t_aktif==true).FirstOrDefault(x => x.t_kodu == kullanici.t_kodu && x.t_sifre == kullanici.t_sifre);
+                       
             if (control.t_serial != null || control.t_serial == "WEINCADMIN")
             {
                 if (UserINDB != null)
