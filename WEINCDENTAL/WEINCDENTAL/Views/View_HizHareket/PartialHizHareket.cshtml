@@ -89,13 +89,21 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.t_islemtarihi)
                                             </td>
-                                            <td>
-                                                <a onclick="Yapma('@item.Hareketid', '@item.Hizmetadi', '@item.t_diskodu','@item.basvuruid')" class="btn btn-labeled btn-danger">
+                                            @if (item.t_yapildi == false)
+                                            {
+                                                <td>
+                                                    <a onclick="Yapma('@item.Hareketid', '@item.Hizmetadi', '@item.t_diskodu','@item.basvuruid')" class="btn btn-labeled btn-danger">
                                                         <span class="btn-label">
                                                             <i class="glyphicon glyphicon-trash"></i>
                                                         </span>Yapılmadı
                                                     </a>
-                                            </td>
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td></td>
+                                            }
+
                                         </tr>
                                     }
                                     else if (item.t_yapildi == false)
@@ -127,10 +135,10 @@
                                             </td>
                                             <td>
                                                 <a onclick="Yaptm('@item.Hareketid', '@item.Hizmetadi', '@item.t_diskodu','@item.basvuruid')" class="btn btn-labeled btn-success">
-                                                        <span class="btn-label">
-                                                            <i class="glyphicon glyphicon-check"></i>
-                                                        </span>Yapıldı
-                                                    </a>
+                                                    <span class="btn-label">
+                                                        <i class="glyphicon glyphicon-check"></i>
+                                                    </span>Yapıldı
+                                                </a>
                                             </td>
                                         </tr>
                                     }

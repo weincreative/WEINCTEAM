@@ -13,7 +13,7 @@ namespace WEINCDENTAL.Controllers
     public class HomeController : Controller
     {
 
-        IstatistikController ic = new IstatistikController();
+        YardimciController ic = new YardimciController();
 
         [CustomAutAttributes]
         public ActionResult Index()
