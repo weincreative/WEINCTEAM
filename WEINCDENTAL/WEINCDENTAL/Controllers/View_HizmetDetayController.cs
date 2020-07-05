@@ -32,7 +32,7 @@ namespace WEINCDENTAL.Controllers
         [HttpGet]
         public PartialViewResult _VezneHHareket(int id)
         {
-            var hizhareket = db.View_HizmetDetay.Where(k => k.BasvuruId == id && k.HHareketAktif == true && k.BasvuruAktif == true).ToList();
+            var hizhareket = db.View_HizmetDetay.Where(k => k.BasvuruId == id && k.HHareketAktif == true && k.t_yapildi==true &&  k.BasvuruAktif == true).ToList();
             return PartialView(hizhareket);
         }
 

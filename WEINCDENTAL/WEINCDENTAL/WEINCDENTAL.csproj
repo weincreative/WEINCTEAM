@@ -1216,7 +1216,6 @@
     <Content Include="Scripts\plugin\ckeditor\skins\moono\readme.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Istatistik\" />
     <Folder Include="Views\UserYetki\" />
   </ItemGroup>
   <ItemGroup>
@@ -1325,6 +1324,7 @@
     <Content Include="Views\View_GroupYetki\Edit.cshtml" />
     <Content Include="Views\View_GroupYetki\Index.cshtml" />
     <Content Include="Views\Yetki\Yetki_Index.cshtml" />
+    <Content Include="Views\Istatistik\Istatsitik.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

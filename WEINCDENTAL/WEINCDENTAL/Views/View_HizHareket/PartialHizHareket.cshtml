@@ -89,7 +89,7 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.t_islemtarihi)
                                             </td>
-                                            @if (item.t_yapildi == false)
+                                            @if (item.t_taburcu == false)
                                             {
                                                 <td>
                                                     <a onclick="Yapma('@item.Hareketid', '@item.Hizmetadi', '@item.t_diskodu','@item.basvuruid')" class="btn btn-labeled btn-danger">
@@ -133,13 +133,21 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.t_islemtarihi)
                                             </td>
-                                            <td>
-                                                <a onclick="Yaptm('@item.Hareketid', '@item.Hizmetadi', '@item.t_diskodu','@item.basvuruid')" class="btn btn-labeled btn-success">
-                                                    <span class="btn-label">
-                                                        <i class="glyphicon glyphicon-check"></i>
-                                                    </span>Yapıldı
-                                                </a>
-                                            </td>
+                                            @if (item.t_taburcu == false)
+                                            {
+                                                <td>
+                                                    <a onclick="Yaptm('@item.Hareketid', '@item.Hizmetadi', '@item.t_diskodu','@item.basvuruid')" class="btn btn-labeled btn-success">
+                                                        <span class="btn-label">
+                                                            <i class="glyphicon glyphicon-check"></i>
+                                                        </span>Yapıldı
+                                                    </a>
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td></td>
+                                            }
+
                                         </tr>
                                     }
                                     else

@@ -28,14 +28,14 @@ namespace WEINCDENTAL.Controllers
             hst_weincoptions control;
             try
             {
-              control= optionsDB.hst_weincoptions.FirstOrDefault(x => x.t_serial != null);
+                control = optionsDB.hst_weincoptions.FirstOrDefault(x => x.t_serial != null);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 ViewBag.ErrorMsg = "Kullanıcınız Aktif Edilmemiş veya Sistemimize Kayıtlı Değildir // Yönetici İle Görüşünüz [WEINCREATIVE SECURITY]";
                 return View();
-            }            
-            
+            }
+
             var UserINDB = db.adm_kullanicilar.Where(k=>k.t_aktif==true).FirstOrDefault(x => x.t_kodu == kullanici.t_kodu && x.t_sifre == kullanici.t_sifre);
                        
             if (control.t_serial != null || control.t_serial == "WEINCADMIN")

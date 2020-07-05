@@ -12,9 +12,12 @@ namespace WEINCDENTAL.Controllers
     public class IstatistikController : Controller
     {
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
-         
-        //[HttpGet]
-        //public ActionResult 
+
+        [HttpGet]
+        public ActionResult Istatsitik()
+        {
+            return View();
+        }
 
     }
 }
