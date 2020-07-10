@@ -14,9 +14,20 @@ namespace WEINCDENTAL.Controllers
         private WEINCDENTALEntities db = new WEINCDENTALEntities();
 
         [HttpGet]
-        public ActionResult Istatsitik()
+        public ActionResult Istatisitik()
         {
             return View();
+        }
+
+        
+        public PartialViewResult _Hizmet(string baslangic, string bitis)
+        {
+            var ilkTarih = Convert.ToDateTime(baslangic);
+            var sonTarih = Convert.ToDateTime(bitis);
+
+
+            var hizmet = new YardimciController().GetHizmetList(ilkTarih, sonTarih);
+            return PartialView(hizmet);
         }
 
     }

@@ -276,6 +276,7 @@
     <Compile Include="Models\adm_YetkiMethods.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DtoHizmetModel.cs" />
     <Compile Include="Models\HataMessage.cs" />
     <Compile Include="Models\hst_basvuru.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -371,6 +372,9 @@
       <DependentUpon>Model2.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelIstatistik.cs" />
+    <Compile Include="Models\sp_GetTotalHizmet_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TotalHizmet.cs" />
     <Compile Include="Models\TotalKazanc.cs" />
     <Compile Include="Models\ViewModelAyarlar.cs" />
@@ -1324,7 +1328,8 @@
     <Content Include="Views\View_GroupYetki\Edit.cshtml" />
     <Content Include="Views\View_GroupYetki\Index.cshtml" />
     <Content Include="Views\Yetki\Yetki_Index.cshtml" />
-    <Content Include="Views\Istatistik\Istatsitik.cshtml" />
+    <Content Include="Views\Istatistik\Istatisitik.cshtml" />
+    <Content Include="Views\Istatistik\_Hizmet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

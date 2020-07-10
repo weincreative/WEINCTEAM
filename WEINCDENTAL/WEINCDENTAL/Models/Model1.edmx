@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WEINCDENTALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WEINCDENTALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="adm_ControllerList">
           <Key>
             <PropertyRef Name="ControllerId" />
@@ -1144,6 +1144,10 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
         <Function Name="sp_DeleteHhareket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="hhid" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_GetTotalHizmet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="baslangicTarih" Type="date" Mode="In" />
+          <Parameter Name="bitisTarih" Type="date" Mode="In" />
+        </Function>
         <Function Name="sp_InsertVezne" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="hareketid" Type="int" Mode="In" />
           <Parameter Name="basid" Type="int" Mode="In" />
@@ -1532,8 +1536,7 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
             <End Role="hst_vezne" EntitySet="hst_vezne" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WEINCDENTALModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2884,10 +2887,10 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
             <End Role="hst_vezne" EntitySet="hst_vezne" />
           </AssociationSet>
           <FunctionImport Name="sp_UVAktif">
-            <Parameter Name="bid" Mode="In" Type="Int32" />
+          <Parameter Name="bid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_DeleteHhareket">
-            <Parameter Name="hhid" Mode="In" Type="Int32" />
+          <Parameter Name="hhid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_InsertVezne">
             <Parameter Name="hareketid" Mode="In" Type="Int32" />
@@ -2898,12 +2901,22 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
             <Parameter Name="b_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_OdemeBitim">
-            <Parameter Name="basid" Mode="In" Type="Int32" />
+          <Parameter Name="basid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_VezneUpIlkKayit">
-            <Parameter Name="bsvid" Mode="In" Type="Int32" />
+          <Parameter Name="bsvid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetTotalHizmet" ReturnType="Collection(WEINCDENTALModel.sp_GetTotalHizmet_Result)">
+            <Parameter Name="baslangicTarih" Mode="In" Type="DateTime" />
+            <Parameter Name="bitisTarih" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="sp_GetTotalHizmet_Result">
+          <Property Type="String" Name="HizmetAd" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="HizmetKod" Nullable="false" />
+          <Property Type="Int32" Name="Toplam" Nullable="true" />
+          <Property Type="Decimal" Name="Fiyat" Nullable="true" Precision="19" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3529,6 +3542,16 @@ warning 6002: The table/view 'WEINCDENTAL.dbo.View_YetkiMethods' does not have a
           <FunctionImportMapping FunctionImportName="sp_LastPay" FunctionName="WEINCDENTALModel.Store.sp_LastPay" />
           <FunctionImportMapping FunctionImportName="sp_OdemeBitim" FunctionName="WEINCDENTALModel.Store.sp_OdemeBitim" />
           <FunctionImportMapping FunctionImportName="sp_VezneUpIlkKayit" FunctionName="WEINCDENTALModel.Store.sp_VezneUpIlkKayit" />
+          <FunctionImportMapping FunctionImportName="sp_GetTotalHizmet" FunctionName="WEINCDENTALModel.Store.sp_GetTotalHizmet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WEINCDENTALModel.sp_GetTotalHizmet_Result">
+                <ScalarProperty Name="HizmetAd" ColumnName="HizmetAd" />
+                <ScalarProperty Name="HizmetKod" ColumnName="HizmetKod" />
+                <ScalarProperty Name="Toplam" ColumnName="Toplam" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

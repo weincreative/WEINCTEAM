@@ -787,3 +787,70 @@ function YetkiCreate(userid, yetkilist) {
     return result;
 
 }
+
+
+
+//İstatistik View
+
+function ValidateControl() {
+    $('#order-form').validate({
+        rules: {
+            startdate: {
+                required: true
+            },
+            finishdate: {
+                required: true
+            }
+        },
+        messages: {
+            startdate: {
+                required: '* Zorunlu alan.'
+            },
+            finishdate: {
+                required: '* Zorunlu alan.'
+            }
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element.parent());
+        }
+
+    });
+}
+
+function GetHizmet(startdate, finishdate, hid) {
+
+    var result;
+    $.ajax({
+        type: "GET",
+        url: "../../Istatistik/_Hizmet",
+        data: { baslangic: startdate, bitis: finishdate },
+        async: false,
+        success: function (veri) {
+            result = veri;
+
+        },
+        error: function (e) {
+            console.log(e);
+            $('#Loading').button('reset');
+            // bu kısımda eğer ajax işlemi başarısız ise
+            // hata mesajı verebiliriz.
+
+        },
+        beforeSend: function () {
+             $('#Loading').button('loading');
+            // business logic...
+         
+            // bu kısımda form postalanmadan önce yapılacak
+            // işler belirlenebilir. mesela postalama başladığı
+            // anda loading resmi görüntüleyebiliriz.
+        },
+        complete: function () {
+            $('#Loading').button('reset');
+            // bu kısımda form postalandıktan sonra yapılacak
+            // işler belirlenebilir. mesela postalama bittiği
+            // anda loading resmi gizleyebiliriz.
+        }
+
+    });
+    return result;
+}

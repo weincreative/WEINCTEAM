@@ -1,7 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "Vezne";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "Vezne";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
@@ -31,7 +33,7 @@
 
 
                 <div id="loadVezne">
-                  
+
                 </div>
 
 
@@ -68,8 +70,8 @@
 <script src="~/Scripts/jquery/jquery-1.9.1.min.js"></script>
 
 @section pagespecific {
-<script type="text/javascript">
-    
+    <script type="text/javascript">
+
         function GetVezne() {
             var tc = document.getElementById('Stc').value;
 
@@ -86,7 +88,7 @@
 
 
     function LoadVezne(vid) {
-       
+
             var getvezne = GetNewVezne(vid);
             $('#loadVezne').html(getvezne);
     }
@@ -108,7 +110,7 @@
                         var rslt= VezneRemove(vid);
                         if (rslt) {
                             LoadVezne(htc);
-                          
+
                         }
 
                     }
@@ -125,7 +127,7 @@
                 });
         }
     $(document).ready(function () {
-        
+
 
             LoadVezne(@ViewBag.tc);
             var hata = @Html.Raw(Json.Encode(ViewBag.hata));
@@ -151,5 +153,5 @@
             }
 
         });
-</script>
+    </script>
 }

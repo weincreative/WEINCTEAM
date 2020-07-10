@@ -131,5 +131,18 @@ namespace WEINCDENTAL.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_VezneUpIlkKayit", bsvidParameter);
         }
+    
+        public virtual ObjectResult<sp_GetTotalHizmet_Result> sp_GetTotalHizmet(Nullable<System.DateTime> baslangicTarih, Nullable<System.DateTime> bitisTarih)
+        {
+            var baslangicTarihParameter = baslangicTarih.HasValue ?
+                new ObjectParameter("baslangicTarih", baslangicTarih) :
+                new ObjectParameter("baslangicTarih", typeof(System.DateTime));
+    
+            var bitisTarihParameter = bitisTarih.HasValue ?
+                new ObjectParameter("bitisTarih", bitisTarih) :
+                new ObjectParameter("bitisTarih", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetTotalHizmet_Result>("sp_GetTotalHizmet", baslangicTarihParameter, bitisTarihParameter);
+        }
     }
 }
